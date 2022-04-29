@@ -1,21 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
+import '../../../widget/LoadingWidget.dart';
 import '../view/widget/LoginSuccessfulWidget.dart';
 import '../view/widget/UserNoteFoundWidget.dart';
 import '../view/widget/WrongPasswordOrUsernameWidget.dart';
 
-Login(emailAddress, password) async {
+Login(BuildContext context, emailAddress, password) async {
+  LoadingWidgetButton(context);
   try {
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailAddress,
-        password: password
+      email: emailAddress,
+      password: password,
     );
-    return LoginSuccessfulWidget();
+    Navigator.of(context).pop();
+    LoginSuccessfulWidgetFunction(context);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      return UserNoteFoundWidget();
+      Navigator.of(context).pop();
+      UserNoteFoundWidgetFunction(context);
     } else if (e.code == 'wrong-password') {
-      return WrongPasswordOrUsernameWidget();
+      Navigator.of(context).pop();
+      WrongPasswordOrUsernameWidgetFunction(context);
     }
   }
 }
