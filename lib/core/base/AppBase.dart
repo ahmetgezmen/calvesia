@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../feature/onboard/HomePage.dart';
+import '../../config/thema.dart';
+import '../../feature/onboard/BasePage.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
@@ -13,10 +14,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+      theme: BASEThemeData(),
+      home: BasePage(),
     );
   }
 }
