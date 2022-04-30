@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../widget/PopularEventCardWidget.dart';
+import '../../widget/UpcomingEventsCardWidget.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -29,31 +32,18 @@ class BottomComponent extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Populer Etkinlikler",
+              Text("Yaklaşan Etkinlikler",
                   style: Theme.of(context).textTheme.headline6),
               Text("See all"),
             ],
           ),
         ),
     for (int i=0; i<15; i++)
-        _BottomComponentFunction()
+      UpcomingEventsCardWidget(title: 'GELECEK ETKINLIKLER',)
       ],
     );
   }
 }
-
-_BottomComponentFunction() {
-
-    return const Padding(
-      padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
-      child: Card(
-        elevation: 5,
-        child: Center(
-          child: Text("selam"),
-        ),
-      ),
-    );
-  }
 
 
 class BodyComponent extends StatelessWidget {
@@ -85,15 +75,7 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 5,
-                      child: SizedBox(
-                        width: 250,
-                        child: Column(
-                          children: [Text("data")],
-                        ),
-                      ),
-                    );
+                    return PopularEventCard(title: 'data');
                   }),
             ),
           )

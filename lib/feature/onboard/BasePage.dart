@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'BuyPageComingSoon.dart';
-import 'ExplorePage.dart';
-import 'FavoritePage.dart';
-import 'HomePage.dart';
+import 'view/BuyPageComingSoon.dart';
+import 'view/ExplorePage.dart';
+import 'view/FavoritePage.dart';
+import 'view/HomePage.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
