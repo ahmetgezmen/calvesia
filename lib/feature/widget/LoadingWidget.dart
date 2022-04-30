@@ -22,9 +22,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
-      // Loading widget burada container kismina eklenecek
-
+      child: CircularProgressIndicator(),
     );
   }
 }
