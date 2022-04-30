@@ -1,3 +1,4 @@
+import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
@@ -105,8 +106,15 @@ class TopComponenet extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: [
-                      const CircleAvatar(
-                        child: Icon(Icons.person),
+                      InkWell(
+                      onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                            return ProfilePage();
+                          }));
+                      },
+                        child: const CircleAvatar(
+                          child: Icon(Icons.person),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
