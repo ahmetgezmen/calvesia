@@ -15,7 +15,16 @@ class BaseColorPalet {
       900:  Color(0xff000000),
     },
   );
-  static const MaterialColor UpcomingCardContainer  =  MaterialColor(0xffd966a5, <int, Color>{
-  100:  Color(0xfffff4e6)});
+  static const MaterialColor UpcomingCardContainer  =  MaterialColor(
+      0xffd966a5, <int, Color>{
+  100:  Color(0xffff77b8)});
+
+  static const MaterialColor LinkLabel  =  MaterialColor(
+      0xff169cad, <int, Color>{
+    100:  Color(0xff1abed3)});
+
+
+
+
 }
 

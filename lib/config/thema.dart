@@ -6,6 +6,7 @@ BASEThemeData() {
     textTheme: const TextTheme(
       headlineSmall:
           TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+
     ),
     primaryColor:  BaseColorPalet.main,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

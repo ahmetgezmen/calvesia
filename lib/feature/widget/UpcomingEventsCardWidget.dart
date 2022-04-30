@@ -26,7 +26,8 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
-        ),        elevation: 5,
+        ),
+        elevation: 5,
         child: Row(
           children: <Widget>[
             SizedBox(
@@ -34,10 +35,68 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
               width: 100,
               child: Container(
                 decoration: BoxDecoration(
-                  color: BaseColorPalet.UpcomingCardContainer,
-                  borderRadius: BorderRadius.circular(15.0)
-                ) ,
+                    color: BaseColorPalet.UpcomingCardContainer,
+                    borderRadius: BorderRadius.circular(15.0)),
               ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      widget.title,
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Row(
+                      children: const <Widget>[
+                        Expanded(
+                          child: Text(
+                            "23k",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        Icon(Icons.favorite, color: Colors.grey, size: 16,),
+                        Text(
+                          "3000",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5.0,top: 5.0 , bottom: 5.0),
+                    child: Row(
+                      children: const [
+                        Icon(Icons.location_on, size: 16, color: BaseColorPalet.LinkLabel,),
+                        Text("Caracas, Venezuela", style: TextStyle(
+                            color: BaseColorPalet.LinkLabel
+                        ),),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                    child: const SizedBox(height: 20, width: 70, child: Placeholder()),
+                  )
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.favorite_outline),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.arrow_forward),
+                ),
+              ],
             )
           ],
         ),
