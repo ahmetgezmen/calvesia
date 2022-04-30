@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'HomePage.dart';
+
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
 
@@ -11,17 +13,21 @@ class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
+    HomePage(),
+    Center(
+      child: Text(
+        'Index 1: Explore',
+      ),
     ),
-    Text(
-      'Index 1: Explore',
+    Center(
+      child: Text(
+        'Index 2: Favorite',
+      ),
     ),
-    Text(
-      'Index 2: Favorite',
-    ),
-    Text(
-      'Index 3: Coming Soon',
+    Center(
+      child: Text(
+        'Index 3: Coming Soon',
+      ),
     ),
   ];
 
@@ -35,10 +41,7 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-    ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBarWidget(onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
     );
   }
