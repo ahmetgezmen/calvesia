@@ -15,4 +15,7 @@ class BaseColorPalet {
       900:  Color(0xff000000),
     },
   );
+  static const MaterialColor UpcomingCardContainer  =  MaterialColor(0xffd966a5, <int, Color>{
+  100:  Color(0xfffff4e6)});
 }
+

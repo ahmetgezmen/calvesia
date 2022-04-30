@@ -7,7 +7,7 @@ BASEThemeData() {
       headlineSmall:
           TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
     ),
-    primarySwatch: Colors.orange,
+    primaryColor:  BaseColorPalet.main,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         elevation: 20,
         selectedItemColor: BaseColorPalet.main,

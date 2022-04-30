@@ -1,3 +1,4 @@
+import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:flutter/material.dart';
 
 class UpcomingEventsCardWidget extends StatefulWidget {
@@ -33,7 +34,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
               width: 100,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xffd966a5),
+                  color: BaseColorPalet.UpcomingCardContainer,
                   borderRadius: BorderRadius.circular(15.0)
                 ) ,
               ),
