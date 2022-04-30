@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'BuyPageComingSoon.dart';
+import 'ExplorePage.dart';
+import 'FavoritePage.dart';
 import 'HomePage.dart';
 
 class BasePage extends StatefulWidget {
@@ -14,21 +17,9 @@ class _BasePageState extends State<BasePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Center(
-      child: Text(
-        'Index 1: Explore',
-      ),
-    ),
-    Center(
-      child: Text(
-        'Index 2: Favorite',
-      ),
-    ),
-    Center(
-      child: Text(
-        'Index 3: Coming Soon',
-      ),
-    ),
+    ExplorePage(),
+    FavoritePage(),
+    BuyPage()
   ];
 
   void _onItemTapped(int index) {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Comingsoon extends StatefulWidget {
-  const Comingsoon({Key? key}) : super(key: key);
+class BuyPage extends StatefulWidget {
+  const BuyPage({Key? key}) : super(key: key);
 
   @override
-  State<Comingsoon> createState() => _ComingsoonState();
+  State<BuyPage> createState() => _BuyPageState();
 }
 
-class _ComingsoonState extends State<Comingsoon> {
+class _BuyPageState extends State<BuyPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
