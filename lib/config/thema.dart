@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 BASEThemeData() {
   return ThemeData(
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headlineSmall: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w700
@@ -10,7 +10,7 @@ BASEThemeData() {
       ),
     ),
     primarySwatch: Colors.deepOrange,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         elevation: 20,
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.grey

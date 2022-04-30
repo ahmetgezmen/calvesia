@@ -127,7 +127,7 @@ class TopComponenet extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0)),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const  InputDecoration(
                       prefixIcon: Icon(
                         Icons.search,
                       ),
