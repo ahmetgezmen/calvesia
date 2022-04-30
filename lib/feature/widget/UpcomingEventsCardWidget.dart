@@ -9,6 +9,15 @@ class UpcomingEventsCardWidget extends StatefulWidget {
 }
 
 class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
+
+ @override
+  void didUpdateWidget(covariant UpcomingEventsCardWidget oldWidget) {
+   super.didUpdateWidget(oldWidget);
+   if (oldWidget.title != widget.title) {
+     setState(() {});
+   }
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Padding(
