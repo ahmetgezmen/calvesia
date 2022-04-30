@@ -76,7 +76,7 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return PopularEventCard(title: 'data');
+                    return PopularEventCard(title: 'Etkinlik adi');
                   }),
             ),
           )
