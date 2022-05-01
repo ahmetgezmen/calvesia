@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'DobModel.dart';
+import 'LocationModel.dart';
 import 'RegisteredModel.dart';
+import 'SchoolsModel.dart';
 /// isAktive : true
 /// isApproved : true
 /// gender : "male"
@@ -144,139 +147,5 @@ UserModel copyWith({  bool? isAktive,
 
 }
 
-/// name : "name uni"
-/// faculty : "Med"
-/// classNumber : 3
-
-Schools schoolsFromJson(String str) => Schools.fromJson(json.decode(str));
-String schoolsToJson(Schools data) => json.encode(data.toJson());
-class Schools {
-  Schools({
-      String? name, 
-      String? faculty, 
-      int? classNumber,}){
-    _name = name;
-    _faculty = faculty;
-    _classNumber = classNumber;
-}
-
-  Schools.fromJson(dynamic json) {
-    _name = json['name'];
-    _faculty = json['faculty'];
-    _classNumber = json['classNumber'];
-  }
-  String? _name;
-  String? _faculty;
-  int? _classNumber;
-Schools copyWith({  String? name,
-  String? faculty,
-  int? classNumber,
-}) => Schools(  name: name ?? _name,
-  faculty: faculty ?? _faculty,
-  classNumber: classNumber ?? _classNumber,
-);
-  String? get name => _name;
-  String? get faculty => _faculty;
-  int? get classNumber => _classNumber;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = _name;
-    map['faculty'] = _faculty;
-    map['classNumber'] = _classNumber;
-    return map;
-  }
-
-}
 
 
-
-/// date : "1993-07-20T09:44:18.674Z"
-/// age : 26
-
-Dob dobFromJson(String str) => Dob.fromJson(json.decode(str));
-String dobToJson(Dob data) => json.encode(data.toJson());
-class Dob {
-  Dob({
-      String? date, 
-      int? age,}){
-    _date = date;
-    _age = age;
-}
-
-  Dob.fromJson(dynamic json) {
-    _date = json['date'];
-    _age = json['age'];
-  }
-  String? _date;
-  int? _age;
-Dob copyWith({  String? date,
-  int? age,
-}) => Dob(  date: date ?? _date,
-  age: age ?? _age,
-);
-  String? get date => _date;
-  int? get age => _age;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['date'] = _date;
-    map['age'] = _age;
-    return map;
-  }
-
-}
-
-/// street : "9278 new road"
-/// city : "kilcoole"
-/// state : "waterford"
-/// postcode : "93027"
-
-Location locationFromJson(String str) => Location.fromJson(json.decode(str));
-String locationToJson(Location data) => json.encode(data.toJson());
-class Location {
-  Location({
-      String? street, 
-      String? city, 
-      String? state, 
-      String? postcode,}){
-    _street = street;
-    _city = city;
-    _state = state;
-    _postcode = postcode;
-}
-
-  Location.fromJson(dynamic json) {
-    _street = json['street'];
-    _city = json['city'];
-    _state = json['state'];
-    _postcode = json['postcode'];
-  }
-  String? _street;
-  String? _city;
-  String? _state;
-  String? _postcode;
-Location copyWith({  String? street,
-  String? city,
-  String? state,
-  String? postcode,
-}) => Location(  street: street ?? _street,
-  city: city ?? _city,
-  state: state ?? _state,
-  postcode: postcode ?? _postcode,
-);
-  String? get street => _street;
-  String? get city => _city;
-  String? get state => _state;
-  String? get postcode => _postcode;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['street'] = _street;
-    map['city'] = _city;
-    map['state'] = _state;
-    map['postcode'] = _postcode;
-    return map;
-  }
-
-}

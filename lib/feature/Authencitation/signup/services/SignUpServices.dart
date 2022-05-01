@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:calvesia/feature/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -46,7 +47,7 @@ SignUp(BuildContext context, emailAddress, password) async {
           password: password,
           uuid: uuid,
           registered: Registered(
-            date: FieldValue.serverTimestamp().toString(),
+            date:  Timestamp.now().toDate().toString(),
           ),
         ),
         uuid);
