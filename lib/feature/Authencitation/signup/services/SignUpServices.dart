@@ -1,17 +1,15 @@
 import 'dart:convert';
 
-import 'package:calvesia/feature/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../models/RegisteredModel.dart';
+import '../../models/RegisteredModel.dart';
 import '../../../widget/LoadingWidget.dart';
 import '../view/widget/EmailAlredyUseWidget.dart';
 import '../view/widget/PasswordTooWeakWidget.dart';
 import '../view/widget/SendMailWidget.dart';
-import '../../../models/UserModel.dart';
+import '../../models/UserModel.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
