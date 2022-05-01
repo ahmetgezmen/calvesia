@@ -68,7 +68,7 @@ class BodyComponent extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0,left: 20),
+            padding: const EdgeInsets.only(top: 10.0,left: 20,right: 20),
             child: SizedBox(
               height: 250,
               child: ListView.builder(
