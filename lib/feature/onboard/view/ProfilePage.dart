@@ -11,12 +11,9 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          children: [
-            Text("Profile Page"),
-            ElevatedButton(onPressed: () {
-              SignUp(context, "ahmet-gezmen@hotmail.com", "password");
-            }, child: Text("register"))
-          ],
+          children: const [
+             Text("Profile Page"),
+           ],
         ),
       ),
     );
