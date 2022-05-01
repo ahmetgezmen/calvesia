@@ -1,3 +1,4 @@
+import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
@@ -6,16 +7,23 @@ import '../../widget/UpcomingEventsCardWidget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  Future<void> _refeshIndicator  () {
+    return Future.delayed(Duration(seconds: 0));
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView(
-        children: [
-          TopComponenet(),
-          BodyComponent(),
-          BottomComponent(),
-        ],
+      child: RefreshIndicator(
+        color: BaseColorPalet.main,
+        onRefresh: _refeshIndicator,
+        child: ListView(
+          children: [
+            TopComponenet(),
+            BodyComponent(),
+            BottomComponent(),
+          ],
+        ),
       ),
     );
   }
