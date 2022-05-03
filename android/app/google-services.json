@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "60873839031",
+    "firebase_url": "https://calvesia-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "calvesia",
     "storage_bucket": "calvesia.appspot.com"
   },
