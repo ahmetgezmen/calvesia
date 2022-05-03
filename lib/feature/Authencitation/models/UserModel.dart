@@ -25,7 +25,8 @@ class UserModel{
       bool? isAktive, 
       bool? isApproved, 
       String? gender, 
-      String? fname, 
+      String? favList,
+      String? fname,
       Location? location, 
       String? email, 
       String? uuid, 
@@ -39,6 +40,7 @@ class UserModel{
     _isApproved = isApproved;
     _gender = gender;
     _fname = fname;
+    _favList = favList;
     _location = location;
     _email = email;
     _uuid = uuid;
@@ -58,6 +60,7 @@ class UserModel{
     _location = json['location'] != null ? Location.fromJson(json['location']) : null;
     _email = json['email'];
     _uuid = json['uuid'];
+    _favList = json['favList'];
     _username = json['username'];
     _password = json['password'];
     _dob = json['dob'] != null ? Dob.fromJson(json['dob']) : null;
@@ -69,6 +72,7 @@ class UserModel{
   bool? _isApproved;
   String? _gender;
   String? _fname;
+  String? _favList;
   Location? _location;
   String? _email;
   String? _uuid;
@@ -78,10 +82,12 @@ class UserModel{
   Registered? _registered;
   Schools? _schools;
   String? _phone;
-UserModel copyWith({  bool? isAktive,
+UserModel copyWith({
+  bool? isAktive,
   bool? isApproved,
   String? gender,
   String? fname,
+  String? favList,
   Location? location,
   String? email,
   String? uuid,
@@ -95,6 +101,7 @@ UserModel copyWith({  bool? isAktive,
   isApproved: isApproved ?? _isApproved,
   gender: gender ?? _gender,
   fname: fname ?? _fname,
+  favList : favList ?? _favList,
   location: location ?? _location,
   email: email ?? _email,
   uuid: uuid ?? _uuid,
@@ -108,6 +115,7 @@ UserModel copyWith({  bool? isAktive,
   bool? get isAktive => _isAktive;
   bool? get isApproved => _isApproved;
   String? get gender => _gender;
+  String? get favList => _favList;
   String? get fname => _fname;
   Location? get location => _location;
   String? get email => _email;
@@ -122,6 +130,7 @@ UserModel copyWith({  bool? isAktive,
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['isAktive'] = _isAktive;
+    map['favList'] = _favList;
     map['isApproved'] = _isApproved;
     map['gender'] = _gender;
     map['fname'] = _fname;
