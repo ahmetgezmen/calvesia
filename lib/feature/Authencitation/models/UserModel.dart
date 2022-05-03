@@ -25,7 +25,7 @@ class UserModel{
       bool? isAktive, 
       bool? isApproved, 
       String? gender, 
-      String? favList,
+      List? favList,
       String? fname,
       Location? location, 
       String? email, 
@@ -72,7 +72,7 @@ class UserModel{
   bool? _isApproved;
   String? _gender;
   String? _fname;
-  String? _favList;
+  List? _favList;
   Location? _location;
   String? _email;
   String? _uuid;
@@ -87,7 +87,7 @@ UserModel copyWith({
   bool? isApproved,
   String? gender,
   String? fname,
-  String? favList,
+  List? favList,
   Location? location,
   String? email,
   String? uuid,
@@ -115,7 +115,7 @@ UserModel copyWith({
   bool? get isAktive => _isAktive;
   bool? get isApproved => _isApproved;
   String? get gender => _gender;
-  String? get favList => _favList;
+  List? get favList => _favList;
   String? get fname => _fname;
   Location? get location => _location;
   String? get email => _email;
