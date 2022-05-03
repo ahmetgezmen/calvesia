@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widget/LoadingWidget.dart';
+import '../../viewmodel/UserViewModel.dart';
 import '../view/widget/EmailAlredyUseWidget.dart';
 import '../view/widget/PasswordTooWeakWidget.dart';
 import '../view/widget/SendMailWidget.dart';
@@ -14,6 +15,14 @@ SignUp(BuildContext context, emailAddress, password) async {
       email: emailAddress,
       password: password,
     );
+    final uuid = FirebaseAuth.instance.currentUser!.uid;
+
+    addUser(
+        uuid,
+        emailAddress,
+        password,
+    );
+
     Navigator.of(context).pop();
     SendEmailWidgetFunction(context);
   } on FirebaseAuthException catch (e) {
