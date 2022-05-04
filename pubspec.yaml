@@ -38,6 +38,8 @@ dependencies:
   firebase_auth: ^3.3.16
   cloud_firestore: ^3.1.13
   firebase_database: ^9.0.12
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^2.0.0-dev.5
 
 dev_dependencies:
   flutter_test:
