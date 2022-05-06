@@ -10,8 +10,8 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: const [
-             Text("Profile Page"),
-           ],
+            Text("Profile Page"),
+          ],
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:calvesia/feature/Authencitation/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -62,5 +63,10 @@ class UserVievModel {
     }
   }
 
+  getMyInfo()=>UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser!.uid);
+
+  updateMyInfo(UserModel userModel){
+    bool result = UserServices.updateMyInfoServices(userModel, FirebaseAuth.instance.currentUser!.uid);
+  }
 
 }
