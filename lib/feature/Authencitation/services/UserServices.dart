@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/RegisteredModel.dart';
 import '../models/UserModel.dart';
@@ -35,18 +36,22 @@ class UserServices {
     return _userModel;
   }
 
-  static updateMyInfoServices(UserModel userModel, uid) async {
+  static updateMyInfoServices(UserModel userModel) async {
     final db = await FirebaseFirestore.instance;
-    final _userDataRef = await db.collection("users").doc(uid);
-    db.runTransaction((transaction) async {
-      // final snapshot = await transaction.get(_userDataRef);
-      // final newPopulation = snapshot.get("population") + 1;
-      transaction.update(_userDataRef, jsonDecode(userToJson(userModel)));
-    }).then(
-      (value) => true,
-      onError: (e) =>
-          // print("Error updating document $e")
-          false,
-    );
+    final _userDataRef = await db
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+    _userDataRef.update(jsonDecode(userToJson(userModel)));
+  }
+
+  static updateMyPhotoServices(photo) async {
+    final db = await FirebaseFirestore.instance;
+    final _userDataRef = await db
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+    _userDataRef
+        .update({"profileImage": photo})
+        .then((value) => true)
+        .onError((error, stackTrace) => false);
   }
 }
