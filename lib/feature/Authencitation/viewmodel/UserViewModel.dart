@@ -1,34 +1,66 @@
-import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../widget/LoadingWidget.dart';
+import '../login/view/widget/LoginSuccessfulWidget.dart';
+import '../login/view/widget/UserNoteFoundWidget.dart';
+import '../login/view/widget/WrongPasswordOrUsernameWidget.dart';
+import '../services/UserServices.dart';
+import '../signup/view/widget/EmailAlredyUseWidget.dart';
+import '../signup/view/widget/PasswordTooWeakWidget.dart';
+import '../signup/view/widget/SendMailWidget.dart';
 
-import '../models/RegisteredModel.dart';
-import '../models/UserModel.dart';
+class UserVievModel {
+  static Login(BuildContext context, emailAddress, password) async {
+    LoadingWidgetButton(context);
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      Navigator.of(context).pop();
+      LoginSuccessfulWidgetFunction(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Navigator.of(context).pop();
+        UserNoteFoundWidgetFunction(context);
+      } else if (e.code == 'wrong-password') {
+        Navigator.of(context).pop();
+        WrongPasswordOrUsernameWidgetFunction(context);
+      }
+    }
+  }
 
-FirebaseFirestore firestore = FirebaseFirestore.instance;
+  static SignUp(BuildContext context, emailAddress, password) async {
+    LoadingWidgetButton(context);
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      final uuid = FirebaseAuth.instance.currentUser!.uid;
 
-Future<void> addUser(uuid, emailAddress, password) {
-  DocumentReference<Map<String, dynamic>> users =
-  FirebaseFirestore.instance.collection('users').doc(uuid);
-  return users
-      .set(
-      jsonDecode(userToJson(
-          UserModel(
-            isApproved: false,
-            isAktive: true,
-            email: emailAddress,
-            password: password,
-            uuid: uuid,
-            registered: Registered(
-              date:  Timestamp.now().toDate().toString(),
-            ),
-          )
+      UserServices.addUser(
+        uuid,
+        emailAddress,
+        password,
+      );
 
-      )),
-      SetOptions(
-        merge: true,
-      ))
-      .then((value) => print("User Added"))
-      .catchError((error) => print("Failed to add user: $error"));
+      Navigator.of(context).pop();
+      SendEmailWidgetFunction(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Navigator.of(context).pop();
+        PasswordTooWeakWidgetFunction(context);
+      } else if (e.code == 'email-already-in-use') {
+        Navigator.of(context).pop();
+        EmailAlredyUseWidgetFunction(context);
+      }
+    } catch (e) {
+      // error widget yazilacak
+    }
+  }
+
+
 }
-
