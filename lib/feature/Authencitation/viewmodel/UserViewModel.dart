@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:calvesia/feature/Authencitation/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -63,9 +65,10 @@ class UserVievModel {
     }
   }
 
-  Future<UserModel> get getMyInfo async =>await UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser!.uid);
+  static Future<UserModel> get getMyInfo async =>await UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser!.uid);
+  static Future<Uint8List?> get getMyProfilePhoto async => await UserServices.getProfilePhotos(FirebaseAuth.instance.currentUser!.uid);
 
-  updateMyInfo(UserModel userModel){
+  static updateMyInfo(UserModel userModel){
     bool result = UserServices.updateMyInfoServices(userModel);
   }
 

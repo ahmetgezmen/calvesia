@@ -33,9 +33,9 @@ class UserServices {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-  static getUserInfoServices(uid) async {
+  static Future<UserModel> getUserInfoServices(uid) async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(uid).get();
-    UserModel _userModel = UserModel.fromJson(_userDataRef.data());
+    UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
     return _userModel;
   }
 

@@ -1,5 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
+import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
@@ -120,8 +125,19 @@ class TopComponenet extends StatelessWidget {
                             return ProfilePage();
                           }));
                       },
-                        child: const CircleAvatar(
-                          child: Icon(Icons.person),
+                        child: FutureBuilder<Uint8List?>(
+                          future: UserVievModel.getMyProfilePhoto,
+                          builder: (context, snapshot) {
+                            if(snapshot.hasData){
+                              return CircleAvatar(
+                                backgroundImage: MemoryImage(snapshot.data!),
+                              );
+                            }else{
+                              return const CircleAvatar(
+                                child: Icon(Icons.person),
+                              );
+                            }
+                          }
                         ),
                       ),
                       Padding(
