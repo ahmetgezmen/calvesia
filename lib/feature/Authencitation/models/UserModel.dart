@@ -24,8 +24,9 @@ class UserModel{
   UserModel({
       bool? isAktive, 
       bool? isApproved, 
-      String? gender, 
-      List? favList,
+      String? gender,
+    String? profileImage,
+    List? favList,
       String? fname,
       Location? location, 
       String? email, 
@@ -40,6 +41,7 @@ class UserModel{
     _isApproved = isApproved;
     _gender = gender;
     _fname = fname;
+    _profileImage = profileImage;
     _favList = favList;
     _location = location;
     _email = email;
@@ -56,6 +58,7 @@ class UserModel{
     _isAktive = json['isAktive'];
     _isApproved = json['isApproved'];
     _gender = json['gender'];
+    _profileImage = json['profileImage'];
     _fname = json['fname'];
     _location = json['location'] != null ? Location.fromJson(json['location']) : null;
     _email = json['email'];
@@ -71,6 +74,7 @@ class UserModel{
   bool? _isAktive;
   bool? _isApproved;
   String? _gender;
+  String? _profileImage;
   String? _fname;
   List? _favList;
   Location? _location;
@@ -86,6 +90,7 @@ UserModel copyWith({
   bool? isAktive,
   bool? isApproved,
   String? gender,
+  String? profileImage,
   String? fname,
   List? favList,
   Location? location,
@@ -100,6 +105,7 @@ UserModel copyWith({
 }) => UserModel(  isAktive: isAktive ?? _isAktive,
   isApproved: isApproved ?? _isApproved,
   gender: gender ?? _gender,
+  profileImage: profileImage ?? _profileImage,
   fname: fname ?? _fname,
   favList : favList ?? _favList,
   location: location ?? _location,
@@ -115,6 +121,7 @@ UserModel copyWith({
   bool? get isAktive => _isAktive;
   bool? get isApproved => _isApproved;
   String? get gender => _gender;
+  String? get profileImage => _profileImage;
   List? get favList => _favList;
   String? get fname => _fname;
   Location? get location => _location;
@@ -133,6 +140,7 @@ UserModel copyWith({
     map['favList'] = _favList;
     map['isApproved'] = _isApproved;
     map['gender'] = _gender;
+    map['profileImage'] = _profileImage;
     map['fname'] = _fname;
     if (_location != null) {
       map['location'] = _location?.toJson();

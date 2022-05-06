@@ -63,10 +63,10 @@ class UserVievModel {
     }
   }
 
-  getMyInfo()=>UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser!.uid);
+  Future<UserModel> get getMyInfo async =>await UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser!.uid);
 
   updateMyInfo(UserModel userModel){
-    bool result = UserServices.updateMyInfoServices(userModel, FirebaseAuth.instance.currentUser!.uid);
+    bool result = UserServices.updateMyInfoServices(userModel);
   }
 
 }

@@ -40,6 +40,8 @@ dependencies:
   firebase_database: ^9.0.12
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^2.0.0-dev.5
+  firebase_storage: ^10.2.15
+  image_picker: ^0.8.5
 
 dev_dependencies:
   flutter_test:
