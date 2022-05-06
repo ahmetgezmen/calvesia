@@ -1,0 +1,66 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../widget/LoadingWidget.dart';
+import '../login/view/widget/LoginSuccessfulWidget.dart';
+import '../login/view/widget/UserNoteFoundWidget.dart';
+import '../login/view/widget/WrongPasswordOrUsernameWidget.dart';
+import '../signup/view/widget/EmailAlredyUseWidget.dart';
+import '../signup/view/widget/PasswordTooWeakWidget.dart';
+import '../signup/view/widget/SendMailWidget.dart';
+import '../viewmodel/UserViewModel.dart';
+
+class UserServices{
+  static Login(BuildContext context, emailAddress, password) async {
+    LoadingWidgetButton(context);
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      Navigator.of(context).pop();
+      LoginSuccessfulWidgetFunction(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Navigator.of(context).pop();
+        UserNoteFoundWidgetFunction(context);
+      } else if (e.code == 'wrong-password') {
+        Navigator.of(context).pop();
+        WrongPasswordOrUsernameWidgetFunction(context);
+      }
+    }
+  }
+
+  static SignUp(BuildContext context, emailAddress, password) async {
+    LoadingWidgetButton(context);
+    try {
+      final credential =
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      final uuid = FirebaseAuth.instance.currentUser!.uid;
+
+      addUser(
+        uuid,
+        emailAddress,
+        password,
+      );
+
+      Navigator.of(context).pop();
+      SendEmailWidgetFunction(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Navigator.of(context).pop();
+        PasswordTooWeakWidgetFunction(context);
+      } else if (e.code == 'email-already-in-use') {
+        Navigator.of(context).pop();
+        EmailAlredyUseWidgetFunction(context);
+      }
+    } catch (e) {
+      // error widget yazilacak
+    }
+  }
+
+
+}
