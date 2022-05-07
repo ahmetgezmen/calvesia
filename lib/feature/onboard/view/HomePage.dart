@@ -4,7 +4,6 @@ import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
 import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
@@ -12,7 +11,7 @@ import '../../widget/UpcomingEventsCardWidget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-  Future<void> _refeshIndicator  () {
+  Future<void> _refeshIndicator() {
     return Future.delayed(Duration(seconds: 0));
   }
 
@@ -52,13 +51,14 @@ class BottomComponent extends StatelessWidget {
             ],
           ),
         ),
-    for (int i=0; i<15; i++)
-      UpcomingEventsCardWidget(title: 'GELECEK ETKINLIK',)
+        for (int i = 0; i < 15; i++)
+          UpcomingEventsCardWidget(
+            title: 'GELECEK ETKINLIK',
+          )
       ],
     );
   }
 }
-
 
 class BodyComponent extends StatelessWidget {
   const BodyComponent({Key? key}) : super(key: key);
@@ -81,7 +81,7 @@ class BodyComponent extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
             child: SizedBox(
               height: 250,
               child: ListView.builder(
@@ -99,11 +99,12 @@ class BodyComponent extends StatelessWidget {
   }
 }
 
-class TopComponenet extends StatelessWidget {
-  const TopComponenet({
-    Key? key,
-  }) : super(key: key);
+class TopComponenet extends StatefulWidget {
+  @override
+  State<TopComponenet> createState() => _TopComponenetState();
+}
 
+class _TopComponenetState extends State<TopComponenet> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -120,25 +121,29 @@ class TopComponenet extends StatelessWidget {
                   Row(
                     children: [
                       InkWell(
-                      onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                            return ProfilePage();
-                          }));
-                      },
+                        onTap: () async {
+                          final value = await Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ProfilePage();
+                              },
+                            ),
+                          );
+                          setState(() {});
+                        },
                         child: FutureBuilder<Uint8List?>(
-                          future: UserVievModel.getMyProfilePhoto,
-                          builder: (context, snapshot) {
-                            if(snapshot.hasData){
-                              return CircleAvatar(
-                                backgroundImage: MemoryImage(snapshot.data!),
-                              );
-                            }else{
-                              return const CircleAvatar(
-                                child: Icon(Icons.person),
-                              );
-                            }
-                          }
-                        ),
+                            future: UserVievModel.getMyProfilePhoto,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return CircleAvatar(
+                                  backgroundImage: MemoryImage(snapshot.data!),
+                                );
+                              } else {
+                                return const CircleAvatar(
+                                  child: Icon(Icons.person),
+                                );
+                              }
+                            }),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
@@ -159,7 +164,7 @@ class TopComponenet extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0)),
                   child: TextFormField(
-                    decoration: const  InputDecoration(
+                    decoration: const InputDecoration(
                       prefixIcon: Icon(
                         Icons.search,
                       ),

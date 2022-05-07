@@ -23,6 +23,7 @@ class UserVievModel {
       );
       Navigator.of(context).pop();
       LoginSuccessfulWidgetFunction(context);
+      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Navigator.of(context).pop();
@@ -49,9 +50,9 @@ class UserVievModel {
         emailAddress,
         password,
       );
-
       Navigator.of(context).pop();
       SendEmailWidgetFunction(context);
+      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Navigator.of(context).pop();
