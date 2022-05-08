@@ -86,7 +86,8 @@ Aşamalı ekran görünümleri
 
 
 - **Sprint Review**: 
-Alınan kararlar: Veritabanı oluşturması email ile toplanacak veriler için gerekli görülmüştür. Fakat bir yandan da veritabanı form sayfası için gerekli olmamıştır. O sebeple PBI bir sonraki sprint'e aktarılmıştır. Çıkan ürünün çalışmasında ve testlerinde bir problem görülmemiştir. Ekstra koyulması gereken özellikler belirlenmiştir. Sprint Review katılımcıları: ......
+Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backand'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gerekn özellikler belirlenmiştir.
+Sprint Review katılımcıları: ......
 
 
 - **Sprint Retrospective:**
