@@ -103,10 +103,14 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
   - Daily Scrum için iki günde bir kez 15 dakikalık görüşme yapılmalı kararı alınmıştır.
 
 -**Diğer Notlar**:
-- N/A
+- Yok
 
 ---
-@@ -164,7 +83,3 @@ Decision made: Database creation task is required for the retrieval of the infor
+
+# Sprint 2
+
+---
+
 # Sprint 3
 
 ---
