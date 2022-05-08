@@ -58,7 +58,7 @@
 
 ## Sprint Board Güncellemesi ve Burndown Güncellemesi
 
-- **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVOSSCpsI=/) 
+- **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
 Aşamalı ekran görünümleri
 ![Burndown 1](https://raw.githubusercontent.com/atilsamancioglu/ScrumBootcampTemplate/main/ProjectManagement/Sprint1Documents/burndown1.png) 
 ![Burndown 2](https://raw.githubusercontent.com/atilsamancioglu/ScrumBootcampTemplate/main/ProjectManagement/Sprint1Documents/burndown2.png) 
