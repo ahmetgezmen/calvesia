@@ -99,7 +99,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 
 - **Sprint Retrospective:**
-  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında backlog hafifletilmeli kararı alınmıştır.
+  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında backlog sadeleştirilmeli kararı alınmıştır.
   - Daily Scrum için iki günde bir kez 15 dakikalık görüşme yapılmalı kararı alınmıştır.
 
 -**Diğer Notlar**:
