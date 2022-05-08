@@ -18,29 +18,32 @@
 
 ## Ürün İsmi
 
---...--
+--Younivent--
 
 ## Ürün Açıklaması
-- ... uygulamamız ile üniversite öğrencilerinin çevresindeki ve okuduğu üniversite bünyesindeki etkinliklerden haberdar olmasını sağlayacağız. İçerisinde onlarca etkinliğin zaman ve mekan bilgisini barındıran uygulamamızda aynı zamanda kullanıcının tercih ettiği kategoriler ön planda tutulacak.
+- Younivent uygulamamız ile üniversite öğrencilerinin üniversiteler bünyesindeki etkinliklerden haberdar olmasını sağlayacağız. İçerisinde onlarca etkinliğin zaman ve mekan bilgisini barındıran uygulamamızda aynı zamanda kullanıcının tercih ettiği kategoriler ön planda tutulacak.
 
 
 ## Ürün Özellikleri
 
-- ...
-- Filmleri türüne göre ayırma
-- Filmlerin yönetmen, aktör, aktris vb. bilgilerini posteriyle birlikte gösterme
-- IMDB ve Rotten Tomatoes puanlarını gösterme
-- Netflix'te ve Prime'da bulunurluğunu gösterme
+- Öğrenciler için oluşturulmuş etkinlikleri türüne göre ayırma
+- Etkinliklerin yer, zaman, içerik, bilet ücreti vb. bilgilerini tanıtım resimleriyle birlikte gösterme
+- Etkinliklere yapılan yorumları gösterme
+- Etkinliklerin rating puanlarını gösterme
+- Kullanıcıların beğendikleri etkinlikleri favorilere ekleme imkanı sunma
+- Kullanıcıların yapılacak tüm etkinlikleri takvim üzerinde görmesi
+- Kullanıcıların kendine takvim oluşturması ve bildirim alabilmesi 
 
 
 ## Hedef Kitle
 
 - 18-35 yaş arası üniversite öğrencileri
+- Edu uzantılı mail sahipleri
+- Üniversite etkinliklerine katılanlar
 
 ## Ürün İş Listesi URL'si
 
 [Miro Backlog Board](https://miro.com/app/board/uXjVO3wLSpU=/)
---...--
 
 
 # Sprint 1
@@ -83,17 +86,21 @@ Aşamalı ekran görünümleri
   ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(2).png) 
   ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(3).png)
   ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(4).png)
+  ![Screenshot 6](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Giri197159_Yap.jpeg)
+  ![Screenshot 7](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Kay196177t_Ol.jpeg)
+  ![Screenshot 8](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Onaylama_Kodu.jpeg)
+  ![Screenshot 9](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/197158ifremi_Unuttum.jpeg)
+  ![Screenshot 10](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/197158ifre_s196177f196177rlama.jpeg)
 
 
 - **Sprint Review**: 
-Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backand'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gerekn özellikler belirlenmiştir.
-Sprint Review katılımcıları: ......
+Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backand'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
+Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
-  - Takım içindeki görev dağılımıyla ilgili düzenleme yapılması kararı alınmıştır
-  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında gerekli geri bildirimlerin developer'lar tarafından verildiğine emin olunmalı
-  - Unit test'ler için ayrılan efor/saat arttırılmalı 
+  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında backlog hafifletilmeli kararı alınmıştır.
+  - Daily Scrum için iki günde bir kez 15 dakikalık görüşme yapılmalı kararı alınmıştır.
 
 -**Diğer Notlar**:
 - N/A
