@@ -63,9 +63,9 @@
 
 - **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
 Aşamalı ekran görünümleri
-![Burndown 1](https://raw.githubusercontent.com/atilsamancioglu/ScrumBootcampTemplate/main/ProjectManagement/Sprint1Documents/burndown1.png) 
-![Burndown 2](https://raw.githubusercontent.com/atilsamancioglu/ScrumBootcampTemplate/main/ProjectManagement/Sprint1Documents/burndown2.png) 
-![Burndown 3](https://raw.githubusercontent.com/atilsamancioglu/ScrumBootcampTemplate/main/ProjectManagement/Sprint1Documents/burndown3.png)
+![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown1.png) 
+![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown2.png) 
+![Burndown 3](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown3.png)
  
 - **Sprint board güncellemesi**: Sprint board ekran görüntüleri: 
 ![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/e844489a96abffef5d850eda239f4833869e46ba/Sprint1%20Document1.png) 
