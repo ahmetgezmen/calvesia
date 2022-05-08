@@ -39,7 +39,7 @@
 
 ## Ürün İş Listesi URL'si
 
-[Miro Backlog Board](https://miro.com/app/board/uXjVOSSCpsI=/)
+[Miro Backlog Board](https://miro.com/app/board/uXjVO3wLSpU=/)
 --...--
 
 
