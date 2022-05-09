@@ -86,11 +86,6 @@ Aşamalı ekran görünümleri
   ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(2).png) 
   ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(3).png)
   ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(4).png)
-  ![Screenshot 6](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Giri197159_Yap.jpeg)
-  ![Screenshot 7](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Kay196177t_Ol.jpeg)
-  ![Screenshot 8](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/Onaylama_Kodu.jpeg)
-  ![Screenshot 9](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/197158ifremi_Unuttum.jpeg)
-  ![Screenshot 10](https://github.com/merveguhan/Sprint-deneme/blob/de36c4e08949e1ff78563d9d1a2341e237359874/Figma/197158ifre_s196177f196177rlama.jpeg)
 
 
 - **Sprint Review**: 
