@@ -34,7 +34,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     child: const Text(
                       'Giriş Yap',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
