@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import '../../Utils/Style/ColorPalette.dart';
 
 class PopularEventCard extends StatefulWidget {
+  final Color? shadowColor;
   final String title;
-  PopularEventCard({Key? key, required this.title}) : super(key: key);
+  PopularEventCard(
+      {Key? key, required this.title, this.shadowColor})
+      : super(key: key);
 
   @override
   State<PopularEventCard> createState() => _PopularEventCardState();
@@ -19,9 +22,12 @@ class _PopularEventCardState extends State<PopularEventCard> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Card(
+      borderOnForeground: true,
+      shadowColor: widget.shadowColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
@@ -51,30 +57,45 @@ class _PopularEventCardState extends State<PopularEventCard> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("17th July, 2021", style: TextStyle(
-                                color: Colors.grey
-                            ),),
+                            Text(
+                              "17th July, 2021",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                             Text(
                               widget.title,
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
-                            Row(
-                              children: const [
-                                Icon(Icons.location_on, size: 16, color: BaseColorPalet.LinkLabel,),
-                                Text("Caracas, Venezuela", style: TextStyle(
-                                    color: BaseColorPalet.LinkLabel
-                                ),),
-                              ],
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: const [
+                                  Icon(
+                                    Icons.location_on,
+                                    size: 16,
+                                    color: BaseColorPalet.LinkLabel,
+                                  ),
+                                  Text(
+                                    "Caracas, Venezuela",
+                                    style: TextStyle(
+                                        color: BaseColorPalet.LinkLabel,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                          const SizedBox(
-                              height: 20, width: 70, child: Placeholder(),),
-                        Text("10:00pm"),
-                        ],),
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 20,
+                              width: 70,
+                              child: Placeholder(),
+                            ),
+                            Text("10:00pm"),
+                          ],
+                        ),
                       ],
                     ),
                   ),

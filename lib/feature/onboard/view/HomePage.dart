@@ -1,29 +1,31 @@
+import 'dart:typed_data';
+
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
+import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../../widget/UpcomingEventsCardWidget.dart';
+import '../layouts/Header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-  Future<void> _refeshIndicator  () {
+  Future<void> _refeshIndicator() {
     return Future.delayed(Duration(seconds: 0));
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: RefreshIndicator(
-        color: BaseColorPalet.main,
-        onRefresh: _refeshIndicator,
-        child: ListView(
-          children: [
-            TopComponenet(),
-            BodyComponent(),
-            BottomComponent(),
-          ],
-        ),
+    return RefreshIndicator(
+      color: BaseColorPalet.main,
+      onRefresh: _refeshIndicator,
+      child: ListView(
+        children: [
+          BodyComponent(),
+          BottomComponent(),
+        ],
       ),
     );
   }
@@ -47,13 +49,14 @@ class BottomComponent extends StatelessWidget {
             ],
           ),
         ),
-    for (int i=0; i<15; i++)
-      UpcomingEventsCardWidget(title: 'GELECEK ETKINLIK',)
+        for (int i = 0; i < 15; i++)
+          UpcomingEventsCardWidget(
+            title: 'GELECEK ETKINLIK',
+          )
       ],
     );
   }
 }
-
 
 class BodyComponent extends StatelessWidget {
   const BodyComponent({Key? key}) : super(key: key);
@@ -76,7 +79,7 @@ class BodyComponent extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
             child: SizedBox(
               height: 250,
               child: ListView.builder(
@@ -84,82 +87,12 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return PopularEventCard(title: 'Etkinlik adi');
+                    return PopularEventCard(title: 'Etkinlik adi',);
                   }),
             ),
           )
         ],
       ),
-    );
-  }
-}
-
-class TopComponenet extends StatelessWidget {
-  const TopComponenet({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-            height: 120.0, color: Theme.of(context).primaryColor, child: null),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 25),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      InkWell(
-                      onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                            return ProfilePage();
-                          }));
-                      },
-                        child: const CircleAvatar(
-                          child: Icon(Icons.person),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text("Ahmet GEZMEN",
-                            style: Theme.of(context).textTheme.headlineSmall),
-                      )
-                    ],
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none))
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.0)),
-                  child: TextFormField(
-                    decoration: const  InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                      hintText: "Etkinlik Ara",
-                      border: OutlineInputBorder(),
-                      suffixIcon: Icon(
-                        Icons.filter_alt,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

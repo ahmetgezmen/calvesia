@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../Authencitation/signup/services/SignUpServices.dart';
-
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -12,8 +10,8 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: const [
-             Text("Profile Page"),
-           ],
+            Text("Profile Page"),
+          ],
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'layouts/Header.dart';
 import 'view/BuyPageComingSoon.dart';
 import 'view/ExplorePage.dart';
 import 'view/FavoritePage.dart';
@@ -31,9 +32,16 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBarWidget(onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            HeaderComponent(),
+            Expanded(child: _widgetOptions.elementAt(_selectedIndex),),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBarWidget(onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
+      ),
     );
   }
 }

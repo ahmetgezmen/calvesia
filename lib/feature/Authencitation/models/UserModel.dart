@@ -24,8 +24,10 @@ class UserModel{
   UserModel({
       bool? isAktive, 
       bool? isApproved, 
-      String? gender, 
-      String? fname, 
+      String? gender,
+    String? profileImage,
+    List? favList,
+      String? fname,
       Location? location, 
       String? email, 
       String? uuid, 
@@ -39,6 +41,8 @@ class UserModel{
     _isApproved = isApproved;
     _gender = gender;
     _fname = fname;
+    _profileImage = profileImage;
+    _favList = favList;
     _location = location;
     _email = email;
     _uuid = uuid;
@@ -54,10 +58,12 @@ class UserModel{
     _isAktive = json['isAktive'];
     _isApproved = json['isApproved'];
     _gender = json['gender'];
+    _profileImage = json['profileImage'];
     _fname = json['fname'];
     _location = json['location'] != null ? Location.fromJson(json['location']) : null;
     _email = json['email'];
     _uuid = json['uuid'];
+    _favList = json['favList'];
     _username = json['username'];
     _password = json['password'];
     _dob = json['dob'] != null ? Dob.fromJson(json['dob']) : null;
@@ -68,7 +74,9 @@ class UserModel{
   bool? _isAktive;
   bool? _isApproved;
   String? _gender;
+  String? _profileImage;
   String? _fname;
+  List? _favList;
   Location? _location;
   String? _email;
   String? _uuid;
@@ -78,10 +86,13 @@ class UserModel{
   Registered? _registered;
   Schools? _schools;
   String? _phone;
-UserModel copyWith({  bool? isAktive,
+UserModel copyWith({
+  bool? isAktive,
   bool? isApproved,
   String? gender,
+  String? profileImage,
   String? fname,
+  List? favList,
   Location? location,
   String? email,
   String? uuid,
@@ -94,7 +105,9 @@ UserModel copyWith({  bool? isAktive,
 }) => UserModel(  isAktive: isAktive ?? _isAktive,
   isApproved: isApproved ?? _isApproved,
   gender: gender ?? _gender,
+  profileImage: profileImage ?? _profileImage,
   fname: fname ?? _fname,
+  favList : favList ?? _favList,
   location: location ?? _location,
   email: email ?? _email,
   uuid: uuid ?? _uuid,
@@ -108,6 +121,8 @@ UserModel copyWith({  bool? isAktive,
   bool? get isAktive => _isAktive;
   bool? get isApproved => _isApproved;
   String? get gender => _gender;
+  String? get profileImage => _profileImage;
+  List? get favList => _favList;
   String? get fname => _fname;
   Location? get location => _location;
   String? get email => _email;
@@ -122,8 +137,10 @@ UserModel copyWith({  bool? isAktive,
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['isAktive'] = _isAktive;
+    map['favList'] = _favList;
     map['isApproved'] = _isApproved;
     map['gender'] = _gender;
+    map['profileImage'] = _profileImage;
     map['fname'] = _fname;
     if (_location != null) {
       map['location'] = _location?.toJson();
