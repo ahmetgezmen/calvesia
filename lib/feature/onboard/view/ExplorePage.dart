@@ -6,6 +6,23 @@ import '../../widget/PopularEventCardWidget.dart';
 import '../layouts/Header.dart';
 
 class ExplorePage extends StatelessWidget {
+  static const List Category = [{
+    "name" : "Parti",
+    "color" : BaseColorPalet.PartyColor,
+    "tag" : 'party'
+  },{
+    "name" : "Kariyer",
+    "color" : BaseColorPalet.CareerColor,
+    "tag" : 'career'
+  },{
+    "name" : "Sağlık",
+    "color" : BaseColorPalet.HealthColor,
+    "tag" : 'health'
+  },{
+    "name" : "Eğitim",
+    "color" : BaseColorPalet.EducationColor,
+    "tag" : 'education'
+  }];
   const ExplorePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +39,8 @@ class ExplorePage extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: CategoryButton(
-                    buttonColor: Colors.greenAccent,
+                    title:Category[index]["name"] ,
+                    buttonColor: Category[index]["color"],
                   ),
                 );
               },
@@ -66,9 +84,10 @@ class ExplorePage extends StatelessWidget {
 
 class CategoryButton extends StatefulWidget {
   final Color buttonColor;
+  final String title;
   const CategoryButton({
     Key? key,
-    required this.buttonColor,
+    required this.buttonColor, required this.title,
   }) : super(key: key);
 
   @override
@@ -103,7 +122,7 @@ class _CategoryButtonState extends State<CategoryButton> {
             print(_isAktive);
           });
         },
-        child: Text('bas'),
+        child: Text(widget.title),
       ),
     );
   }
