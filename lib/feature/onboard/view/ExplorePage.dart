@@ -6,6 +6,10 @@ import '../../widget/PopularEventCardWidget.dart';
 import '../layouts/Header.dart';
 
 class ExplorePage extends StatelessWidget {
+  Future<void> _refeshIndicator() {
+    return Future.delayed(Duration(seconds: 0));
+  }
+
   static const List Category = [{
     "name" : "Parti",
     "color" : BaseColorPalet.PartyColor,
@@ -26,58 +30,62 @@ class ExplorePage extends StatelessWidget {
   const ExplorePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Container(
-            height: 50,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: CategoryButton(
-                    title:Category[index]["name"] ,
-                    buttonColor: Category[index]["color"],
-                  ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: 30,
-                );
-              },
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.6,
-              ),
-              itemBuilder: (context, index) {
-                return Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: PopularEventCard(
-                      title: "deneme",
-                      shadowColor: colorsMatch(PostModel(
-                        category: "education"
-                      )) ,
+    return RefreshIndicator(
+      color: BaseColorPalet.main,
+      onRefresh: _refeshIndicator,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Container(
+              height: 50,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: CategoryButton(
+                      title:Category[index]["name"] ,
+                      buttonColor: Category[index]["color"],
                     ),
-                  ),
-                );
-              },
-              itemCount: 100,
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    width: 30,
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.6,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: PopularEventCard(
+                        title: "deneme",
+                        shadowColor: colorsMatch(PostModel(
+                            category: "education"
+                        )) ,
+                      ),
+                    ),
+                  );
+                },
+                itemCount: 100,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
