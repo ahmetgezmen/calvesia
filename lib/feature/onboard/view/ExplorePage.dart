@@ -11,7 +11,6 @@ class ExplorePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderComponent(),
         Padding(
           padding: const EdgeInsets.only(left: 10.0),
           child: Container(
@@ -20,13 +19,16 @@ class ExplorePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 4,
               itemBuilder: (context, index) {
-                return CategoryButtonWidgetActive(
-                  buttonColor: Colors.orangeAccent,
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CategoryButton(
+                    buttonColor: Colors.greenAccent,
+                  ),
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
                 return SizedBox(
-                  width: 20,
+                  width: 30,
                 );
               },
             ),
@@ -34,17 +36,26 @@ class ExplorePage extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: GridView.count(
-              crossAxisCount: 2,
-              children: List.generate(100, (index) {
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.6,
+              ),
+              itemBuilder: (context, index) {
                 return Container(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: PopularEventCard(title: "deneme"),
+                    padding: const EdgeInsets.all(2.0),
+                    child: PopularEventCard(
+                      title: "deneme",
+                      shadowColor: colorsMatch(PostModel(
+                        category: "education"
+                      )) ,
+                    ),
                   ),
                 );
-              }),
+              },
+              itemCount: 100,
             ),
           ),
         ),
@@ -53,50 +64,46 @@ class ExplorePage extends StatelessWidget {
   }
 }
 
-class CategoryButtonWidgetInActive extends StatelessWidget {
+class CategoryButton extends StatefulWidget {
   final Color buttonColor;
-  const CategoryButtonWidgetInActive({
+  const CategoryButton({
     Key? key,
     required this.buttonColor,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.orangeAccent,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      width: 100,
-      child: InkWell(
-        onTap: () {},
-        child: Center(child: Text("bas")),
-      ),
-    );
-  }
+  State<CategoryButton> createState() => _CategoryButtonState();
 }
 
-class CategoryButtonWidgetActive extends StatelessWidget {
-  final Color buttonColor;
-  const CategoryButtonWidgetActive({
-    Key? key,
-    required this.buttonColor,
-  }) : super(key: key);
+class _CategoryButtonState extends State<CategoryButton> {
+  bool _isAktive = false;
+
+  ButtonStyle? _buttonActiveTheme() {
+    return ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(widget.buttonColor));
+  }
+
+  ButtonStyle? _buttonPassiveTheme() {
+    return ButtonStyle(
+        shadowColor: MaterialStateProperty.all(widget.buttonColor),
+        backgroundColor: MaterialStateProperty.all(Colors.white),
+        foregroundColor: MaterialStateProperty.all(Colors.black),
+        elevation: MaterialStateProperty.all(20));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shadowColor: buttonColor,
-      elevation: 10,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        width: 100,
-        child: InkWell(
-          onTap: () {},
-          child: Center(child: Text("bas")),
-        ),
+    return SizedBox(
+      width: 120,
+      child: ElevatedButton(
+        style: _isAktive == true ? _buttonActiveTheme() : _buttonPassiveTheme(),
+        onPressed: () {
+          setState(() {
+            _isAktive == true ? _isAktive = false : _isAktive = true;
+            print(_isAktive);
+          });
+        },
+        child: Text('bas'),
       ),
     );
   }

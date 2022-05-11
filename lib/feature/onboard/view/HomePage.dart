@@ -18,17 +18,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: RefreshIndicator(
-        color: BaseColorPalet.main,
-        onRefresh: _refeshIndicator,
-        child: ListView(
-          children: [
-            HeaderComponent(),
-            BodyComponent(),
-            BottomComponent(),
-          ],
-        ),
+    return RefreshIndicator(
+      color: BaseColorPalet.main,
+      onRefresh: _refeshIndicator,
+      child: ListView(
+        children: [
+          BodyComponent(),
+          BottomComponent(),
+        ],
       ),
     );
   }
@@ -90,7 +87,7 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return PopularEventCard(title: 'Etkinlik adi');
+                    return PopularEventCard(title: 'Etkinlik adi',);
                   }),
             ),
           )

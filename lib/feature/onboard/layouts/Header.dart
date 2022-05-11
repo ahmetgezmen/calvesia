@@ -56,7 +56,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
                         child: Text(FirebaseAuth.instance.currentUser != null
-                            ? FirebaseAuth.instance.currentUser!.displayName.toString()
+                            ? "Ahmet GEZMEN"
                             : "Anonymous",
                             style: Theme.of(context).textTheme.headlineSmall),
                       )
