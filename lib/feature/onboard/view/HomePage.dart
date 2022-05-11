@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../../widget/UpcomingEventsCardWidget.dart';
+import '../layouts/Header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
         onRefresh: _refeshIndicator,
         child: ListView(
           children: [
-            TopComponenet(),
+            HeaderComponent(),
             BodyComponent(),
             BottomComponent(),
           ],
@@ -95,92 +96,6 @@ class BodyComponent extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class TopComponenet extends StatefulWidget {
-  @override
-  State<TopComponenet> createState() => _TopComponenetState();
-}
-
-class _TopComponenetState extends State<TopComponenet> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-            height: 120.0, color: Theme.of(context).primaryColor, child: null),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 25),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          final value = await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return ProfilePage();
-                              },
-                            ),
-                          );
-                          setState(() {});
-                        },
-                        child: FutureBuilder<Uint8List?>(
-                            future: UserVievModel.getMyProfilePhoto,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                return CircleAvatar(
-                                  backgroundImage: MemoryImage(snapshot.data!),
-                                );
-                              } else {
-                                return const CircleAvatar(
-                                  child: Icon(Icons.person),
-                                );
-                              }
-                            }),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text("Ahmet GEZMEN",
-                            style: Theme.of(context).textTheme.headlineSmall),
-                      )
-                    ],
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none))
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.0)),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                      hintText: "Etkinlik Ara",
-                      border: OutlineInputBorder(),
-                      suffixIcon: Icon(
-                        Icons.filter_alt,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

@@ -23,6 +23,19 @@ class BaseColorPalet {
       0xff169cad, <int, Color>{
     100:  Color(0xff1abed3)});
 
+  static const MaterialColor PartyColor  =  MaterialColor(
+      0xffd966a5, <int, Color>{
+    100:  Color(0xffd966a5)});
+  static const MaterialColor CareerColor  =  MaterialColor(
+      0xff169cad, <int, Color>{
+    100:  Color(0xff169cad)});
+  static const MaterialColor HealthColor  =  MaterialColor(
+      0xffffba5f, <int, Color>{
+    100:  Color(0xffffba5f)});
+  static const MaterialColor EducationColor  =  MaterialColor(
+      0xff00cc77, <int, Color>{
+    100:  Color(0xff00cc77)});
+
 
 
 

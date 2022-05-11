@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import '../../Utils/Style/ColorPalette.dart';
 
 class PopularEventCard extends StatefulWidget {
+  final double? cardWidth;
+  final Color? shadowColor;
   final String title;
-  PopularEventCard({Key? key, required this.title}) : super(key: key);
+  PopularEventCard({Key? key, required this.title, this.shadowColor, this.cardWidth}) : super(key: key);
 
   @override
   State<PopularEventCard> createState() => _PopularEventCardState();
 }
+
+
 
 class _PopularEventCardState extends State<PopularEventCard> {
   @override
@@ -22,13 +26,14 @@ class _PopularEventCardState extends State<PopularEventCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: Colors.black ?? widget.shadowColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
       elevation: 5,
       child: Center(
         child: SizedBox(
-          width: 250,
+          width: 250 ?? widget.cardWidth,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
