@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
@@ -9,8 +8,8 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,42 +29,48 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               children: <Widget>[
                 Container(
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(10, 100, 10, 50),
+                    padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
                     child: const Text(
-                      'Kayıt ol',
+                      'Şifremi Unuttum',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
                 Container(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Kullanıcı adı',
-                    ),
-                  ),
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: const Text(
+                      'Hesabınla eşlediğin telefon numarasını gir.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w200,
+                          fontSize: 18),
+                    )),
+                Image.network(
+                  r'''https://i.ibb.co/MBcQDPN/sifremi-unuttum-vector.png''',
+                  width: double.maxFinite,
+                  height: 150,
+                  fit: BoxFit.fitHeight,
                 ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: TextField(
-                    controller: nameController,
+                    controller: emailController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Edu uzantılı e-mail Adresi',
+                      labelText: 'Email Adresin',
                     ),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
-                    obscureText: true,
-                    controller: passwordController,
+                    controller: numberController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: '************',
+                      labelText: '(5__)_______',
                     ),
                   ),
                 ),
@@ -73,17 +78,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: ElevatedButton(
-                      child: const Text('KAYIT OL'),
+                      child: const Text('GİRİŞ YAP'),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        print(emailController.text);
+                        print(numberController.text);
                       },
                     )
                 ),
-
               ],
             )),
       ],
     );
   }
 }
+
+
+

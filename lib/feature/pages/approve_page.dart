@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
+import '../Authencitation/login/view/screen/LoginPage.dart';
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController nameController = TextEditingController();
@@ -30,23 +24,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               children: <Widget>[
                 Container(
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(10, 100, 10, 50),
+                    padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
                     child: const Text(
-                      'Kayıt ol',
+                      'Onay Kodu Ekranı',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Kullanıcı adı',
-                    ),
-                  ),
+                Image.network(
+                  r'''https://i.ibb.co/PFg37PZ/onaylama-kodu-vector.png''',
+                  width: double.maxFinite,
+                  height: 150,
+                  fit: BoxFit.fitHeight,
                 ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -54,18 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Edu uzantılı e-mail Adresi',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextField(
-                    obscureText: true,
-                    controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: '************',
+                      labelText: 'Email Adresi',
                     ),
                   ),
                 ),
@@ -73,14 +52,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: ElevatedButton(
-                      child: const Text('KAYIT OL'),
+                      child: const Text('ONAY KODU GÖNDER'),
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
                       },
                     )
                 ),
-
+                TextButton(
+                  onPressed: () {
+                    //forgot password screen
+                  },
+                  child: const Text('Onay koduma erişemiyorum',),
+                ),
               ],
             )),
       ],
