@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../Authencitation/login/view/screen/LoginPage.dart';
+import '../login/view/screen/LoginPage.dart';
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _MyStatefulWidgetState extends State<LoginPageScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 

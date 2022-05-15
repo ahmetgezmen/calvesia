@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:calvesia/feature/Authencitation/models/UserModel.dart';
+import 'package:calvesia/feature/widget/SometingWrong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class UserVievModel {
     }
   }
 
-  static SignUp(BuildContext context, emailAddress, password) async {
+  static SignUp(BuildContext context, emailAddress, password, userName) async {
     LoadingWidgetButton(context);
     try {
       final credential =
@@ -49,6 +50,7 @@ class UserVievModel {
         uuid,
         emailAddress,
         password,
+        userName
       );
       Navigator.of(context).pop();
       SendEmailWidgetFunction(context);
@@ -62,7 +64,8 @@ class UserVievModel {
         EmailAlredyUseWidgetFunction(context);
       }
     } catch (e) {
-      // error widget yazilacak
+      Navigator.of(context).pop();
+      SometingWrongWidgetFunction(context);
     }
   }
 

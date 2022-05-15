@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void LoginSuccessfulWidgetFunction(BuildContext context) {
-  final alertDialog = AlertDialog(
+  const alertDialog = AlertDialog(
     title: LoginSuccessfulWidget(),
   );
 
