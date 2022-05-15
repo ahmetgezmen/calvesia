@@ -2,6 +2,7 @@ import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:calvesia/feature/onboard/BasePage.dart';
 import 'package:flutter/material.dart';
 
+import '../../../pages/reset_password.dart';
 import '../../../signup/view/screen/SignUpPage.dart';
 
 class LoginPageScreen extends StatefulWidget {
@@ -77,7 +78,11 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return ResetPasswordScreen();
+                      },));
+                    },
                     child: const Text(
                       'Şifremi unuttum',
                     ),
