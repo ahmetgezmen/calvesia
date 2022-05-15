@@ -39,9 +39,9 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
         children: [
           Container(
             constraints: BoxConstraints.expand(),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage("https://i.ibb.co/rcR35LF/arkaplan.png"),
+                  image: Image.asset("assets/images/backgroundLoginbackgroundLoginAndSingUp.png").image,
                   fit: BoxFit.cover),
             ),
           ),
