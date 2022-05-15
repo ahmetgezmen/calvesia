@@ -36,6 +36,14 @@ class BaseColorPalet {
       0xff00cc77, <int, Color>{
     100:  Color(0xff00cc77)});
 
+static const MaterialColor OnBoardButtonColor =  MaterialColor(
+      0xffc04757, <int, Color>{
+    100:  Color(0xffc04757)});
+
+static const MaterialColor InAktiveButtonColor =  MaterialColor(
+      0xffb7b7b7, <int, Color>{
+    100:  Color(0xffb7b7b7)});
+
 
 
 

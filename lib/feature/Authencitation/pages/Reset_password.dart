@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../../Utils/Style/ColorPalette.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -17,10 +20,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       body: Stack(
         children: [
           Container(
-            constraints: BoxConstraints.expand(),
-            decoration: const BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage("https://i.ibb.co/rcR35LF/arkaplan.png"),
+                  image: Image.asset("assets/images/backgroundLogin.png").image,
                   fit: BoxFit.cover),
             ),
           ),
@@ -38,8 +41,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             fontWeight: FontWeight.w500,
                             fontSize: 30),
                       )),
-                  Image.network(
-                    r'''https://i.ibb.co/YZY6hhQ/giris-yap-vector.png''',
+                  SvgPicture.asset("assets/images/LoginImage.svg",
                     width: double.maxFinite,
                     height: 150,
                     fit: BoxFit.fitHeight,
@@ -71,13 +73,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       height: 50,
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.OnBoardButtonColor),
+                        ),
                         child: const Text('ŞİFRENİ SIFIRLA'),
                         onPressed: () {
                           print(nameController.text);
                           print(passwordController.text);
                         },
-                      )
-                  ),
+                      )),
                 ],
               )),
         ],

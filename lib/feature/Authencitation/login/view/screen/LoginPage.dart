@@ -1,8 +1,11 @@
+import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/Authencitation/pages/Approve_page.dart';
 import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:calvesia/feature/onboard/BasePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../pages/reset_password.dart';
+import '../../../pages/Forgot_password.dart';
 import '../../../signup/view/screen/SignUpPage.dart';
 
 class LoginPageScreen extends StatefulWidget {
@@ -29,10 +32,10 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
       body: Stack(
         children: [
           Container(
-            constraints: BoxConstraints.expand(),
+            constraints: const BoxConstraints.expand(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: Image.asset("assets/images/backgroundLoginbackgroundLoginAndSingUp.png").image,
+                  image: Image.asset("assets/images/backgroundLogin.png").image,
                   fit: BoxFit.cover),
             ),
           ),
@@ -50,8 +53,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                             fontWeight: FontWeight.w500,
                             fontSize: 30),
                       )),
-                  Image.network(
-                    r'''https://i.ibb.co/YZY6hhQ/giris-yap-vector.png''',
+                  SvgPicture.asset("assets/images/LoginImage.svg",
                     width: double.maxFinite,
                     height: 150,
                     fit: BoxFit.fitHeight,
@@ -77,20 +79,32 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return ResetPasswordScreen();
-                      },));
-                    },
-                    child: const Text(
-                      'Şifremi unuttum',
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                            return ForgotPasswordPage();
+                          },));
+                        },
+                        child: const Text(
+                          'Şifremi unuttum',
+                          style: TextStyle(
+                            color: BaseColorPalet.InAktiveButtonColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
                       height: 50,
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.main),
+                        ),
                         child: const Text('GİRİŞ YAP'),
                         onPressed: () async {
                           final result = await UserVievModel.Login(context,
@@ -108,7 +122,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       TextButton(
                         child: const Text(
                           'Kayıt ol',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 20, color: BaseColorPalet.InAktiveButtonColor),
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -120,7 +134,8 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                   ),
                 ],
-              )),
+              )
+          ),
         ],
       ),
     );
