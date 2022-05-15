@@ -11,12 +11,13 @@ import '../models/RegisteredModel.dart';
 import '../models/UserModel.dart';
 
 class UserServices {
-  static Future<void> addUser(uuid, emailAddress, password) {
+  static Future<void> addUser(uuid, emailAddress, password, username) {
     DocumentReference<Map<String, dynamic>> users =
         FirebaseFirestore.instance.collection('users').doc(uuid);
     return users
         .set(
             jsonDecode(userToJson(UserModel(
+              username:username ,
               isApproved: false,
               isAktive: true,
               email: emailAddress,

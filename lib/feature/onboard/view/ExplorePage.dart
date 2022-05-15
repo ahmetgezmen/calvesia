@@ -74,7 +74,7 @@ class ExplorePage extends StatelessWidget {
                       child: PopularEventCard(
                         title: "deneme",
                         shadowColor: colorsMatch(PostModel(
-                            category: "education"
+                          category: "education"
                         )) ,
                       ),
                     ),

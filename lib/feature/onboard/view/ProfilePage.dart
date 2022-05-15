@@ -1,4 +1,7 @@
+import 'package:calvesia/feature/Authencitation/login/view/screen/LoginPage.dart';
 import 'package:flutter/material.dart';
+
+import '../../Authencitation/signup/view/screen/SignUpPage.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -9,7 +12,7 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          children: const [
+          children: [
             Text("Profile Page"),
           ],
         ),

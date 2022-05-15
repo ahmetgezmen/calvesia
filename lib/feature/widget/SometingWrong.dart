@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void LoginSuccessfulWidgetFunction(BuildContext context) {
+void SometingWrongWidgetFunction(BuildContext context) {
   const alertDialog = AlertDialog(
-    title: LoginSuccessfulWidget(),
+    title: SometingWrongWidget(),
   );
 
   showDialog(
@@ -13,8 +13,8 @@ void LoginSuccessfulWidgetFunction(BuildContext context) {
   );
 }
 
-class LoginSuccessfulWidget extends StatelessWidget {
-  const LoginSuccessfulWidget({Key? key}) : super(key: key);
+class SometingWrongWidget extends StatelessWidget {
+  const SometingWrongWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

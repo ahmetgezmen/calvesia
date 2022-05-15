@@ -12,6 +12,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController numberController = TextEditingController();
 
   @override
+  void dispose() {
+    emailController.dispose();
+    numberController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -83,14 +90,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         print(emailController.text);
                         print(numberController.text);
                       },
-                    )
-                ),
+                    )),
               ],
             )),
       ],
     );
   }
 }
-
-
-

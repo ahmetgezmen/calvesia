@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+import '../login/view/screen/LoginPage.dart';
 
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _MyStatefulWidgetState extends State<LoginPageScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -31,14 +26,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
                     child: const Text(
-                      'Şifreni Sıfırla',
+                      'Onay Kodu Ekranı',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
                 Image.network(
-                  r'''https://i.ibb.co/YZY6hhQ/giris-yap-vector.png''',
+                  r'''https://i.ibb.co/PFg37PZ/onaylama-kodu-vector.png''',
                   width: double.maxFinite,
                   height: 150,
                   fit: BoxFit.fitHeight,
@@ -46,37 +41,29 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: TextField(
-                    obscureText: true,
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Yeni şifren',
+                      labelText: 'Email Adresi',
                     ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextField(
-                    obscureText: true,
-                    controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Şifreni Onayla',
-                    ),
-                  ),
-                ),
-                Divider(
                 ),
                 Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: ElevatedButton(
-                      child: const Text('ŞİFRENİ SIFIRLA'),
+                      child: const Text('ONAY KODU GÖNDER'),
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
                       },
                     )
+                ),
+                TextButton(
+                  onPressed: () {
+                    //forgot password screen
+                  },
+                  child: const Text('Onay koduma erişemiyorum',),
                 ),
               ],
             )),
