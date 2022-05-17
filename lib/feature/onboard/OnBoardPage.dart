@@ -1,6 +1,7 @@
-import 'package:calvesia/feature/karsilama_ekrani/karsilama_widgets/page_indicator.dart';
-import 'package:calvesia/feature/karsilama_ekrani/karsilama_widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/Page_indicator.dart';
+import 'widgets/Rounded_button.dart';
 
 void main() {
   runApp(const MyApp());

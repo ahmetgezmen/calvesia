@@ -1,14 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
-import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
-import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
-import 'package:calvesia/feature/onboard/view/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../../widget/UpcomingEventsCardWidget.dart';
-import '../layouts/Header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

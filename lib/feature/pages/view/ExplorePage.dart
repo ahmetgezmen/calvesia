@@ -1,9 +1,8 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
-import 'package:calvesia/feature/onboard/models/PostModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
-import '../layouts/Header.dart';
+import '../models/PostModel.dart';
 
 class ExplorePage extends StatelessWidget {
   Future<void> _refeshIndicator() {

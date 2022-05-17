@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/thema.dart';
-import '../../feature/onboard/BasePage.dart';
+import '../../feature/pages/BasePage.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
