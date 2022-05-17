@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: BASEThemeData(),
-      home: FirebaseAuth.instance.currentUser == true ? BasePage() : OnboardingPage(),
+      home: FirebaseAuth.instance.currentUser != null ? BasePage() : OnboardingPage(),
     );
   }
 }

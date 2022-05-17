@@ -1,5 +1,6 @@
 import 'package:calvesia/feature/Authencitation/login/view/screen/LoginPage.dart';
 import 'package:calvesia/feature/Authencitation/signup/view/screen/SignUpPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/Page_indicator.dart';
@@ -152,7 +153,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         decoration: TextDecoration.underline,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      final userCredential =
+                          await FirebaseAuth.instance.signInAnonymously();
+                    },
                     child: const Text(
                       'Uygulamaya Göz At',
                     ),
