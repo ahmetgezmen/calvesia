@@ -1,5 +1,6 @@
 import 'package:calvesia/feature/Authencitation/login/view/screen/LoginPage.dart';
 import 'package:calvesia/feature/Authencitation/signup/view/screen/SignUpPage.dart';
+import 'package:calvesia/feature/pages/BasePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -154,8 +155,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       ),
                     ),
                     onPressed: () async {
-                      final userCredential =
-                          await FirebaseAuth.instance.signInAnonymously();
+                      try {
+                        final userCredential =
+                        await FirebaseAuth.instance.signInAnonymously();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => BasePage(),));
+                        print("Signed in with temporary account.");
+                      } on FirebaseAuthException catch (e) {
+                        switch (e.code) {
+                          case "operation-not-allowed":
+                            print("Anonymous auth hasn't been enabled for this project.");
+                            break;
+                          default:
+                            print("Unknown error.");
+                        }
+                      }
                     },
                     child: const Text(
                       'Uygulamaya Göz At',
