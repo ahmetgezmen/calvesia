@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../config/thema.dart';
-import '../../feature/onboard/BasePage.dart';
+import '../../feature/onboard/OnBoardPage.dart';
+import '../../feature/pages/BasePage.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: BASEThemeData(),
-      home: BasePage(),
+      home: FirebaseAuth.instance.currentUser != null ? BasePage() : OnboardingPage(),
     );
   }
 }

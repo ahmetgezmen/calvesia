@@ -55,9 +55,8 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
-                        child: Text(FirebaseAuth.instance.currentUser != null
-                            ? "Ahmet GEZMEN"
-                            : "Anonymous",
+                        child: Text(FirebaseAuth.instance.currentUser!.isAnonymous
+                            ? "Anonymous" : "Ahmet GEZMEN" ,
                             style: Theme.of(context).textTheme.headlineSmall),
                       )
                     ],

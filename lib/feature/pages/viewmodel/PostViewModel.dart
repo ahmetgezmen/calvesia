@@ -1,5 +1,3 @@
-import 'package:calvesia/feature/onboard/models/StreamTimeModel.dart';
-import 'package:calvesia/feature/onboard/services/PostServices.dart';
 import 'package:calvesia/feature/widget/PostShareFailed.dart';
 import 'package:calvesia/feature/widget/PostShareSuccess.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import '../../widget/LoadingWidget.dart';
 import '../models/PostModel.dart';
+import '../models/StreamTimeModel.dart';
+import '../services/PostServices.dart';
 
 class PostListViewModel extends ChangeNotifier {
   List<PostViewModel> Posts = [];

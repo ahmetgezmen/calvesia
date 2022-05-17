@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:calvesia/feature/onboard/models/PostModel.dart';
+import 'package:calvesia/feature/pages/models/PostModel.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 DatabaseReference ref = FirebaseDatabase.instance.ref("posts");
