@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/pages/models/PostModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
@@ -83,7 +84,7 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return PopularEventCard(title: 'Etkinlik adi',);
+                    return PopularEventCard(post: PostModel(),);
                   }),
             ),
           )

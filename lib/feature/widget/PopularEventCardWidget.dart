@@ -1,13 +1,11 @@
+import 'package:calvesia/feature/pages/models/PostModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../Utils/Style/ColorPalette.dart';
 
 class PopularEventCard extends StatefulWidget {
-  final Color? shadowColor;
-  final String title;
-  PopularEventCard(
-      {Key? key, required this.title, this.shadowColor})
-      : super(key: key);
+  PostModel post;
+  PopularEventCard({Key? key, required this.post}) : super(key: key);
 
   @override
   State<PopularEventCard> createState() => _PopularEventCardState();
@@ -17,17 +15,17 @@ class _PopularEventCardState extends State<PopularEventCard> {
   @override
   void didUpdateWidget(covariant PopularEventCard oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.title != widget.title) {
+    if (oldWidget.post != widget.post) {
       setState(() {});
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final post = widget.post;
     return Card(
       borderOnForeground: true,
-      shadowColor: widget.shadowColor,
+      shadowColor: colorsMatch(post),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
@@ -57,28 +55,32 @@ class _PopularEventCardState extends State<PopularEventCard> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "17th July, 2021",
-                              style: TextStyle(color: Colors.grey),
+                            Row(
+                              children: [
+                                Text(
+                                  post.date.toString(),
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ],
                             ),
                             Text(
-                              widget.title,
+                              post.title.toString(),
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.location_on,
                                     size: 16,
                                     color: BaseColorPalet.LinkLabel,
                                   ),
                                   Text(
-                                    "Caracas, Venezuela",
+                                    post.location.toString(),
                                     style: TextStyle(
-                                        color: BaseColorPalet.LinkLabel,
-                                        ),
+                                      color: BaseColorPalet.LinkLabel,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -88,12 +90,12 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            const SizedBox(
+                            SizedBox(
                               height: 20,
                               width: 70,
-                              child: Placeholder(),
+                              child: Text(post.price.toString()+" TL"),
                             ),
-                            Text("10:00pm"),
+                            Text(post.time.toString()),
                           ],
                         ),
                       ],
@@ -106,5 +108,18 @@ class _PopularEventCardState extends State<PopularEventCard> {
         ),
       ),
     );
+  }
+}
+
+MaterialColor? colorsMatch(PostModel post) {
+  switch (post.category.toString()) {
+    case "party":
+      return BaseColorPalet.PartyColor;
+    case "career":
+      return BaseColorPalet.CareerColor;
+    case "health":
+      return BaseColorPalet.HealthColor;
+    case "education":
+      return BaseColorPalet.EducationColor;
   }
 }
