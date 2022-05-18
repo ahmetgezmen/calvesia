@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../Utils/Style/ColorPalette.dart';
 
 class PopularEventCard extends StatefulWidget {
-  PostModel post;
-  PopularEventCard({Key? key, required this.post}) : super(key: key);
+  final PostModel post;
+  const PopularEventCard({Key? key, required this.post}) : super(key: key);
 
   @override
   State<PopularEventCard> createState() => _PopularEventCardState();
@@ -38,68 +38,68 @@ class _PopularEventCardState extends State<PopularEventCard> {
             children: [
               Expanded(
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: BaseColorPalet.UpcomingCardContainer,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(15.0))),
+                  decoration: const BoxDecoration(
+                    color: BaseColorPalet.UpcomingCardContainer,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(15.0),
+                    ),
+                  ),
                 ),
               ),
               Expanded(
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                post.date.toString(),
+                                style: const TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            post.title.toString(),
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
                               children: [
+                                const Icon(
+                                  Icons.location_on,
+                                  size: 16,
+                                  color: BaseColorPalet.LinkLabel,
+                                ),
                                 Text(
-                                  post.date.toString(),
-                                  style: TextStyle(color: Colors.grey),
+                                  post.location.toString(),
+                                  style: const TextStyle(
+                                    color: BaseColorPalet.LinkLabel,
+                                  ),
                                 ),
                               ],
                             ),
-                            Text(
-                              post.title.toString(),
-                              style: Theme.of(context).textTheme.titleSmall,
-                            ),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    size: 16,
-                                    color: BaseColorPalet.LinkLabel,
-                                  ),
-                                  Text(
-                                    post.location.toString(),
-                                    style: TextStyle(
-                                      color: BaseColorPalet.LinkLabel,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 20,
-                              width: 70,
-                              child: Text(post.price.toString()+" TL"),
-                            ),
-                            Text(post.time.toString()),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                            width: 70,
+                            child: Text(post.price.toString() + " TL"),
+                          ),
+                          Text(post.time.toString()),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
