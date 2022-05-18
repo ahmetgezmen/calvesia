@@ -2,7 +2,7 @@ import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
 import 'package:flutter/material.dart';
 
-import '../../../viewmodel/UserViewModel.dart';
+import '../../../viewmodel/user_view_model.dart';
 import '../widget/EmailAlredyUseWidget.dart';
 
 class SingUpPAgeScreen extends StatefulWidget {

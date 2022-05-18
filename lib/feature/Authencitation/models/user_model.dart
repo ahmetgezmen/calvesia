@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'DobModel.dart';
-import 'LocationModel.dart';
-import 'RegisteredModel.dart';
-import 'SchoolsModel.dart';
+import 'dob_model.dart';
+import 'location_model.dart';
+import 'registered_model.dart';
+import 'schools_model.dart';
 /// isAktive : true
 /// isApproved : true
 /// gender : "male"

@@ -78,8 +78,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                         child: const Text('ŞİFRENİ SIFIRLA'),
                         onPressed: () {
-                          print(nameController.text);
-                          print(passwordController.text);
+                          // TODO Sifre sifirla gorevi yapilacak
                         },
                       )),
                 ],

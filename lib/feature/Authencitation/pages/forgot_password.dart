@@ -96,8 +96,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           ),
                           child: const Text('GİRİŞ YAP'),
                           onPressed: () {
-                            print(emailController.text);
-                            print(numberController.text);
+                            // TODO Forgot password gorevi yapilacak
                           },
                         )),
                   ),

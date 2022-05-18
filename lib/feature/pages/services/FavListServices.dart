@@ -1,4 +1,4 @@
-import 'package:calvesia/feature/Authencitation/models/UserModel.dart';
+import 'package:calvesia/feature/Authencitation/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
