@@ -39,7 +39,7 @@ class _ExplorePageState extends State<ExplorePage> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: 10.0,right: 10.0),
             child: Container(
               height: 50,
               child: ListView.separated(
@@ -140,8 +140,7 @@ class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
               itemBuilder: (context, item, index) {
             final post = PostModel.fromJson(item.value);
             return PopularEventCard(
-              title: post.title.toString(),
-              shadowColor:colorsMatch(post)
+              post: post,
             );
           }),
         ),
@@ -222,15 +221,3 @@ class CardForDashBoard extends StatelessWidget {
   }
 }
 
-MaterialColor? colorsMatch(PostModel post) {
-  switch (post.category.toString()) {
-    case "party":
-      return BaseColorPalet.PartyColor;
-    case "career":
-      return BaseColorPalet.CareerColor;
-    case "health":
-      return BaseColorPalet.HealthColor;
-    case "education":
-      return BaseColorPalet.EducationColor;
-  }
-}
