@@ -12,6 +12,7 @@ Future<void> geIinitializedMain() async {
   );
   FirebaseDatabase.instance.databaseURL= "https://calvesia-default-rtdb.europe-west1.firebasedatabase.app";
   runApp(
-    ProviderScope(child: MyApp()),
+
+      MyApp(),
   );
 }
