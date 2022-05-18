@@ -39,7 +39,7 @@ class _ExplorePageState extends State<ExplorePage> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: 10.0,right: 10.0),
             child: Container(
               height: 50,
               child: ListView.separated(
