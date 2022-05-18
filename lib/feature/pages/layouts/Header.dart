@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../Authencitation/viewmodel/UserViewModel.dart';
+import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../view/ProfilePage.dart';
 
 class HeaderComponent extends StatefulWidget {

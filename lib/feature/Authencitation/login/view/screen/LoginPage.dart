@@ -1,7 +1,7 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/Authencitation/pages/approve_page.dart';
 import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
-import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
+import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
