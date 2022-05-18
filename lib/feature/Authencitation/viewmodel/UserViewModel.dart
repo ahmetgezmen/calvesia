@@ -4,7 +4,7 @@ import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../models/UserModel.dart';
+import '../models/user_model.dart';
 import '../services/UserServices.dart';
 
 class UserVievModel extends ChangeNotifier{
