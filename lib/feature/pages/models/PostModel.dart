@@ -15,6 +15,7 @@ import 'StreamTimeModel.dart';
 /// description : "Aciklama"
 /// isCertificated : false
 /// ticketNumber : 100
+/// viewNumber : 100
 /// price : 100
 /// postOwner : "paylasanin uid"
 /// followersNumber : 1999
@@ -38,7 +39,8 @@ class PostModel {
       String? description, 
       bool? isCertificated, 
       int? ticketNumber, 
-      int? price, 
+      int? viewNumber,
+      int? price,
       String? postOwner, 
       int? followersNumber, 
       Participants? participants,   // bunlar eklenmedi
@@ -56,6 +58,7 @@ class PostModel {
     _description = description;
     _isCertificated = isCertificated;
     _ticketNumber = ticketNumber;
+    _viewNumber = viewNumber;
     _price = price;
     _postOwner = postOwner;
     _followersNumber = followersNumber;
@@ -77,6 +80,7 @@ class PostModel {
     _description = json['description'];
     _isCertificated = json['isCertificated'];
     _ticketNumber = json['ticketNumber'];
+    _viewNumber = json['viewNumber'];
     _price = json['price'];
     _postOwner = json['postOwner'];
     _followersNumber = json['followersNumber'];
@@ -96,6 +100,7 @@ class PostModel {
   String? _description;
   bool? _isCertificated;
   int? _ticketNumber;
+  int? _viewNumber;
   int? _price;
   String? _postOwner;
   int? _followersNumber;
@@ -114,6 +119,7 @@ PostModel copyWith({  bool? isAktive,
   String? description,
   bool? isCertificated,
   int? ticketNumber,
+  int? viewNumber,
   int? price,
   String? postOwner,
   int? followersNumber,
@@ -132,6 +138,7 @@ PostModel copyWith({  bool? isAktive,
   description: description ?? _description,
   isCertificated: isCertificated ?? _isCertificated,
   ticketNumber: ticketNumber ?? _ticketNumber,
+  viewNumber: viewNumber ?? _viewNumber,
   price: price ?? _price,
   postOwner: postOwner ?? _postOwner,
   followersNumber: followersNumber ?? _followersNumber,
@@ -151,6 +158,7 @@ PostModel copyWith({  bool? isAktive,
   String? get description => _description;
   bool? get isCertificated => _isCertificated;
   int? get ticketNumber => _ticketNumber;
+  int? get viewNumber => _viewNumber;
   int? get price => _price;
   String? get postOwner => _postOwner;
   int? get followersNumber => _followersNumber;
@@ -172,6 +180,7 @@ PostModel copyWith({  bool? isAktive,
     map['description'] = _description;
     map['isCertificated'] = _isCertificated;
     map['ticketNumber'] = _ticketNumber;
+    map['viewNumber'] = _viewNumber;
     map['price'] = _price;
     map['postOwner'] = _postOwner;
     map['followersNumber'] = _followersNumber;
@@ -206,6 +215,7 @@ PostModel copyWith({  bool? isAktive,
 // "description": "Aciklama",
 // "isCertificated" : false,
 // "ticketNumber" : 100,
+// "viewNumber" : 2,
 // "price": 100,
 // "postOwner": "paylasanin uid",
 // "followersNumber": 1999,

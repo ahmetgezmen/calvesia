@@ -51,6 +51,7 @@ class PostViewModel {
       date: date,
       time: time,
       price: price,
+      viewNumber: 0,
       isCertificated: isCertificated,
       ticketNumber: ticketNumber,
       postOwner: FirebaseAuth.instance.currentUser!.uid,

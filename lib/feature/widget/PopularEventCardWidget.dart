@@ -122,4 +122,5 @@ MaterialColor? colorsMatch(PostModel post) {
     case "education":
       return BaseColorPalet.EducationColor;
   }
+  return null;
 }

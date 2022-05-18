@@ -48,7 +48,7 @@ class BottomComponent extends StatelessWidget {
         ),
         for (int i = 0; i < 15; i++)
           UpcomingEventsCardWidget(
-            title: 'GELECEK ETKINLIK',
+            post: PostModel(),
           )
       ],
     );

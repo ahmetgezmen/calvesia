@@ -1,9 +1,10 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/pages/models/PostModel.dart';
 import 'package:flutter/material.dart';
 
 class UpcomingEventsCardWidget extends StatefulWidget {
-  final String title;
-  UpcomingEventsCardWidget({Key? key, required this.title}) : super(key: key);
+  final PostModel post;
+  const UpcomingEventsCardWidget({Key? key, required this.post}) : super(key: key);
 
   @override
   State<UpcomingEventsCardWidget> createState() =>
@@ -14,13 +15,14 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
   @override
   void didUpdateWidget(covariant UpcomingEventsCardWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.title != widget.title) {
+    if (oldWidget.post != widget.post) {
       setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final PostModel post = widget.post;
     return Padding(
       padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
       child: Card(
@@ -46,24 +48,24 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      widget.title,
+                      post.title.toString(),
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Row(
-                      children: const <Widget>[
+                      children:  <Widget>[
                         Expanded(
                           child: Text(
-                            "23k",
-                            style: TextStyle(color: Colors.grey),
+                            post.viewNumber.toString()+" k",
+                            style: const TextStyle(color: Colors.grey),
                           ),
                         ),
-                        Icon(Icons.favorite, color: Colors.grey, size: 16,),
+                        const Icon(Icons.favorite, color: Colors.grey, size: 16,),
                         Text(
-                          "3000",
-                          style: TextStyle(color: Colors.grey),
+                          post.followersNumber.toString(),
+                          style: const TextStyle(color: Colors.grey),
                         )
                       ],
                     ),
@@ -71,9 +73,9 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                   Padding(
                     padding: const EdgeInsets.only(left: 5.0,top: 5.0 , bottom: 5.0),
                     child: Row(
-                      children: const [
-                        Icon(Icons.location_on, size: 16, color: BaseColorPalet.LinkLabel,),
-                        Text("Caracas, Venezuela", style: TextStyle(
+                      children: [
+                        const Icon(Icons.location_on, size: 16, color: BaseColorPalet.LinkLabel,),
+                        Text(post.location.toString(), style: const TextStyle(
                             color: BaseColorPalet.LinkLabel
                         ),),
                       ],
@@ -81,7 +83,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                    child: const SizedBox(height: 20, width: 70, child: Placeholder()),
+                    child: SizedBox(height: 20, width: 70, child: Text(post.price.toString()+" TL")),
                   )
                 ],
               ),
@@ -90,11 +92,11 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.favorite_outline),
+                  icon: const Icon(Icons.favorite_outline),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.arrow_forward),
+                  icon: const Icon(Icons.arrow_forward),
                 ),
               ],
             )
