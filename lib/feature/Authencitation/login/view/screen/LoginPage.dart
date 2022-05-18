@@ -1,5 +1,6 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/Authencitation/pages/Approve_page.dart';
+import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
 import 'package:calvesia/feature/Authencitation/viewmodel/UserViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,7 +108,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                         ),
                         child: const Text('GİRİŞ YAP'),
                         onPressed: () async {
-                          final result = await UserVievModel.Login(context,
+                          final result = await UserServices.Login(context,
                               nameController.text, passwordController.text);
                           if (result == true) {
                             Navigator.of(context).push(MaterialPageRoute(

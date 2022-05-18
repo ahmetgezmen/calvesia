@@ -1,4 +1,5 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
 import 'package:flutter/material.dart';
 
 import '../../../viewmodel/UserViewModel.dart';
@@ -104,7 +105,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                           onPressed: () async {
                             final result = await emailEduTagChecker(emailController.text);
                             if (result == true) {
-                              await UserVievModel.SignUp(
+                              await UserServices.SignUp(
                                   context,
                                   emailController.text,
                                   passwordController.text,

@@ -1,32 +1,36 @@
+import 'dart:convert';
+
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../models/PostModel.dart';
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
+  static const List Category = [
+    {"name": "Parti", "color": BaseColorPalet.PartyColor, "tag": 'party'},
+    {"name": "Kariyer", "color": BaseColorPalet.CareerColor, "tag": 'career'},
+    {"name": "Sağlık", "color": BaseColorPalet.HealthColor, "tag": 'health'},
+    {
+      "name": "Eğitim",
+      "color": BaseColorPalet.EducationColor,
+      "tag": 'education'
+    }
+  ];
+  const ExplorePage({Key? key}) : super(key: key);
+
+  @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
   Future<void> _refeshIndicator() {
     return Future.delayed(Duration(seconds: 0));
   }
 
-  static const List Category = [{
-    "name" : "Parti",
-    "color" : BaseColorPalet.PartyColor,
-    "tag" : 'party'
-  },{
-    "name" : "Kariyer",
-    "color" : BaseColorPalet.CareerColor,
-    "tag" : 'career'
-  },{
-    "name" : "Sağlık",
-    "color" : BaseColorPalet.HealthColor,
-    "tag" : 'health'
-  },{
-    "name" : "Eğitim",
-    "color" : BaseColorPalet.EducationColor,
-    "tag" : 'education'
-  }];
-  const ExplorePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -45,8 +49,8 @@ class ExplorePage extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: CategoryButton(
-                      title:Category[index]["name"] ,
-                      buttonColor: Category[index]["color"],
+                      title: ExplorePage.Category[index]["name"],
+                      buttonColor: ExplorePage.Category[index]["color"],
                     ),
                   );
                 },
@@ -58,43 +62,100 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.6,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: PopularEventCard(
-                        title: "deneme",
-                        shadowColor: colorsMatch(PostModel(
-                          category: "education"
-                        )) ,
-                      ),
-                    ),
-                  );
-                },
-                itemCount: 100,
-              ),
-            ),
-          ),
+          SilverDelegateComponent(),
         ],
       ),
     );
   }
 }
 
+class SilverDelegateComponent extends StatefulWidget {
+  const SilverDelegateComponent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<SilverDelegateComponent> createState() =>
+      _SilverDelegateComponentState();
+}
+
+class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
+  static const _pageSize = 20;
+  String _lasPost = '';
+
+  final PagingController<int, DataSnapshot> _pagingController =
+      PagingController(firstPageKey: 0);
+
+  @override
+  void initState() {
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+    super.initState();
+  }
+
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      var refNewItem = await FirebaseDatabase.instance
+          .ref('posts')
+          .orderByKey()
+          .startAfter(_lasPost)
+          .limitToFirst(_pageSize)
+          .get();
+
+      final newItems = refNewItem.children.toList();
+      _lasPost = newItems.last.key!;
+
+      final isLastPage = newItems.length < _pageSize;
+      if (isLastPage) {
+        _pagingController.appendLastPage(newItems);
+      } else {
+        final nextPageKey = pageKey + newItems.length;
+        _pagingController.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
+  }
+
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: PagedGridView<int, DataSnapshot>(
+          pagingController: _pagingController,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 100 / 150,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+          ),
+          builderDelegate: PagedChildBuilderDelegate<DataSnapshot>(
+              itemBuilder: (context, item, index) {
+            final post = PostModel.fromJson(item.value);
+            return PopularEventCard(
+              title: post.title.toString(),
+              shadowColor:colorsMatch(post)
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
 class CategoryButton extends StatefulWidget {
   final Color buttonColor;
   final String title;
   const CategoryButton({
     Key? key,
-    required this.buttonColor, required this.title,
+    required this.buttonColor,
+    required this.title,
   }) : super(key: key);
 
   @override
