@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/LoadingWidget.dart';
-import '../models/PostModel.dart';
-import '../models/StreamTimeModel.dart';
+import '../models/post_model.dart';
+import '../models/stream_time_model.dart';
 import '../services/PostServices.dart';
 
 class PostListViewModel extends ChangeNotifier {

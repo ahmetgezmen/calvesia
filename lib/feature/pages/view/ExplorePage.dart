@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
-import '../models/PostModel.dart';
+import '../models/post_model.dart';
 
 class ExplorePage extends StatefulWidget {
   static const List Category = [

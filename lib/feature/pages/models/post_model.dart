@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'CommentsModel.dart';
-import 'ParticipantsModel.dart';
-import 'StreamTimeModel.dart';
+import 'comments_model.dart';
+import 'participants_model.dart';
+import 'stream_time_model.dart';
+
 /// isAktive : true
 /// title : "Event title"
 /// category : "Etkinlik kategorisi"

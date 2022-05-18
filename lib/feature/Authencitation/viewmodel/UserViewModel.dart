@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:calvesia/feature/pages/models/PostModel.dart';
+import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
