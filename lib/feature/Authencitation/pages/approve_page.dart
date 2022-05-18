@@ -73,8 +73,7 @@ class _ApprovePageState extends State<ApprovePage> {
                         ),
                         child: const Text('ONAY KODU GÖNDER'),
                         onPressed: () {
-                          print(nameController.text);
-                          print(passwordController.text);
+                          // TODO Onay kodu gorevi yapilacak
                         },
                       )),
                   TextButton(
