@@ -6,6 +6,8 @@ BASEThemeData() {
     textTheme: const TextTheme(
       headlineSmall:
           TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+      headlineMedium:
+      TextStyle(color:  BaseColorPalet.main),
 
     ),
     primaryColor:  BaseColorPalet.main,
