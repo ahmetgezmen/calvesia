@@ -27,6 +27,7 @@ class UserModel{
       String? gender,
     String? profileImage,
     Set? favList,
+    Set? postUidList,
       String? fname,
       Location? location, 
       String? email, 
@@ -43,6 +44,7 @@ class UserModel{
     _fname = fname;
     _profileImage = profileImage;
     _favList = favList;
+    _postUidList = postUidList;
     _location = location;
     _email = email;
     _uuid = uuid;
@@ -64,6 +66,7 @@ class UserModel{
     _email = json['email'];
     _uuid = json['uuid'];
     _favList = json['favList'];
+    _postUidList = json['postUidList'];
     _username = json['username'];
     _password = json['password'];
     _dob = json['dob'] != null ? Dob.fromJson(json['dob']) : null;
@@ -77,6 +80,7 @@ class UserModel{
   String? _profileImage;
   String? _fname;
   Set? _favList;
+  Set? _postUidList;
   Location? _location;
   String? _email;
   String? _uuid;
@@ -93,6 +97,7 @@ UserModel copyWith({
   String? profileImage,
   String? fname,
   Set? favList,
+  Set? postUidList,
   Location? location,
   String? email,
   String? uuid,
@@ -108,6 +113,7 @@ UserModel copyWith({
   profileImage: profileImage ?? _profileImage,
   fname: fname ?? _fname,
   favList : favList ?? _favList,
+  postUidList : postUidList ?? _postUidList,
   location: location ?? _location,
   email: email ?? _email,
   uuid: uuid ?? _uuid,
@@ -123,6 +129,7 @@ UserModel copyWith({
   String? get gender => _gender;
   String? get profileImage => _profileImage;
   Set? get favList => _favList;
+  Set? get postUidList => _postUidList;
   String? get fname => _fname;
   Location? get location => _location;
   String? get email => _email;
@@ -138,6 +145,7 @@ UserModel copyWith({
     final map = <String, dynamic>{};
     map['isAktive'] = _isAktive;
     map['favList'] = _favList;
+    map['postUidList'] = _postUidList;
     map['isApproved'] = _isApproved;
     map['gender'] = _gender;
     map['profileImage'] = _profileImage;
