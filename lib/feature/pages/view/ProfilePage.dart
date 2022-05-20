@@ -2,7 +2,46 @@ import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+
+
 import '../../Authencitation/viewmodel/user_view_model.dart';
+import '../../onboard/OnBoardPage.dart';
+
+class ProfilePageAppBarr extends StatelessWidget {
+  const ProfilePageAppBarr({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  BottomAppBar(
+      child: Row(
+        children: [
+          InkWell(
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OnboardingPage(),));
+              },
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.exit_to_app,
+                    color: BaseColorPalet.InAktiveButtonColor,
+                  ),
+                  Text(
+                    "Sign Out",
+                    style: TextStyle(
+                      color: BaseColorPalet.InAktiveButtonColor,
+                    ),
+                  ),
+                ],
+              )),
+          ElevatedButton(
+              onPressed: () {}, child: const Text("Save Profile"))
+        ],
+      ),
+    );
+  }
+}
+
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
