@@ -32,12 +32,12 @@ class ProfilePageAppBarr extends StatelessWidget {
                   children: const [
                     Icon(
                       Icons.exit_to_app,
-                      color: BaseColorPalet.InAktiveButtonColor,
+                      color: BaseColorPalet.inAktiveButtonColor,
                     ),
                     Text(
                       "Sign Out",
                       style: TextStyle(
-                        color: BaseColorPalet.InAktiveButtonColor,
+                        color: BaseColorPalet.inAktiveButtonColor,
                       ),
                     ),
                   ],

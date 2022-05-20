@@ -93,7 +93,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                         child: const Text(
                           'Şifremi unuttum',
                           style: TextStyle(
-                            color: BaseColorPalet.InAktiveButtonColor,
+                            color: BaseColorPalet.inAktiveButtonColor,
                           ),
                         ),
                       ),
@@ -123,7 +123,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       TextButton(
                         child: const Text(
                           'Kayıt ol',
-                          style: TextStyle(fontSize: 20, color: BaseColorPalet.InAktiveButtonColor),
+                          style: TextStyle(fontSize: 20, color: BaseColorPalet.inAktiveButtonColor),
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(

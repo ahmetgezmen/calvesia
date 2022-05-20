@@ -39,7 +39,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: BaseColorPalet.UpcomingCardContainer,
+                    color: BaseColorPalet.upcomingCardContainer,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(15.0),
                     ),
@@ -75,12 +75,12 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                 const Icon(
                                   Icons.location_on,
                                   size: 16,
-                                  color: BaseColorPalet.LinkLabel,
+                                  color: BaseColorPalet.linkLabel,
                                 ),
                                 Text(
                                   post.location.toString(),
                                   style: const TextStyle(
-                                    color: BaseColorPalet.LinkLabel,
+                                    color: BaseColorPalet.linkLabel,
                                   ),
                                 ),
                               ],
@@ -114,13 +114,13 @@ class _PopularEventCardState extends State<PopularEventCard> {
 MaterialColor? colorsMatch(PostModel post) {
   switch (post.category.toString()) {
     case "party":
-      return BaseColorPalet.PartyColor;
+      return BaseColorPalet.partyColor;
     case "career":
-      return BaseColorPalet.CareerColor;
+      return BaseColorPalet.careerColor;
     case "health":
-      return BaseColorPalet.HealthColor;
+      return BaseColorPalet.healthColor;
     case "education":
-      return BaseColorPalet.EducationColor;
+      return BaseColorPalet.educationColor;
   }
   return null;
 }

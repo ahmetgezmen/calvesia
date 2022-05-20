@@ -8,12 +8,12 @@ import '../models/post_model.dart';
 
 class ExplorePage extends StatefulWidget {
   static const List category = [
-    {"name": "Parti", "color": BaseColorPalet.PartyColor, "tag": 'party'},
-    {"name": "Kariyer", "color": BaseColorPalet.CareerColor, "tag": 'career'},
-    {"name": "Sağlık", "color": BaseColorPalet.HealthColor, "tag": 'health'},
+    {"name": "Parti", "color": BaseColorPalet.partyColor, "tag": 'party'},
+    {"name": "Kariyer", "color": BaseColorPalet.careerColor, "tag": 'career'},
+    {"name": "Sağlık", "color": BaseColorPalet.healthColor, "tag": 'health'},
     {
       "name": "Eğitim",
-      "color": BaseColorPalet.EducationColor,
+      "color": BaseColorPalet.educationColor,
       "tag": 'education'
     }
   ];

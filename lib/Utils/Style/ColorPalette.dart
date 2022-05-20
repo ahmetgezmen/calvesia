@@ -15,32 +15,32 @@ class BaseColorPalet {
       900:  Color(0xff000000),
     },
   );
-  static const MaterialColor UpcomingCardContainer  =  MaterialColor(
+  static const MaterialColor upcomingCardContainer  =  MaterialColor(
       0xffd966a5, <int, Color>{
   100:  Color(0xffff77b8)});
 
-  static const MaterialColor LinkLabel  =  MaterialColor(
+  static const MaterialColor linkLabel  =  MaterialColor(
       0xff169cad, <int, Color>{
     100:  Color(0xff1abed3)});
 
-  static const MaterialColor PartyColor  =  MaterialColor(
+  static const MaterialColor partyColor  =  MaterialColor(
       0xffd966a5, <int, Color>{
     100:  Color(0xffd966a5)});
-  static const MaterialColor CareerColor  =  MaterialColor(
+  static const MaterialColor careerColor  =  MaterialColor(
       0xff169cad, <int, Color>{
     100:  Color(0xff169cad)});
-  static const MaterialColor HealthColor  =  MaterialColor(
+  static const MaterialColor healthColor  =  MaterialColor(
       0xffffba5f, <int, Color>{
     100:  Color(0xffffba5f)});
-  static const MaterialColor EducationColor  =  MaterialColor(
+  static const MaterialColor educationColor  =  MaterialColor(
       0xff00cc77, <int, Color>{
     100:  Color(0xff00cc77)});
 
-static const MaterialColor OnBoardButtonColor =  MaterialColor(
+static const MaterialColor onBoardButtonColor =  MaterialColor(
       0xffc04757, <int, Color>{
     100:  Color(0xffc04757)});
 
-static const MaterialColor InAktiveButtonColor =  MaterialColor(
+static const MaterialColor inAktiveButtonColor =  MaterialColor(
       0xffb7b7b7, <int, Color>{
     100:  Color(0xffb7b7b7)});
 

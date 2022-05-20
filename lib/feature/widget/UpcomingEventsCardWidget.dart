@@ -37,7 +37,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
               width: 100,
               child: Container(
                 decoration: BoxDecoration(
-                    color: BaseColorPalet.UpcomingCardContainer,
+                    color: BaseColorPalet.upcomingCardContainer,
                     borderRadius: BorderRadius.circular(15.0)),
               ),
             ),
@@ -74,9 +74,9 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     padding: const EdgeInsets.only(left: 5.0,top: 5.0 , bottom: 5.0),
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on, size: 16, color: BaseColorPalet.LinkLabel,),
+                        const Icon(Icons.location_on, size: 16, color: BaseColorPalet.linkLabel,),
                         Text(post.location.toString(), style: const TextStyle(
-                            color: BaseColorPalet.LinkLabel
+                            color: BaseColorPalet.linkLabel
                         ),),
                       ],
                     ),

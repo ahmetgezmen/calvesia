@@ -69,7 +69,7 @@ class _ApprovePageState extends State<ApprovePage> {
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.OnBoardButtonColor),
+                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.onBoardButtonColor),
                         ),
                         child: const Text('ONAY KODU GÖNDER'),
                         onPressed: () {
@@ -83,7 +83,7 @@ class _ApprovePageState extends State<ApprovePage> {
                     child: const Text(
                       'Onay koduma erişemiyorum',
                       style: TextStyle(
-                        color: BaseColorPalet.InAktiveButtonColor
+                        color: BaseColorPalet.inAktiveButtonColor
                       ),
                     ),
                   ),

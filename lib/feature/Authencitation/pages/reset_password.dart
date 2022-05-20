@@ -74,7 +74,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.OnBoardButtonColor),
+                          backgroundColor: MaterialStateProperty.all(BaseColorPalet.onBoardButtonColor),
                         ),
                         child: const Text('ŞİFRENİ SIFIRLA'),
                         onPressed: () {

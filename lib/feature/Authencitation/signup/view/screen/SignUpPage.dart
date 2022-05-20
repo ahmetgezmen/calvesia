@@ -99,7 +99,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(BaseColorPalet.OnBoardButtonColor),
+                            backgroundColor: MaterialStateProperty.all(BaseColorPalet.onBoardButtonColor),
                           ),
                           child: const Text('KAYIT OL'),
                           onPressed: () async {
