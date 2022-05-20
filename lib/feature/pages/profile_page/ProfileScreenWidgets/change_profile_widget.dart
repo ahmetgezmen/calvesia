@@ -1,17 +1,41 @@
 import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 ChangeProfileImageWidgetButton(BuildContext context) {
   const alertDialog = AlertDialog(
     title: ChangeProfileImageWidget(),
   );
+  const alertDialogAnon = AlertDialog(
+    title: _Anonymous(),
+  );
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return alertDialog;
+      return FirebaseAuth.instance.currentUser!.isAnonymous  ?  alertDialogAnon :  alertDialog;
+
+
     },
   );
+
+
+
+
+
 }
+
+class _Anonymous extends StatelessWidget {
+  const _Anonymous({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("Lütfen giriş yapın veya kayıt olun"),
+    );
+  }
+}
+
 
 class ChangeProfileImageWidget extends StatelessWidget {
   const ChangeProfileImageWidget({Key? key}) : super(key: key);
