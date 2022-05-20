@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:flutter/material.dart';
 

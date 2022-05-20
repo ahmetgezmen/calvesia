@@ -1,24 +1,37 @@
+import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../Utils/Style/ColorPalette.dart';
+import '../../../viewmodel/user_view_model.dart';
+import '../widget/EmailAlredyUseWidget.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+class SingUpPAgeScreen extends StatefulWidget {
+  const SingUpPAgeScreen({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<SingUpPAgeScreen> createState() => _SingUpPAgeScreenState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
+  TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController numberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void dispose() {
+    userNameController.dispose();
     emailController.dispose();
-    numberController.dispose();
+    passwordController.dispose();
     super.dispose();
+  }
+
+  emailEduTagChecker(email) {
+    final value = email.split("@");
+    if (value[1] == "std.idu.edu.tr") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -30,7 +43,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             constraints: const BoxConstraints.expand(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: Image.asset("assets/images/backgroundForgotPassword.png").image,
+                  image: Image.asset("assets/images/backgroundLogin.png").image,
                   fit: BoxFit.cover),
             ),
           ),
@@ -40,30 +53,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 children: <Widget>[
                   Container(
                       alignment: Alignment.center,
-                      padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
+                      padding: const EdgeInsets.fromLTRB(10, 100, 10, 50),
                       child: const Text(
-                        'Şifremi Unuttum',
+                        'Kayıt ol',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                             fontSize: 30),
                       )),
                   Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      child: const Text(
-                        'Hesabınla eşlediğin telefon numarasını gir.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w200,
-                            fontSize: 18),
-                      )),
-                  SvgPicture.asset(
-                    "assets/images/forgot_password.svg",
-                    width: double.maxFinite,
-                    height: 150,
-                    fit: BoxFit.fitHeight,
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: TextField(
+                      controller: userNameController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Kullanıcı adı',
+                      ),
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -71,17 +77,18 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       controller: emailController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Email Adresin',
+                        labelText: 'Edu uzantılı e-mail Adresi',
                       ),
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: TextField(
-                      controller: numberController,
+                      obscureText: true,
+                      controller: passwordController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: '(5__)_______',
+                        labelText: '************',
                       ),
                     ),
                   ),
@@ -94,9 +101,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(BaseColorPalet.onBoardButtonColor),
                           ),
-                          child: const Text('GİRİŞ YAP'),
-                          onPressed: () {
-                            // TODO Forgot password gorevi yapilacak
+                          child: const Text('KAYIT OL'),
+                          onPressed: () async {
+                            final result = await emailEduTagChecker(emailController.text);
+                            if (result == true) {
+                              await UserServices.SignUp(
+                                  context,
+                                  emailController.text,
+                                  passwordController.text,
+                                  userNameController.text);
+                              Navigator.of(context).pop();
+                            } else {
+                              EmailAlredyUseWidgetFunction(context);
+                            }
                           },
                         )),
                   ),

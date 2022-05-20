@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../Utils/Style/ColorPalette.dart';
+import '../../../Utils/Style/color_palette.dart';
 
 class ApprovePage extends StatefulWidget {
   const ApprovePage({Key? key}) : super(key: key);

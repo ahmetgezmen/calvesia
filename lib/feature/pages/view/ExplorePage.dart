@@ -1,4 +1,4 @@
-import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

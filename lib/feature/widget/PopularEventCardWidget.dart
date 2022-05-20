@@ -1,7 +1,7 @@
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../Utils/Style/ColorPalette.dart';
+import '../../Utils/Style/color_palette.dart';
 
 class PopularEventCard extends StatefulWidget {
   final PostModel post;
