@@ -1,7 +1,5 @@
-import 'package:calvesia/Utils/Style/ColorPalette.dart';
-import 'package:calvesia/feature/onboard/OnBoardPage.dart';
 import 'package:calvesia/feature/pages/profile_page/ProfilePage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,8 +10,24 @@ import 'view/ExplorePage.dart';
 import 'view/FavoritePage.dart';
 import 'view/HomePage.dart';
 
+
+class BasePageMiddleWawe extends StatelessWidget {
+  const BasePageMiddleWawe({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<HeaderProvider>(
+      builder: (context, provider, child) {
+        return BasePage(provider: provider,);
+      },
+    );
+  }
+}
+
+
 class BasePage extends StatefulWidget {
-  const BasePage({Key? key}) : super(key: key);
+  final HeaderProvider provider;
+  const BasePage({Key? key, required this.provider}) : super(key: key);
 
   @override
   State<BasePage> createState() => _BasePageState();
@@ -21,6 +35,7 @@ class BasePage extends StatefulWidget {
 
 class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
+  final searchController = TextEditingController();
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
@@ -33,6 +48,14 @@ class _BasePageState extends State<BasePage> {
     setState(() {
       _selectedIndex = index;
     });
+    searchController.text = "";
+    widget.provider.clearHeaderText();
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,7 +64,7 @@ class _BasePageState extends State<BasePage> {
       child: Scaffold(
           body: Column(
             children: [
-              HeaderComponent(),
+              HeaderComponent(searchController: searchController),
               Expanded(
                 child: _widgetOptions.elementAt(_selectedIndex),
               ),
@@ -52,8 +75,8 @@ class _BasePageState extends State<BasePage> {
               final bool result = value.isShowNavigationButton;
               return result
                   ? BottomNavigationBarWidget(
-                      onItemTapped: _onItemTapped,
-                      selectedIndex: _selectedIndex)
+                  onItemTapped: _onItemTapped,
+                  selectedIndex: _selectedIndex)
                   : const ProfilePageAppBarr();
             },
           )),
@@ -64,6 +87,7 @@ class _BasePageState extends State<BasePage> {
 class BottomNavigationBarWidget extends StatefulWidget {
   final Function(int index) onItemTapped;
   final int selectedIndex;
+
   BottomNavigationBarWidget(
       {Key? key, required this.onItemTapped, required this.selectedIndex})
       : super(key: key);

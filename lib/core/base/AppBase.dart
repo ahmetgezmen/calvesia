@@ -1,4 +1,5 @@
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../config/thema.dart';
@@ -17,14 +18,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_)=>BaseProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => BaseProvider()),
+        ChangeNotifierProvider(create: (_) => HeaderProvider()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: BASEThemeData(),
-        home: FirebaseAuth.instance.currentUser != null ? BasePage() : OnboardingPage(),
+        home: FirebaseAuth.instance.currentUser != null
+            ? BasePageMiddleWawe()
+            : OnboardingPage(),
       ),
     );
   }
 }
-
-

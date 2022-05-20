@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,9 @@ import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../profile_page/ProfilePage.dart';
 
 class HeaderComponent extends StatefulWidget {
+  final TextEditingController searchController;
+  const HeaderComponent({Key? key, required this.searchController}) : super(key: key);
+
   @override
   State<HeaderComponent> createState() => _HeaderComponentState();
 }
@@ -79,17 +83,26 @@ class _HeaderComponentState extends State<HeaderComponent> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0)),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                      hintText: "Etkinlik Ara",
-                      border: OutlineInputBorder(),
-                      suffixIcon: Icon(
-                        Icons.filter_alt,
-                      ),
-                    ),
+                  child: Consumer<HeaderProvider>(
+                    builder: (context, provider, child) {
+                      return TextFormField(
+                        onChanged: (value) {
+                          provider.updateHeaderText(value.toString());
+                          print(provider.getHeaderText);
+                        },
+                        controller: widget.searchController,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                          ),
+                          hintText: "Etkinlik Ara",
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(
+                            Icons.filter_alt,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
