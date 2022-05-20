@@ -2,8 +2,6 @@ import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
-
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../../onboard/OnBoardPage.dart';
 
@@ -12,36 +10,43 @@ class ProfilePageAppBarr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BottomAppBar(
-      child: Row(
-        children: [
-          InkWell(
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OnboardingPage(),));
-              },
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.exit_to_app,
-                    color: BaseColorPalet.InAktiveButtonColor,
-                  ),
-                  Text(
-                    "Sign Out",
-                    style: TextStyle(
+    return BottomAppBar(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const OnboardingPage(),
+                  ));
+                },
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.exit_to_app,
                       color: BaseColorPalet.InAktiveButtonColor,
                     ),
-                  ),
-                ],
-              )),
-          ElevatedButton(
-              onPressed: () {}, child: const Text("Save Profile"))
-        ],
+                    Text(
+                      "Sign Out",
+                      style: TextStyle(
+                        color: BaseColorPalet.InAktiveButtonColor,
+                      ),
+                    ),
+                  ],
+                )),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("Save Profile"),
+            )
+          ],
+        ),
       ),
     );
   }
 }
-
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -52,28 +57,26 @@ class ProfilePage extends StatelessWidget {
       length: 4,
       child: SafeArea(
         child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(305.0),
-            child: AppBar(
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white,
-              flexibleSpace: ProfileTopComponent(),
+            appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(305.0),
+              child: AppBar(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                flexibleSpace: ProfileTopComponent(),
+              ),
             ),
-          ),
-          body: const TabBarView(
-            children: [
-              Tab(icon: Icon(Icons.directions_car)),
-              Tab(icon: Icon(Icons.directions_transit)),
-              Tab(icon: Icon(Icons.directions_bike)),
-              Tab(icon: Icon(Icons.directions_bike)),
-            ],
-          )
-        ),
+            body: const TabBarView(
+              children: [
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.directions_bike)),
+              ],
+            )),
       ),
     );
   }
 }
-
 
 class ProfileTopComponent extends StatefulWidget {
   const ProfileTopComponent({Key? key}) : super(key: key);
@@ -91,8 +94,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
         children: [
           FutureBuilder(
               future: UserVievModel.getMyProfilePhoto,
-              builder:
-                  (BuildContext context, AsyncSnapshot snapshot) {
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return CircleAvatar(
                     radius: 75,
