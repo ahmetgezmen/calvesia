@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(305.0),
+            preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous ? const Size.fromHeight(230.0) : const Size.fromHeight(305.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
