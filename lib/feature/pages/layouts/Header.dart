@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
-import '../view/ProfilePage.dart';
+import '../profile_page/ProfilePage.dart';
 
 class HeaderComponent extends StatefulWidget {
   @override

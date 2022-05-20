@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../../onboard/OnBoardPage.dart';
+import 'ProfileScreenWidgets/calender_widget.dart';
+import 'ProfileScreenWidgets/my_info_widget.dart';
+import 'ProfileScreenWidgets/privacy_policy_widget.dart';
+import 'ProfileScreenWidgets/tickets_widget.dart';
 
 class ProfilePageAppBarr extends StatelessWidget {
   const ProfilePageAppBarr({Key? key}) : super(key: key);
@@ -38,6 +42,9 @@ class ProfilePageAppBarr extends StatelessWidget {
                   ],
                 )),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
+              ),
               onPressed: () {},
               child: const Text("Save Profile"),
             )
@@ -67,12 +74,12 @@ class ProfilePage extends StatelessWidget {
             ),
             body: const TabBarView(
               children: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(child: CalenderWidget()),
+                Tab(child: TicketsWidget()),
+                Tab(child: MyInfoWidgets()),
+                Tab(child: ProvacPolicyWidget()),
               ],
-            )),
+            ),),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
 import 'package:calvesia/feature/onboard/OnBoardPage.dart';
-import 'package:calvesia/feature/pages/view/ProfilePage.dart';
+import 'package:calvesia/feature/pages/profile_page/ProfilePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
