@@ -1,3 +1,6 @@
+import 'package:calvesia/Utils/Style/ColorPalette.dart';
+import 'package:calvesia/feature/onboard/OnBoardPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,24 +49,37 @@ class _BasePageState extends State<BasePage> {
           bottomNavigationBar: Consumer<BaseProvider>(
             builder: (context, value, child) {
               final bool result = value.isShowNavigationButton;
-              return
-                result ? BottomNavigationBarWidget(
-                  onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
-              :
-              BottomAppBar(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(onPressed: () {
-
-                    }, child: Text("deme,e")),
-                    ElevatedButton(onPressed: () {
-
-                    }, child: Text("deme,e"))
-                  ],
-                ),
-              )
-              ;
+              return result
+                  ? BottomNavigationBarWidget(
+                      onItemTapped: _onItemTapped,
+                      selectedIndex: _selectedIndex)
+                  : BottomAppBar(
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () async {
+                             await FirebaseAuth.instance.signOut();
+                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OnboardingPage(),));
+                            },
+                              child: Row(
+                            children: const [
+                              Icon(
+                                Icons.exit_to_app,
+                                color: BaseColorPalet.InAktiveButtonColor,
+                              ),
+                              Text(
+                                "Sign Out",
+                                style: TextStyle(
+                                  color: BaseColorPalet.InAktiveButtonColor,
+                                ),
+                              ),
+                            ],
+                          )),
+                          ElevatedButton(
+                              onPressed: () {}, child: Text("Save Profile"))
+                        ],
+                      ),
+                    );
             },
           )),
     );
