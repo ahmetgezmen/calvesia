@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/base_provider.dart';
 import 'layouts/Header.dart';
 import 'view/BuyPageComingSoon.dart';
 import 'view/ExplorePage.dart';
@@ -29,19 +31,41 @@ class _BasePageState extends State<BasePage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            HeaderComponent(),
-            Expanded(child: _widgetOptions.elementAt(_selectedIndex),),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBarWidget(onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
-      ),
+          body: Column(
+            children: [
+              HeaderComponent(),
+              Expanded(
+                child: _widgetOptions.elementAt(_selectedIndex),
+              ),
+            ],
+          ),
+          bottomNavigationBar: Consumer<BaseProvider>(
+            builder: (context, value, child) {
+              final bool result = value.isShowNavigationButton;
+              return
+                result ? BottomNavigationBarWidget(
+                  onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
+              :
+              BottomAppBar(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(onPressed: () {
+
+                    }, child: Text("deme,e")),
+                    ElevatedButton(onPressed: () {
+
+                    }, child: Text("deme,e"))
+                  ],
+                ),
+              )
+              ;
+            },
+          )),
     );
   }
 }
@@ -49,10 +73,13 @@ class _BasePageState extends State<BasePage> {
 class BottomNavigationBarWidget extends StatefulWidget {
   final Function(int index) onItemTapped;
   final int selectedIndex;
-  BottomNavigationBarWidget({Key? key, required this.onItemTapped, required this.selectedIndex}) : super(key: key);
+  BottomNavigationBarWidget(
+      {Key? key, required this.onItemTapped, required this.selectedIndex})
+      : super(key: key);
 
   @override
-  State<BottomNavigationBarWidget> createState() => _BottomNavigationBarWidgetState();
+  State<BottomNavigationBarWidget> createState() =>
+      _BottomNavigationBarWidgetState();
 }
 
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
@@ -60,25 +87,15 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: ""
-        ),
+            icon: Icon(Icons.dashboard_outlined), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
         BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard_outlined),
-            label: ""
-
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_border),
-            label: ""
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_bag_outlined),
-            label: ""
-        ),
+            icon: Icon(Icons.shopping_bag_outlined), label: ""),
       ],
       currentIndex: widget.selectedIndex,
       onTap: widget.onItemTapped,
-    );  }
+    );
+  }
 }

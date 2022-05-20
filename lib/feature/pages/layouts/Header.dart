@@ -1,8 +1,9 @@
-
 import 'dart:typed_data';
 
+import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../view/ProfilePage.dart';
@@ -28,35 +29,41 @@ class _HeaderComponentState extends State<HeaderComponent> {
                 children: <Widget>[
                   Row(
                     children: [
-                      InkWell(
-                        onTap: () async {
-                          final value = await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return ProfilePage();
-                              },
-                            ),
+                      Consumer<BaseProvider>(
+                        builder: (context, value, child) {
+                          return InkWell(
+                            onTap: () async {
+                              value.isShowNavigationButtonFunk();
+                              Scaffold.of(context)
+                                  .showBottomSheet((context) => ProfilePage())
+                                  .closed
+                                  .then((_) {
+                                value.isShowNavigationButtonFunk();
+                              });
+                            },
+                            child: FutureBuilder<Uint8List?>(
+                                future: UserVievModel.getMyProfilePhoto,
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    return CircleAvatar(
+                                      backgroundImage:
+                                          MemoryImage(snapshot.data!),
+                                    );
+                                  } else {
+                                    return const CircleAvatar(
+                                      child: Icon(Icons.person),
+                                    );
+                                  }
+                                }),
                           );
-                          setState(() {});
                         },
-                        child: FutureBuilder<Uint8List?>(
-                            future: UserVievModel.getMyProfilePhoto,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                return CircleAvatar(
-                                  backgroundImage: MemoryImage(snapshot.data!),
-                                );
-                              } else {
-                                return const CircleAvatar(
-                                  child: Icon(Icons.person),
-                                );
-                              }
-                            }),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
-                        child: Text(FirebaseAuth.instance.currentUser!.isAnonymous
-                            ? "Anonymous" : "Ahmet GEZMEN" ,
+                        child: Text(
+                            FirebaseAuth.instance.currentUser!.isAnonymous
+                                ? "Anonymous"
+                                : "Ahmet GEZMEN",
                             style: Theme.of(context).textTheme.headlineSmall),
                       )
                     ],

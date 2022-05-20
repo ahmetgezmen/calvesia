@@ -1,6 +1,4 @@
 import 'package:calvesia/Utils/Style/ColorPalette.dart';
-import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
-import 'package:calvesia/feature/onboard/OnBoardPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +21,7 @@ class ProfilePage extends StatelessWidget {
               flexibleSpace: ProfileTopComponent(),
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               Tab(icon: Icon(Icons.directions_car)),
               Tab(icon: Icon(Icons.directions_transit)),
