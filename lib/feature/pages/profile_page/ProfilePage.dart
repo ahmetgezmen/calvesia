@@ -1,6 +1,9 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../../onboard/OnBoardPage.dart';
@@ -21,27 +24,32 @@ class ProfilePageAppBarr extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-                onTap: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const OnboardingPage(),
-                  ));
-                },
-                child: Row(
-                  children: const [
-                    Icon(
-                      Icons.exit_to_app,
-                      color: BaseColorPalet.inAktiveButtonColor,
-                    ),
-                    Text(
-                      "Sign Out",
-                      style: TextStyle(
-                        color: BaseColorPalet.inAktiveButtonColor,
-                      ),
-                    ),
-                  ],
-                )),
+            Consumer<BaseProvider>(
+              builder: (context, provider, child) {
+                return InkWell(
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut();
+                      provider.isShowNavigationButtonFunk();
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const OnboardingPage(),
+                      ));
+                    },
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.exit_to_app,
+                          color: BaseColorPalet.inAktiveButtonColor,
+                        ),
+                        Text(
+                          "Sign Out",
+                          style: TextStyle(
+                            color: BaseColorPalet.inAktiveButtonColor,
+                          ),
+                        ),
+                      ],
+                    ));
+              },
+            ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor:
@@ -67,7 +75,9 @@ class ProfilePage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous ? const Size.fromHeight(230.0) : const Size.fromHeight(305.0),
+            preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
+                ? const Size.fromHeight(230.0)
+                : const Size.fromHeight(305.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
