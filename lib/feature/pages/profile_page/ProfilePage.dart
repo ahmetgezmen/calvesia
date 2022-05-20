@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../../onboard/OnBoardPage.dart';
 import 'ProfileScreenWidgets/calender_widget.dart';
+import 'ProfileScreenWidgets/change_profile_widget.dart';
 import 'ProfileScreenWidgets/my_info_widget.dart';
 import 'ProfileScreenWidgets/privacy_policy_widget.dart';
 import 'ProfileScreenWidgets/tickets_widget.dart';
@@ -43,7 +44,8 @@ class ProfilePageAppBarr extends StatelessWidget {
                 )),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                backgroundColor:
+                    MaterialStateProperty.all(BaseColorPalet.buttonColor),
               ),
               onPressed: () {},
               child: const Text("Save Profile"),
@@ -64,22 +66,23 @@ class ProfilePage extends StatelessWidget {
       length: 4,
       child: SafeArea(
         child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(305.0),
-              child: AppBar(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                flexibleSpace: ProfileTopComponent(),
-              ),
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(305.0),
+            child: AppBar(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white,
+              flexibleSpace: ProfileTopComponent(),
             ),
-            body: const TabBarView(
-              children: [
-                Tab(child: CalenderWidget()),
-                Tab(child: TicketsWidget()),
-                Tab(child: MyInfoWidgets()),
-                Tab(child: ProvacPolicyWidget()),
-              ],
-            ),),
+          ),
+          body: const TabBarView(
+            children: [
+              Tab(child: CalenderWidget()),
+              Tab(child: TicketsWidget()),
+              Tab(child: MyInfoWidgets()),
+              Tab(child: ProvacPolicyWidget()),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -99,25 +102,30 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
         children: [
-          FutureBuilder(
-              future: UserVievModel.getMyProfilePhoto,
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return CircleAvatar(
-                    radius: 75,
-                    backgroundImage: MemoryImage(snapshot.data),
-                  );
-                } else if (snapshot.hasError) {
-                  return const Icon(
-                    Icons.error_outline,
-                    size: 75,
-                  );
-                } else {
-                  return const CircularProgressIndicator(
-                    strokeWidth: 35,
-                  );
-                }
-              }),
+          InkWell(
+            onTap: () async {
+              ChangeProfileImageWidgetButton(context);
+            },
+            child: FutureBuilder(
+                future: UserVievModel.getMyProfilePhoto,
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return CircleAvatar(
+                      radius: 75,
+                      backgroundImage: MemoryImage(snapshot.data),
+                    );
+                  } else if (snapshot.hasError) {
+                    return const Icon(
+                      Icons.error_outline,
+                      size: 75,
+                    );
+                  } else {
+                    return const CircularProgressIndicator(
+                      strokeWidth: 35,
+                    );
+                  }
+                }),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
             child: Text("Hoşgeldin",
