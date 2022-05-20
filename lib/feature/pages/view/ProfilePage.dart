@@ -66,7 +66,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                   );
                 } else {
                   return const CircularProgressIndicator(
-                    strokeWidth: 75,
+                    strokeWidth: 35,
                   );
                 }
               }),
