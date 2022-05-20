@@ -145,7 +145,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
               Tab(child: Text("Takvim")),
               Tab(child: Text("Biletlerim")),
               Tab(child: Text("Bilgilerim")),
-              Tab(child: Text("Politikamiz")),
+              Tab(child: Text("Politika")),
             ],
           ),
         ],
