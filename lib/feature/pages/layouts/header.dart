@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
-import '../profile_page/ProfilePage.dart';
+import '../profile_page/profile_page.dart';
 
 class HeaderComponent extends StatefulWidget {
   final TextEditingController searchController;
@@ -63,7 +63,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                         },
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                             FirebaseAuth.instance.currentUser!.isAnonymous
                                 ? "Anonymous"

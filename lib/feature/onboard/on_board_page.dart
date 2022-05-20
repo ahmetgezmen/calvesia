@@ -1,11 +1,11 @@
 import 'package:calvesia/feature/Authencitation/login/view/screen/login_page.dart';
-import 'package:calvesia/feature/Authencitation/signup/view/screen/SignUpPage.dart';
-import 'package:calvesia/feature/pages/BasePage.dart';
+import 'package:calvesia/feature/Authencitation/signup/view/screen/sign_up_page.dart';
+import 'package:calvesia/feature/pages/base_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/Page_indicator.dart';
-import 'widgets/Rounded_button.dart';
+import 'widgets/page_indicator.dart';
+import 'widgets/rounded_button.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);

@@ -1,17 +1,17 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
-import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
-import '../../onboard/OnBoardPage.dart';
-import 'ProfileScreenWidgets/calender_widget.dart';
-import 'ProfileScreenWidgets/change_profile_widget.dart';
-import 'ProfileScreenWidgets/my_info_widget.dart';
-import 'ProfileScreenWidgets/privacy_policy_widget.dart';
-import 'ProfileScreenWidgets/tickets_widget.dart';
+import '../../onboard/on_board_page.dart';
+import 'profile_page_screen_widgets/change_profile_widget.dart';
+import 'profile_page_screen_widgets/my_info_widget.dart';
+import 'profile_page_screen_widgets/privacy_policy_widget.dart';
+import 'profile_page_screen_widgets/tickets_widget.dart';
+import 'profile_page_screen_widgets/calender_widget.dart';
+
 
 class ProfilePageAppBarr extends StatelessWidget {
   const ProfilePageAppBarr({Key? key}) : super(key: key);
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
-              flexibleSpace: ProfileTopComponent(),
+              flexibleSpace: const ProfileTopComponent(),
             ),
           ),
           body: const TabBarView(

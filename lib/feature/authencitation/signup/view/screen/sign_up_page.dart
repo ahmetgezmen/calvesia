@@ -1,9 +1,9 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
-import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
+import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:flutter/material.dart';
 
 import '../../../viewmodel/user_view_model.dart';
-import '../widget/EmailAlredyUseWidget.dart';
+import '../widget/email_alredy_use_widget.dart';
 
 class SingUpPAgeScreen extends StatefulWidget {
   const SingUpPAgeScreen({Key? key}) : super(key: key);

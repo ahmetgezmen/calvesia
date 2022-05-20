@@ -10,14 +10,14 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../widget/LoadingWidget.dart';
 import '../../widget/SometingWrong.dart';
-import '../login/view/widget/LoginSuccessfulWidget.dart';
-import '../login/view/widget/UserNoteFoundWidget.dart';
-import '../login/view/widget/WrongPasswordOrUsernameWidget.dart';
+import '../login/view/widget/login_successful_widget.dart';
+import '../login/view/widget/user_note_found_widget.dart';
+import '../login/view/widget/wrong_password_or_username_widget.dart';
 import '../models/registered_model.dart';
 import '../models/user_model.dart';
-import '../signup/view/widget/EmailAlredyUseWidget.dart';
-import '../signup/view/widget/PasswordTooWeakWidget.dart';
-import '../signup/view/widget/SendMailWidget.dart';
+import '../signup/view/widget/email_alredy_use_widget.dart';
+import '../signup/view/widget/password_too_weak_widget.dart';
+import '../signup/view/widget/send_mail_widget.dart';
 
 class UserServices {
   static Login(BuildContext context, emailAddress, password) async {

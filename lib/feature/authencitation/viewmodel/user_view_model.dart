@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../models/user_model.dart';
-import '../services/UserServices.dart';
+import '../services/user_services.dart';
 
 class UserVievModel extends ChangeNotifier{
   final Set<PostModel>MyFavList = UserServices.getUserFavListServices() as Set<PostModel>;

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../widget/LoadingWidget.dart';
 import '../models/post_model.dart';
 import '../models/stream_time_model.dart';
-import '../services/PostServices.dart';
+import '../services/post_services.dart';
 
 class PostListViewModel extends ChangeNotifier {
   List<PostViewModel> Posts = [];

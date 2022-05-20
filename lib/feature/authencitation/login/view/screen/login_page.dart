@@ -1,11 +1,11 @@
 import 'package:calvesia/utils/style/color_palette.dart';
-import 'package:calvesia/feature/Authencitation/services/UserServices.dart';
+import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../pages/BasePage.dart';
+import '../../../../pages/base_page.dart';
 import '../../../pages/forgot_password.dart';
-import '../../../signup/view/screen/SignUpPage.dart';
+import '../../../signup/view/screen/sign_up_page.dart';
 
 class LoginPageScreen extends StatefulWidget {
   const LoginPageScreen({Key? key}) : super(key: key);

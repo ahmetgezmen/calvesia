@@ -1,14 +1,14 @@
-import 'package:calvesia/feature/pages/profile_page/ProfilePage.dart';
+import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/base_provider.dart';
-import 'layouts/Header.dart';
-import 'view/BuyPageComingSoon.dart';
-import 'view/ExplorePage.dart';
-import 'view/FavoritePage.dart';
-import 'view/HomePage.dart';
+import 'layouts/header.dart';
+import 'view/buy_page_coming_soon.dart';
+import 'view/explore_page.dart';
+import 'view/favorite_page.dart';
+import 'view/home_page.dart';
 
 
 class BasePageMiddleWawe extends StatelessWidget {

@@ -3,8 +3,8 @@ import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../config/thema.dart';
-import '../../feature/onboard/OnBoardPage.dart';
-import '../../feature/pages/BasePage.dart';
+import '../../feature/onboard/on_board_page.dart';
+import '../../feature/pages/base_page.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatefulWidget {
