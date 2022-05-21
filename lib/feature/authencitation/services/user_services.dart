@@ -154,7 +154,7 @@ class UserServices {
     }else {
       final imagePath = xFile.path;
       await ppicsRef.child('$uid.jpg').putFile(File(imagePath));
-      bool result = updateMyPhotoServices(ppicsRef.child('$uid.jpg').fullPath);
+      final result = updateMyPhotoServices(ppicsRef.child('$uid.jpg').fullPath);
       if (result==true){
         return true;
       }else{
