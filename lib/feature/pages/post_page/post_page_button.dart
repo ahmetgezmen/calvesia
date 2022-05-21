@@ -11,6 +11,7 @@ openPostPage(context, PostIsSharingProvider provider )async{
   await Navigator.of(context).push(MaterialPageRoute(builder: (context) => PostSharePage(postKey: postKey, postIsSharingProvider: provider,),));
   final _isShare = provider.getIsShare;
   if (_isShare){
+    provider.setIsShare(false);
     return true;
   }else{
     PostServices.isFailedStartAddPostServices(postKey);
