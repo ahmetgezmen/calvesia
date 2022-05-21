@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'comments_model.dart';
-import 'participants_model.dart';
+import 'coordinators_model.dart';
+import 'sponsor_model.dart';
 import 'stream_time_model.dart';
 
 /// isAktive : true
@@ -9,7 +10,9 @@ import 'stream_time_model.dart';
 /// category : "Etkinlik kategorisi"
 /// isPrivate : false
 /// date : "date"
+/// endDate : "endDate"
 /// time : "time"
+/// endTime : "endTime"
 /// eventPlaceLocationTitle : "mekan yeri "
 /// location : " dETAYLI ETKINLIK YERI "
 /// image : "imagePath"
@@ -26,35 +29,50 @@ import 'stream_time_model.dart';
 
 PostModel postModelFromJson(String str) => PostModel.fromJson(json.decode(str));
 String postModelToJson(PostModel data) => json.encode(data.toJson());
+
 class PostModel {
   PostModel({
-      bool? isAktive, 
-      String? title, 
-      String? category, 
-      bool? isPrivate, 
-      String? date, 
-      String? time, 
-      String? eventPlaceLocationTitle, 
-      String? location, 
-      String? image, 
-      String? description, 
-      bool? isCertificated, 
-      int? ticketNumber, 
-      int? viewNumber,
-      int? price,
-      String? postOwner, 
-      int? followersNumber, 
-      Participants? participants,   // bunlar eklenmedi
-      Comments? comments,           // bunlar eklenmedi
-      StreamTime? streamTime,}){
+    bool? isAktive,
+    bool? isOnline,
+    bool? isNeedCV,
+    String? title,
+    String? category,
+    bool? isPrivate,
+    String? date,
+    String? endDate,
+    String? time,
+    String? endTime,
+    String? eventPlaceLocationTitle,
+    String? eventWebSiteUrl,
+    String? location,
+    String? platformLink,
+    String? image,
+    String? description,
+    bool? isCertificated,
+    int? ticketNumber,
+    int? viewNumber,
+    int? price,
+    String? postOwner,
+    int? followersNumber,
+    Sponsors? sponsors, // bunlar eklenmedi
+    Coordinators? coordinators, // bunlar eklenmedi
+    Comments? comments, // bunlar eklenmedi
+    StreamTime? streamTime,
+  }) {
     _isAktive = isAktive;
+    _isOnline = isOnline;
+    _isNeedCV = isNeedCV;
     _title = title;
     _category = category;
     _isPrivate = isPrivate;
     _date = date;
+    _endDate = endDate;
     _time = time;
+    _endTime = endTime;
     _eventPlaceLocationTitle = eventPlaceLocationTitle;
+    _eventWebSiteUrl = eventWebSiteUrl;
     _location = location;
+    _platformLink = platformLink;
     _image = image;
     _description = description;
     _isCertificated = isCertificated;
@@ -63,20 +81,27 @@ class PostModel {
     _price = price;
     _postOwner = postOwner;
     _followersNumber = followersNumber;
-    _participants = participants;
+    _sponsors = sponsors;
+    _coordinators = coordinators;
     _comments = comments;
     _streamTime = streamTime;
-}
+  }
 
   PostModel.fromJson(dynamic json) {
     _isAktive = json['isAktive'];
+    _isOnline = json['isOnline'];
+    _isNeedCV = json['isNeedCV'];
     _title = json['title'];
     _category = json['category'];
     _isPrivate = json['isPrivate'];
     _date = json['date'];
+    _endDate = json['endDate'];
     _time = json['time'];
+    _endTime = json['endTime'];
     _eventPlaceLocationTitle = json['eventPlaceLocationTitle'];
+    _eventWebSiteUrl = json['eventWebSiteUrl'];
     _location = json['location'];
+    _platformLink = json['platformLink'];
     _image = json['image'];
     _description = json['description'];
     _isCertificated = json['isCertificated'];
@@ -85,18 +110,32 @@ class PostModel {
     _price = json['price'];
     _postOwner = json['postOwner'];
     _followersNumber = json['followersNumber'];
-    _participants = json['participants'] != null ? Participants.fromJson(json['participants']) : null;
-    _comments = json['comments'] != null ? Comments.fromJson(json['comments']) : null;
-    _streamTime = json['streamTime'] != null ? StreamTime.fromJson(json['streamTime']) : null;
+    _sponsors = json['sponsors'] != null
+        ? Sponsors.fromJson(json['sponsors'])
+        : null;
+    _coordinators = json['coordinators'] != null
+        ? Coordinators.fromJson(json['coordinators'])
+        : null;
+    _comments =
+        json['comments'] != null ? Comments.fromJson(json['comments']) : null;
+    _streamTime = json['streamTime'] != null
+        ? StreamTime.fromJson(json['streamTime'])
+        : null;
   }
   bool? _isAktive;
+  bool? _isOnline;
+  bool? _isNeedCV;
   String? _title;
   String? _category;
   bool? _isPrivate;
   String? _date;
+  String? _endDate;
   String? _time;
+  String? _endTime;
   String? _eventPlaceLocationTitle;
+  String? _eventWebSiteUrl;
   String? _location;
+  String? _platformLink;
   String? _image;
   String? _description;
   bool? _isCertificated;
@@ -105,56 +144,81 @@ class PostModel {
   int? _price;
   String? _postOwner;
   int? _followersNumber;
-  Participants? _participants;
+  Sponsors? _sponsors;
+  Coordinators? _coordinators;
   Comments? _comments;
   StreamTime? _streamTime;
-PostModel copyWith({  bool? isAktive,
-  String? title,
-  String? category,
-  bool? isPrivate,
-  String? date,
-  String? time,
-  String? eventPlaceLocationTitle,
-  String? location,
-  String? image,
-  String? description,
-  bool? isCertificated,
-  int? ticketNumber,
-  int? viewNumber,
-  int? price,
-  String? postOwner,
-  int? followersNumber,
-  Participants? participants,
-  Comments? comments,
-  StreamTime? streamTime,
-}) => PostModel(  isAktive: isAktive ?? _isAktive,
-  title: title ?? _title,
-  category: category ?? _category,
-  isPrivate: isPrivate ?? _isPrivate,
-  date: date ?? _date,
-  time: time ?? _time,
-  eventPlaceLocationTitle: eventPlaceLocationTitle ?? _eventPlaceLocationTitle,
-  location: location ?? _location,
-  image: image ?? _image,
-  description: description ?? _description,
-  isCertificated: isCertificated ?? _isCertificated,
-  ticketNumber: ticketNumber ?? _ticketNumber,
-  viewNumber: viewNumber ?? _viewNumber,
-  price: price ?? _price,
-  postOwner: postOwner ?? _postOwner,
-  followersNumber: followersNumber ?? _followersNumber,
-  participants: participants ?? _participants,
-  comments: comments ?? _comments,
-  streamTime: streamTime ?? _streamTime,
-);
+  PostModel copyWith({
+    bool? isAktive,
+    bool? isOnline,
+    bool? isNeedCV,
+    String? title,
+    String? category,
+    bool? isPrivate,
+    String? date,
+    String? endDate,
+    String? time,
+    String? endTime,
+    String? eventPlaceLocationTitle,
+    String? eventWebSiteUrl,
+    String? location,
+    String? platformLink,
+    String? image,
+    String? description,
+    bool? isCertificated,
+    int? ticketNumber,
+    int? viewNumber,
+    int? price,
+    String? postOwner,
+    int? followersNumber,
+    Sponsors? sponsors,
+    Coordinators? coordinators,
+    Comments? comments,
+    StreamTime? streamTime,
+  }) =>
+      PostModel(
+        isAktive: isAktive ?? _isAktive,
+        isOnline: isOnline ?? _isOnline,
+        isNeedCV: isNeedCV ?? _isNeedCV,
+        title: title ?? _title,
+        category: category ?? _category,
+        isPrivate: isPrivate ?? _isPrivate,
+        date: date ?? _date,
+        endDate: endDate ?? _endDate,
+        time: time ?? _time,
+        endTime: endTime ?? _endTime,
+        eventPlaceLocationTitle:
+            eventPlaceLocationTitle ?? _eventPlaceLocationTitle,
+        eventWebSiteUrl: eventWebSiteUrl ?? _eventWebSiteUrl,
+        location: location ?? _location,
+        platformLink: platformLink ?? _platformLink,
+        image: image ?? _image,
+        description: description ?? _description,
+        isCertificated: isCertificated ?? _isCertificated,
+        ticketNumber: ticketNumber ?? _ticketNumber,
+        viewNumber: viewNumber ?? _viewNumber,
+        price: price ?? _price,
+        postOwner: postOwner ?? _postOwner,
+        followersNumber: followersNumber ?? _followersNumber,
+        sponsors: sponsors ?? _sponsors,
+        coordinators: coordinators ?? _coordinators,
+        comments: comments ?? _comments,
+        streamTime: streamTime ?? _streamTime,
+      );
   bool? get isAktive => _isAktive;
+  bool? get isOnline => _isOnline;
+  bool? get isNeedCV => _isNeedCV;
   String? get title => _title;
   String? get category => _category;
   bool? get isPrivate => _isPrivate;
   String? get date => _date;
+  String? get endDate => _endDate;
   String? get time => _time;
+  String? get endTime => _endTime;
   String? get eventPlaceLocationTitle => _eventPlaceLocationTitle;
+  String? get eventWebSiteUrl => _eventWebSiteUrl;
   String? get location => _location;
+  String? get platformLink => _platformLink;
   String? get image => _image;
   String? get description => _description;
   bool? get isCertificated => _isCertificated;
@@ -163,20 +227,27 @@ PostModel copyWith({  bool? isAktive,
   int? get price => _price;
   String? get postOwner => _postOwner;
   int? get followersNumber => _followersNumber;
-  Participants? get participants => _participants;
+  Sponsors? get sponsors => _sponsors;
+  Coordinators? get coordinators => _coordinators;
   Comments? get comments => _comments;
   StreamTime? get streamTime => _streamTime;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['isAktive'] = _isAktive;
+    map['isOnline'] = _isOnline;
+    map['isNeedCV'] = _isNeedCV;
     map['title'] = _title;
     map['category'] = _category;
     map['isPrivate'] = _isPrivate;
     map['date'] = _date;
+    map['endDate'] = _endDate;
     map['time'] = _time;
+    map['endTime'] = _endTime;
     map['eventPlaceLocationTitle'] = _eventPlaceLocationTitle;
+    map['eventWebSiteUrl'] = _eventWebSiteUrl;
     map['location'] = _location;
+    map['platformLink'] = _platformLink;
     map['image'] = _image;
     map['description'] = _description;
     map['isCertificated'] = _isCertificated;
@@ -185,8 +256,11 @@ PostModel copyWith({  bool? isAktive,
     map['price'] = _price;
     map['postOwner'] = _postOwner;
     map['followersNumber'] = _followersNumber;
-    if (_participants != null) {
-      map['participants'] = _participants?.toJson();
+    if (_sponsors != null) {
+      map['sponsors'] = _sponsors?.toJson();
+    }
+    if (_coordinators != null) {
+      map['coordinators'] = _coordinators?.toJson();
     }
     if (_comments != null) {
       map['comments'] = _comments?.toJson();
@@ -196,22 +270,24 @@ PostModel copyWith({  bool? isAktive,
     }
     return map;
   }
-
 }
-
-
-
 
 //
 // {
 // "isAktive": true,
+// "isOnline": true,
+// "isNeedCV": true,
 // "title" : "Event title",
 // "category" : "Etkinlik kategorisi",
 // "isPrivate" : false,
 // "date": "date",
+// "endDate": "endDate",
 // "time": "time",
+// "endTime": "endTime",
 // "eventPlaceLocationTitle": "mekan yeri ",
+// "eventWebSiteUrl": "eventWebSiteUrl ",
 // "location": " dETAYLI ETKINLIK YERI ",
+// "platformLink": " etkinlik linki ",
 // "image": "imagePath",
 // "description": "Aciklama",
 // "isCertificated" : false,
@@ -220,9 +296,10 @@ PostModel copyWith({  bool? isAktive,
 // "price": 100,
 // "postOwner": "paylasanin uid",
 // "followersNumber": 1999,
-// "participants" : {
+// "sponsors" : {
 // "participantuid" : "profileImagePath"
 // },
+//"coordinators":[],
 // "comments": {
 // "commentUid": {
 // "uuid":"paylasan kisinin uuid",

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-void PostShareFailedButton(BuildContext context) {
+Future<bool> PostShareFailedButton(BuildContext context) async {
   final alertDialog = AlertDialog(
     title: PostShareFailed(),
   );
 
-  showDialog(
+  await showDialog(
     context: context,
     builder: (BuildContext context) {
       return alertDialog;
     },
   );
+  return true;
 }
 
 

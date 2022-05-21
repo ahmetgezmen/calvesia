@@ -22,6 +22,8 @@ class PostViewModel {
   PostViewModel({this.post});
 
   static addPost(
+      key,
+      provider,
       context,
       title,
       category,
@@ -34,10 +36,13 @@ class PostViewModel {
       time,
       image,
       isCertificated,
-      ticketNumber) async {
+      ticketNumber,
+      eventWebSiteUrl,
+      ) async {
     LoadingWidgetButton(context);
 
     PostModel post = await PostModel(
+      eventWebSiteUrl: eventWebSiteUrl,
       title: title,
       isPrivate: isPrivate,
       description: description,
@@ -59,7 +64,7 @@ class PostViewModel {
       isAktive: true,
     );
 
-    final credential = await PostRepo.addPostServices(post);
+    final credential = await PostServices.addPostServices(context , post,key, provider);
     Navigator.of(context).pop();
 
     credential == true
@@ -68,6 +73,6 @@ class PostViewModel {
   }
 
   static getPost(postUid) {
-    PostRepo.getPostServidces(postUid);
+    PostServices.getPostServidces(postUid);
   }
 }
