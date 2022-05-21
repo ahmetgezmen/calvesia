@@ -668,7 +668,7 @@ class _PostSharePageState extends State<PostSharePage> {
                             ),
                             Container(
                                 padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                child: RaisedButton(
+                                child: ElevatedButton(
                                     onPressed: () {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
@@ -683,7 +683,7 @@ class _PostSharePageState extends State<PostSharePage> {
                             Container(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 16.0, horizontal: 16.0),
-                                child: RaisedButton(
+                                child: ElevatedButton(
                                     onPressed: () {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
@@ -699,7 +699,7 @@ class _PostSharePageState extends State<PostSharePage> {
   }
 
   _showDialog(BuildContext context) {
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
         .showSnackBar(const SnackBar(content: Text('Submitting form')));
   }
   // @override
