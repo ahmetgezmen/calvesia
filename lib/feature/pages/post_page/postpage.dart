@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../Utils/Style/color_palette.dart';
+
 enum SingingCharacter { lafayette, jefferson, ozel, herkese, free, paid }
 
 class PostSharePage extends StatefulWidget {
@@ -39,23 +41,43 @@ class _PostSharePageState extends State<PostSharePage> {
   SingingCharacter _character2 = SingingCharacter.ozel;
   SingingCharacter _character3 = SingingCharacter.free;
 
+  SizedBox rowItemSpace() {
+    return const SizedBox(
+      width: 30,
+    );
+  }
+
+  OutlineInputBorder singleOutlineBorder = const OutlineInputBorder(
+      borderSide: BorderSide(color: BaseColorPalet.postPageFillColor),
+      borderRadius: BorderRadius.all(Radius.circular(50)));
+  BoxDecoration singleContainerDecoration = BoxDecoration(
+      color: BaseColorPalet.postPageFillColor,
+      borderRadius: BorderRadius.circular(50));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Post Share')
-        ,backgroundColor: Colors.white,
-        foregroundColor: Colors.black),
+        appBar: AppBar(
+          title: const Text('Etkinlik Oluştur'),
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
         body: Builder(
             builder: (context) => Form(
                 key: _formKey,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView(
-                      children: [
-                        TextFormField(
-                            decoration: const InputDecoration(
-                                labelText: 'Etkinlik Başlığı',
-                                border: OutlineInputBorder()),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ListView(children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Container(
+                        decoration: singleContainerDecoration,
+                        child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Etkinlik Başlığı',
+                              border: singleOutlineBorder,
+                            ),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Lütfen etkinlik ismi giriniz';
@@ -65,59 +87,68 @@ class _PostSharePageState extends State<PostSharePage> {
                             onSaved: (val) {
                               // TODO Etkinlik Başlığı
                             }),
-                        TextFormField(
-                            decoration: const InputDecoration(
-                                labelText: 'Etkinlik kategorisi',
-                                border: OutlineInputBorder()),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Lütfen kategori seçiniz.';
-                              }
-                              return null;
+                      ),
+                    ),
+                    Container(
+                      decoration: singleContainerDecoration,
+                      child: TextFormField(
+                          decoration: InputDecoration(
+                              labelText: 'Etkinlik kategorisi',
+                              border: singleOutlineBorder),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Lütfen kategori seçiniz.';
+                            }
+                            return null;
+                          },
+                          onSaved: (val) {
+                            // TODO Etkinlik kategorisi
+                          }),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Özel Etkinlik'),
+                            value: SingingCharacter.jefferson,
+                            groupValue: _character,
+                            onChanged: (value) {
+                              setState(() {
+                                _character = value!;
+                              });
                             },
-                            onSaved: (val) {
-                              // TODO Etkinlik kategorisi
-                            }),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Özel Etkinlik'),
-                                value: SingingCharacter.jefferson,
-                                groupValue: _character,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Herkese Açık'),
-                                value: SingingCharacter.lafayette,
-                                groupValue: _character,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Herkese Açık'),
+                            value: SingingCharacter.lafayette,
+                            groupValue: _character,
+                            onChanged: (value) {
+                              setState(() {
+                                _character = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              decoration: singleContainerDecoration,
                               child: TextFormField(
                                 controller: dateCtlStart,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                   labelText: "Başlangıç tarihi",
                                   hintText: "Ex. Insert your dob",
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(
+                                  border: singleOutlineBorder,
+                                  suffixIcon: const Icon(
                                     Icons.calendar_today,
                                   ),
                                 ),
@@ -132,17 +163,22 @@ class _PostSharePageState extends State<PostSharePage> {
                                       firstDate: DateTime(1900),
                                       lastDate: DateTime(2100));
 
-                                  dateCtlStart.text = date!.toIso8601String().split("T")[0];
+                                  dateCtlStart.text =
+                                      date!.toIso8601String().split("T")[0];
                                 },
                               ),
                             ),
-                            Expanded(
+                          ),
+                          rowItemSpace(),
+                          Expanded(
+                            child: Container(
+                              decoration: singleContainerDecoration,
                               child: TextFormField(
                                 controller:
                                     timeInputStart, //editing controller of this TextField
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    suffixIcon: Icon(
+                                decoration: InputDecoration(
+                                    border: singleOutlineBorder,
+                                    suffixIcon: const Icon(
                                       Icons.timer,
                                     ), //icon of text field
                                     labelText:
@@ -151,17 +187,14 @@ class _PostSharePageState extends State<PostSharePage> {
                                 readOnly:
                                     true, //set it true, so that user will not able to edit text
                                 onTap: () async {
-                                  TimeOfDay? pickedTime =
-                                      await showTimePicker(
+                                  TimeOfDay? pickedTime = await showTimePicker(
                                     initialTime: TimeOfDay.now(),
                                     context: context,
                                   );
 
                                   if (pickedTime != null) {
-                                    DateTime parsedTime =
-                                        DateFormat.jm().parse(pickedTime
-                                            .format(context)
-                                            .toString());
+                                    DateTime parsedTime = DateFormat.jm().parse(
+                                        pickedTime.format(context).toString());
                                     String formattedTime =
                                         DateFormat('HH:mm:ss')
                                             .format(parsedTime);
@@ -175,198 +208,248 @@ class _PostSharePageState extends State<PostSharePage> {
                                 },
                               ),
                             ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: TextFormField(
-                                controller: dateCtlEnd,
-                                decoration: const InputDecoration(
-                                  labelText: "Bitiş tarihi",
-                                  hintText: "Ex. Insert your dob",
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(
-                                    Icons.calendar_today,
-                                  ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: TextFormField(
+                              controller: dateCtlEnd,
+                              decoration: InputDecoration(
+                                labelText: "Bitiş tarihi",
+                                hintText: "Ex. Insert your dob",
+                                border: singleOutlineBorder,
+                                suffixIcon: const Icon(
+                                  Icons.calendar_today,
                                 ),
-                                onTap: () async {
-                                  DateTime? date = DateTime(1900);
-                                  FocusScope.of(context)
-                                      .requestFocus(FocusNode());
-
-                                  date = await showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(1900),
-                                      lastDate: DateTime(2100));
-                                  dateCtlEnd.text = date!.toIso8601String().split("T")[0];
-                                },
                               ),
-                            ),
-                            Expanded(
-                              child: TextFormField(
-                                controller:
-                                    timeInputEnd, //editing controller of this TextField
-                                decoration: const InputDecoration(
-                                  labelText: "Bitiş tarihi",
-                                  hintText: "Ex. Insert your dob",
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(
-                                    Icons.timer,
-                                  ),
-                                ),
-                                readOnly:
-                                    true, //set it true, so that user will not able to edit text
-                                onTap: () async {
-                                  TimeOfDay? pickedTime =
-                                      await showTimePicker(
-                                    initialTime: TimeOfDay.now(),
+                              onTap: () async {
+                                DateTime? date = DateTime(1900);
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
+
+                                date = await showDatePicker(
                                     context: context,
-                                  );
-
-                                  if (pickedTime != null) {
-                                    DateTime parsedTime =
-                                        DateFormat.jm().parse(
-                                            pickedTime
-                                                .format(context)
-                                                .toString());
-
-                                    String formattedTime =
-                                        DateFormat('HH:mm:ss')
-                                            .format(parsedTime);
-
-                                    setState(() {
-                                      timeInputEnd.text =
-                                          formattedTime; //set the value of text field.
-                                    });
-                                  } else {
-                                    // todo  Time is not selected
-                                  }
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Online'),
-                                value: SingingCharacter.ozel,
-                                groupValue: _character2,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character2 = value!;
-                                  });
-                                },
-                              ),
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime(2100));
+                                dateCtlEnd.text =
+                                    date!.toIso8601String().split("T")[0];
+                              },
                             ),
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Yüz yüze'),
-                                value: SingingCharacter.herkese,
-                                groupValue: _character2,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character2 = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        TextFormField(
-                            decoration: const InputDecoration(
+                        rowItemSpace(),
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: TextFormField(
+                              controller:
+                                  timeInputEnd, //editing controller of this TextField
+                              decoration: InputDecoration(
+                                labelText: "Bitiş tarihi",
+                                hintText: "Ex. Insert your dob",
+                                border: singleOutlineBorder,
+                                suffixIcon: const Icon(
+                                  Icons.timer,
+                                ),
+                              ),
+                              readOnly:
+                                  true, //set it true, so that user will not able to edit text
+                              onTap: () async {
+                                TimeOfDay? pickedTime = await showTimePicker(
+                                  initialTime: TimeOfDay.now(),
+                                  context: context,
+                                );
+
+                                if (pickedTime != null) {
+                                  DateTime parsedTime = DateFormat.jm().parse(
+                                      pickedTime.format(context).toString());
+
+                                  String formattedTime =
+                                      DateFormat('HH:mm:ss').format(parsedTime);
+
+                                  setState(() {
+                                    timeInputEnd.text =
+                                        formattedTime; //set the value of text field.
+                                  });
+                                } else {
+                                  // todo  Time is not selected
+                                }
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Online'),
+                            value: SingingCharacter.ozel,
+                            groupValue: _character2,
+                            onChanged: (value) {
+                              setState(() {
+                                _character2 = value!;
+                              });
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Yüz yüze'),
+                            value: SingingCharacter.herkese,
+                            groupValue: _character2,
+                            onChanged: (value) {
+                              setState(() {
+                                _character2 = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Container(
+                        decoration: singleContainerDecoration,
+                        child: TextFormField(
+                            decoration: InputDecoration(
                               labelText: 'Mekan Adı ',
-                              border: OutlineInputBorder(),
+                              border: singleOutlineBorder,
                             ),
                             onSaved: (val) {
                               // TODO Mekan Adı
                             }),
-                        TextFormField(
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Container(
+                        decoration: singleContainerDecoration,
+                        child: TextFormField(
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               labelText: 'Lokasyonu giriniz !',
-                              border: OutlineInputBorder(),
+                              border: singleOutlineBorder,
                             ),
                             onSaved: (val) {
                               // TODO Lokasyon bilgisi
                             }),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const <Widget>[
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 100,
-                                  fallbackWidth: 100,
-                                ),
-                              ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 100,
+                              fallbackWidth: 100,
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 100,
-                                  fallbackWidth: 100,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 75,
-                                  fallbackWidth: 75,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            autofocus: false,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                            decoration: const InputDecoration(
-                              labelText: 'Etkinlik açıklaması',
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 50.0, horizontal: 10.0),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 100,
+                              fallbackWidth: 100,
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Lütfen etkinlik açıklaması giriniz !';
-                              }
-                              return null;
-                            },
-                            onSaved: (val) {
-                              // TODO Etkinlik açıklama
-                            }),
-                        TextFormField(
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 75,
+                              fallbackWidth: 75,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      decoration: singleContainerDecoration,
+                      child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          autofocus: false,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black),
+                          decoration: InputDecoration(
+                            labelText: 'Etkinlik açıklaması',
+                            border: singleOutlineBorder,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 50.0, horizontal: 10.0),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Lütfen etkinlik açıklaması giriniz !';
+                            }
+                            return null;
+                          },
+                          onSaved: (val) {
+                            // TODO Etkinlik açıklama
+                          }),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Container(
+                        decoration: singleContainerDecoration,
+                        child: TextFormField(
                             keyboardType: TextInputType.multiline,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               labelText: 'Etkinlik site linki',
-                              border: OutlineInputBorder(),
+                              border: singleOutlineBorder,
                             ),
                             onSaved: (val) {
                               // TODO Etkinlik link
                             }),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: DropdownButtonFormField<String>(
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
+                      ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: DropdownButtonFormField<String>(
+                              decoration: InputDecoration(
+                                labelText: "Sertifika",
+                                border: singleOutlineBorder,
+                              ),
+                              items: <String>['VAR', 'YOK'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (_) {
+                                // TODO Sertifika var veya yok
+                              },
+                            ),
+                          ),
+                        ),
+                        rowItemSpace(),
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: DropdownButtonFormField<String>(
+                                decoration: InputDecoration(
+                                  labelText: "Bilet sayısı",
+                                  border: singleOutlineBorder,
                                 ),
-                                items: <String>['VAR', 'YOK']
+                                items: <String>['1', '2', '3', '4']
                                     .map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -374,84 +457,79 @@ class _PostSharePageState extends State<PostSharePage> {
                                   );
                                 }).toList(),
                                 onChanged: (_) {
-                                  // TODO Sertifika var veya yok
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: DropdownButtonFormField<String>(
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                  ),
-                                  items: <String>['1', '2', '3', '4']
-                                      .map((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (_) {
-                                    // todo Bilet adedi
-                                  }),
-                            ),
-                          ],
+                                  // todo Bilet adedi
+                                }),
+                          ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Ücretsiz Bilet'),
-                                value: SingingCharacter.free,
-                                groupValue: _character3,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character3 = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: RadioListTile<SingingCharacter>(
-                                title: const Text('Ücretli Bilet'),
-                                value: SingingCharacter.paid,
-                                groupValue: _character3,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _character3 = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Ücretsiz Bilet'),
+                            value: SingingCharacter.free,
+                            groupValue: _character3,
+                            onChanged: (value) {
+                              setState(() {
+                                _character3 = value!;
+                              });
+                            },
+                          ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Expanded(
-                              child: DropdownButtonFormField<String>(
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                ),
-                                items: <String>['Gerekiyor', 'Gerekmiyor']
-                                    .map((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                                onChanged: (_) {
-                                  // todo CV gerekliliği
-                                },
+                        Expanded(
+                          child: RadioListTile<SingingCharacter>(
+                            title: const Text('Ücretli Bilet'),
+                            value: SingingCharacter.paid,
+                            groupValue: _character3,
+                            onChanged: (value) {
+                              setState(() {
+                                _character3 = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: DropdownButtonFormField<String>(
+                              decoration: InputDecoration(
+                                labelText: "CV",
+                                border: singleOutlineBorder,
                               ),
+                              items: <String>['Gerekiyor', 'Gerekmiyor']
+                                  .map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (_) {
+                                // todo CV gerekliliği
+                              },
                             ),
-                            Expanded(
+                          ),
+                        ),
+                        Visibility(
+                          visible: _character3==SingingCharacter.free,
+                          child: rowItemSpace(),
+                        ),
+                        Visibility(
+                          visible: _character3==SingingCharacter.free,
+                          child: Expanded(
+                            child: Container(
+                              decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
+                                  decoration: InputDecoration(
+                                    border: singleOutlineBorder,
                                   ),
-                                  icon: const Icon(
-                                      Icons.keyboard_arrow_down),
+                                  icon: const Icon(Icons.keyboard_arrow_down),
                                   items: <String>[
                                     'Ücretsiz',
                                     '50 TL',
@@ -467,140 +545,141 @@ class _PostSharePageState extends State<PostSharePage> {
                                     // todo Bilet ücreti
                                   }),
                             ),
-                          ],
+                          ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const <Widget>[
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 100,
-                                  fallbackWidth: 100,
-                                ),
-                              ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 100,
+                              fallbackWidth: 100,
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 100,
-                                  fallbackWidth: 100,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 75,
-                                  fallbackWidth: 75,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    autofocus: false,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
-                                    decoration: const InputDecoration(
-                                      labelText: 'Sponsorlar',
-                                      border: OutlineInputBorder(),
-                                      contentPadding:
-                                          EdgeInsets.symmetric(
-                                              vertical: 50.0,
-                                              horizontal: 20.0),
-                                    ),
-                                    onSaved: (val) {
-                                      // TODO sponsor bilgisi
-                                    }),
-                              ),
-                            ),
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 30,
-                                  fallbackWidth: 10,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    autofocus: false,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
-                                    decoration: const InputDecoration(
-                                      labelText: 'Koordinatörler',
-                                      border: OutlineInputBorder(),
-                                      contentPadding:
-                                          EdgeInsets.symmetric(
-                                              vertical: 50.0,
-                                              horizontal: 20.0),
-                                    ),
-                                    onSaved: (val) {
-                                      // TODO kordinator bilgisi
-                                    }),
-                              ),
-                            ),
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Placeholder(
-                                  fallbackHeight: 30,
-                                  fallbackWidth: 10,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                         Expanded(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                final form = _formKey.currentState;
-                                if (form!.validate()) {
-                                  form.save();
-                                  // _post.save();
-                                  // todo post_model.dart ile birleştirme yapılacak
-                                  // todo önizleme ekranı oluşturulacak
-                                  _showDialog(context);
-                                }
-                              },
-                              child: const Text('Önizle')),
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 100,
+                              fallbackWidth: 100,
+                            ),
+                          ),
                         ),
                         Expanded(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                final form = _formKey.currentState;
-                                if (form!.validate()) {
-                                  form.save();
-                                  //post.save();
-                                  // todo post_model.dart ile birleştirme yapılacak
-                                  _showDialog(context);
-                                }
-                              },
-                              child: const Text('Kaydet')),
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 75,
+                              fallbackWidth: 75,
+                            ),
+                          ),
                         ),
-                      ]),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: singleContainerDecoration,
+                            child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                autofocus: false,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                                decoration: InputDecoration(
+                                  labelText: 'Sponsorlar',
+                                  border: singleOutlineBorder,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 50.0, horizontal: 20.0),
+                                ),
+                                onSaved: (val) {
+                                  // TODO sponsor bilgisi
+                                }),
+                          ),
+                        ),
+                        const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Placeholder(
+                              fallbackHeight: 30,
+                              fallbackWidth: 10,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              decoration: singleContainerDecoration,
+                              child: TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  autofocus: false,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                  decoration: InputDecoration(
+                                    labelText: 'Koordinatörler',
+                                    border: singleOutlineBorder,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 50.0, horizontal: 20.0),
+                                  ),
+                                  onSaved: (val) {
+                                    // TODO kordinator bilgisi
+                                  }),
+                            ),
+                          ),
+                          const Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Placeholder(
+                                fallbackHeight: 30,
+                                fallbackWidth: 10,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            final form = _formKey.currentState;
+                            if (form!.validate()) {
+                              form.save();
+                              // _post.save();
+                              // todo post_model.dart ile birleştirme yapılacak
+                              // todo önizleme ekranı oluşturulacak
+                              _showDialog(context);
+                            }
+                          },
+                          child: const Text('Önizle')),
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            final form = _formKey.currentState;
+                            if (form!.validate()) {
+                              form.save();
+                              //post.save();
+                              // todo post_model.dart ile birleştirme yapılacak
+                              _showDialog(context);
+                            }
+                          },
+                          child: const Text('Kaydet')),
+                    ),
+                  ]),
                 ))));
   }
 
