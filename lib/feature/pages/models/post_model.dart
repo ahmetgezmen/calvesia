@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'comments_model.dart';
 import 'coordinators_model.dart';
+import 'event_image_list_model.dart';
 import 'sponsor_model.dart';
 import 'stream_time_model.dart';
 
@@ -54,8 +55,9 @@ class PostModel {
     int? price,
     String? postOwner,
     int? followersNumber,
-    Sponsors? sponsors, // bunlar eklenmedi
-    Coordinators? coordinators, // bunlar eklenmedi
+    Sponsors? sponsors,
+    EventImageListModel? eventImageListModel,
+    Coordinators? coordinators,
     Comments? comments, // bunlar eklenmedi
     StreamTime? streamTime,
   }) {
@@ -82,6 +84,7 @@ class PostModel {
     _postOwner = postOwner;
     _followersNumber = followersNumber;
     _sponsors = sponsors;
+    _eventImageListModel = eventImageListModel;
     _coordinators = coordinators;
     _comments = comments;
     _streamTime = streamTime;
@@ -112,6 +115,9 @@ class PostModel {
     _followersNumber = json['followersNumber'];
     _sponsors = json['sponsors'] != null
         ? Sponsors.fromJson(json['sponsors'])
+        : null;
+    _eventImageListModel = json['eventImageListModel'] != null
+        ? EventImageListModel.fromJson(json['eventImageListModel'])
         : null;
     _coordinators = json['coordinators'] != null
         ? Coordinators.fromJson(json['coordinators'])
@@ -145,6 +151,7 @@ class PostModel {
   String? _postOwner;
   int? _followersNumber;
   Sponsors? _sponsors;
+  EventImageListModel? _eventImageListModel;
   Coordinators? _coordinators;
   Comments? _comments;
   StreamTime? _streamTime;
@@ -172,6 +179,7 @@ class PostModel {
     String? postOwner,
     int? followersNumber,
     Sponsors? sponsors,
+    EventImageListModel? eventImageListModel,
     Coordinators? coordinators,
     Comments? comments,
     StreamTime? streamTime,
@@ -201,6 +209,7 @@ class PostModel {
         postOwner: postOwner ?? _postOwner,
         followersNumber: followersNumber ?? _followersNumber,
         sponsors: sponsors ?? _sponsors,
+        eventImageListModel: eventImageListModel ?? _eventImageListModel,
         coordinators: coordinators ?? _coordinators,
         comments: comments ?? _comments,
         streamTime: streamTime ?? _streamTime,
@@ -228,6 +237,7 @@ class PostModel {
   String? get postOwner => _postOwner;
   int? get followersNumber => _followersNumber;
   Sponsors? get sponsors => _sponsors;
+  EventImageListModel? get eventImageListModel => _eventImageListModel;
   Coordinators? get coordinators => _coordinators;
   Comments? get comments => _comments;
   StreamTime? get streamTime => _streamTime;
@@ -259,6 +269,9 @@ class PostModel {
     if (_sponsors != null) {
       map['sponsors'] = _sponsors?.toJson();
     }
+    if (_eventImageListModel != null) {
+      map['eventImageListModel'] = _eventImageListModel?.toJson();
+    }
     if (_coordinators != null) {
       map['coordinators'] = _coordinators?.toJson();
     }
@@ -270,6 +283,12 @@ class PostModel {
     }
     return map;
   }
+
+  void setEventImageListModel(EventImageListModel eventImageListModel) {
+    _eventImageListModel = eventImageListModel;
+  }
+
+
 }
 
 //

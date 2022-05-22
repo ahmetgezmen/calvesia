@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:calvesia/feature/pages/services/image_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,14 @@ DatabaseReference ref = FirebaseDatabase.instance.ref("posts");
 String uid = FirebaseAuth.instance.currentUser!.uid;
 
 class PostServices {
-  static Future<bool> addPostServices(context, PostModel post, key, PostIsSharingProvider provider ) async {
+  static Future<bool> addPostServices(
+      context, PostModel post, key, PostIsSharingProvider provider) async {
     try {
       LoadingWidgetButton(context);
 
-      await FirebaseDatabase.instance.ref("posts/$key").update(jsonDecode(postModelToJson(post)));
+      await FirebaseDatabase.instance
+          .ref("posts/$key")
+          .update(jsonDecode(postModelToJson(post)));
 
       // await ref.push().set(jsonDecode(postModelToJson(post)));
       Navigator.of(context).pop();
@@ -27,6 +31,15 @@ class PostServices {
       return true;
     } on Error {
       await PostShareFailedButton(context);
+      return false;
+    }
+  }
+
+  static updatePostService(PostModel post, String key) {
+    try {
+      FirebaseDatabase.instance.ref("posts/$key").update(jsonDecode(postModelToJson(post)));
+      return true;
+    } catch (e) {
       return false;
     }
   }

@@ -1,3 +1,4 @@
+import 'package:calvesia/feature/pages/models/event_image_list_model.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,12 +10,18 @@ import '../pages/models/sponsor_model.dart';
 import '../pages/models/stream_time_model.dart';
 
 class PostIsSharingProvider extends ChangeNotifier{
+  String _postKey = "";
   bool _isShare = false;
   void setIsShare(bool value){
     _isShare = value;
     notifyListeners();
   }
+  void setPostKey(String val){
+    _postKey=val;
+    notifyListeners();
+  }
   bool get getIsShare => _isShare;
+  String get getPostKey => getPostKey;
 }
 
 class PostShareProvider extends ChangeNotifier {
@@ -45,6 +52,7 @@ class PostShareProvider extends ChangeNotifier {
 
   Future<bool> addPost(context, key, PostIsSharingProvider provider ) async {
     PostModel post = PostModel(
+      eventImageListModel: EventImageListModel(eventImageList: []),
       isAktive: _isAktive,
       isNeedCV: _isNeedCV,
       isOnline: _isOnline,

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Utils/Style/color_palette.dart';
+import 'event_photo_component.dart';
 
 enum SingingCharacter { privetEvent, publicEvent, online, platform, free, paid }
 
@@ -147,7 +148,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     category = "education";
                                     break;
                                 }
-                                provider.setCategory(val.toString());
+                                provider.setCategory(category);
                               },
                             ),
                           ),
@@ -499,68 +500,40 @@ class _PostSharePageState extends State<PostSharePage> {
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const <Widget>[
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 100,
-                                    fallbackWidth: 100,
+                          EventPageComponent(postKey: widget.postKey, title: "Etkinlik Fotoğrafları", indexs: [1,2,3]),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: Container(
+                              decoration: singleContainerDecoration,
+                              child: TextFormField(
+                                  autofocus: false,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                  decoration: InputDecoration(
+                                    labelText: 'Etkinlik açıklaması',
+                                    border: singleOutlineBorder,
+                                    disabledBorder: singleOutlineBorder,
+                                    errorBorder: singleOutlineBorder,
+                                    focusedBorder: singleOutlineBorder,
+                                    enabledBorder: singleOutlineBorder,
+                                    focusedErrorBorder: singleOutlineBorder,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 50.0, horizontal: 10.0),
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 100,
-                                    fallbackWidth: 100,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 75,
-                                    fallbackWidth: 75,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            decoration: singleContainerDecoration,
-                            child: TextFormField(
-                                autofocus: false,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.black),
-                                decoration: InputDecoration(
-                                  labelText: 'Etkinlik açıklaması',
-                                  border: singleOutlineBorder,
-                                  disabledBorder: singleOutlineBorder,
-                                  errorBorder: singleOutlineBorder,
-                                  focusedBorder: singleOutlineBorder,
-                                  enabledBorder: singleOutlineBorder,
-                                  focusedErrorBorder: singleOutlineBorder,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 50.0, horizontal: 10.0),
-                                ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return '        Lütfen etkinlik açıklaması giriniz !';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (val) {
-                                  provider.setDescription(val.toString());
-                                }),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return '        Lütfen etkinlik açıklaması giriniz !';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (val) {
+                                    provider.setDescription(val.toString());
+                                  }),
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
                             child: Container(
                               decoration: singleContainerDecoration,
                               child: TextFormField(
@@ -686,174 +659,149 @@ class _PostSharePageState extends State<PostSharePage> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  decoration: singleContainerDecoration,
-                                  child: DropdownButtonFormField<String>(
-                                    value: "Gerekmiyor",
-                                    decoration: InputDecoration(
-                                      labelText: "CV",
-                                      border: singleOutlineBorder,
-                                      disabledBorder: singleOutlineBorder,
-                                      errorBorder: singleOutlineBorder,
-                                      focusedBorder: singleOutlineBorder,
-                                      enabledBorder: singleOutlineBorder,
-                                      focusedErrorBorder: singleOutlineBorder,
-                                    ),
-                                    items: <String>['Gerekiyor', 'Gerekmiyor']
-                                        .map((String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(value),
-                                      );
-                                    }).toList(),
-                                    onChanged: (_) {},
-                                    onSaved: (val) {
-                                      provider.setIsNeedCV(
-                                          val == "Gerekmiyor" ? false : true);
-                                    },
-                                  ),
-                                ),
-                              ),
-                              Visibility(
-                                visible: _character3 == SingingCharacter.paid,
-                                child: rowItemSpace(),
-                              ),
-                              Visibility(
-                                visible: _character3 == SingingCharacter.paid,
-                                child: Expanded(
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Expanded(
                                   child: Container(
                                     decoration: singleContainerDecoration,
                                     child: DropdownButtonFormField<String>(
-                                        value: "Ücretsiz",
-                                        onSaved: (newValue) {
-                                          late final int price;
-                                          switch (newValue) {
-                                            case "Ücretsiz":
-                                              price = 0;
-                                              break;
-                                            case "50 TL":
-                                              price = 50;
-                                              break;
-                                            case "100 TL":
-                                              price = 100;
-                                              break;
-                                            case "150 TL":
-                                              price = 150;
-                                              break;
-                                          }
-                                          provider.setPrice(price);
-                                        },
-                                        decoration: InputDecoration(
-                                          labelText: "Bilet Ucreti",
-                                          border: singleOutlineBorder,
-                                          disabledBorder: singleOutlineBorder,
-                                          errorBorder: singleOutlineBorder,
-                                          focusedBorder: singleOutlineBorder,
-                                          enabledBorder: singleOutlineBorder,
-                                          focusedErrorBorder:
-                                              singleOutlineBorder,
-                                        ),
-                                        icon: const Icon(
-                                            Icons.keyboard_arrow_down),
-                                        items: <String>[
-                                          'Ücretsiz',
-                                          '50 TL',
-                                          '100 TL',
-                                          '150 TL'
-                                        ].map((String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(value),
-                                          );
-                                        }).toList(),
-                                        onChanged: (_) {}),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const <Widget>[
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 100,
-                                    fallbackWidth: 100,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 100,
-                                    fallbackWidth: 100,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 75,
-                                    fallbackWidth: 75,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  decoration: singleContainerDecoration,
-                                  child: TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    autofocus: false,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
-                                    decoration: InputDecoration(
-                                      helperText:
-                                          "   Boşluk bırakmadan\n   virgül ile ayırın",
-                                      labelText: 'Sponsorlar',
-                                      border: singleOutlineBorder,
-                                      disabledBorder: singleOutlineBorder,
-                                      errorBorder: singleOutlineBorder,
-                                      focusedBorder: singleOutlineBorder,
-                                      enabledBorder: singleOutlineBorder,
-                                      focusedErrorBorder: singleOutlineBorder,
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              vertical: 50.0, horizontal: 20.0),
+                                      value: "Gerekmiyor",
+                                      decoration: InputDecoration(
+                                        labelText: "CV",
+                                        border: singleOutlineBorder,
+                                        disabledBorder: singleOutlineBorder,
+                                        errorBorder: singleOutlineBorder,
+                                        focusedBorder: singleOutlineBorder,
+                                        enabledBorder: singleOutlineBorder,
+                                        focusedErrorBorder: singleOutlineBorder,
+                                      ),
+                                      items: <String>['Gerekiyor', 'Gerekmiyor']
+                                          .map((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                      onChanged: (_) {},
+                                      onSaved: (val) {
+                                        provider.setIsNeedCV(
+                                            val == "Gerekmiyor" ? false : true);
+                                      },
                                     ),
-                                    onSaved: (val) {
-                                      if (val!.isNotEmpty) {
-                                        final List<String> _sponsor =
-                                            val.split(",");
-                                        provider.setSponsors(_sponsor);
-                                      }
-                                    },
                                   ),
                                 ),
-                              ),
-                              const Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20.0),
-                                  child: Placeholder(
-                                    fallbackHeight: 30,
-                                    fallbackWidth: 10,
+                                Visibility(
+                                  visible: _character3 == SingingCharacter.paid,
+                                  child: rowItemSpace(),
+                                ),
+                                Visibility(
+                                  visible: _character3 == SingingCharacter.paid,
+                                  child: Expanded(
+                                    child: Container(
+                                      decoration: singleContainerDecoration,
+                                      child: DropdownButtonFormField<String>(
+                                          value: "Ücretsiz",
+                                          onSaved: (newValue) {
+                                            late final int price;
+                                            switch (newValue) {
+                                              case "Ücretsiz":
+                                                price = 0;
+                                                break;
+                                              case "50 TL":
+                                                price = 50;
+                                                break;
+                                              case "100 TL":
+                                                price = 100;
+                                                break;
+                                              case "150 TL":
+                                                price = 150;
+                                                break;
+                                            }
+                                            provider.setPrice(price);
+                                          },
+                                          decoration: InputDecoration(
+                                            labelText: "Bilet Ucreti",
+                                            border: singleOutlineBorder,
+                                            disabledBorder: singleOutlineBorder,
+                                            errorBorder: singleOutlineBorder,
+                                            focusedBorder: singleOutlineBorder,
+                                            enabledBorder: singleOutlineBorder,
+                                            focusedErrorBorder:
+                                                singleOutlineBorder,
+                                          ),
+                                          icon: const Icon(
+                                              Icons.keyboard_arrow_down),
+                                          items: <String>[
+                                            'Ücretsiz',
+                                            '50 TL',
+                                            '100 TL',
+                                            '150 TL'
+                                          ].map((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                          onChanged: (_) {}),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ),
+                          EventPageComponent(postKey: widget.postKey,title: "Afiş Fotoğrafları", indexs: [4,5,6]),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    decoration: singleContainerDecoration,
+                                    child: TextFormField(
+                                      keyboardType: TextInputType.text,
+                                      autofocus: false,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          color: Colors.black),
+                                      decoration: InputDecoration(
+                                        helperText:
+                                            "   Boşluk bırakmadan\n   virgül ile ayırın",
+                                        labelText: 'Sponsorlar',
+                                        border: singleOutlineBorder,
+                                        disabledBorder: singleOutlineBorder,
+                                        errorBorder: singleOutlineBorder,
+                                        focusedBorder: singleOutlineBorder,
+                                        enabledBorder: singleOutlineBorder,
+                                        focusedErrorBorder: singleOutlineBorder,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 50.0, horizontal: 20.0),
+                                      ),
+                                      onSaved: (val) {
+                                        if (val!.isNotEmpty) {
+                                          final List<String> _sponsor =
+                                              val.split(",");
+                                          provider.setSponsors(_sponsor);
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                const Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(20.0),
+                                    child: Placeholder(
+                                      fallbackHeight: 30,
+                                      fallbackWidth: 10,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
