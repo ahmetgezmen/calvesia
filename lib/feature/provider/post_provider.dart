@@ -50,8 +50,9 @@ class PostShareProvider extends ChangeNotifier {
   Sponsors? _sponsors;
   Coordinators? _coordinators;
 
-  Future<bool> addPost(context, key, PostIsSharingProvider provider ) async {
+  Future<bool> addPost(context, key, PostIsSharingProvider provider, postKey ) async {
     PostModel post = PostModel(
+      postKey: postKey,
       eventImageListModel: EventImageListModel(eventImageList: []),
       isAktive: _isAktive,
       isNeedCV: _isNeedCV,

@@ -49,6 +49,7 @@ class PostModel {
     String? platformLink,
     String? image,
     String? description,
+    String? postKey,
     bool? isCertificated,
     int? ticketNumber,
     int? viewNumber,
@@ -77,6 +78,7 @@ class PostModel {
     _platformLink = platformLink;
     _image = image;
     _description = description;
+    _postKey = postKey;
     _isCertificated = isCertificated;
     _ticketNumber = ticketNumber;
     _viewNumber = viewNumber;
@@ -107,6 +109,7 @@ class PostModel {
     _platformLink = json['platformLink'];
     _image = json['image'];
     _description = json['description'];
+    _postKey = json['postKey'];
     _isCertificated = json['isCertificated'];
     _ticketNumber = json['ticketNumber'];
     _viewNumber = json['viewNumber'];
@@ -144,6 +147,7 @@ class PostModel {
   String? _platformLink;
   String? _image;
   String? _description;
+  String? _postKey;
   bool? _isCertificated;
   int? _ticketNumber;
   int? _viewNumber;
@@ -172,6 +176,7 @@ class PostModel {
     String? platformLink,
     String? image,
     String? description,
+    String? postKey,
     bool? isCertificated,
     int? ticketNumber,
     int? viewNumber,
@@ -202,6 +207,7 @@ class PostModel {
         platformLink: platformLink ?? _platformLink,
         image: image ?? _image,
         description: description ?? _description,
+        postKey: postKey ?? _postKey,
         isCertificated: isCertificated ?? _isCertificated,
         ticketNumber: ticketNumber ?? _ticketNumber,
         viewNumber: viewNumber ?? _viewNumber,
@@ -230,6 +236,7 @@ class PostModel {
   String? get platformLink => _platformLink;
   String? get image => _image;
   String? get description => _description;
+  String? get postKey => _postKey;
   bool? get isCertificated => _isCertificated;
   int? get ticketNumber => _ticketNumber;
   int? get viewNumber => _viewNumber;
@@ -259,6 +266,7 @@ class PostModel {
     map['location'] = _location;
     map['platformLink'] = _platformLink;
     map['image'] = _image;
+    map['postKey'] = _postKey;
     map['description'] = _description;
     map['isCertificated'] = _isCertificated;
     map['ticketNumber'] = _ticketNumber;

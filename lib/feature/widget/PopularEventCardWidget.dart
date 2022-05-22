@@ -1,4 +1,5 @@
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:calvesia/feature/pages/services/image_services.dart';
 import 'package:flutter/material.dart';
 
 import '../../Utils/Style/color_palette.dart';
@@ -37,14 +38,38 @@ class _PopularEventCardState extends State<PopularEventCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: BaseColorPalet.upcomingCardContainer,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(15.0),
-                    ),
-                  ),
-                ),
+                child:
+                FutureBuilder(
+                    future: ImageServices.getPostImageServices(post.postKey, 1),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return Stack(
+                          children: [
+                        Container(
+                        decoration: const BoxDecoration(
+                        color: BaseColorPalet.upcomingCardContainer,
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(15.0),
+                          ),
+                        ),
+                      ),
+                            Center(child: Image(image: MemoryImage(snapshot.data))),
+                          ],
+                        );
+                      } else if (snapshot.hasError) {
+                        return Container(
+                          decoration: const BoxDecoration(
+                            color: BaseColorPalet.upcomingCardContainer,
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(15.0),
+                            ),
+                          ),
+                        );
+                      } else {
+                        return const CircularProgressIndicator(
+                        );
+                      }
+                    }),
               ),
               Expanded(
                 child: Padding(

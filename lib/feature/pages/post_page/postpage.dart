@@ -896,7 +896,8 @@ class _PostSharePageState extends State<PostSharePage> {
                                             await provider.addPost(
                                                 context,
                                                 widget.postKey,
-                                                widget.postIsSharingProvider);
+                                                widget.postIsSharingProvider,
+                                            widget.postKey);
                                         Navigator.of(context).pop(_result);
                                       }
                                     },
