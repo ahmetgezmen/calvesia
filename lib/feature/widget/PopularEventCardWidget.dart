@@ -38,38 +38,49 @@ class _PopularEventCardState extends State<PopularEventCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child:
-                FutureBuilder(
-                    future: ImageServices.getPostImageServices(post.postKey, 1),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        return Stack(
-                          children: [
-                        Container(
+                child: post.postKey == null
+                    ? Container(
                         decoration: const BoxDecoration(
-                        color: BaseColorPalet.upcomingCardContainer,
+                          color: BaseColorPalet.upcomingCardContainer,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(15.0),
                           ),
                         ),
-                      ),
-                            Center(child: Image(image: MemoryImage(snapshot.data))),
-                          ],
-                        );
-                      } else if (snapshot.hasError) {
-                        return Container(
-                          decoration: const BoxDecoration(
-                            color: BaseColorPalet.upcomingCardContainer,
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(15.0),
-                            ),
-                          ),
-                        );
-                      } else {
-                        return const CircularProgressIndicator(
-                        );
-                      }
-                    }),
+                      )
+                    : FutureBuilder(
+                        future:
+                            ImageServices.getPostImageServices(post.postKey, 1),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasData) {
+                            return Stack(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    color: BaseColorPalet.upcomingCardContainer,
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(15.0),
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                    child: Image(
+                                        image: MemoryImage(snapshot.data))),
+                              ],
+                            );
+                          } else if (snapshot.hasError) {
+                            return Container(
+                              decoration: const BoxDecoration(
+                                color: BaseColorPalet.upcomingCardContainer,
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(15.0),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        }),
               ),
               Expanded(
                 child: Padding(
