@@ -12,7 +12,6 @@ import 'profile_page_screen_widgets/privacy_policy_widget.dart';
 import 'profile_page_screen_widgets/tickets_widget.dart';
 import 'profile_page_screen_widgets/calender_widget.dart';
 
-
 class ProfilePageAppBarr extends StatelessWidget {
   const ProfilePageAppBarr({Key? key}) : super(key: key);
 
@@ -77,7 +76,7 @@ class ProfilePage extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
                 ? const Size.fromHeight(230.0)
-                : const Size.fromHeight(305.0),
+                : const Size.fromHeight(307.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
