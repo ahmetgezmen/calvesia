@@ -10,15 +10,7 @@ class CalenderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Consumer<PostIsSharingProvider>(
-          builder: (context, provider, child) {
-            return ElevatedButton(onPressed: () {
-              openPostPage(context, provider);
-            }, child: Text("child"));
-          },
-        ),
-      ],
+      children: [],
     );
   }
 }
