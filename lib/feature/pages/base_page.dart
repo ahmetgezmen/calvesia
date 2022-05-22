@@ -13,8 +13,8 @@ import 'view/explore_page.dart';
 import 'view/favorite_page.dart';
 import 'view/home_page.dart';
 
-class BasePageMiddleWawe extends StatelessWidget {
-  const BasePageMiddleWawe({Key? key}) : super(key: key);
+class BasePageMiddleWave extends StatelessWidget {
+  const BasePageMiddleWave({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +73,8 @@ class _BasePageState extends State<BasePage> {
                 children: [
                   HeaderComponent(searchController: searchController),
                   Expanded(
+                    key: _parentKey,
                     child: Stack(
-                      key: _parentKey,
                       children: [
                         _widgetOptions.elementAt(_selectedIndex),
                         DraggableFloatingActionButton(
@@ -93,7 +93,7 @@ class _BasePageState extends State<BasePage> {
                                 Icons.add, color: Colors.white,),
                             ),
                           ),
-                          initialOffset: const Offset(120, 70),
+                          initialOffset: const Offset(0, 30),
                           parentKey: _parentKey,
                           onPressed: () {},
                         ),
@@ -122,7 +122,7 @@ class BottomNavigationBarWidget extends StatefulWidget {
   final Function(int index) onItemTapped;
   final int selectedIndex;
 
-  BottomNavigationBarWidget(
+  const BottomNavigationBarWidget(
       {Key? key, required this.onItemTapped, required this.selectedIndex})
       : super(key: key);
 
@@ -180,7 +180,7 @@ class _DraggableFloatingActionButtonState
     super.initState();
     _offset = widget.initialOffset;
 
-    WidgetsBinding.instance?.addPostFrameCallback(_setBoundary);
+    WidgetsBinding.instance.addPostFrameCallback(_setBoundary);
   }
 
   void _setBoundary(_) {

@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         theme: BASEThemeData(),
         home: FirebaseAuth.instance.currentUser != null
-            ? BasePageMiddleWawe()
-            : OnboardingPage(),
+            ? const BasePageMiddleWave()
+            : const OnboardingPage(),
       ),
     );
   }
