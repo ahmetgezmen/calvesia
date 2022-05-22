@@ -10,7 +10,6 @@ import 'view/explore_page.dart';
 import 'view/favorite_page.dart';
 import 'view/home_page.dart';
 
-
 class BasePageMiddleWawe extends StatelessWidget {
   const BasePageMiddleWawe({Key? key}) : super(key: key);
 
@@ -18,12 +17,13 @@ class BasePageMiddleWawe extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HeaderProvider>(
       builder: (context, provider, child) {
-        return BasePage(provider: provider,);
+        return BasePage(
+          provider: provider,
+        );
       },
     );
   }
 }
-
 
 class BasePage extends StatefulWidget {
   final HeaderProvider provider;
@@ -75,8 +75,8 @@ class _BasePageState extends State<BasePage> {
               final bool result = value.isShowNavigationButton;
               return result
                   ? BottomNavigationBarWidget(
-                  onItemTapped: _onItemTapped,
-                  selectedIndex: _selectedIndex)
+                      onItemTapped: _onItemTapped,
+                      selectedIndex: _selectedIndex)
                   : const ProfilePageAppBarr();
             },
           )),

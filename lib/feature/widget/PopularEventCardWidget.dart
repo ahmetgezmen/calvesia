@@ -30,7 +30,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
-      elevation: 5,
+      elevation: 10,
       child: Center(
         child: SizedBox(
           width: 250,
