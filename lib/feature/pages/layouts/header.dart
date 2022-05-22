@@ -11,7 +11,8 @@ import '../profile_page/profile_page.dart';
 
 class HeaderComponent extends StatefulWidget {
   final TextEditingController searchController;
-  const HeaderComponent({Key? key, required this.searchController}) : super(key: key);
+  const HeaderComponent({Key? key, required this.searchController})
+      : super(key: key);
 
   @override
   State<HeaderComponent> createState() => _HeaderComponentState();
@@ -73,8 +74,10 @@ class _HeaderComponentState extends State<HeaderComponent> {
                     ],
                   ),
                   IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none))
+                    onPressed: () {},
+                    icon: const Icon(Icons.notifications_none),
+                    color: Colors.white,
+                  )
                 ],
               ),
               Padding(
