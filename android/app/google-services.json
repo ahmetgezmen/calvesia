@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "60873839031",
+    "firebase_url": "https://calvesia-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "calvesia",
+    "storage_bucket": "calvesia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60873839031:android:bf900f656985b16dc69832",
+        "android_client_info": {
+          "package_name": "com.calvesia.calvesia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60873839031-gm848134haog9k4d3nfc3cq2hkmck8sj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.calvesia.calvesia",
+            "certificate_hash": "34557b66aa936fc3dfdadae2f05effb7abaa787f"
+          }
+        },
+        {
+          "client_id": "60873839031-rmc6u9rbnvnhgcq1ru2m10461dh4hk9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF1bs0tAhdxYsLBSht-D0caKaoXL9pTmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60873839031-rmc6u9rbnvnhgcq1ru2m10461dh4hk9p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "60873839031-26r0taqfrcl4ikgtpj8o1r3i2l3vrrjo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.calvesia.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
