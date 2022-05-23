@@ -16,6 +16,19 @@ class UserVievModel extends ChangeNotifier{
     location: Location(),
     schools: Schools(),
   );
+
+  setSchoolFaculty(val){
+    user.schools!.setFaculty(val);
+    notifyListeners();
+  }
+  setSchoolClassNumber(val){
+    user.schools!.setClassNumber(val);
+    notifyListeners();
+  }
+  setSchoolName(val){
+    user.schools!.setName(val);
+    notifyListeners();
+  }
   setUserName(val){
     user.setUserName(val);
     notifyListeners();

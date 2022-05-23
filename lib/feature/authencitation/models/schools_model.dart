@@ -16,6 +16,9 @@ class Schools {
     _faculty = faculty;
     _classNumber = classNumber;
   }
+  void setName(val){_name=val;}
+  void setFaculty(val){_faculty=val;}
+  void setClassNumber(val){_classNumber=val;}
 
   Schools.fromJson(dynamic json) {
     _name = json['name'];

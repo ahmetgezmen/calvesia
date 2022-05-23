@@ -243,7 +243,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                // TODO
+                                provider.setSchoolName(val);
                               }),
                         ),
                       ),
