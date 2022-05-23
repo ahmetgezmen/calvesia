@@ -107,7 +107,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               return null;
                             },
                             onSaved: (val) {
-                              // TODO
+                              provider.setUserName(val);
                             }),
                       ),
                       Padding(
@@ -135,7 +135,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                // TODO
+                                provider.setFname(val);
                               }),
                         ),
                       ),
@@ -271,7 +271,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               return null;
                             },
                             onSaved: (val) {
-                              // TODO
+                              provider.setPhone(val);
                             }),
                       ),
                       Padding(
@@ -300,7 +300,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                // TODO
+                                provider.setPassword(val);
                               }),
                         ),
                       ),

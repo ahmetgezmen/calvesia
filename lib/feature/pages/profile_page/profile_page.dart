@@ -84,6 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
       length: 4,
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset : false,
           appBar: PreferredSize(
             preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
                 ? const Size.fromHeight(230.0)

@@ -16,7 +16,22 @@ class UserVievModel extends ChangeNotifier{
     location: Location(),
     schools: Schools(),
   );
-
+  setUserName(val){
+    user.setUserName(val);
+    notifyListeners();
+  }
+  setFname(val){
+    user.setFname(val);
+    notifyListeners();
+  }
+  setPhone(val){
+    user.setPhone(val);
+    notifyListeners();
+  }
+  setPassword(val){
+    user.setPassword(val);
+    notifyListeners();
+  }
   userFetch() async {
     user = await UserServices.getUserInfoServices(FirebaseAuth.instance.currentUser?.uid);
     notifyListeners();

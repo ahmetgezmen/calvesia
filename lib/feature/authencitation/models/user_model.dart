@@ -141,6 +141,19 @@ UserModel copyWith({
   Schools? get schools => _schools;
   String? get phone => _phone;
 
+  void setUserName(val){
+    _username = val;
+  }
+  void setFname(val){
+    _fname = val;
+  }
+  void setPhone(val){
+    _phone = val;
+  }
+  void setPassword(val){
+    _password = val;
+  }
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['isAktive'] = _isAktive;
