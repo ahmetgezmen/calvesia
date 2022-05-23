@@ -54,7 +54,7 @@
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in 100 ile başlaması gerektiğine karar verildi.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/ba94d18bfb71a6e778480aac42da0b182e86490b) /
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/ba94d18bfb71a6e778480aac42da0b182e86490b) /
 [Sprint 1 Daily Scrum 2 Chats](https://github.com/merveguhan/Sprint-deneme/commit/0651306cc381eb80b9c396576a3fc3f2ce82a597)
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
@@ -110,7 +110,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 100 puan ile devam etmesi gerektiğine karar verildi.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/52c9667285eaf6e82c989f55787455936701ae10)
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/52c9667285eaf6e82c989f55787455936701ae10)
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz öncelikli yapılacak story'lere göre düzenlenmiştir. Sprint başında tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
 
@@ -133,9 +133,6 @@ Aşamalı ekran görünümleri
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
-
-
-
   ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image1.jpeg)
   ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image2.jpeg)
   ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image3.jpeg) 
@@ -150,8 +147,8 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 
 - **Sprint Retrospective:**
-  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında backlog sadeleştirilmeli kararı alınmıştır.
-  - Daily Scrum için iki günde bir kez 15 dakikalık görüşme yapılmalı kararı alınmıştır.
+  - Daily Scrum toplantılarının başında takımın her üyesi bir önceki toplantıda üstlendiği görev hakkında bilgi vermeli, toplantı sonunda ise bir sonraki toplantıya kadar hangi görevi almak istediğini söylemeli kararı alınmıştır.
+  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır.
 
 -**Diğer Notlar**:
 - Yok
