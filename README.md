@@ -148,7 +148,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Sprint Retrospective:**
   - Daily Scrum toplantılarının başında takımın her üyesi bir önceki toplantıda üstlendiği görev hakkında bilgi vermeli, toplantı sonunda ise bir sonraki toplantıya kadar hangi görevi almak istediğini söylemeli kararı alınmıştır.
-  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır.
+  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır kararı alınmıştır.
 
 -**Diğer Notlar**:
 - Yok
