@@ -42,6 +42,34 @@ class ImageServices {
     }
   }
 
+  static putPostImageInGallery(String key, String index) async {
+    final storage = FirebaseStorage.instance;
+    final ppicsRef = storage.ref("post/ppics/$key");
+
+    XFile? xFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (xFile == null) {
+      return;
+    } else {
+      final imagePath = xFile.path;
+      await ppicsRef.child('$index$key.jpg').putFile(File(imagePath));
+      final fullPath = ppicsRef.child('$index$key.jpg').fullPath;
+      PostModel dataBasePost = await PostServices.getPostServidces(key);
+      if (dataBasePost.eventImageListModel == null) {
+        dataBasePost.setEventImageListModel(
+            EventImageListModel(eventImageList: [fullPath]));
+      } else {
+        if (dataBasePost.eventImageListModel!.eventImageList!
+            .contains(fullPath) ==
+            false) {
+          dataBasePost.eventImageListModel!.eventImageList!.add(fullPath);
+        }
+      }
+      await FirebaseDatabase.instance
+          .ref("posts/$key")
+          .update(jsonDecode(postModelToJson(dataBasePost)));
+    }
+  }
+
   static getPostImageServices(key, index) async {
     Uint8List? uint8List = await FirebaseStorage.instance
         .ref("post/ppics/$key")
