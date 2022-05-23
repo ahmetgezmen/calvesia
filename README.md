@@ -118,7 +118,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
 Aşamalı ekran görünümleri
-![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown1.png) 
+![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/Burndown2-1.png) 
 ![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown2.png) 
 ![Burndown 3](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown3.png)
  
