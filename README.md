@@ -112,7 +112,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/52c9667285eaf6e82c989f55787455936701ae10)
 
-- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz öncelikli yapılacak story'lere göre düzenlenmiştir. Sprint başında tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
 
 ## Sprint Board Güncellemesi ve Burndown Güncellemesi
 
@@ -160,6 +160,3 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 ---
 
-# Sprint 4
-
----
