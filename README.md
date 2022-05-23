@@ -136,11 +136,12 @@ Aşamalı ekran görünümleri
 
 
 
-  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image.png)
-  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(1).png)
-  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(2).png) 
-  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(3).png)
-  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(4).png)
+  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image1.jpeg)
+  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image2.jpeg)
+  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image3.jpeg) 
+  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image4.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image5.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image6.jpeg)
 
 
 - **Sprint Review**: 
