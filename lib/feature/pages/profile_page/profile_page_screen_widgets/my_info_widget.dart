@@ -23,7 +23,7 @@ class _PostSharePageState extends State<PostSharePage> {
 // TODO form için backend sayfları oluşturulacak
 
 class MyInfoWidgets extends StatefulWidget {
-  MyInfoWidgets({Key? key}) : super(key: key);
+  const MyInfoWidgets({Key? key}) : super(key: key);
 
   @override
   State<MyInfoWidgets> createState() => _MyInfoWidgetsState();

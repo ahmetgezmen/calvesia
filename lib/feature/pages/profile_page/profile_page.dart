@@ -64,8 +64,19 @@ class ProfilePageAppBarr extends StatelessWidget {
   }
 }
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<UserVievModel>(context, listen: false).userFetch();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +127,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
               ChangeProfileImageWidgetButton(context);
             },
             child: FutureBuilder(
-                future:     Provider.of<UserVievModel>(context).getMyProfilePhoto,
+                future: Provider.of<UserVievModel>(context).getMyProfilePhoto,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return CircleAvatar(
