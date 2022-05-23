@@ -126,7 +126,7 @@ Aşamalı ekran görünümleri
 ![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_backlog2.jpeg) 
 
 - **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence1.jpeg)
-![Alt text](hhttps://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence2.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence2.jpeg)
 ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence3.jpeg)
 ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence4.jpeg)
 ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence5.jpeg)
