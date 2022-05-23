@@ -1,3 +1,4 @@
+import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
@@ -24,6 +25,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => PostShareProvider()),
         ChangeNotifierProvider(create: (_) => HeaderProvider()),
         ChangeNotifierProvider(create: (_) => PostIsSharingProvider()),
+        ChangeNotifierProvider(create: (_) => UserVievModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

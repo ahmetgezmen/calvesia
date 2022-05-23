@@ -83,12 +83,12 @@ class ProfilePage extends StatelessWidget {
               flexibleSpace: const ProfileTopComponent(),
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              Tab(child: CalenderWidget()),
-              Tab(child: TicketsWidget()),
+              const Tab(child: CalenderWidget()),
+              const Tab(child: TicketsWidget()),
               Tab(child: MyInfoWidgets()),
-              Tab(child: ProvacPolicyWidget()),
+              const Tab(child: ProvacPolicyWidget()),
             ],
           ),
         ),
@@ -116,7 +116,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
               ChangeProfileImageWidgetButton(context);
             },
             child: FutureBuilder(
-                future: UserVievModel.getMyProfilePhoto,
+                future:     Provider.of<UserVievModel>(context).getMyProfilePhoto,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return CircleAvatar(

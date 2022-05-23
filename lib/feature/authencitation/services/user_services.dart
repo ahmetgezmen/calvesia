@@ -13,7 +13,10 @@ import '../../widget/SometingWrong.dart';
 import '../login/view/widget/login_successful_widget.dart';
 import '../login/view/widget/user_note_found_widget.dart';
 import '../login/view/widget/wrong_password_or_username_widget.dart';
+import '../models/dob_model.dart';
+import '../models/location_model.dart';
 import '../models/registered_model.dart';
+import '../models/schools_model.dart';
 import '../models/user_model.dart';
 import '../signup/view/widget/email_alredy_use_widget.dart';
 import '../signup/view/widget/password_too_weak_widget.dart';
@@ -80,6 +83,9 @@ class UserServices {
     return users
         .set(
             jsonDecode(userToJson(UserModel(
+                dob: Dob(),
+              location: Location(),
+              schools: Schools(),
               username:username ,
               isApproved: false,
               isAktive: true,

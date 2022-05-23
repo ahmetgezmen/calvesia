@@ -47,7 +47,8 @@ class _HeaderComponentState extends State<HeaderComponent> {
                               });
                             },
                             child: FutureBuilder<Uint8List?>(
-                                future: UserVievModel.getMyProfilePhoto,
+                                future: Provider.of<UserVievModel>(context)
+                                    .getMyProfilePhoto,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CircleAvatar(
