@@ -143,7 +143,7 @@ Aşamalı ekran görünümleri
 
 
 - **Sprint Review**: 
-Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
+Alınan kararlar: Backendin user ve post paylaşım bölümü tamamlandı ancak rolesları yazılmadı. Database store bölümü ile uygulamanın bağlantısı sağlandı. Profil bilgilerim sayfası ve posta paylaşım sayfası UI'ları yapıldı daha sonrasında flutter koduna döküldü. Post paylaşım sayfasının backendi yazıldı ve image paketi kullanılarak post image servisleri yazıldı ve backendi tamamlandı ancak UI kısmı tamamlanması sprint 3'e aktarıldı. Profil page'de my infoview UI'ı tamamlandı, backendin bir kısmı siprint 3'e aktarıldı.
 Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
 
 
