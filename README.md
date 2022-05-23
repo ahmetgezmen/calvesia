@@ -122,13 +122,14 @@ Aşamalı ekran görünümleri
 ![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/Burndown2-2.png)
  
 - **Sprint board güncellemesi**: Sprint board ekran görüntüleri: 
-![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/e844489a96abffef5d850eda239f4833869e46ba/Sprint1%20Document1.png) 
-![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/84a448e6de68336a2b5f7b506f3c384c41348367/Sprint1%20Document2.png) 
-![Backlog 3](https://github.com/merveguhan/Sprint-deneme/blob/84a448e6de68336a2b5f7b506f3c384c41348367/Sprint1%20Document3.png)
+![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_backlog1.jpeg) 
+![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_backlog2.jpeg) 
 
-- **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image.png) 
-![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(1).png)
-![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(2).png)
+- **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence1.jpeg 
+![Alt text](hhttps://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence2.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence3.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence4.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence5.jpeg)
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
