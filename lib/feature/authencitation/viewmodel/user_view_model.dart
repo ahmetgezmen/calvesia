@@ -58,9 +58,12 @@ class UserVievModel extends ChangeNotifier{
 
   Future<Uint8List?> get getMyProfilePhoto async => await UserServices.getProfilePhotos(FirebaseAuth.instance.currentUser!.uid);
 
-  void updateMyInfo(UserModel userModel){
-    bool result = UserServices.updateMyInfoServices(userModel);
+  void updateMyInfo(){
+    UserServices.updateMyInfoServices(user);
     notifyListeners();
   }
-
+  bool isInFavList(val){
+    final result = user.favList!.contains(val);
+    return result;
+  }
 }

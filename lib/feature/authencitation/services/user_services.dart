@@ -83,6 +83,8 @@ class UserServices {
     return users
         .set(
             jsonDecode(userToJson(UserModel(
+              postUidList: [],
+              favList: [],
                 dob: Dob(),
               location: Location(),
               schools: Schools(),
@@ -108,7 +110,7 @@ class UserServices {
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
     return _userModel;
   }
-  static Future<Set?> getUserFavListServices() async {
+  static Future<List?> getUserFavListServices() async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).get();
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
     return _userModel.favList;

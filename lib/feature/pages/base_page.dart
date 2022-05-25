@@ -6,6 +6,7 @@ import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Authencitation/viewmodel/user_view_model.dart';
 import '../provider/base_provider.dart';
 import 'layouts/header.dart';
 import 'view/buy_page_coming_soon.dart';
@@ -62,7 +63,11 @@ class _BasePageState extends State<BasePage> {
     searchController.dispose();
     super.dispose();
   }
-
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<UserVievModel>(context, listen: false).userFetch();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(

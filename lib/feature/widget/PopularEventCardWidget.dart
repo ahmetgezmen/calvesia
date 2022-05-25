@@ -1,6 +1,8 @@
+import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Utils/Style/color_palette.dart';
 
@@ -38,50 +40,77 @@ class _PopularEventCardState extends State<PopularEventCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: post.postKey == null
-                    ? Container(
-                        decoration: const BoxDecoration(
-                          color: BaseColorPalet.upcomingCardContainer,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15.0),
+                  child: Stack(
+                children: [
+                  post.postKey == null
+                      ? Container(
+                          decoration: const BoxDecoration(
+                            color: BaseColorPalet.upcomingCardContainer,
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(15.0),
+                            ),
                           ),
-                        ),
-                      )
-                    : FutureBuilder(
-                        future:
-                            ImageServices.getPostImageServices(post.postKey, 1),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return Stack(
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    color: BaseColorPalet.upcomingCardContainer,
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(15.0),
+                        )
+                      : FutureBuilder(
+                          future: ImageServices.getPostImageServices(
+                              post.postKey, 1),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            if (snapshot.hasData) {
+                              return Stack(
+                                children: [
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      color:
+                                          BaseColorPalet.upcomingCardContainer,
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(15.0),
+                                      ),
                                     ),
                                   ),
+                                  Center(
+                                      child: Image(
+                                          image: MemoryImage(snapshot.data))),
+                                ],
+                              );
+                            } else if (snapshot.hasError) {
+                              return Container(
+                                decoration: const BoxDecoration(
+                                  color: BaseColorPalet.upcomingCardContainer,
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(15.0),
+                                  ),
                                 ),
-                                Center(
-                                    child: Image(
-                                        image: MemoryImage(snapshot.data))),
-                              ],
-                            );
-                          } else if (snapshot.hasError) {
-                            return Container(
-                              decoration: const BoxDecoration(
-                                color: BaseColorPalet.upcomingCardContainer,
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(15.0),
-                                ),
-                              ),
-                            );
-                          } else {
-                            return const CircularProgressIndicator();
-                          }
-                        }),
-              ),
+                              );
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          }),
+                  Consumer<UserVievModel>(
+                    builder: (context, provider, child) {
+                      return Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                            onPressed: () async {
+                              setState((){
+                                final result =
+                                provider.user.favList!.contains(post.postKey);
+                                if (result) {
+                                  provider.user.favList!.remove(post.postKey);
+                                } else {
+                                  provider.user.favList!.add(post.postKey);
+                                }
+                              });
+                              provider.updateMyInfo();
+                            },
+                            icon: provider.isInFavList(post.postKey)
+                                ? const Icon(Icons.favorite)
+                                : const Icon(Icons.favorite_border)),
+                      );
+                    },
+                  )
+                ],
+              )),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),

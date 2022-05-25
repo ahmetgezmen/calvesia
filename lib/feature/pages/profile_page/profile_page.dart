@@ -72,8 +72,7 @@ class ProfilePageAppBarr extends StatelessWidget {
                                 Text("Güncelleme başarılı")
                               ],
                             ),
-                            content: const Center(
-                                child: Text('Bilgileriniz Güncellendi')),
+                            content: Text('Bilgileriniz Güncellendi'),
                             actions: <Widget>[
                               TextButton(
                                 child: const Text('Kapat'),
@@ -107,12 +106,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<UserVievModel>(context, listen: false).userFetch();
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
