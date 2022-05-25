@@ -68,9 +68,12 @@ class ProfilePageAppBarr extends StatelessWidget {
                         builder: (BuildContext dialogContext) {
                           return AlertDialog(
                             title: Row(
-                              children: const <Widget>[Text("Güncelleme başarılı")],
+                              children: const <Widget>[
+                                Text("Güncelleme başarılı")
+                              ],
                             ),
-                            content: const Center(child: Text('Bilgileriniz Güncellendi')),
+                            content: const Center(
+                                child: Text('Bilgileriniz Güncellendi')),
                             actions: <Widget>[
                               TextButton(
                                 child: const Text('Kapat'),
@@ -127,12 +130,12 @@ class _ProfilePageState extends State<ProfilePage> {
               flexibleSpace: const ProfileTopComponent(),
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
-              const Tab(child: CalenderWidget()),
-              const Tab(child: TicketsWidget()),
+              Tab(child: CalenderWidget()),
+              Tab(child: TicketsWidget()),
               Tab(child: MyInfoWidgets()),
-              const Tab(child: ProvacPolicyWidget()),
+              Tab(child: ProvacPolicyWidget()),
             ],
           ),
         ),
