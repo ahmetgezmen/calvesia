@@ -1,4 +1,5 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -49,13 +50,44 @@ class ProfilePageAppBarr extends StatelessWidget {
                     ));
               },
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(BaseColorPalet.buttonColor),
-              ),
-              onPressed: () {},
-              child: const Text("Save Profile"),
+            Consumer<UserVievModel>(
+              builder: (context, provider, child) {
+                return ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                  ),
+                  onPressed: () async {
+                    final form = provider.myInfoSaveFormKey.currentState;
+                    if (form!.validate()) {
+                      form.save();
+                      await Future.delayed(const Duration(seconds: 2));
+                      UserServices.updateMyInfoServices(provider.user);
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext dialogContext) {
+                          return AlertDialog(
+                            title: Row(
+                              children: const <Widget>[Text("Güncelleme başarılı")],
+                            ),
+                            content: const Center(child: Text('Bilgileriniz Güncellendi')),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('Kapat'),
+                                onPressed: () {
+                                  Navigator.of(dialogContext)
+                                      .pop(); // Dismiss alert dialog
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const Text("Save Profile"),
+                );
+              },
             )
           ],
         ),
@@ -84,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
       length: 4,
       child: SafeArea(
         child: Scaffold(
-          resizeToAvoidBottomInset : false,
+          resizeToAvoidBottomInset: false,
           appBar: PreferredSize(
             preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
                 ? const Size.fromHeight(230.0)

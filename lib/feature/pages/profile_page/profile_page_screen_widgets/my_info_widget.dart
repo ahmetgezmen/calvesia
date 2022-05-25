@@ -19,7 +19,7 @@ enum SingingCharacter { privetEvent, publicEvent, online, platform, free, paid }
   _PostSharePageState createState() => _PostSharePageState();
 }
 class _PostSharePageState extends State<PostSharePage> {
-  final _formKey = GlobalKey<FormState>();*/
+*/
 // TODO form için backend sayfları oluşturulacak
 
 class MyInfoWidgets extends StatefulWidget {
@@ -54,7 +54,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
       builder: (context, provider, child) {
         return Builder(
             builder: (context) => Form(
-                    //key: _formKey,
+                    key: provider.myInfoSaveFormKey,
                     child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: SingleChildScrollView(
@@ -76,12 +76,6 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                   Icons.save_alt,
                                 ),
                               ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return '    Lütfen Cv nizi yükleyiniz';
-                                }
-                                return null;
-                              },
                               onSaved: (val) {
                                 // TODO
                               }),
@@ -307,6 +301,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                       Container(
                         decoration: singleContainerDecoration,
                         child: TextFormField(
+                          initialValue: provider.user.email,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: "Email adresi",
@@ -327,7 +322,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               return null;
                             },
                             onSaved: (val) {
-                              // TODO
+                              provider.user.setEmail(val);
                             }),
                       )
                     ]),

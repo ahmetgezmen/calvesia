@@ -11,12 +11,18 @@ import '../models/user_model.dart';
 import '../services/user_services.dart';
 
 class UserVievModel extends ChangeNotifier{
+  final GlobalKey<FormState> myInfoSaveFormKey = GlobalKey<FormState>();
+
   UserModel user =UserModel(
     dob: Dob(),
     location: Location(),
     schools: Schools(),
   );
 
+  setEmail(val){
+    user.setEmail(val);
+    notifyListeners();
+  }
   setSchoolFaculty(val){
     user.schools!.setFaculty(val);
     notifyListeners();
