@@ -52,6 +52,10 @@ static const MaterialColor postPageFillColor=  MaterialColor(
     0xffebf1f4, <int, Color>{
     100:  Color(0xffebf1f4)});
 
+static const MaterialColor viewButtonColor=  MaterialColor(
+    0xffe3f5f6, <int, Color>{
+    100:  Color(0xffe3f5f6)});
+
 
 
 

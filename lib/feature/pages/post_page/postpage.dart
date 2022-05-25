@@ -859,6 +859,10 @@ class _PostSharePageState extends State<PostSharePage> {
                             children: [
                               Expanded(
                                 child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(BaseColorPalet.viewButtonColor),
+                                      foregroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                                    ),
                                     onPressed: () {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
@@ -876,6 +880,9 @@ class _PostSharePageState extends State<PostSharePage> {
                             children: [
                               Expanded(
                                 child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                                  ),
                                     onPressed: () async {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
