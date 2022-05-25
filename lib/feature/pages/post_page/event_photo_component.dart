@@ -69,8 +69,10 @@ class _PhotoCardState extends State<PhotoCard> {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () async {
-              await ChangePostImageWidgetButton(context, widget.postKey, widget.index);
-              setState(() {});
+              final result =  await ChangePostImageWidgetButton(context, widget.postKey, widget.index);
+              if(result==true){
+                setState((){});
+              }
             },
             child: FutureBuilder(
                 future: ImageServices.getPostImageServices(
@@ -105,23 +107,25 @@ class _PhotoCardState extends State<PhotoCard> {
   }
 }
 
-ChangePostImageWidgetButton(BuildContext context, postKey, index) {
-  final alertDialog = AlertDialog(
-    title: ChangeProfileImageWidget(postKey: postKey, index: index, ),
-  );
+ChangePostImageWidgetButton(BuildContext context, postKey, index) async {
 
-  showDialog(
+  await showDialog(
     context: context,
-    builder: (BuildContext context) {
-      return alertDialog;
+    builder: (BuildContext dialogContext) {
+      return AlertDialog(
+        title: ChangeProfileImageWidget(postKey: postKey, index: index,dialogContext: dialogContext, ),
+      );
     },
   );
+
+  return true;
 }
 
 class ChangeProfileImageWidget extends StatelessWidget {
+  final dialogContext;
   final String postKey;
   final int index;
-  const ChangeProfileImageWidget({Key? key, required this.postKey, required this.index}) : super(key: key);
+  const ChangeProfileImageWidget({Key? key, required this.postKey, required this.index, this.dialogContext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -133,12 +137,14 @@ class ChangeProfileImageWidget extends StatelessWidget {
               onPressed: () async {
                 await ImageServices.putPostImageInCamera(
                     postKey, index.toString());
+                Navigator.of(dialogContext).pop();
               },
               icon: const Icon(Icons.camera_alt)),
           IconButton(
               onPressed: () async {
                 await ImageServices.putPostImageInCamera(
                     postKey, index.toString());
+                Navigator.of(dialogContext).pop();
               },
               icon: const Icon(Icons.photo_library)),
         ],

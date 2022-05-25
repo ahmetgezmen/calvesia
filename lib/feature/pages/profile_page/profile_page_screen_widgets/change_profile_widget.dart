@@ -2,21 +2,23 @@ import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-ChangeProfileImageWidgetButton(BuildContext context) {
+ChangeProfileImageWidgetButton(BuildContext context) async {
   const alertDialogAnon = AlertDialog(
     title: _Anonymous(),
   );
 
-  showDialog(
+  await showDialog(
     context: context,
     builder: (BuildContext dialogContext) {
       return FirebaseAuth.instance.currentUser!.isAnonymous
           ? alertDialogAnon
           : AlertDialog(
         title: ChangeProfileImageWidget(dialogContext: dialogContext,),
-      );;
+      );
     },
   );
+
+  return true;
 }
 
 class _Anonymous extends StatelessWidget {

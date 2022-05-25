@@ -160,7 +160,10 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
         children: [
           InkWell(
             onTap: () async {
-              ChangeProfileImageWidgetButton(context);
+              final result = await ChangeProfileImageWidgetButton(context);
+              if(result==true){
+                setState((){});
+              }
             },
             child: FutureBuilder(
                 future: Provider.of<UserVievModel>(context).getMyProfilePhoto,
