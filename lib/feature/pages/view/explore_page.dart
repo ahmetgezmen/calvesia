@@ -24,10 +24,6 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
-  Future<void> _refeshIndicator() {
-    return Future.delayed(const Duration(seconds: 0));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,7 +88,7 @@ class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
       var refNewItem = await FirebaseDatabase.instance
           .ref('posts')
           // .orderByChild("streamTime/full")
-          .orderByChild("title")
+          .orderByChild("category")
           .startAfter(_lasPost)
           .limitToFirst(_pageSize)
           .get();
