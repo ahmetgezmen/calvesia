@@ -22,7 +22,7 @@ class PostShareSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: CircularProgressIndicator()),
+      child: Center(child: Text("islem basarili")),
     );
   }
 }

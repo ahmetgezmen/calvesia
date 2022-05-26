@@ -11,31 +11,39 @@ class StreamTime {
   StreamTime({
     String? date,
     String? time,
+    BigInt? full,
   }) {
     _date = date;
     _time = time;
+    _full = full;
   }
 
   StreamTime.fromJson(dynamic json) {
     _date = json['date'];
+    _full = json['full'];
     _time = json['time'];
   }
   String? _date;
+  BigInt? _full;
   String? _time;
   StreamTime copyWith({
     String? date,
+    BigInt? full,
     String? time,
   }) =>
       StreamTime(
         date: date ?? _date,
+        full: full ?? _full,
         time: time ?? _time,
       );
   String? get date => _date;
+  BigInt? get full => _full;
   String? get time => _time;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['date'] = _date;
+    map['full'] = _full;
     map['time'] = _time;
     return map;
   }

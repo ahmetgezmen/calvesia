@@ -22,7 +22,9 @@ class PostShareFailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(),
+      child: Center(
+        child: Text('islem basarisiz'),
+      ),
     );
   }
 }

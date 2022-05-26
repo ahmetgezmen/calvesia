@@ -75,6 +75,7 @@ class PostShareProvider extends ChangeNotifier {
       streamTime: StreamTime(
         date: Timestamp.now().toDate().toString().split(' ')[0],
         time: Timestamp.now().toDate().toString().split(' ')[1],
+        full: BigInt.parse(Timestamp.now().toDate().toString().split(" ")[0].split("-").join()+Timestamp.now().toDate().toString().split(" ")[1].split(":").join().split(".").join()),
       ),
       sponsors: _sponsors,
       category: _category,
