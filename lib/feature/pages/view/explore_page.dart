@@ -91,7 +91,7 @@ class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
     try {
       var refNewItem = await FirebaseDatabase.instance
           .ref('posts')
-          .orderByChild("streamTime/full")
+          // .orderByChild("streamTime/full")
           .orderByChild("title")
           .startAfter(_lasPost)
           .limitToFirst(_pageSize)
