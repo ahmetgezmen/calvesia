@@ -140,10 +140,10 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                             child: Container(
                               decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
-                                onSaved: (newValue) {
-                                  // TODO
+                                onSaved: (val) {
+                                  provider.setGender(val);
                                 },
-                                value: "Diger",
+                                value: provider.user.gender == null ? "Diger" : provider.user.gender,
                                 decoration: InputDecoration(
                                   labelText: "Cinsiyet",
                                   border: singleOutlineBorder,
