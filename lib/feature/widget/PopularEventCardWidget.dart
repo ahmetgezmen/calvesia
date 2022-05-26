@@ -69,9 +69,13 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       ),
                                     ),
                                   ),
-                                  Center(
-                                      child: Image(
-                                          image: MemoryImage(snapshot.data))),
+                                  Container(
+                                    foregroundDecoration: BoxDecoration(
+                                      image:DecorationImage(image: MemoryImage(snapshot.data),
+                                      fit: BoxFit.cover
+                                      ),
+                                    ),
+                                  )
                                 ],
                               );
                             } else if (snapshot.hasError) {
@@ -92,22 +96,43 @@ class _PopularEventCardState extends State<PopularEventCard> {
                       return Align(
                         alignment: Alignment.topRight,
                         child: IconButton(
-                            onPressed: () async {
-                              setState(() {
-                              if (provider.user.favList!.contains(post.postKey)) {
+                          onPressed: () async {
+                            setState(() {
+                              if (provider.user.favList!
+                                  .contains(post.postKey)) {
                                 provider.userFavListRemove(post.postKey);
                                 post.increaseFavNumber();
                               } else {
                                 provider.userFavListAdd(post.postKey);
                                 post.decreaseFavNumber();
                               }
-                              PostServices.updatePostService(post, post.postKey!);
+                              PostServices.updatePostService(
+                                  post, post.postKey!);
                               provider.updateMyInfo();
-                              });
-                            },
-                            icon: provider.isInFavList(post.postKey)
-                                ? const Icon(Icons.favorite)
-                                : const Icon(Icons.favorite_border)),
+                            });
+                          },
+                          icon: provider.isInFavList(post.postKey)
+                              ? Material(
+                                  borderRadius: BorderRadius.circular(20),
+                                  elevation: 10,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 35,
+                                    child:  Icon(Icons.favorite,
+                                        color: BaseColorPalet.cardBackground),
+                                  ),
+                                )
+                              : Material(
+                                  borderRadius: BorderRadius.circular(20),
+                                  elevation: 10,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 35,
+                                    child:  Icon(Icons.favorite_border,
+                                        color: BaseColorPalet.cardBackground),
+                                  ),
+                                ),
+                        ),
                       );
                     },
                   )

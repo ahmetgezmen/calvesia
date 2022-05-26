@@ -38,7 +38,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
         elevation: 5,
         child: Row(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 100,
               width: 100,
               child: post.postKey == null
@@ -64,12 +64,16 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                                       Radius.circular(15.0),
                                     )),
                               ),
-                              Center(
-                                child: Image(
-                                  image: MemoryImage(snapshot.data),
-                                  fit: BoxFit.fitWidth,
+                              Container(
+                                foregroundDecoration: BoxDecoration(
+                                  image:DecorationImage(image: MemoryImage(snapshot.data),
+                                      fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(15.0),
+                                  ),
                                 ),
-                              ),
+                              )
                             ],
                           );
                         } else if (snapshot.hasError) {
