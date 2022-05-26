@@ -110,10 +110,10 @@ class UserServices {
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
     return _userModel;
   }
-  static Future<List?> getUserFavListServices() async {
+  static Future<List<String>?> getUserFavListServices() async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).get();
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
-    return _userModel.favList;
+    return _userModel.favList as List<String>;
   }
 
   static updateMyInfoServices(UserModel userModel) {
