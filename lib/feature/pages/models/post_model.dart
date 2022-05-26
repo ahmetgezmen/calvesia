@@ -116,9 +116,8 @@ class PostModel {
     _price = json['price'];
     _postOwner = json['postOwner'];
     _followersNumber = json['followersNumber'];
-    _sponsors = json['sponsors'] != null
-        ? Sponsors.fromJson(json['sponsors'])
-        : null;
+    _sponsors =
+        json['sponsors'] != null ? Sponsors.fromJson(json['sponsors']) : null;
     _eventImageListModel = json['eventImageListModel'] != null
         ? EventImageListModel.fromJson(json['eventImageListModel'])
         : null;
@@ -296,7 +295,17 @@ class PostModel {
     _eventImageListModel = eventImageListModel;
   }
 
+  void increaseFavNumber() {
+    if (_followersNumber != null) {
+      _followersNumber = _followersNumber! - 1;
+    }
+  }
 
+  void decreaseFavNumber() {
+    if (_followersNumber != null) {
+      _followersNumber = _followersNumber! + 1;
+    }
+  }
 }
 
 //

@@ -35,9 +35,9 @@ class PostServices {
     }
   }
 
-  static updatePostService(PostModel post, String key) {
+  static updatePostService(PostModel post, String key) async {
     try {
-      FirebaseDatabase.instance.ref("posts/$key").update(jsonDecode(postModelToJson(post)));
+      await FirebaseDatabase.instance.ref("posts/$key").update(jsonDecode(postModelToJson(post)));
       return true;
     } catch (e) {
       return false;

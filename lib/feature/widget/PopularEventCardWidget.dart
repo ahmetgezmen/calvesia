@@ -1,6 +1,7 @@
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
+import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -92,16 +93,17 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         alignment: Alignment.topRight,
                         child: IconButton(
                             onPressed: () async {
-                              setState((){
-                                final result =
-                                provider.user.favList!.contains(post.postKey);
-                                if (result) {
-                                  provider.user.favList!.remove(post.postKey);
-                                } else {
-                                  provider.user.favList!.add(post.postKey);
-                                }
-                              });
+                              setState(() {
+                              if (provider.user.favList!.contains(post.postKey)) {
+                                provider.userFavListRemove(post.postKey);
+                                post.increaseFavNumber();
+                              } else {
+                                provider.userFavListAdd(post.postKey);
+                                post.decreaseFavNumber();
+                              }
+                              PostServices.updatePostService(post, post.postKey!);
                               provider.updateMyInfo();
+                              });
                             },
                             icon: provider.isInFavList(post.postKey)
                                 ? const Icon(Icons.favorite)

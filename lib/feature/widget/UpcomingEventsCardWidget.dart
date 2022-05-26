@@ -1,10 +1,16 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Authencitation/viewmodel/user_view_model.dart';
+import '../pages/services/image_services.dart';
+import '../pages/services/post_services.dart';
 
 class UpcomingEventsCardWidget extends StatefulWidget {
   final PostModel post;
-  const UpcomingEventsCardWidget({Key? key, required this.post}) : super(key: key);
+  const UpcomingEventsCardWidget({Key? key, required this.post})
+      : super(key: key);
 
   @override
   State<UpcomingEventsCardWidget> createState() =>
@@ -32,14 +38,52 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
         elevation: 5,
         child: Row(
           children: <Widget>[
-            SizedBox(
+            Container(
               height: 100,
               width: 100,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: BaseColorPalet.upcomingCardContainer,
-                    borderRadius: BorderRadius.circular(15.0)),
-              ),
+              child: post.postKey == null
+                  ? Container(
+                      decoration: const BoxDecoration(
+                        color: BaseColorPalet.upcomingCardContainer,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15.0),
+                        ),
+                      ),
+                    )
+                  : FutureBuilder(
+                      future:
+                          ImageServices.getPostImageServices(post.postKey, 1),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.hasData) {
+                          return Stack(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: BaseColorPalet.upcomingCardContainer,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15.0),
+                                    )),
+                              ),
+                              Center(
+                                child: Image(
+                                  image: MemoryImage(snapshot.data),
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                            ],
+                          );
+                        } else if (snapshot.hasError) {
+                          return Container(
+                            decoration: const BoxDecoration(
+                                color: BaseColorPalet.upcomingCardContainer,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15.0),
+                                )),
+                          );
+                        } else {
+                          return const CircularProgressIndicator();
+                        }
+                      }),
             ),
             Expanded(
               child: Column(
@@ -55,14 +99,18 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Row(
-                      children:  <Widget>[
+                      children: <Widget>[
                         Expanded(
                           child: Text(
-                            post.viewNumber.toString()+" k",
+                            post.viewNumber.toString() + " k",
                             style: const TextStyle(color: Colors.grey),
                           ),
                         ),
-                        const Icon(Icons.favorite, color: Colors.grey, size: 16,),
+                        const Icon(
+                          Icons.favorite,
+                          color: Colors.grey,
+                          size: 16,
+                        ),
                         Text(
                           post.followersNumber.toString(),
                           style: const TextStyle(color: Colors.grey),
@@ -71,28 +119,56 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5.0,top: 5.0 , bottom: 5.0),
+                    padding:
+                        const EdgeInsets.only(left: 5.0, top: 5.0, bottom: 5.0),
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on, size: 16, color: BaseColorPalet.linkLabel,),
-                        Text(post.location.toString(), style: const TextStyle(
-                            color: BaseColorPalet.linkLabel
-                        ),),
+                        const Icon(
+                          Icons.location_on,
+                          size: 16,
+                          color: BaseColorPalet.linkLabel,
+                        ),
+                        Text(
+                          post.location.toString(),
+                          style:
+                              const TextStyle(color: BaseColorPalet.linkLabel),
+                        ),
                       ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                    child: SizedBox(height: 20, width: 70, child: Text(post.price.toString()+" TL")),
+                    child: SizedBox(
+                        height: 20,
+                        width: 70,
+                        child: Text(post.price.toString() + " TL")),
                   )
                 ],
               ),
             ),
             Column(
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.favorite_outline),
+                Consumer<UserVievModel>(
+                  builder: (context, provider, child) {
+                    return IconButton(
+                      onPressed: () async {
+                        setState(() {
+                          if (provider.isInFavList(post.postKey)) {
+                            provider.userFavListRemove(post.postKey);
+                            post.increaseFavNumber();
+                          } else {
+                            provider.userFavListAdd(post.postKey);
+                            post.decreaseFavNumber();
+                          }
+                          PostServices.updatePostService(post, post.postKey!);
+                          provider.updateMyInfo();
+                        });
+                      },
+                      icon: provider.isInFavList(post.postKey)
+                          ? const Icon(Icons.favorite)
+                          : const Icon(Icons.favorite_border),
+                    );
+                  },
                 ),
                 IconButton(
                   onPressed: () {},

@@ -116,9 +116,9 @@ class UserServices {
     return _userModel.favList;
   }
 
-  static updateMyInfoServices(UserModel userModel) async {
-    final db = await FirebaseFirestore.instance;
-    final _userDataRef = await db
+  static updateMyInfoServices(UserModel userModel) {
+    final db = FirebaseFirestore.instance;
+    final _userDataRef = db
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid);
     _userDataRef.update(jsonDecode(userToJson(userModel)));

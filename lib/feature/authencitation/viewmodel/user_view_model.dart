@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -56,6 +55,16 @@ class UserVievModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  userFavListAdd(key){
+    user.favList!.add(key);
+    notifyListeners();
+  }
+
+  userFavListRemove(key){
+    user.favList!.remove(key);
+    notifyListeners();
+  }
+
   Future<Uint8List?> get getMyProfilePhoto async => await UserServices.getProfilePhotos(FirebaseAuth.instance.currentUser!.uid);
 
   void updateMyInfo(){
@@ -63,7 +72,10 @@ class UserVievModel extends ChangeNotifier{
     notifyListeners();
   }
   bool isInFavList(val){
-    final result = user.favList!.contains(val);
-    return result;
+    if (user.favList!=null){
+      final result = user.favList!.contains(val);
+      return result;
+    }
+    return false;
   }
 }

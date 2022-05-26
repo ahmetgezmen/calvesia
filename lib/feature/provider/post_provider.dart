@@ -46,7 +46,7 @@ class PostShareProvider extends ChangeNotifier {
   int? _ticketNumber;
   final int _viewNumber = 0;
   int _price = 0;
-  final int _followersNumber=0;
+  int _followersNumber=0;
   Sponsors? _sponsors;
   Coordinators? _coordinators;
 
