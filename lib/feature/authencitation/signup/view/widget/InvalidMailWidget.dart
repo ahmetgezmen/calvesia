@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SendEmailWidget extends StatelessWidget {
-  const SendEmailWidget({Key? key}) : super(key: key);
+class EmailAlredyUseWidget extends StatelessWidget {
+  const EmailAlredyUseWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Widget svg = SvgPicture.asset("assets/images/Component 7.svg",
-        semanticsLabel: 'Sana bir -e posta gönderdik logosu'
+    final Widget svg = SvgPicture.asset("assets/images/Component 4.svg",
+        semanticsLabel: 'Geçersiz e-posta logosu'
     );
 
     return Container(
-
         child:Column(
             children:[
               svg,
-              Text('Sana Bir E-posta Gönderdik',
+              Text('Geçersiz E-posta',
                   style: TextStyle(
                       fontFamily:'PTSans' ,
                       fontSize: 18,
                       color: Colors.black38
-                  )
-              ),
-              Text('E-posta/daki kodu girerek hesabını onaylayabilirsin',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 12,
-                      color: Colors.black12
                   )
               )
             ]
@@ -35,9 +27,9 @@ class SendEmailWidget extends StatelessWidget {
   }
 }
 
-void SendEmailWidgetFunction(BuildContext context) {
+void EmailAlredyUseWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: SendEmailWidget(),
+    title: EmailAlredyUseWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)

@@ -54,7 +54,7 @@
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in 100 ile başlaması gerektiğine karar verildi.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/ba94d18bfb71a6e778480aac42da0b182e86490b) /
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/ba94d18bfb71a6e778480aac42da0b182e86490b) /
 [Sprint 1 Daily Scrum 2 Chats](https://github.com/merveguhan/Sprint-deneme/commit/0651306cc381eb80b9c396576a3fc3f2ce82a597)
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
@@ -104,12 +104,57 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 # Sprint 2
 
----
+- **Sprint Notları**: User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 100 puan ile devam etmesi gerektiğine karar verildi.
+
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/52c9667285eaf6e82c989f55787455936701ae10)
+
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz öncelikli yapılacak story'lere göre düzenlenmiştir. Sprint başında tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
+
+## Sprint Board Güncellemesi ve Burndown Güncellemesi
+
+- **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
+Aşamalı ekran görünümleri
+![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/Burndown2-1.png) 
+![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/Burndown2-2.png)
+ 
+- **Sprint board güncellemesi**: Sprint board ekran görüntüleri: 
+![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_backlog1.jpeg) 
+![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_backlog2.jpeg) 
+
+- **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence1.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence2.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence3.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence4.jpeg)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_evidence5.jpeg)
+
+- **Ürün Durumu**: Ekran görüntüleri:
+
+  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image1.jpeg)
+  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image2.jpeg)
+  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image3.jpeg) 
+  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image4.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image5.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/sprint2_image6.jpeg)
+
+
+- **Sprint Review**: 
+Alınan kararlar: Backend'in user ve post paylaşım bölümü tamamlandı ancak rulesları yazılmadı. Database store bölümü ile uygulamanın bağlantısı sağlandı. Profilde bilgilerim sayfası ve post paylaşım sayfası UI'ları yapıldı daha sonrasında flutter koduna döküldü. Post paylaşım sayfasının backend'i yazıldı ve image paketi kullanılarak post image servisleri yazıldı ve backendi tamamlandı ancak UI kısmının tamamlanması sprint 3'e aktarıldı. Profil page'de my infoview UI'ı tamamlandı, backend'in bir kısmı siprint 3'e aktarıldı.
+Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+
+
+- **Sprint Retrospective:**
+  - Daily Scrum toplantılarının başında takımın her üyesi bir önceki toplantıda üstlendiği görev hakkında bilgi vermeli, toplantı sonunda ise bir sonraki toplantıya kadar hangi görevi almak istediğini söylemeli kararı alınmıştır.
+  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır kararı alınmıştır.
+
+-**Diğer Notlar**:
+- Yok
+
 
 # Sprint 3
 
 ---
 
-# Sprint 4
-
----
