@@ -140,10 +140,10 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                             child: Container(
                               decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
-                                onSaved: (newValue) {
-                                  // TODO
+                                onSaved: (val) {
+                                  provider.setGender(val);
                                 },
-                                value: "Diger",
+                                value: provider.user.gender ?? "Diger",
                                 decoration: InputDecoration(
                                   labelText: "Cinsiyet",
                                   border: singleOutlineBorder,
@@ -171,7 +171,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                             child: Container(
                               decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
-                                  value: "1",
+                                  value: provider.user.schools!.classNumber==null ? "1":provider.user.schools!.classNumber.toString(),
                                   onSaved: (newValue) {
                                     late final int sinif;
                                     switch (newValue) {
@@ -187,8 +187,14 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                       case "4":
                                         sinif = 4;
                                         break;
+                                      case "5":
+                                        sinif = 5;
+                                        break;
+                                      case "6":
+                                        sinif = 6;
+                                        break;
                                     }
-                                    //TODO
+                                    provider.setSchoolClassNumber(sinif);
                                   },
                                   decoration: InputDecoration(
                                     labelText: "Sınıf",
@@ -200,7 +206,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                     focusedErrorBorder: singleOutlineBorder,
                                   ),
                                   icon: const Icon(Icons.keyboard_arrow_down),
-                                  items: <String>['1', '2', '3', '4']
+                                  items: <String>['1', '2', '3', '4','5','6']
                                       .map((String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,

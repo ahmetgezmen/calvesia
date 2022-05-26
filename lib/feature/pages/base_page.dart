@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../Authencitation/viewmodel/user_view_model.dart';
 import '../provider/base_provider.dart';
 import 'layouts/header.dart';
-import 'view/buy_page_coming_soon.dart';
+import 'view/calender_page.dart';
 import 'view/explore_page.dart';
 import 'view/favorite_page.dart';
 import 'view/home_page.dart';
@@ -146,7 +146,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
             icon: Icon(Icons.dashboard_outlined), label: ""),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined), label: ""),
+            icon: Icon(Icons.calendar_today_outlined), label: ""),
       ],
       currentIndex: widget.selectedIndex,
       onTap: widget.onItemTapped,

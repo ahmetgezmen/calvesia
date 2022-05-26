@@ -156,6 +156,9 @@ UserModel copyWith({
   void setEmail(val){
     _email = val;
   }
+  void setGender(val){
+    _gender = val;
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

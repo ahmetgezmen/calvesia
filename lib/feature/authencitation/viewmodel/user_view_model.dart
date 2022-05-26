@@ -22,6 +22,10 @@ class UserVievModel extends ChangeNotifier{
     user.setEmail(val);
     notifyListeners();
   }
+  setGender(val){
+    user.setGender(val);
+    notifyListeners();
+  }
   setSchoolFaculty(val){
     user.schools!.setFaculty(val);
     notifyListeners();
