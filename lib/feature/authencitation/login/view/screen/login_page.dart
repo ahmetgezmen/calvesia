@@ -110,7 +110,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                               nameController.text, passwordController.text);
                           if (result == true) {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BasePageMiddleWawe(),
+                              builder: (context) => BasePageMiddleWave(),
                             ));
                           }
                         },

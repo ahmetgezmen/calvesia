@@ -13,7 +13,10 @@ import '../../widget/SometingWrong.dart';
 import '../login/view/widget/login_successful_widget.dart';
 import '../login/view/widget/user_note_found_widget.dart';
 import '../login/view/widget/wrong_password_or_username_widget.dart';
+import '../models/dob_model.dart';
+import '../models/location_model.dart';
 import '../models/registered_model.dart';
+import '../models/schools_model.dart';
 import '../models/user_model.dart';
 import '../signup/view/widget/email_alredy_use_widget.dart';
 import '../signup/view/widget/password_too_weak_widget.dart';
@@ -80,6 +83,11 @@ class UserServices {
     return users
         .set(
             jsonDecode(userToJson(UserModel(
+              postUidList: [],
+              favList: [],
+                dob: Dob(),
+              location: Location(),
+              schools: Schools(),
               username:username ,
               isApproved: false,
               isAktive: true,
@@ -102,15 +110,15 @@ class UserServices {
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
     return _userModel;
   }
-  static Future<Set?> getUserFavListServices() async {
+  static Future<List<String>?> getUserFavListServices() async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).get();
     UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
-    return _userModel.favList;
+    return _userModel.favList as List<String>;
   }
 
-  static updateMyInfoServices(UserModel userModel) async {
-    final db = await FirebaseFirestore.instance;
-    final _userDataRef = await db
+  static updateMyInfoServices(UserModel userModel) {
+    final db = FirebaseFirestore.instance;
+    final _userDataRef = db
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid);
     _userDataRef.update(jsonDecode(userToJson(userModel)));

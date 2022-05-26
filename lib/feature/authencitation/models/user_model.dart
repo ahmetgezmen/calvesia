@@ -26,8 +26,8 @@ class UserModel{
       bool? isApproved, 
       String? gender,
     String? profileImage,
-    Set? favList,
-    Set? postUidList,
+    List? favList,
+    List? postUidList,
       String? fname,
       Location? location, 
       String? email, 
@@ -79,8 +79,8 @@ class UserModel{
   String? _gender;
   String? _profileImage;
   String? _fname;
-  Set? _favList;
-  Set? _postUidList;
+  List? _favList;
+  List? _postUidList;
   Location? _location;
   String? _email;
   String? _uuid;
@@ -96,8 +96,8 @@ UserModel copyWith({
   String? gender,
   String? profileImage,
   String? fname,
-  Set? favList,
-  Set? postUidList,
+  List? favList,
+  List? postUidList,
   Location? location,
   String? email,
   String? uuid,
@@ -128,8 +128,8 @@ UserModel copyWith({
   bool? get isApproved => _isApproved;
   String? get gender => _gender;
   String? get profileImage => _profileImage;
-  Set? get favList => _favList;
-  Set? get postUidList => _postUidList;
+  List? get favList => _favList;
+  List? get postUidList => _postUidList;
   String? get fname => _fname;
   Location? get location => _location;
   String? get email => _email;
@@ -140,6 +140,22 @@ UserModel copyWith({
   Registered? get registered => _registered;
   Schools? get schools => _schools;
   String? get phone => _phone;
+
+  void setUserName(val){
+    _username = val;
+  }
+  void setFname(val){
+    _fname = val;
+  }
+  void setPhone(val){
+    _phone = val;
+  }
+  void setPassword(val){
+    _password = val;
+  }
+  void setEmail(val){
+    _email = val;
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

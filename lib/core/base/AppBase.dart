@@ -1,5 +1,7 @@
+import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
+import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../config/thema.dart';
@@ -20,14 +22,17 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => BaseProvider()),
+        ChangeNotifierProvider(create: (_) => PostShareProvider()),
         ChangeNotifierProvider(create: (_) => HeaderProvider()),
+        ChangeNotifierProvider(create: (_) => PostIsSharingProvider()),
+        ChangeNotifierProvider(create: (_) => UserVievModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: BASEThemeData(),
         home: FirebaseAuth.instance.currentUser != null
-            ? BasePageMiddleWawe()
-            : OnboardingPage(),
+            ? const BasePageMiddleWave()
+            : const OnboardingPage(),
       ),
     );
   }

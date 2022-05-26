@@ -1,4 +1,5 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ import 'profile_page_screen_widgets/my_info_widget.dart';
 import 'profile_page_screen_widgets/privacy_policy_widget.dart';
 import 'profile_page_screen_widgets/tickets_widget.dart';
 import 'profile_page_screen_widgets/calender_widget.dart';
-
 
 class ProfilePageAppBarr extends StatelessWidget {
   const ProfilePageAppBarr({Key? key}) : super(key: key);
@@ -50,13 +50,46 @@ class ProfilePageAppBarr extends StatelessWidget {
                     ));
               },
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(BaseColorPalet.buttonColor),
-              ),
-              onPressed: () {},
-              child: const Text("Save Profile"),
+            Consumer<UserVievModel>(
+              builder: (context, provider, child) {
+                return ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                  ),
+                  onPressed: () async {
+                    final form = provider.myInfoSaveFormKey.currentState;
+                    if (form!.validate()) {
+                      form.save();
+                      await Future.delayed(const Duration(seconds: 2));
+                      UserServices.updateMyInfoServices(provider.user);
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext dialogContext) {
+                          return AlertDialog(
+                            title: Row(
+                              children: const <Widget>[
+                                Text("Güncelleme başarılı")
+                              ],
+                            ),
+                            content: Text('Bilgileriniz Güncellendi'),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('Kapat'),
+                                onPressed: () {
+                                  Navigator.of(dialogContext)
+                                      .pop(); // Dismiss alert dialog
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const Text("Save Profile"),
+                );
+              },
             )
           ],
         ),
@@ -65,19 +98,25 @@ class ProfilePageAppBarr extends StatelessWidget {
   }
 }
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: PreferredSize(
             preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
                 ? const Size.fromHeight(230.0)
-                : const Size.fromHeight(305.0),
+                : const Size.fromHeight(307.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
@@ -114,10 +153,13 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
         children: [
           InkWell(
             onTap: () async {
-              ChangeProfileImageWidgetButton(context);
+              final result = await ChangeProfileImageWidgetButton(context);
+              if(result==true){
+                setState((){});
+              }
             },
             child: FutureBuilder(
-                future: UserVievModel.getMyProfilePhoto,
+                future: Provider.of<UserVievModel>(context).getMyProfilePhoto,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return CircleAvatar(

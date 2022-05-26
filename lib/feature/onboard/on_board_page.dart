@@ -158,7 +158,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       try {
                         final userCredential =
                         await FirebaseAuth.instance.signInAnonymously();
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => BasePageMiddleWawe(),));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => BasePageMiddleWave(),));
                         print("Signed in with temporary account.");
                       } on FirebaseAuthException catch (e) {
                         switch (e.code) {

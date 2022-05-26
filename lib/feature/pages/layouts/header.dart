@@ -11,7 +11,8 @@ import '../profile_page/profile_page.dart';
 
 class HeaderComponent extends StatefulWidget {
   final TextEditingController searchController;
-  const HeaderComponent({Key? key, required this.searchController}) : super(key: key);
+  const HeaderComponent({Key? key, required this.searchController})
+      : super(key: key);
 
   @override
   State<HeaderComponent> createState() => _HeaderComponentState();
@@ -46,7 +47,8 @@ class _HeaderComponentState extends State<HeaderComponent> {
                               });
                             },
                             child: FutureBuilder<Uint8List?>(
-                                future: UserVievModel.getMyProfilePhoto,
+                                future: Provider.of<UserVievModel>(context)
+                                    .getMyProfilePhoto,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CircleAvatar(
@@ -73,8 +75,10 @@ class _HeaderComponentState extends State<HeaderComponent> {
                     ],
                   ),
                   IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none))
+                    onPressed: () {},
+                    icon: const Icon(Icons.notifications_none),
+                    color: Colors.white,
+                  )
                 ],
               ),
               Padding(

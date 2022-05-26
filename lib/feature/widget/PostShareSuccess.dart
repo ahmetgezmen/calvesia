@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void PostShareSuccessButton(BuildContext context) {
+Future<bool> PostShareSuccessButton(BuildContext context)async {
   final alertDialog = AlertDialog(
     title: PostShareSuccess(),
     shape: RoundedRectangleBorder(
@@ -10,12 +10,13 @@ void PostShareSuccessButton(BuildContext context) {
     ),
   );
 
-  showDialog(
+  await showDialog(
     context: context,
     builder: (BuildContext context) {
       return alertDialog;
     },
   );
+  return true;
 }
 
 
@@ -30,6 +31,7 @@ class PostShareSuccess extends StatelessWidget {
     );
 
     return Container(
+
         child:Column(
             children:[
               svg,
