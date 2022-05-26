@@ -11,7 +11,7 @@ class StreamTime {
   StreamTime({
     String? date,
     String? time,
-    BigInt? full,
+    String? full,
   }) {
     _date = date;
     _time = time;
@@ -24,11 +24,11 @@ class StreamTime {
     _time = json['time'];
   }
   String? _date;
-  BigInt? _full;
+  String? _full;
   String? _time;
   StreamTime copyWith({
     String? date,
-    BigInt? full,
+    String? full,
     String? time,
   }) =>
       StreamTime(
@@ -37,7 +37,7 @@ class StreamTime {
         time: time ?? _time,
       );
   String? get date => _date;
-  BigInt? get full => _full;
+  String? get full => _full;
   String? get time => _time;
 
   Map<String, dynamic> toJson() {

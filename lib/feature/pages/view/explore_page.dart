@@ -30,38 +30,34 @@ class _ExplorePageState extends State<ExplorePage> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      color: BaseColorPalet.main,
-      onRefresh: _refeshIndicator,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-            child: SizedBox(
-              height: 50,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: CategoryButton(
-                      title: ExplorePage.category[index]["name"],
-                      buttonColor: ExplorePage.category[index]["color"],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    width: 30,
-                  );
-                },
-              ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: SizedBox(
+            height: 50,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CategoryButton(
+                    title: ExplorePage.category[index]["name"],
+                    buttonColor: ExplorePage.category[index]["color"],
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  width: 30,
+                );
+              },
             ),
           ),
-          const SilverDelegateComponent(),
-        ],
-      ),
+        ),
+        const SilverDelegateComponent(),
+      ],
     );
   }
 }
@@ -95,7 +91,8 @@ class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
     try {
       var refNewItem = await FirebaseDatabase.instance
           .ref('posts')
-          .orderByKey()
+          .orderByChild("streamTime/full")
+          .orderByChild("title")
           .startAfter(_lasPost)
           .limitToFirst(_pageSize)
           .get();
@@ -126,21 +123,27 @@ class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: PagedGridView<int, DataSnapshot>(
-          pagingController: _pagingController,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 100 / 150,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
+        child: RefreshIndicator(
+          color: BaseColorPalet.main,
+          onRefresh:  () => Future.sync(
+                () => _pagingController.refresh(),
           ),
-          builderDelegate: PagedChildBuilderDelegate<DataSnapshot>(
-              itemBuilder: (context, item, index) {
-            final post = PostModel.fromJson(item.value);
-            return PopularEventCard(
-              post: post,
-            );
-          }),
+          child: PagedGridView<int, DataSnapshot>(
+            pagingController: _pagingController,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 100 / 150,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              crossAxisCount: 2,
+            ),
+            builderDelegate: PagedChildBuilderDelegate<DataSnapshot>(
+                itemBuilder: (context, item, index) {
+              final post = PostModel.fromJson(item.value);
+              return PopularEventCard(
+                post: post,
+              );
+            }),
+          ),
         ),
       ),
     );
