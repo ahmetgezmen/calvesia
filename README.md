@@ -142,13 +142,13 @@ Aşamalı ekran görünümleri
 
 
 - **Sprint Review**: 
-Alınan kararlar: Backendin user ve post paylaşım bölümü tamamlandı ancak rolesları yazılmadı. Database store bölümü ile uygulamanın bağlantısı sağlandı. Profil bilgilerim sayfası ve posta paylaşım sayfası UI'ları yapıldı daha sonrasında flutter koduna döküldü. Post paylaşım sayfasının backendi yazıldı ve image paketi kullanılarak post image servisleri yazıldı ve backendi tamamlandı ancak UI kısmı tamamlanması sprint 3'e aktarıldı. Profil page'de my infoview UI'ı tamamlandı, backendin bir kısmı siprint 3'e aktarıldı.
+Alınan kararlar: Backend'in user ve post paylaşım bölümü tamamlandı ancak rulesları yazılmadı. Database store bölümü ile uygulamanın bağlantısı sağlandı. Profilde bilgilerim sayfası ve post paylaşım sayfası UI'ları yapıldı daha sonrasında flutter koduna döküldü. Post paylaşım sayfasının backend'i yazıldı ve image paketi kullanılarak post image servisleri yazıldı ve backendi tamamlandı ancak UI kısmının tamamlanması sprint 3'e aktarıldı. Profil page'de my infoview UI'ı tamamlandı, backend'in bir kısmı siprint 3'e aktarıldı.
 Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
   - Daily Scrum toplantılarının başında takımın her üyesi bir önceki toplantıda üstlendiği görev hakkında bilgi vermeli, toplantı sonunda ise bir sonraki toplantıya kadar hangi görevi almak istediğini söylemeli kararı alınmıştır.
-  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır, kararı alınmıştır.
+  - Zaman kısıtı nedeniyle ürünün kapsamına yönelik iş önceliği belirlenerek odaklanılacak alanlar azaltılmalıdır kararı alınmıştır.
 
 -**Diğer Notlar**:
 - Yok
