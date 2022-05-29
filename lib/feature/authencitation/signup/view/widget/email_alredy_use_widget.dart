@@ -13,7 +13,7 @@ class EmailAlredyUseWidget extends StatelessWidget {
         child:Column(
             children:[
               svg,
-              Text('Bu E-posta Zaten Kullanılıyor',
+              const Text('Bu E-posta Zaten Kullanılıyor',
                   style: TextStyle(
                       fontFamily:'PTSans' ,
                       fontSize: 18,
@@ -28,7 +28,7 @@ class EmailAlredyUseWidget extends StatelessWidget {
 
 void EmailAlredyUseWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: EmailAlredyUseWidget(),
+    title: const EmailAlredyUseWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
