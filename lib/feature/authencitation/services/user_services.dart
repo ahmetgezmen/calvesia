@@ -31,7 +31,7 @@ class UserServices {
         password: password,
       );
       Navigator.of(context).pop();
-      LoginSuccessfulWidgetFunction(context);
+      await LoginSuccessfulWidgetFunction(context);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
