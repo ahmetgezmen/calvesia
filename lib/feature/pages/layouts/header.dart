@@ -92,7 +92,6 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       return TextFormField(
                         onChanged: (value) {
                           provider.updateHeaderText(value.toString());
-                          print(provider.getHeaderText);
                         },
                         controller: widget.searchController,
                         decoration: const InputDecoration(

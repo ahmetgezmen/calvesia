@@ -4,12 +4,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
 import 'package:provider/provider.dart';
+import '../../provider/header_provider.dart';
 import '../../widget/PopularEventCardWidget.dart';
 import '../models/post_model.dart';
 
 class ExplorePage extends StatefulWidget {
-
-
   const ExplorePage({Key? key}) : super(key: key);
 
   @override
@@ -34,7 +33,7 @@ class _ExplorePageState extends State<ExplorePage> {
                   child: Consumer<ExploreProvider>(
                     builder: (context, provider, child) {
                       return CategoryButton(
-                        visibility:provider.getCategory()[index]["visibility"] ,
+                        visibility: provider.getCategory()[index]["visibility"],
                         title: provider.getCategory()[index]["name"],
                         buttonColor: provider.getCategory()[index]["color"],
                         buttonKey: provider.getCategory()[index]["tag"],
@@ -57,7 +56,6 @@ class _ExplorePageState extends State<ExplorePage> {
   }
 }
 
-
 class GridViewScrolling extends StatelessWidget {
   const GridViewScrolling({Key? key}) : super(key: key);
 
@@ -66,28 +64,36 @@ class GridViewScrolling extends StatelessWidget {
     switch (switchKey) {
       case "Standart":
         result = FirebaseDatabase.instance
-            .ref('posts').orderByChild("streamTime/full");
+            .ref('posts')
+            .orderByChild("streamTime/full");
         break;
       case "health":
         result = FirebaseDatabase.instance
-            .ref('posts').orderByChild("category").equalTo("health");
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("health");
         break;
       case "party":
         result = FirebaseDatabase.instance
-            .ref('posts').orderByChild("category").equalTo("party");
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("party");
         break;
       case "career":
         result = FirebaseDatabase.instance
-            .ref('posts').orderByChild("category").equalTo("career");
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("career");
         break;
       case "education":
         result = FirebaseDatabase.instance
-            .ref('posts').orderByChild("category").equalTo("education");
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("education");
         break;
     }
     return result;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -97,45 +103,55 @@ class GridViewScrolling extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: RefreshIndicator(
-
               onRefresh: () {
                 return Future.delayed(Duration(seconds: 1));
               },
-              child: FirebaseDatabaseQueryBuilder(
-                query: gridViewController(provider.getFetchSwitch()),
-                builder: (context, snapshot, _) {
-                  if (snapshot.isFetching) {
-                    return const CircularProgressIndicator();
-                  }
-
-                  if (snapshot.hasError) {
-                    return Text('Something went wrong! ${snapshot.error}');
-                  }
-                  if (snapshot.docs.isEmpty) {
-                    return const Center(child: Text('Sonuç bulunamadı'));
-                  }
-                  final reversedList = snapshot.docs.reversed.toList();
-                  return GridView.builder(
-                    itemCount: snapshot.docs.length,
-                    itemBuilder: (context, index) {
-                      // if we reached the end of the currently obtained items, we try to
-                      // obtain more items
-                      if (snapshot.hasMore && index + 1 == snapshot.docs
-                          .length) {
-                        // Tell FirebaseDatabaseQueryBuilder to try to obtain more items.
-                        // It is safe to call this function from within the build method.
-                        snapshot.fetchMore();
+              child: Consumer<HeaderProvider>(
+                builder: (context, headerProvider, child) {
+                  return FirebaseDatabaseQueryBuilder(
+                    query: gridViewController(provider.getFetchSwitch()),
+                    builder: (context, snapshot, _) {
+                      if (snapshot.isFetching) {
+                        return const CircularProgressIndicator();
                       }
-                      final post = PostModel.fromJson(reversedList[index]
-                          .value);
-                      return PopularEventCard(post: post);
+
+                      if (snapshot.hasError) {
+                        return Text('Something went wrong! ${snapshot.error}');
+                      }
+                      if (snapshot.docs.isEmpty) {
+                        return const Center(child: Text('Sonuç bulunamadı'));
+                      }
+                      List<DataSnapshot> reversed = snapshot.docs.reversed.toList();
+                      snapshot.docs.reversed.toList().forEach((element) {
+                          if(PostModel.fromJson(element.value).title!.contains(headerProvider.getHeaderText)==false){
+                            reversed.remove(element);
+                          }
+                      });
+
+                      return GridView.builder(
+                        itemCount: reversed.length,
+                        itemBuilder: (context, index) {
+                          // if we reached the end of the currently obtained items, we try to
+                          // obtain more items
+                          if (snapshot.hasMore &&
+                              index + 1 == snapshot.docs.length) {
+                            // Tell FirebaseDatabaseQueryBuilder to try to obtain more items.
+                            // It is safe to call this function from within the build method.
+                            snapshot.fetchMore();
+                          }
+                          final post =
+                              PostModel.fromJson(reversed[index].value);
+                          return PopularEventCard(post: post);
+                        },
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 100 / 150,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                        ),
+                      );
                     },
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 100 / 150,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2,
-                    ),
                   );
                 },
               ),
@@ -147,7 +163,6 @@ class GridViewScrolling extends StatelessWidget {
   }
 }
 
-
 class CategoryButton extends StatefulWidget {
   final bool visibility;
   final Color buttonColor;
@@ -157,7 +172,9 @@ class CategoryButton extends StatefulWidget {
   const CategoryButton({
     Key? key,
     required this.buttonColor,
-    required this.title, required this.buttonKey, required this.visibility,
+    required this.title,
+    required this.buttonKey,
+    required this.visibility,
   }) : super(key: key);
 
   @override
@@ -195,7 +212,9 @@ class _CategoryButtonState extends State<CategoryButton> {
               onPressed: () {
                 setState(() {
                   _isAktive == true ? _isAktive = false : _isAktive = true;
-                  _isAktive == true ? provider.selectButton(widget.buttonKey) : provider.disableAllButton();
+                  _isAktive == true
+                      ? provider.selectButton(widget.buttonKey)
+                      : provider.disableAllButton();
                 });
               },
               child: Text(widget.title),
