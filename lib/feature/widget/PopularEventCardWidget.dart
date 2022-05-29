@@ -71,8 +71,11 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                   ),
                                   Container(
                                     foregroundDecoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.vertical(
+                                        top: Radius.circular(15.0),
+                                      ),
                                       image:DecorationImage(image: MemoryImage(snapshot.data),
-                                      fit: BoxFit.cover
+                                      fit: BoxFit.cover,
                                       ),
                                     ),
                                   )

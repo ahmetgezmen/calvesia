@@ -40,7 +40,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                             onTap: () async {
                               value.isShowNavigationButtonFunk();
                               Scaffold.of(context)
-                                  .showBottomSheet((context) => ProfilePage())
+                                  .showBottomSheet((context) => const ProfilePage())
                                   .closed
                                   .then((_) {
                                 value.isShowNavigationButtonFunk();

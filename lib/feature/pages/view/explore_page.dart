@@ -1,4 +1,3 @@
-import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/provider/explore_page_provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +59,7 @@ class GridViewScrolling extends StatelessWidget {
   const GridViewScrolling({Key? key}) : super(key: key);
 
   gridViewController(String switchKey) {
-    late final result;
+    late final Query result;
     switch (switchKey) {
       case "Standart":
         result = FirebaseDatabase.instance
@@ -104,7 +103,7 @@ class GridViewScrolling extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: RefreshIndicator(
               onRefresh: () {
-                return Future.delayed(Duration(seconds: 1));
+                return Future.delayed(const Duration(seconds: 1));
               },
               child: Consumer<HeaderProvider>(
                 builder: (context, headerProvider, child) {
