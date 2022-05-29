@@ -1,5 +1,9 @@
+import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:calvesia/feature/pages/services/image_services.dart';
+import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Utils/Style/color_palette.dart';
 
@@ -29,7 +33,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
-      elevation: 5,
+      elevation: 10,
       child: Center(
         child: SizedBox(
           width: 250,
@@ -37,15 +41,103 @@ class _PopularEventCardState extends State<PopularEventCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: BaseColorPalet.upcomingCardContainer,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(15.0),
-                    ),
-                  ),
-                ),
-              ),
+                  child: Stack(
+                children: [
+                  post.postKey == null
+                      ? Container(
+                          decoration: const BoxDecoration(
+                            color: BaseColorPalet.upcomingCardContainer,
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(15.0),
+                            ),
+                          ),
+                        )
+                      : FutureBuilder(
+                          future: ImageServices.getPostImageServices(
+                              post.postKey, 1),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            if (snapshot.hasData) {
+                              return Stack(
+                                children: [
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      color:
+                                          BaseColorPalet.upcomingCardContainer,
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(15.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    foregroundDecoration: BoxDecoration(
+                                      image:DecorationImage(image: MemoryImage(snapshot.data),
+                                      fit: BoxFit.cover
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            } else if (snapshot.hasError) {
+                              return Container(
+                                decoration: const BoxDecoration(
+                                  color: BaseColorPalet.upcomingCardContainer,
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(15.0),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          }),
+                  Consumer<UserVievModel>(
+                    builder: (context, provider, child) {
+                      return Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () async {
+                            setState(() {
+                              if (provider.user.favList!
+                                  .contains(post.postKey)) {
+                                provider.userFavListRemove(post.postKey);
+                                post.increaseFavNumber();
+                              } else {
+                                provider.userFavListAdd(post.postKey);
+                                post.decreaseFavNumber();
+                              }
+                              PostServices.updatePostService(
+                                  post, post.postKey!);
+                              provider.updateMyInfo();
+                            });
+                          },
+                          icon: provider.isInFavList(post.postKey)
+                              ? Material(
+                                  borderRadius: BorderRadius.circular(20),
+                                  elevation: 10,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 35,
+                                    child:  Icon(Icons.favorite,
+                                        color: BaseColorPalet.cardBackground),
+                                  ),
+                                )
+                              : Material(
+                                  borderRadius: BorderRadius.circular(20),
+                                  elevation: 10,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 35,
+                                    child:  Icon(Icons.favorite_border,
+                                        color: BaseColorPalet.cardBackground),
+                                  ),
+                                ),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              )),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),

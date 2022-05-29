@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-void PostShareSuccessButton(BuildContext context) {
+Future<bool> PostShareSuccessButton(BuildContext context)async {
   final alertDialog = AlertDialog(
     title: PostShareSuccess(),
+    shape: RoundedRectangleBorder(
+        borderRadius:
+        BorderRadius.circular(20)
+    ),
   );
 
-  showDialog(
+  await showDialog(
     context: context,
     builder: (BuildContext context) {
       return alertDialog;
     },
   );
+  return true;
 }
 
 
@@ -20,8 +26,24 @@ class PostShareSuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Widget svg = SvgPicture.asset("assets/images/Component 11.svg",
+        semanticsLabel: 'Gönderi paylaşımı başarılı logosu'
+    );
+
     return Container(
-      child: Center(child: CircularProgressIndicator()),
+
+        child:Column(
+            children:[
+              svg,
+              Text('Gönderi Paylaşımı Başarılı',
+                  style: TextStyle(
+                      fontFamily:'PTSans' ,
+                      fontSize: 18,
+                      color: Colors.black38
+                  )
+              )
+            ]
+        )
     );
   }
 }
