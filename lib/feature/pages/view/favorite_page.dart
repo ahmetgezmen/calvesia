@@ -1,16 +1,10 @@
-import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/widget/UpcomingEventsCardWidget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Utils/Style/color_palette.dart';
-import '../models/post_model.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({Key? key}) : super(key: key);
