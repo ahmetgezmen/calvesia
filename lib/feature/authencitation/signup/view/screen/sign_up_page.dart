@@ -2,8 +2,7 @@ import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:flutter/material.dart';
 
-import '../../../viewmodel/user_view_model.dart';
-import '../widget/email_alredy_use_widget.dart';
+import '../widget/InvalidMailWidget.dart';
 
 class SingUpPAgeScreen extends StatefulWidget {
   const SingUpPAgeScreen({Key? key}) : super(key: key);
@@ -25,9 +24,14 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
     super.dispose();
   }
 
-  emailEduTagChecker(email) {
-    final value = email.split("@");
-    if (value[1] == "std.idu.edu.tr") {
+  emailEduTagChecker(String email) {
+    final List value = email.split("@");
+    final String value2 = value[1];
+    final List endBodyList = value2.split(".");
+    final String endBodyListLastItem = endBodyList.reversed.toList()[0];
+    final String endBodyListBeforeLastItem = endBodyList.reversed.toList()[1];
+
+    if ( "edu.tr" == "$endBodyListBeforeLastItem.$endBodyListLastItem") {
       return true;
     } else {
       return false;
@@ -112,7 +116,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                                   userNameController.text);
                               Navigator.of(context).pop();
                             } else {
-                              EmailAlredyUseWidgetFunction(context);
+                              InvalidMailWidgetFunction(context);
                             }
                           },
                         )),

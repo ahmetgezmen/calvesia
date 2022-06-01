@@ -39,12 +39,10 @@ class _HeaderComponentState extends State<HeaderComponent> {
                           return InkWell(
                             onTap: () async {
                               value.isShowNavigationButtonFunk();
-                              Scaffold.of(context)
-                                  .showBottomSheet((context) => ProfilePage())
-                                  .closed
-                                  .then((_) {
-                                value.isShowNavigationButtonFunk();
-                              });
+                              await Scaffold.of(context)
+                                  .showBottomSheet((context) => const ProfilePage())
+                                  .closed;
+                              value.isShowNavigationButtonFunk();
                             },
                             child: FutureBuilder<Uint8List?>(
                                 future: Provider.of<UserVievModel>(context)
@@ -92,7 +90,6 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       return TextFormField(
                         onChanged: (value) {
                           provider.updateHeaderText(value.toString());
-                          print(provider.getHeaderText);
                         },
                         controller: widget.searchController,
                         decoration: const InputDecoration(

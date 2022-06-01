@@ -71,8 +71,11 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                   ),
                                   Container(
                                     foregroundDecoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.vertical(
+                                        top: Radius.circular(15.0),
+                                      ),
                                       image:DecorationImage(image: MemoryImage(snapshot.data),
-                                      fit: BoxFit.cover
+                                      fit: BoxFit.cover,
                                       ),
                                     ),
                                   )
@@ -159,6 +162,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                           Text(
                             post.title.toString(),
                             style: Theme.of(context).textTheme.titleSmall,
+                            maxLines: 2,
                           ),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,

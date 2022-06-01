@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Future<void> LoginSuccessfulWidgetFunction(BuildContext context) async {
+Future<void> SignUpSuccessfulWidgetFunction(BuildContext context) async {
   await showDialog(
     barrierDismissible: false,
     context: context,
     builder: (BuildContext dialogContext) {
       return AlertDialog(
-        title: LoginSuccessfulWidget(dialogContext: dialogContext),
+        title: SignUpSuccessfulWidget(dialogContext: dialogContext),
         shape: RoundedRectangleBorder(
             borderRadius:
             BorderRadius.circular(20)
@@ -17,15 +17,15 @@ Future<void> LoginSuccessfulWidgetFunction(BuildContext context) async {
   );
 }
 
-class LoginSuccessfulWidget extends StatefulWidget {
+class SignUpSuccessfulWidget extends StatefulWidget {
   final BuildContext dialogContext;
-  const LoginSuccessfulWidget({Key? key, required this.dialogContext}) : super(key: key);
+  const SignUpSuccessfulWidget({Key? key, required this.dialogContext}) : super(key: key);
 
   @override
-  State<LoginSuccessfulWidget> createState() => _LoginSuccessfulWidgetState();
+  State<SignUpSuccessfulWidget> createState() => _SignUpSuccessfulWidgetState();
 }
 
-class _LoginSuccessfulWidgetState extends State<LoginSuccessfulWidget> {
+class _SignUpSuccessfulWidgetState extends State<SignUpSuccessfulWidget> {
 
   waiting() async {
     await Future.delayed(const Duration(seconds: 1));
@@ -41,12 +41,12 @@ class _LoginSuccessfulWidgetState extends State<LoginSuccessfulWidget> {
   @override
   Widget build(BuildContext context) {
     final Widget svg = SvgPicture.asset("assets/images/Component 9.svg",
-        semanticsLabel: 'Giriş Başarılı Logosu'
+        semanticsLabel: 'Kayit Başarılı Logosu'
     );
     return Column(
         children:[
           svg,
-          const Text('Giriş Başarılı',
+          const Text('Kayit Başarılı',
               style: TextStyle(
                   fontFamily:'PTSans' ,
                   fontSize: 18,

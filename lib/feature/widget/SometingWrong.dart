@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 void SometingWrongWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: SometingWrongWidget(),
+    title:const  SometingWrongWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
@@ -31,14 +31,14 @@ class SometingWrongWidget extends StatelessWidget {
         child:Column(
             children:[
               svg,
-              Text('Bir Şeyler Yanlış Gitti',
+              const Text('Bir Şeyler Yanlış Gitti',
                   style: TextStyle(
                       fontFamily:'PTSans' ,
                       fontSize: 18,
                       color: Colors.black38
                   )
               ),
-              Text('Lütfen tekrar deneyin',
+              const Text('Lütfen tekrar deneyin',
                   style: TextStyle(
                       fontFamily:'PTSans' ,
                       fontSize: 12,

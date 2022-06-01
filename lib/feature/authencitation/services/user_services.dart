@@ -20,18 +20,18 @@ import '../models/schools_model.dart';
 import '../models/user_model.dart';
 import '../signup/view/widget/email_alredy_use_widget.dart';
 import '../signup/view/widget/password_too_weak_widget.dart';
-import '../signup/view/widget/send_mail_widget.dart';
+import '../signup/view/widget/sign_up_successful_widget.dart';
 
 class UserServices {
   static Login(BuildContext context, emailAddress, password) async {
     LoadingWidgetButton(context);
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
       Navigator.of(context).pop();
-      LoginSuccessfulWidgetFunction(context);
+      await LoginSuccessfulWidgetFunction(context);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -47,7 +47,6 @@ class UserServices {
   static SignUp(BuildContext context, emailAddress, password, userName) async {
     LoadingWidgetButton(context);
     try {
-      final credential =
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
@@ -61,7 +60,7 @@ class UserServices {
           userName
       );
       Navigator.of(context).pop();
-      SendEmailWidgetFunction(context);
+      await SignUpSuccessfulWidgetFunction(context);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
