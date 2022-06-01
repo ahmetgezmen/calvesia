@@ -162,6 +162,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                           Text(
                             post.title.toString(),
                             style: Theme.of(context).textTheme.titleSmall,
+                            maxLines: 2,
                           ),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,

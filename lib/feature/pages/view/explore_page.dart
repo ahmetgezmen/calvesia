@@ -120,8 +120,8 @@ class GridViewScrolling extends StatelessWidget {
                       if (snapshot.docs.isEmpty) {
                         return const Center(child: Text('Sonuç bulunamadı'));
                       }
-                      List<DataSnapshot> reversed = snapshot.docs.reversed.toList();
-                      snapshot.docs.reversed.toList().forEach((element) {
+                      List<DataSnapshot> reversed = snapshot.docs.toList();
+                      snapshot.docs.toList().forEach((element) {
                           if(PostModel.fromJson(element.value).title!.contains(headerProvider.getHeaderText)==false){
                             reversed.remove(element);
                           }
