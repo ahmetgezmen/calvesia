@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import '../../provider/post_provider.dart';
 import '../../widget/LoadingWidget.dart';
 import '../../widget/PostShareFailed.dart';
-import '../../widget/PostShareSuccess.dart';
+import '../../widget/post_share_success.dart';
 
 DatabaseReference ref = FirebaseDatabase.instance.ref("posts");
 String uid = FirebaseAuth.instance.currentUser!.uid;
