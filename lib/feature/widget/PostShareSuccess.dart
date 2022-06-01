@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 Future<bool> PostShareSuccessButton(BuildContext context)async {
   final alertDialog = AlertDialog(
-    title: PostShareSuccess(),
+    title: const PostShareSuccess(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
@@ -30,20 +30,17 @@ class PostShareSuccess extends StatelessWidget {
         semanticsLabel: 'Gönderi paylaşımı başarılı logosu'
     );
 
-    return Container(
-
-        child:Column(
-            children:[
-              svg,
-              Text('Gönderi Paylaşımı Başarılı',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Gönderi Paylaşımı Başarılı',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }
