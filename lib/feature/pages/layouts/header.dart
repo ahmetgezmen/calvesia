@@ -38,11 +38,11 @@ class _HeaderComponentState extends State<HeaderComponent> {
                         builder: (context, value, child) {
                           return InkWell(
                             onTap: () async {
-                              value.isShowNavigationButtonFunk();
+                              value.setShowNavigationButtonFunkProfile();
                               await Scaffold.of(context)
                                   .showBottomSheet((context) => const ProfilePage())
                                   .closed;
-                              value.isShowNavigationButtonFunk();
+                              value.setShowNavigationButtonFunkBase();
                             },
                             child: FutureBuilder<Uint8List?>(
                                 future: Provider.of<UserVievModel>(context)
@@ -64,11 +64,15 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
-                        child: Text(
+                        child: Consumer<UserVievModel>(
+  builder: (context, userProvider, child) {
+  return Text(
                             FirebaseAuth.instance.currentUser!.isAnonymous
                                 ? "Anonymous"
-                                : "Ahmet GEZMEN",
-                            style: Theme.of(context).textTheme.headlineSmall),
+                                : userProvider.user.fname!.isEmpty?userProvider.user.username.toString() : userProvider.user.fname.toString(),
+                            style: Theme.of(context).textTheme.headlineSmall);
+  },
+),
                       )
                     ],
                   ),

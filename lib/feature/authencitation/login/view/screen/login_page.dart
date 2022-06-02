@@ -63,7 +63,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       controller: nameController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Email Adresi',
+                        labelText: 'Edu uzantili email Adresi',
                       ),
                     ),
                   ),

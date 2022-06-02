@@ -29,7 +29,7 @@ class ProfilePageAppBarr extends StatelessWidget {
                 return InkWell(
                     onTap: () async {
                       await FirebaseAuth.instance.signOut();
-                      provider.isShowNavigationButtonFunk();
+                      provider.setShowNavigationButtonFunkBase();
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const OnboardingPage(),
                       ));

@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => BaseProvider()),
         ChangeNotifierProvider(create: (_) => PostShareProvider()),
         ChangeNotifierProvider(create: (_) => HeaderProvider()),
-        ChangeNotifierProvider(create: (_) => PostIsSharingProvider()),
+        ChangeNotifierProvider(create: (_) => PostIsSharingAndShowingProvider()),
         ChangeNotifierProvider(create: (_) => UserVievModel()),
         ChangeNotifierProvider(create: (_) => ExploreProvider()),
       ],
