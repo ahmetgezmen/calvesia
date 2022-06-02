@@ -2,7 +2,9 @@ import 'dart:typed_data';
 
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/database.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../../widget/UpcomingEventsCardWidget.dart';
@@ -46,10 +48,26 @@ class BottomComponent extends StatelessWidget {
             ],
           ),
         ),
-        for (int i = 0; i < 15; i++)
-          UpcomingEventsCardWidget(
-            post: PostModel(),
-          )
+        FirebaseDatabaseQueryBuilder(
+            query: FirebaseDatabase.instance
+                .ref('posts')
+                .orderByChild("date"),
+            builder: (context, snapshot, _) {
+              if (snapshot.isFetching) {
+                return const CircularProgressIndicator();
+              }
+
+              if (snapshot.hasError) {
+                return Text('Something went wrong! ${snapshot.error}');
+              }
+              if (snapshot.docs.isEmpty) {
+                return const Center(child: Text('Sonuç bulunamadı'));
+              }
+              return Column(children: [
+                for(int index = 0 ; index<snapshot.docs.length;index++)
+                  UpcomingEventsCardWidget(post: PostModel.fromJson(snapshot.docs.toList()[index].value))
+              ]);
+            })
       ],
     );
   }
@@ -84,7 +102,9 @@ class BodyComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return PopularEventCard(post: PostModel(),);
+                    return PopularEventCard(
+                      post: PostModel(),
+                    );
                   }),
             ),
           )
