@@ -93,21 +93,31 @@ class BodyComponent extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
-            child: SizedBox(
-              height: 250,
-              child: ListView.builder(
-                  itemCount: 5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return PopularEventCard(
-                      post: PostModel(),
-                    );
-                  }),
-            ),
-          )
+          FirebaseDatabaseQueryBuilder(
+              query: FirebaseDatabase.instance
+                  .ref('posts')
+                  .orderByChild("followersNumber"),
+              builder: (context, snapshot, _) {
+                if (snapshot.isFetching) {
+                  return const CircularProgressIndicator();
+                }
+
+                if (snapshot.hasError) {
+                  return Text('Something went wrong! ${snapshot.error}');
+                }
+                if (snapshot.docs.isEmpty) {
+                  return const Center(child: Text('Sonuç bulunamadı'));
+                }
+                return SizedBox(
+                  height: 300,
+                  child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                    for(int index = 0 ; index<snapshot.docs.length;index++)
+                      PopularEventCard(post: PostModel.fromJson(snapshot.docs.toList()[index].value))
+                  ]),
+                );
+              })
         ],
       ),
     );
