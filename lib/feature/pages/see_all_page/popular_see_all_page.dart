@@ -1,11 +1,10 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
-import 'package:calvesia/feature/provider/header_provider.dart';
+import 'package:calvesia/feature/widget/UpcomingEventsCardWidget.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
-import 'package:provider/provider.dart';
 
-import '../../widget/PopularEventCardWidget.dart';
+
 import '../models/post_model.dart';
 
 class PopularSeeAllPage extends StatelessWidget {
@@ -22,6 +21,7 @@ class PopularSeeAllPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FirebaseDatabaseQueryBuilder(
+          pageSize: 10,
           query: FirebaseDatabase.instance
               .ref('posts')
               .orderByChild("followersNumber"),
@@ -37,7 +37,7 @@ class PopularSeeAllPage extends StatelessWidget {
               return const Center(child: Text('Sonuç bulunamadı'));
             }
 
-            return GridView.builder(
+            return ListView.builder(
               itemCount: snapshot.docs.length,
               itemBuilder: (context, index) {
                 // if we reached the end of the currently obtained items, we try to
@@ -50,15 +50,8 @@ class PopularSeeAllPage extends StatelessWidget {
                 }
                 final post =
                 PostModel.fromJson(snapshot.docs[index].value);
-                return PopularEventCard(post: post);
+                return UpcomingEventsCardWidget(post: post);
               },
-              gridDelegate:
-              const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 100 / 150,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 2,
-              ),
             );
           },
         ),

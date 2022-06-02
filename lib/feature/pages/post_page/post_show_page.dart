@@ -21,6 +21,9 @@ class PostShowPageAppBarr extends StatelessWidget {
           children: [
             const Text("Get Ticket one Person"),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor)
+              ),
               onPressed: () {},
               child: const Text("Bilet AL"),
             )
@@ -230,6 +233,7 @@ class InfoComponent extends StatelessWidget {
                     ? SizedBox(
                         height: 100,
                         child: ListView.builder(
+                          itemCount: post.sponsors!.sponsors!.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Row(
                               children: [
@@ -237,7 +241,23 @@ class InfoComponent extends StatelessWidget {
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(50)
                                 ),),
-                                const Text("data"),
+                                Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height: 5,
+                                        width: 5,
+                                        decoration:BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius: BorderRadius.circular(50)
+                                        ),
+                                      ),
+                                      SizedBox(width: 10,),
+                                      Text(post.sponsors!.sponsors![index].toString().trimLeft()),
+                                    ],
+                                  ),
+                                ),
                               ],
                             );
                           },
