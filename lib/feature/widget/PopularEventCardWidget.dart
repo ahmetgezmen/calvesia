@@ -215,8 +215,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                             child: const SizedBox(
                               height: 35,
                               width: 35,
-                              child: Icon(Icons.favorite,
-                                  color: BaseColorPalet.cardBackground),
+                              child: Icon(Icons.favorite),
                             ),
                           )
                         : Material(
@@ -225,8 +224,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                             child: const SizedBox(
                               height: 35,
                               width: 35,
-                              child: Icon(Icons.favorite_border,
-                                  color: BaseColorPalet.cardBackground),
+                              child: Icon(Icons.favorite_border),
                             ),
                           ),
                   ),

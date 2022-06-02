@@ -415,7 +415,7 @@ class _TopComponentState extends State<TopComponent> {
                                     height: 35,
                                     width: 35,
                                     child: Icon(Icons.favorite,
-                                        color: BaseColorPalet.cardBackground),
+                                        ),
                                   ),
                                 )
                               : Material(
@@ -425,7 +425,7 @@ class _TopComponentState extends State<TopComponent> {
                                     height: 35,
                                     width: 35,
                                     child: Icon(Icons.favorite_border,
-                                        color: BaseColorPalet.cardBackground),
+                                        ),
                                   ),
                                 ),
                         ),
