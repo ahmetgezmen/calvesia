@@ -8,6 +8,8 @@ import 'package:flutterfire_ui/database.dart';
 
 import '../../widget/PopularEventCardWidget.dart';
 import '../../widget/UpcomingEventsCardWidget.dart';
+import '../see_all_page/popular_see_all_page.dart';
+import '../see_all_page/upcoming_see_all_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -44,7 +46,12 @@ class BottomComponent extends StatelessWidget {
             children: <Widget>[
               Text("Yaklaşan Etkinlikler",
                   style: Theme.of(context).textTheme.headline6),
-              Text("See all"),
+              TextButton(onPressed: () async {
+                await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return const UpcomingSeeAllPage();
+                },));
+              },
+              child: Text("Tümünü gör")),
             ],
           ),
         ),
@@ -89,7 +96,10 @@ class BodyComponent extends StatelessWidget {
               children: <Widget>[
                 Text("Populer Etkinlikler",
                     style: Theme.of(context).textTheme.headline6),
-                Text("See all"),
+                TextButton(onPressed: () async {
+                  await Navigator.of(context).push(MaterialPageRoute(builder: (context) => PopularSeeAllPage(),));
+                },
+                child: const Text("Tümünü gör")),
               ],
             ),
           ),
