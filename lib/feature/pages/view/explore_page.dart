@@ -64,7 +64,7 @@ class GridViewScrolling extends StatelessWidget {
       case "Standart":
         result = FirebaseDatabase.instance
             .ref('posts')
-            .orderByChild("date");
+            .orderByChild("streamTime/full");
         break;
       case "health":
         result = FirebaseDatabase.instance

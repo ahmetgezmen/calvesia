@@ -38,11 +38,11 @@ class _HeaderComponentState extends State<HeaderComponent> {
                         builder: (context, value, child) {
                           return InkWell(
                             onTap: () async {
-                              value.isShowNavigationButtonFunk();
+                              value.setShowNavigationButtonFunkProfile();
                               await Scaffold.of(context)
                                   .showBottomSheet((context) => const ProfilePage())
                                   .closed;
-                              value.isShowNavigationButtonFunk();
+                              value.setShowNavigationButtonFunkBase();
                             },
                             child: FutureBuilder<Uint8List?>(
                                 future: Provider.of<UserVievModel>(context)

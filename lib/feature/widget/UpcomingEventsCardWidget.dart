@@ -1,9 +1,11 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Authencitation/viewmodel/user_view_model.dart';
+import '../pages/post_page/post_show_page.dart';
 import '../pages/services/image_services.dart';
 import '../pages/services/post_services.dart';
 
@@ -179,9 +181,21 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     );
                   },
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_forward),
+                Consumer<BaseProvider>(
+                  builder: (context, provider, child) {
+                    return IconButton(
+                      onPressed: () async {
+                        provider.setShowNavigationButtonFunkPostShow();
+                        await Scaffold.of(context)
+                            .showBottomSheet((context) => PostShowPage(
+                                  post: widget.post,
+                                ))
+                            .closed;
+                        provider.setShowNavigationButtonFunkBase();
+                      },
+                      icon: const Icon(Icons.arrow_forward),
+                    );
+                  },
                 ),
               ],
             )

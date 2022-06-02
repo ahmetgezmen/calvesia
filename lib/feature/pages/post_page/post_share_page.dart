@@ -1,4 +1,3 @@
-import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +9,7 @@ import 'event_photo_component.dart';
 enum SingingCharacter { privetEvent, publicEvent, online, platform, free, paid }
 
 class PostSharePage extends StatefulWidget {
-  final PostIsSharingProvider postIsSharingProvider;
+  final PostIsSharingAndShowingProvider postIsSharingProvider;
   final String postKey;
   const PostSharePage(
       {Key? key, required this.postKey, required this.postIsSharingProvider})

@@ -9,11 +9,16 @@ import '../pages/models/coordinators_model.dart';
 import '../pages/models/sponsor_model.dart';
 import '../pages/models/stream_time_model.dart';
 
-class PostIsSharingProvider extends ChangeNotifier{
+class PostIsSharingAndShowingProvider extends ChangeNotifier{
   String _postKey = "";
   bool _isShare = false;
+  bool _isShow = false;
   void setIsShare(bool value){
     _isShare = value;
+    notifyListeners();
+  }
+  void setIsShow(bool value){
+    _isShow = value;
     notifyListeners();
   }
   void setPostKey(String val){
@@ -21,6 +26,7 @@ class PostIsSharingProvider extends ChangeNotifier{
     notifyListeners();
   }
   bool get getIsShare => _isShare;
+  bool get getIsShow => _isShow;
   String get getPostKey => getPostKey;
 }
 
@@ -50,7 +56,7 @@ class PostShareProvider extends ChangeNotifier {
   Sponsors? _sponsors;
   Coordinators? _coordinators;
 
-  Future<bool> addPost(context, key, PostIsSharingProvider provider, postKey ) async {
+  Future<bool> addPost(context, key, PostIsSharingAndShowingProvider provider, postKey ) async {
     PostModel post = PostModel(
       postKey: postKey,
       eventImageListModel: EventImageListModel(eventImageList: []),
