@@ -64,11 +64,15 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
-                        child: Text(
+                        child: Consumer<UserVievModel>(
+  builder: (context, userProvider, child) {
+  return Text(
                             FirebaseAuth.instance.currentUser!.isAnonymous
                                 ? "Anonymous"
-                                : "Ahmet GEZMEN",
-                            style: Theme.of(context).textTheme.headlineSmall),
+                                : userProvider.user.fname!.isEmpty?userProvider.user.username.toString() : userProvider.user.fname.toString(),
+                            style: Theme.of(context).textTheme.headlineSmall);
+  },
+),
                       )
                     ],
                   ),
