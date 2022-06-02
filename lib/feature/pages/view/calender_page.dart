@@ -50,7 +50,7 @@ class _BuyPageState extends State<BuyPage> {
               return Text('Something went wrong! ${snapshot.error}');
             }
             if (snapshot.docs.isEmpty) {
-              return const Center(child: Text('Sonuç bulunamadı'));
+              return const Center(child: Text('Bu tarihte gerçekleşen etkinlik yok'));
             }
             int len = snapshot.docs.length;
             for (int index = 0; index <= len; index++) {
