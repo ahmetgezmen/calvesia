@@ -66,8 +66,9 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                               ),
                               Container(
                                 foregroundDecoration: BoxDecoration(
-                                  image:DecorationImage(image: MemoryImage(snapshot.data),
-                                      fit: BoxFit.cover,
+                                  image: DecorationImage(
+                                    image: MemoryImage(snapshot.data),
+                                    fit: BoxFit.cover,
                                   ),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(15.0),
@@ -97,6 +98,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
                       post.title.toString(),
+                      maxLines: 1,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
@@ -132,10 +134,13 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                           size: 16,
                           color: BaseColorPalet.linkLabel,
                         ),
-                        Text(
-                          post.location.toString(),
-                          style:
-                              const TextStyle(color: BaseColorPalet.linkLabel),
+                        Expanded(
+                          child: Text(
+                            post.location.toString(),
+                            maxLines: 1,
+                            style: const TextStyle(
+                                color: BaseColorPalet.linkLabel),
+                          ),
                         ),
                       ],
                     ),
