@@ -782,8 +782,13 @@ class _PostSharePageState extends State<PostSharePage> {
                                       ),
                                       onSaved: (val) {
                                         if (val!.isNotEmpty) {
-                                          final List<String> _sponsor =
-                                              val.split(",");
+                                          List<String> _sponsor =
+                                              val.trim().split(",");
+                                          for (var element in _sponsor) {
+                                            if(element == ""){
+                                              _sponsor.remove(element);
+                                            }
+                                          }
                                           provider.setSponsors(_sponsor);
                                         }
                                       },
