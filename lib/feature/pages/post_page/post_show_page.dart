@@ -22,8 +22,8 @@ class PostShowPageAppBarr extends StatelessWidget {
             const Text("Get Ticket one Person"),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor)
-              ),
+                  backgroundColor:
+                      MaterialStateProperty.all(BaseColorPalet.buttonColor)),
               onPressed: () {},
               child: const Text("Bilet AL"),
             )
@@ -93,45 +93,48 @@ class CommentComponent extends StatelessWidget {
       borderRadius: BorderRadius.circular(50));
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: singleContainerDecoration,
-                child:  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Yorum yaz",
-                      border: singleOutlineBorder,
-                      disabledBorder: singleOutlineBorder,
-                      errorBorder: singleOutlineBorder,
-                      focusedBorder: singleOutlineBorder,
-                      enabledBorder: singleOutlineBorder,
-                      focusedErrorBorder: singleOutlineBorder,
-                      suffixIcon: const Icon(
-                        Icons.text_fields,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: singleContainerDecoration,
+                  child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Yorum yaz",
+                        border: singleOutlineBorder,
+                        disabledBorder: singleOutlineBorder,
+                        errorBorder: singleOutlineBorder,
+                        focusedBorder: singleOutlineBorder,
+                        enabledBorder: singleOutlineBorder,
+                        focusedErrorBorder: singleOutlineBorder,
+                        suffixIcon: const Icon(
+                          Icons.text_fields,
+                        ),
                       ),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Ad soyad bilgisi giriniz';
-                      }
-                      return null;
-                    },
-                    onSaved: (val) {
-                      // Todo
-                    }),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Ad soyad bilgisi giriniz';
+                        }
+                        return null;
+                      },
+                      onSaved: (val) {
+                        // Todo
+                      }),
+                ),
               ),
-            ),
-            IconButton(onPressed: () {
-
-            }, icon: Icon(Icons.arrow_forward_ios),),
-          ],
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.arrow_forward_ios),
+              ),
+            ],
+          ),
         ),
-      ),
-    ],);
+      ],
+    );
   }
 }
 
@@ -247,7 +250,15 @@ class InfoComponent extends StatelessWidget {
                     const SizedBox(
                       width: 30,
                     ),
-                    Text(post.eventWebSiteUrl.toString())
+                    Expanded(
+                        child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Text(post.eventWebSiteUrl.toString()),
+                        ],
+                      ),
+                    ))
                   ],
                 ),
               ),
@@ -282,10 +293,11 @@ class InfoComponent extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return Row(
                               children: [
-                                Container(decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(50)
-                                ),),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(50)),
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.all(3.0),
                                   child: Row(
@@ -293,13 +305,17 @@ class InfoComponent extends StatelessWidget {
                                       Container(
                                         height: 5,
                                         width: 5,
-                                        decoration:BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.circular(50)
-                                        ),
+                                        decoration: BoxDecoration(
+                                            color: Colors.black,
+                                            borderRadius:
+                                                BorderRadius.circular(50)),
                                       ),
-                                      SizedBox(width: 10,),
-                                      Text(post.sponsors!.sponsors![index].toString().trimLeft()),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(post.sponsors!.sponsors![index]
+                                          .toString()
+                                          .trimLeft()),
                                     ],
                                   ),
                                 ),
@@ -325,11 +341,10 @@ class InfoComponent extends StatelessWidget {
             post.coordinators != null
                 ? post.coordinators!.coordinators != null
                     ? Container(
-              decoration: BoxDecoration(
-              color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(20),
-
-              ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         height: 200,
                         child: ListView.builder(
                           itemCount: post.coordinators!.coordinators!.length,
@@ -342,22 +357,31 @@ class InfoComponent extends StatelessWidget {
                                     color: Colors.grey[300],
                                     borderRadius: BorderRadius.circular(15.0)),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Row(children: [const Icon(Icons.person_outline),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(post
-                                          .coordinators!.coordinators![index]),],),
+                                    Row(
+                                      children: [
+                                        const Icon(Icons.person_outline),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(post.coordinators!
+                                            .coordinators![index]),
+                                      ],
+                                    ),
                                     ElevatedButton(
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor)
-                                      ),
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  BaseColorPalet.buttonColor)),
                                       onPressed: () {
-                                        showDialog(context: context, builder: (context){
-                                          return const AlertDialog(title: Text("Coming Soon"));
-                                        });
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return const AlertDialog(
+                                                  title: Text("Coming Soon"));
+                                            });
                                       },
                                       child: const Text("İletişime geç"),
                                     )
@@ -459,8 +483,9 @@ class _TopComponentState extends State<TopComponent> {
                                   child: const SizedBox(
                                     height: 35,
                                     width: 35,
-                                    child: Icon(Icons.favorite,
-                                        ),
+                                    child: Icon(
+                                      Icons.favorite,
+                                    ),
                                   ),
                                 )
                               : Material(
@@ -469,8 +494,9 @@ class _TopComponentState extends State<TopComponent> {
                                   child: const SizedBox(
                                     height: 35,
                                     width: 35,
-                                    child: Icon(Icons.favorite_border,
-                                        ),
+                                    child: Icon(
+                                      Icons.favorite_border,
+                                    ),
                                   ),
                                 ),
                         ),
@@ -557,7 +583,20 @@ class PhotoWidget extends StatelessWidget {
           future: ImageServices.getPostImageServices(post.postKey, index),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return Image(width: 85, image: MemoryImage(snapshot.data));
+              return InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title:
+                            Image(width: 85, image: MemoryImage(snapshot.data)),
+                      );
+                    },
+                  );
+                },
+                child: Image(width: 85, image: MemoryImage(snapshot.data)),
+              );
             } else if (snapshot.hasError) {
               return Container(
                 width: 85,
