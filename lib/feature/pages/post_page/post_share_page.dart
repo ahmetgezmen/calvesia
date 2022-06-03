@@ -782,8 +782,13 @@ class _PostSharePageState extends State<PostSharePage> {
                                       ),
                                       onSaved: (val) {
                                         if (val!.isNotEmpty) {
-                                          final List<String> _sponsor =
-                                              val.split(",");
+                                          List<String> _sponsor =
+                                              val.trim().split(",");
+                                          for (var element in _sponsor) {
+                                            if(element == ""){
+                                              _sponsor.remove(element);
+                                            }
+                                          }
                                           provider.setSponsors(_sponsor);
                                         }
                                       },
@@ -834,8 +839,13 @@ class _PostSharePageState extends State<PostSharePage> {
                                         ),
                                         onSaved: (val) {
                                           if (val!.isNotEmpty) {
-                                            final List<String> _coordinators =
-                                                val.split(",");
+                                            List<String> _coordinators =
+                                                val.trim().split(",");
+                                            for (var element in _coordinators) {
+                                              if(element==""){
+                                                _coordinators.remove(element);
+                                              }
+                                            }
                                             provider
                                                 .setCoordinators(_coordinators);
                                           }
