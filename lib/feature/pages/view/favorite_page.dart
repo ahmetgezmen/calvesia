@@ -66,9 +66,9 @@ class _SilverDelegateComponentFavouriteState
 }
 
 class BuilderWidget extends StatelessWidget {
-  final provider;
-  final index;
-  const BuilderWidget({Key? key, this.provider, this.index}) : super(key: key);
+  final UserVievModel provider;
+  final int index;
+  const BuilderWidget({Key? key, required this.provider, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,9 +79,9 @@ class BuilderWidget extends StatelessWidget {
           if (snapshot.hasData) {
             return UpcomingEventsCardWidget(post: snapshot.data);
           } else if (snapshot.hasError) {
-            return Icon(Icons.error_outline);
+            return const Icon(Icons.error_outline);
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         });
   }
