@@ -82,11 +82,61 @@ class PostShowPage extends StatelessWidget {
 
 class CommentComponent extends StatelessWidget {
   final PostModel post;
-  const CommentComponent({Key? key, required this.post}) : super(key: key);
+  CommentComponent({Key? key, required this.post}) : super(key: key);
 
+  final OutlineInputBorder singleOutlineBorder = const OutlineInputBorder(
+      borderSide: BorderSide(color: BaseColorPalet.postPageFillColor),
+      borderRadius: BorderRadius.all(Radius.circular(50)));
+
+  final BoxDecoration singleContainerDecoration = BoxDecoration(
+      color: BaseColorPalet.postPageFillColor,
+      borderRadius: BorderRadius.circular(50));
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: singleContainerDecoration,
+                child:  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Yorum yaz",
+                      border: singleOutlineBorder,
+                      disabledBorder: singleOutlineBorder,
+                      errorBorder: singleOutlineBorder,
+                      focusedBorder: singleOutlineBorder,
+                      enabledBorder: singleOutlineBorder,
+                      focusedErrorBorder: singleOutlineBorder,
+                      suffixIcon: const Icon(
+                        Icons.text_fields,
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Ad soyad bilgisi giriniz';
+                      }
+                      return null;
+                    },
+                    onSaved: (val) {
+                      // Todo
+                    }),
+              ),
+            ),
+            IconButton(onPressed: () {
+
+            }, icon: Icon(Icons.arrow_forward_ios),),
+            Expanded(child: ListView(
+              children: [
+                ListTile()
+              ],
+            )),
+          ],
+        ),
+      ),
+    ],);
   }
 }
 
