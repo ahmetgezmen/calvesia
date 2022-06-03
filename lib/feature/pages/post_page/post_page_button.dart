@@ -8,7 +8,7 @@ import '../services/image_services.dart';
 
 openPostPage(context, PostIsSharingAndShowingProvider provider) async {
   final _postKey = PostServices.startAddPostServices();
-  await PostServices.updatePostService(PostModel(title: "deneme"), _postKey);
+  await PostServices.updatePostService(PostModel(postKey: _postKey), _postKey);
   provider.setPostKey(_postKey);
   await Navigator.of(context).push(MaterialPageRoute(
     builder: (context) => PostSharePage(
