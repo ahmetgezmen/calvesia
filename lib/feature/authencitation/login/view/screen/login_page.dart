@@ -106,7 +106,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                         ),
                         child: const Text('GİRİŞ YAP'),
                         onPressed: () async {
-                          final result = await UserServices.Login(context,
+                          final result = await UserServices.login(context,
                               nameController.text, passwordController.text);
                           if (result == true) {
                             Navigator.of(context).push(MaterialPageRoute(

@@ -109,7 +109,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                           onPressed: () async {
                             final result = await emailEduTagChecker(emailController.text);
                             if (result == true) {
-                              await UserServices.SignUp(
+                              await UserServices.signUp(
                                   context,
                                   emailController.text,
                                   passwordController.text,
