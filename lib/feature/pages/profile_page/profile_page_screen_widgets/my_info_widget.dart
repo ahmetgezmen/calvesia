@@ -59,50 +59,53 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: SingleChildScrollView(
                     child: Column(children: [
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      //   child: Container(
+                      //     decoration: singleContainerDecoration,
+                      //     child: TextFormField(
+                      //         decoration: InputDecoration(
+                      //           labelText: "CV'ni ekle",
+                      //           border: singleOutlineBorder,
+                      //           disabledBorder: singleOutlineBorder,
+                      //           errorBorder: singleOutlineBorder,
+                      //           focusedBorder: singleOutlineBorder,
+                      //           enabledBorder: singleOutlineBorder,
+                      //           focusedErrorBorder: singleOutlineBorder,
+                      //           suffixIcon: const Icon(
+                      //             Icons.save_alt,
+                      //           ),
+                      //         ),
+                      //         onSaved: (val) {
+                      //           // TODO
+                      //         }),
+                      //   ),
+                      // ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        padding: const EdgeInsets.only(top: 16.0),
                         child: Container(
                           decoration: singleContainerDecoration,
                           child: TextFormField(
+                              initialValue: provider.user.username ?? "",
                               decoration: InputDecoration(
-                                labelText: "CV'ni ekle",
+                                labelText: "Kullanıcı Adı",
                                 border: singleOutlineBorder,
                                 disabledBorder: singleOutlineBorder,
                                 errorBorder: singleOutlineBorder,
                                 focusedBorder: singleOutlineBorder,
                                 enabledBorder: singleOutlineBorder,
                                 focusedErrorBorder: singleOutlineBorder,
-                                suffixIcon: const Icon(
-                                  Icons.save_alt,
-                                ),
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Lütfen kullanıcı adınız giriniz';
+                                }
+                                return null;
+                              },
                               onSaved: (val) {
-                                // TODO
+                                provider.setUserName(val);
                               }),
                         ),
-                      ),
-                      Container(
-                        decoration: singleContainerDecoration,
-                        child: TextFormField(
-                            initialValue: provider.user.username ?? "",
-                            decoration: InputDecoration(
-                              labelText: "Kullanıcı Adı",
-                              border: singleOutlineBorder,
-                              disabledBorder: singleOutlineBorder,
-                              errorBorder: singleOutlineBorder,
-                              focusedBorder: singleOutlineBorder,
-                              enabledBorder: singleOutlineBorder,
-                              focusedErrorBorder: singleOutlineBorder,
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Lütfen kullanıcı adınız giriniz';
-                              }
-                              return null;
-                            },
-                            onSaved: (val) {
-                              provider.setUserName(val);
-                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
