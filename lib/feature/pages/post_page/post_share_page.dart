@@ -915,6 +915,12 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 widget.postIsSharingProvider,
                                             widget.postKey);
                                         Navigator.of(context).pop(_result);
+                                      }else {
+                                        showDialog(context: context, builder: (BuildContext context){
+                                          return const AlertDialog(
+                                            title: Text("Lütfen bilgileri eksiksiz giriniz"),
+                                          );
+                                        });
                                       }
                                     },
                                     child: const Text('Kaydet')),
