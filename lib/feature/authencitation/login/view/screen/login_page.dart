@@ -63,7 +63,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       controller: nameController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Email Adresi',
+                        labelText: 'Edu uzantili email Adresi',
                       ),
                     ),
                   ),
@@ -85,7 +85,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                            return ForgotPasswordPage();
+                            return const ForgotPasswordPage();
                           },));
                         },
                         child: const Text(
@@ -110,7 +110,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                               nameController.text, passwordController.text);
                           if (result == true) {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BasePageMiddleWave(),
+                              builder: (context) => const BasePageMiddleWave(),
                             ));
                           }
                         },
@@ -125,7 +125,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SingUpPAgeScreen(),
+                            builder: (context) => const  SingUpPAgeScreen(),
                           ));
                         },
                       )

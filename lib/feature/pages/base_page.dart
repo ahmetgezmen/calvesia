@@ -1,8 +1,10 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/post_page/post_page_button.dart';
+import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
+import 'package:calvesia/feature/widget/SometingWrong.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,12 +69,13 @@ class _BasePageState extends State<BasePage> {
   void initState() {
     super.initState();
     Provider.of<UserVievModel>(context, listen: false).userFetch();
+    Provider.of<BaseProvider>(context, listen: false).setShowNavigationButtonFunkBase();
   }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Consumer<PostIsSharingProvider>(
+          body: Consumer<PostIsSharingAndShowingProvider>(
             builder: (context, provider, child) {
               return Column(
                 children: [
@@ -111,12 +114,12 @@ class _BasePageState extends State<BasePage> {
           ),
           bottomNavigationBar: Consumer<BaseProvider>(
             builder: (context, value, child) {
-              final bool result = value.isShowNavigationButton;
-              return result
+              final String result = value.getShowNavigationButton;
+              return result=="base"
                   ? BottomNavigationBarWidget(
                   onItemTapped: _onItemTapped,
                   selectedIndex: _selectedIndex)
-                  : const ProfilePageAppBarr();
+                  : result == "profile" ?const ProfilePageAppBarr() : const PostShowPageAppBarr();
             },
           )),
     );
@@ -204,7 +207,7 @@ class _DraggableFloatingActionButtonState
             parentSize.width - size.width, parentSize.height - size.height);
       });
     } catch (e) {
-      print('catch: $e');
+      SometingWrongWidgetFunction(context);
     }
   }
 
@@ -243,8 +246,6 @@ class _DraggableFloatingActionButtonState
           });
         },
         onPointerUp: (PointerUpEvent pointerUpEvent) {
-          print('onPointerUp');
-
           if (_isDragging) {
             setState(() {
               _isDragging = false;

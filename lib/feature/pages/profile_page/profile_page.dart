@@ -29,7 +29,7 @@ class ProfilePageAppBarr extends StatelessWidget {
                 return InkWell(
                     onTap: () async {
                       await FirebaseAuth.instance.signOut();
-                      provider.isShowNavigationButtonFunk();
+                      provider.setShowNavigationButtonFunkBase();
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const OnboardingPage(),
                       ));
@@ -114,9 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: PreferredSize(
-            preferredSize: FirebaseAuth.instance.currentUser!.isAnonymous
-                ? const Size.fromHeight(230.0)
-                : const Size.fromHeight(307.0),
+            preferredSize:const Size.fromHeight(307.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
@@ -169,7 +167,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                   } else if (snapshot.hasError) {
                     return const Icon(
                       Icons.error_outline,
-                      size: 75,
+                      size: 150,
                     );
                   } else {
                     return const CircularProgressIndicator(

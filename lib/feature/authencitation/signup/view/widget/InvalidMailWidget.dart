@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class EmailAlredyUseWidget extends StatelessWidget {
-  const EmailAlredyUseWidget({Key? key}) : super(key: key);
+class InvalidMailWidget extends StatelessWidget {
+  const InvalidMailWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,26 +10,24 @@ class EmailAlredyUseWidget extends StatelessWidget {
         semanticsLabel: 'Geçersiz e-posta logosu'
     );
 
-    return Container(
-        child:Column(
-            children:[
-              svg,
-              Text('Geçersiz E-posta',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Geçersiz E-posta',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }
 
-void EmailAlredyUseWidgetFunction(BuildContext context) {
+void InvalidMailWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: EmailAlredyUseWidget(),
+    title: const InvalidMailWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)

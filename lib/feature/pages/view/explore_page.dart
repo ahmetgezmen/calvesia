@@ -1,22 +1,13 @@
-import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/provider/explore_page_provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
+import 'package:flutterfire_ui/database.dart';
+import 'package:provider/provider.dart';
+import '../../provider/header_provider.dart';
 import '../../widget/PopularEventCardWidget.dart';
 import '../models/post_model.dart';
 
 class ExplorePage extends StatefulWidget {
-  static const List category = [
-    {"name": "Parti", "color": BaseColorPalet.partyColor, "tag": 'party'},
-    {"name": "Kariyer", "color": BaseColorPalet.careerColor, "tag": 'career'},
-    {"name": "Sağlık", "color": BaseColorPalet.healthColor, "tag": 'health'},
-    {
-      "name": "Eğitim",
-      "color": BaseColorPalet.educationColor,
-      "tag": 'education'
-    }
-  ];
   const ExplorePage({Key? key}) : super(key: key);
 
   @override
@@ -38,9 +29,15 @@ class _ExplorePageState extends State<ExplorePage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: CategoryButton(
-                    title: ExplorePage.category[index]["name"],
-                    buttonColor: ExplorePage.category[index]["color"],
+                  child: Consumer<ExploreProvider>(
+                    builder: (context, provider, child) {
+                      return CategoryButton(
+                        visibility: provider.getCategory()[index]["visibility"],
+                        title: provider.getCategory()[index]["name"],
+                        buttonColor: provider.getCategory()[index]["color"],
+                        buttonKey: provider.getCategory()[index]["tag"],
+                      );
+                    },
                   ),
                 );
               },
@@ -52,107 +49,131 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
           ),
         ),
-        const SilverDelegateComponent(),
+        const GridViewScrolling(),
       ],
     );
   }
 }
 
-class SilverDelegateComponent extends StatefulWidget {
-  const SilverDelegateComponent({
-    Key? key,
-  }) : super(key: key);
+class GridViewScrolling extends StatelessWidget {
+  const GridViewScrolling({Key? key}) : super(key: key);
 
-  @override
-  State<SilverDelegateComponent> createState() =>
-      _SilverDelegateComponentState();
-}
-
-class _SilverDelegateComponentState extends State<SilverDelegateComponent> {
-  static const _pageSize = 20;
-  String _lasPost = '';
-
-  final PagingController<int, DataSnapshot> _pagingController =
-      PagingController(firstPageKey: 0);
-
-  @override
-  void initState() {
-    _pagingController.addPageRequestListener((pageKey) {
-      _fetchPage(pageKey);
-    });
-    super.initState();
-  }
-
-  Future<void> _fetchPage(int pageKey) async {
-    try {
-      var refNewItem = await FirebaseDatabase.instance
-          .ref('posts')
-          // .orderByChild("streamTime/full")
-          .orderByChild("category")
-          .startAfter(_lasPost)
-          .limitToFirst(_pageSize)
-          .get();
-
-      final newItems = refNewItem.children.toList();
-      _lasPost = newItems.last.key!;
-
-      final isLastPage = newItems.length < _pageSize;
-      if (isLastPage) {
-        _pagingController.appendLastPage(newItems);
-      } else {
-        final nextPageKey = pageKey + newItems.length;
-        _pagingController.appendPage(newItems, nextPageKey);
-      }
-    } catch (error) {
-      _pagingController.error = error;
+  gridViewController(String switchKey) {
+    late final Query result;
+    switch (switchKey) {
+      case "Standart":
+        result = FirebaseDatabase.instance
+            .ref('posts')
+            .orderByChild("streamTime/full");
+        break;
+      case "health":
+        result = FirebaseDatabase.instance
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("health");
+        break;
+      case "party":
+        result = FirebaseDatabase.instance
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("party");
+        break;
+      case "career":
+        result = FirebaseDatabase.instance
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("career");
+        break;
+      case "education":
+        result = FirebaseDatabase.instance
+            .ref('posts')
+            .orderByChild("category")
+            .equalTo("education");
+        break;
     }
-  }
-
-  @override
-  void dispose() {
-    _pagingController.dispose();
-    super.dispose();
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: RefreshIndicator(
-          color: BaseColorPalet.main,
-          onRefresh:  () => Future.sync(
-                () => _pagingController.refresh(),
-          ),
-          child: PagedGridView<int, DataSnapshot>(
-            pagingController: _pagingController,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 100 / 150,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 2,
+    return Consumer<ExploreProvider>(
+      builder: (context, provider, child) {
+        return Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: RefreshIndicator(
+              onRefresh: () {
+                return Future.delayed(const Duration(seconds: 1));
+              },
+              child: Consumer<HeaderProvider>(
+                builder: (context, headerProvider, child) {
+                  return FirebaseDatabaseQueryBuilder(
+                    query: gridViewController(provider.getFetchSwitch()),
+                    builder: (context, snapshot, _) {
+                      if (snapshot.isFetching) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      if (snapshot.hasError) {
+                        return Text('Something went wrong! ${snapshot.error}');
+                      }
+                      if (snapshot.docs.isEmpty) {
+                        return const Center(child: Text('Sonuç bulunamadı'));
+                      }
+                      List<DataSnapshot> reversed = snapshot.docs.toList();
+                      snapshot.docs.toList().forEach((element) {
+                          if(PostModel.fromJson(element.value).title!.contains(headerProvider.getHeaderText)==false){
+                            reversed.remove(element);
+                          }
+                      });
+
+                      return GridView.builder(
+                        itemCount: reversed.length,
+                        itemBuilder: (context, index) {
+                          // if we reached the end of the currently obtained items, we try to
+                          // obtain more items
+                          if (snapshot.hasMore &&
+                              index + 1 == snapshot.docs.length) {
+                            // Tell FirebaseDatabaseQueryBuilder to try to obtain more items.
+                            // It is safe to call this function from within the build method.
+                            snapshot.fetchMore();
+                          }
+                          final post =
+                              PostModel.fromJson(reversed[index].value);
+                          return PopularEventCard(post: post);
+                        },
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 100 / 150,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ),
-            builderDelegate: PagedChildBuilderDelegate<DataSnapshot>(
-                itemBuilder: (context, item, index) {
-              final post = PostModel.fromJson(item.value);
-              return PopularEventCard(
-                post: post,
-              );
-            }),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
 
 class CategoryButton extends StatefulWidget {
+  final bool visibility;
   final Color buttonColor;
   final String title;
+  final String buttonKey;
+
   const CategoryButton({
     Key? key,
     required this.buttonColor,
     required this.title,
+    required this.buttonKey,
+    required this.visibility,
   }) : super(key: key);
 
   @override
@@ -177,41 +198,29 @@ class _CategoryButtonState extends State<CategoryButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      child: ElevatedButton(
-        style: _isAktive == true ? _buttonActiveTheme() : _buttonPassiveTheme(),
-        onPressed: () {
-          setState(() {
-            _isAktive == true ? _isAktive = false : _isAktive = true;
-          });
-        },
-        child: Text(widget.title),
-      ),
-    );
-  }
-}
-
-class CardForDashBoard extends StatelessWidget {
-  const CardForDashBoard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shadowColor: Colors.orangeAccent,
-      elevation: 10.0,
-      child: Column(
-        children: const [
-          Expanded(
-            child: Placeholder(),
+    return Consumer<ExploreProvider>(
+      builder: (context, provider, child) {
+        return SizedBox(
+          width: 120,
+          child: Visibility(
+            visible: widget.visibility,
+            child: ElevatedButton(
+              style: _isAktive == true
+                  ? _buttonActiveTheme()
+                  : _buttonPassiveTheme(),
+              onPressed: () {
+                setState(() {
+                  _isAktive == true ? _isAktive = false : _isAktive = true;
+                  _isAktive == true
+                      ? provider.selectButton(widget.buttonKey)
+                      : provider.disableAllButton();
+                });
+              },
+              child: Text(widget.title),
+            ),
           ),
-          Expanded(
-            child: Text("Title"),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

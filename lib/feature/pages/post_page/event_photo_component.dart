@@ -1,8 +1,6 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
-import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class EventPageComponent extends StatelessWidget {
   final List indexs;
@@ -142,7 +140,7 @@ class ChangeProfileImageWidget extends StatelessWidget {
               icon: const Icon(Icons.camera_alt)),
           IconButton(
               onPressed: () async {
-                await ImageServices.putPostImageInCamera(
+                await ImageServices.putPostImageInGallery(
                     postKey, index.toString());
                 Navigator.of(dialogContext).pop();
               },

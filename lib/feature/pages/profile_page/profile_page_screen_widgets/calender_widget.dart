@@ -1,16 +1,35 @@
-import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../post_page/post_page_button.dart';
 
-class CalenderWidget extends StatelessWidget {
+class CalenderWidget extends StatefulWidget {
   const CalenderWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CalenderWidget> createState() => _CalenderWidgetState();
+}
+
+class _CalenderWidgetState extends State<CalenderWidget> {
+
+  void setQueryForDay(String string) {
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [],
+      children: [
+        CalendarDatePicker(
+            initialDate: DateTime.now(),
+            firstDate: DateTime(DateTime.now().year - 1),
+            lastDate: DateTime(DateTime.now().year + 1),
+            onDateChanged: (day) {
+              setState((){
+                setQueryForDay(day.toString());
+              });
+            }),
+      ],
     );
   }
 }
+
+

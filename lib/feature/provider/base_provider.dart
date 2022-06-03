@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 
 class BaseProvider extends ChangeNotifier{
 
-  bool _isShowNavigationButton = true;
+  String _typeShowNavigationButton = "base";
 
-  void isShowNavigationButtonFunk() {
-    _isShowNavigationButton == true
-        ? _isShowNavigationButton = false
-        : _isShowNavigationButton = true;
+  void setShowNavigationButtonFunkProfile() {
+    _typeShowNavigationButton = "profile";
+    notifyListeners();
+  }
+  void setShowNavigationButtonFunkBase() {
+    _typeShowNavigationButton = "base";
+    notifyListeners();
+  }
+  void setShowNavigationButtonFunkPostShow() {
+    _typeShowNavigationButton = "postShow";
     notifyListeners();
   }
 
-  get isShowNavigationButton => _isShowNavigationButton;
+  get getShowNavigationButton => _typeShowNavigationButton;
 
 }
 
