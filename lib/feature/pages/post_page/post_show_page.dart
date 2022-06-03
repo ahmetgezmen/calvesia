@@ -247,7 +247,14 @@ class InfoComponent extends StatelessWidget {
                     const SizedBox(
                       width: 30,
                     ),
-                    Text(post.eventWebSiteUrl.toString())
+                    Expanded(child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Text(post.eventWebSiteUrl.toString()),
+                        ],
+                      ),
+                    ))
                   ],
                 ),
               ),
