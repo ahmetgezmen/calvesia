@@ -2,7 +2,7 @@ import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/InvalidMailWidget.dart';
+import '../widget/invalid_mail_widget.dart';
 
 class SingUpPAgeScreen extends StatefulWidget {
   const SingUpPAgeScreen({Key? key}) : super(key: key);
@@ -116,7 +116,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                                   userNameController.text);
                               Navigator.of(context).pop();
                             } else {
-                              InvalidMailWidgetFunction(context);
+                              invalidMailWidgetFunction(context);
                             }
                           },
                         )),

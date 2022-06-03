@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Future<bool> PostShareSuccessButton(BuildContext context)async {
+Future<bool> postShareSuccessButton(BuildContext context)async {
   final alertDialog = AlertDialog(
     title: const PostShareSuccess(),
     shape: RoundedRectangleBorder(

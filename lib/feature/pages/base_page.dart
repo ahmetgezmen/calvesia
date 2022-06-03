@@ -4,7 +4,7 @@ import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
-import 'package:calvesia/feature/widget/SometingWrong.dart';
+import 'package:calvesia/feature/widget/something_wrong.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -207,7 +207,7 @@ class _DraggableFloatingActionButtonState
             parentSize.width - size.width, parentSize.height - size.height);
       });
     } catch (e) {
-      SometingWrongWidgetFunction(context);
+      somethingWrongWidgetFunction(context);
     }
   }
 

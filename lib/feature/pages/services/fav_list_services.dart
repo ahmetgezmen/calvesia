@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 final _user = FirebaseAuth.instance.currentUser;
 
-bool _UserIsLogin() {
+bool _userIsLogin() {
   if (_user != null) {
     return false;
   } else {
@@ -12,8 +12,8 @@ bool _UserIsLogin() {
   }
 }
 
-GetFavList() async {
-  if (_UserIsLogin()) {
+getFavList() async {
+  if (_userIsLogin()) {
     final _usersDataDocumentSnapshot = await FirebaseFirestore.instance
         .collection('users')
         .doc(_user!.uid)
@@ -26,7 +26,7 @@ GetFavList() async {
 }
 
 postIsFavList(post) async {
-  if (_UserIsLogin()) {
+  if (_userIsLogin()) {
     final _usersDataDocumentSnapshot = await FirebaseFirestore.instance
         .collection('users')
         .doc(_user!.uid)

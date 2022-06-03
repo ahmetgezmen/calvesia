@@ -1,11 +1,11 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
-import 'package:calvesia/feature/provider/header_provider.dart';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
-import 'package:provider/provider.dart';
 
-import '../../widget/PopularEventCardWidget.dart';
+
+import '../../widget/popular_event_card_widget.dart';
 import '../models/post_model.dart';
 
 class UpcomingSeeAllPage extends StatelessWidget {

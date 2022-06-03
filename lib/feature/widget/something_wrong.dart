@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void SometingWrongWidgetFunction(BuildContext context) {
+void somethingWrongWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
     title:const  SometingWrongWidget(),
     shape: RoundedRectangleBorder(
@@ -27,26 +27,24 @@ class SometingWrongWidget extends StatelessWidget {
         semanticsLabel: 'Bir şeyler yanlış gitti logosu'
     );
 
-    return Container(
-        child:Column(
-            children:[
-              svg,
-              const Text('Bir Şeyler Yanlış Gitti',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
-              ),
-              const Text('Lütfen tekrar deneyin',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 12,
-                      color: Colors.black12
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Bir Şeyler Yanlış Gitti',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          ),
+          const Text('Lütfen tekrar deneyin',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 12,
+                  color: Colors.black12
+              )
+          )
+        ]
     );
   }
 }

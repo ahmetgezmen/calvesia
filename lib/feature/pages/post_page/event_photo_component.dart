@@ -67,7 +67,7 @@ class _PhotoCardState extends State<PhotoCard> {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () async {
-              final result =  await ChangePostImageWidgetButton(context, widget.postKey, widget.index);
+              final result =  await changePostImageWidgetButton(context, widget.postKey, widget.index);
               if(result==true){
                 setState((){});
               }
@@ -105,7 +105,7 @@ class _PhotoCardState extends State<PhotoCard> {
   }
 }
 
-ChangePostImageWidgetButton(BuildContext context, postKey, index) async {
+changePostImageWidgetButton(BuildContext context, postKey, index) async {
 
   await showDialog(
     context: context,

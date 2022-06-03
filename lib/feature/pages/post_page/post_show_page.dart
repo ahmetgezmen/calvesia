@@ -1,5 +1,5 @@
 import 'package:calvesia/feature/pages/models/post_model.dart';
-import 'package:calvesia/feature/pages/models/sponsor_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -128,7 +128,7 @@ class CommentComponent extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.arrow_forward_ios),
+                icon: const Icon(Icons.arrow_forward_ios),
               ),
             ],
           ),
@@ -310,7 +310,7 @@ class InfoComponent extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(50)),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Text(post.sponsors!.sponsors![index]

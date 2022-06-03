@@ -132,7 +132,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                 );
                               }).toList(),
                               onSaved: (val) {
-                                late final category;
+                                late final String category;
                                 switch (val) {
                                   case 'Parti':
                                     category = "party";
@@ -499,7 +499,7 @@ class _PostSharePageState extends State<PostSharePage> {
                               ),
                             ),
                           ),
-                          EventPageComponent(postKey: widget.postKey, title: "Etkinlik Fotoğrafları", indexs: [1,2,3]),
+                          EventPageComponent(postKey: widget.postKey, title: "Etkinlik Fotoğrafları", indexs: const [1,2,3]),
                           Padding(
                             padding: const EdgeInsets.only(top: 16.0),
                             child: Container(
@@ -751,7 +751,7 @@ class _PostSharePageState extends State<PostSharePage> {
                               ],
                             ),
                           ),
-                          EventPageComponent(postKey: widget.postKey,title: "Afiş Fotoğrafları", indexs: [4,5,6]),
+                          EventPageComponent(postKey: widget.postKey,title: "Afiş Fotoğrafları", indexs: const [4,5,6]),
                           Padding(
                             padding: const EdgeInsets.only(top: 16.0),
                             child: Row(

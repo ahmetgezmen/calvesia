@@ -25,7 +25,7 @@ class InvalidMailWidget extends StatelessWidget {
   }
 }
 
-void InvalidMailWidgetFunction(BuildContext context) {
+void invalidMailWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
     title: const InvalidMailWidget(),
     shape: RoundedRectangleBorder(

@@ -11,7 +11,7 @@ import '../../feature/pages/base_page.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: BASEThemeData(),
+        theme: baseThemeData(),
         home: FirebaseAuth.instance.currentUser != null
             ? const BasePageMiddleWave()
             : const OnboardingPage(),

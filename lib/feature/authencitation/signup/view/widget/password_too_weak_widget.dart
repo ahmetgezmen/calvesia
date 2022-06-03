@@ -9,9 +9,9 @@ class PasswordTooWeakWidget extends StatelessWidget {
   }
 }
 
-void PasswordTooWeakWidgetFunction(BuildContext context) {
-  final alertDialog = AlertDialog(
-    title: PasswordTooWeakWidget(),
+void passwordTooWeakWidgetFunction(BuildContext context) {
+  const alertDialog =  AlertDialog(
+    title:  PasswordTooWeakWidget(),
   );
 
   showDialog(

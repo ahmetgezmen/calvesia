@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void UserNoteFoundWidgetFunction(BuildContext context) {
+void userNoteFoundWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: UserNoteFoundWidget(),
+    title: const UserNoteFoundWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
@@ -28,19 +28,17 @@ class UserNoteFoundWidget extends StatelessWidget {
         semanticsLabel: 'Kullanıcı Bulunamadı Logosu'
     );
 
-    return Container(
-        child:Column(
-            children:[
-              svg,
-              Text('Kullanıcı Bulunamadı',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Kullanıcı Bulunamadı',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }

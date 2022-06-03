@@ -72,7 +72,7 @@ class ProfilePageAppBarr extends StatelessWidget {
                                 Text("Güncelleme başarılı")
                               ],
                             ),
-                            content: Text('Bilgileriniz Güncellendi'),
+                            content: const Text('Bilgileriniz Güncellendi'),
                             actions: <Widget>[
                               TextButton(
                                 child: const Text('Kapat'),
@@ -151,7 +151,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
         children: [
           InkWell(
             onTap: () async {
-              final result = await ChangeProfileImageWidgetButton(context);
+              final result = await changeProfileImageWidgetButton(context);
               if(result==true){
                 setState((){});
               }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void WrongPasswordOrUsernameWidgetFunction(BuildContext context) {
+void wrongPasswordOrUsernameWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
-    title: WrongPasswordOrUsernameWidget(),
+    title: const WrongPasswordOrUsernameWidget(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
@@ -29,20 +29,17 @@ class WrongPasswordOrUsernameWidget extends StatelessWidget {
         semanticsLabel: 'Kullanıcı adı veya şifre yanlış Logosu'
     );
 
-    return Container(
-
-        child:Column(
-            children:[
-              svg,
-              Text('Kullanıcı Adı veya Şifre Yanlış',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Kullanıcı Adı veya Şifre Yanlış',
+              style:  TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }

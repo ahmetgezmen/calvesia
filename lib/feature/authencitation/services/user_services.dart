@@ -8,8 +8,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../widget/LoadingWidget.dart';
-import '../../widget/SometingWrong.dart';
+import '../../widget/loading_widget.dart';
+import '../../widget/something_wrong.dart';
 import '../login/view/widget/login_successful_widget.dart';
 import '../login/view/widget/user_note_found_widget.dart';
 import '../login/view/widget/wrong_password_or_username_widget.dart';
@@ -23,29 +23,29 @@ import '../signup/view/widget/password_too_weak_widget.dart';
 import '../signup/view/widget/sign_up_successful_widget.dart';
 
 class UserServices {
-  static Login(BuildContext context, emailAddress, password) async {
-    LoadingWidgetButton(context);
+  static login(BuildContext context, emailAddress, password) async {
+    loadingWidgetButton(context);
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
       Navigator.of(context).pop();
-      await LoginSuccessfulWidgetFunction(context);
+      await loginSuccessfulWidgetFunction(context);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Navigator.of(context).pop();
-        UserNoteFoundWidgetFunction(context);
+        userNoteFoundWidgetFunction(context);
       } else if (e.code == 'wrong-password') {
         Navigator.of(context).pop();
-        WrongPasswordOrUsernameWidgetFunction(context);
+        wrongPasswordOrUsernameWidgetFunction(context);
       }
     }
   }
 
-  static SignUp(BuildContext context, emailAddress, password, userName) async {
-    LoadingWidgetButton(context);
+  static signUp(BuildContext context, emailAddress, password, userName) async {
+    loadingWidgetButton(context);
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress,
@@ -60,19 +60,19 @@ class UserServices {
           userName
       );
       Navigator.of(context).pop();
-      await SignUpSuccessfulWidgetFunction(context);
+      await signUpSuccessfulWidgetFunction(context);
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Navigator.of(context).pop();
-        PasswordTooWeakWidgetFunction(context);
+        passwordTooWeakWidgetFunction(context);
       } else if (e.code == 'email-already-in-use') {
         Navigator.of(context).pop();
-        EmailAlredyUseWidgetFunction(context);
+        emailAlredyUseWidgetFunction(context);
       }
     } catch (e) {
       Navigator.of(context).pop();
-      SometingWrongWidgetFunction(context);
+      somethingWrongWidgetFunction(context);
     }
   }
 
@@ -106,12 +106,12 @@ class UserServices {
 
   static Future<UserModel> getUserInfoServices(uid) async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(uid).get();
-    UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
+    UserModel _userModel = UserModel.fromJson(_userDataRef.data());
     return _userModel;
   }
   static Future<List<String>?> getUserFavListServices() async {
     final _userDataRef = await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).get();
-    UserModel _userModel = await UserModel.fromJson(_userDataRef.data());
+    UserModel _userModel = UserModel.fromJson(_userDataRef.data());
     return _userModel.favList as List<String>;
   }
 
@@ -124,8 +124,8 @@ class UserServices {
   }
 
   static updateMyPhotoServices(photo) async {
-    final db = await FirebaseFirestore.instance;
-    final _userDataRef = await db
+    final db = FirebaseFirestore.instance;
+    final _userDataRef = db
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid);
     _userDataRef
@@ -134,8 +134,8 @@ class UserServices {
         .onError((error, stackTrace) => false);
   }
   static updateFavListServices(postList) async {
-    final db = await FirebaseFirestore.instance;
-    final _userDataRef = await db
+    final db = FirebaseFirestore.instance;
+    final _userDataRef = db
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid);
     _userDataRef

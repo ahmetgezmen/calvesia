@@ -5,7 +5,7 @@ import '../../Utils/Style/color_palette.dart';
 class ExploreProvider extends ChangeNotifier {
   String _fetchSwitch = "Standart";
 
-  List _category = [
+  final List _category = [
     {
       "name": "Parti",
       "color": BaseColorPalet.partyColor,
