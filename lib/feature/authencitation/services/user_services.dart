@@ -57,7 +57,8 @@ class UserServices {
           uuid,
           emailAddress,
           password,
-          userName
+          userName,
+        context
       );
       Navigator.of(context).pop();
       await signUpSuccessfulWidgetFunction(context);
@@ -76,7 +77,7 @@ class UserServices {
     }
   }
 
-  static Future<void> addUser(uuid, emailAddress, password, username) {
+  static Future<void> addUser(uuid, emailAddress, password, username, context) {
     DocumentReference<Map<String, dynamic>> users =
         FirebaseFirestore.instance.collection('users').doc(uuid);
     return users
@@ -100,8 +101,9 @@ class UserServices {
             SetOptions(
               merge: true,
             ))
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+        .catchError((error) {
+      somethingWrongWidgetFunction(context);
+    });
   }
 
   static Future<UserModel> getUserInfoServices(uid) async {
