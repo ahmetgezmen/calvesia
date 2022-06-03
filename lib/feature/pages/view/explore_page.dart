@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
 import 'package:provider/provider.dart';
 import '../../provider/header_provider.dart';
-import '../../widget/PopularEventCardWidget.dart';
+import '../../widget/popular_event_card_widget.dart';
 import '../models/post_model.dart';
 
 class ExplorePage extends StatefulWidget {

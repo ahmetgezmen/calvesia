@@ -1,4 +1,4 @@
-import 'package:calvesia/feature/widget/UpcomingEventsCardWidget.dart';
+import 'package:calvesia/feature/widget/upcoming_events_card_widget.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
@@ -58,7 +58,7 @@ class _BuyPageState extends State<BuyPage> {
                 post: PostModel.fromJson(snapshot.docs[index].value),
               );
             }
-            return Divider();
+            return const Divider();
           },
         )
       ],

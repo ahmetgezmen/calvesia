@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Future<bool> PostShareFailedButton(BuildContext context) async {
+Future<bool> postShareFailedButton(BuildContext context) async {
   final alertDialog = AlertDialog(
-    title: PostShareFailed(),
+    title: const PostShareFailed(),
     shape: RoundedRectangleBorder(
         borderRadius:
         BorderRadius.circular(20)
@@ -30,19 +30,17 @@ class PostShareFailed extends StatelessWidget {
         semanticsLabel: 'Gönderi paylaşımı başarısız oldu logosu'
     );
 
-    return Container(
-        child:Column(
-            children:[
-              svg,
-              Text('Gönderi Paylaşımı Başarısız Oldu',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Gönderi Paylaşımı Başarısız Oldu',
+              style:  TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }

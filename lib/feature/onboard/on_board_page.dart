@@ -1,7 +1,7 @@
 import 'package:calvesia/feature/Authencitation/login/view/screen/login_page.dart';
 import 'package:calvesia/feature/Authencitation/signup/view/screen/sign_up_page.dart';
 import 'package:calvesia/feature/pages/base_page.dart';
-import 'package:calvesia/feature/widget/SometingWrong.dart';
+import 'package:calvesia/feature/widget/something_wrong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -179,7 +179,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       await FirebaseAuth.instance.signInAnonymously();
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BasePageMiddleWave(),));
                     } on FirebaseAuthException catch (_) {
-                      SometingWrongWidgetFunction(context);
+                      somethingWrongWidgetFunction(context);
                     }
                   },
                   child: const Text(

@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:calvesia/feature/pages/models/post_model.dart';
-import 'package:calvesia/feature/pages/services/image_services.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../provider/post_provider.dart';
-import '../../widget/LoadingWidget.dart';
-import '../../widget/PostShareFailed.dart';
+import '../../widget/loading_widget.dart';
+import '../../widget/post_share_failed.dart';
 import '../../widget/post_share_success.dart';
 
 DatabaseReference ref = FirebaseDatabase.instance.ref("posts");
@@ -18,7 +18,7 @@ class PostServices {
   static Future<bool> addPostServices(
       context, PostModel post, key, PostIsSharingAndShowingProvider provider) async {
     try {
-      LoadingWidgetButton(context);
+      loadingWidgetButton(context);
 
       await FirebaseDatabase.instance
           .ref("posts/$key")
@@ -26,11 +26,11 @@ class PostServices {
 
       // await ref.push().set(jsonDecode(postModelToJson(post)));
       Navigator.of(context).pop();
-      await PostShareSuccessButton(context);
+      await postShareSuccessButton(context);
       provider.setIsShare(true);
       return true;
     } on Error {
-      await PostShareFailedButton(context);
+      await postShareFailedButton(context);
       return false;
     }
   }

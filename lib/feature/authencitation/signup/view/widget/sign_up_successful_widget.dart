@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Future<void> SignUpSuccessfulWidgetFunction(BuildContext context) async {
+Future<void> signUpSuccessfulWidgetFunction(BuildContext context) async {
   await showDialog(
     barrierDismissible: false,
     context: context,

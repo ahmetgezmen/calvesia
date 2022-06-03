@@ -1,6 +1,6 @@
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
-import 'package:calvesia/feature/widget/UpcomingEventsCardWidget.dart';
+import 'package:calvesia/feature/widget/upcoming_events_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

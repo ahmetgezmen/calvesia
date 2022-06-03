@@ -1,7 +1,7 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:flutter/material.dart';
 
-BASEThemeData() {
+baseThemeData() {
   return ThemeData(
     brightness: Brightness.light,
     primaryColor: const Color(0xffffb85a),

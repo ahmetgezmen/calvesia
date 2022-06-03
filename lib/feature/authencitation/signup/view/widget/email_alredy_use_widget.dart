@@ -9,24 +9,22 @@ class EmailAlredyUseWidget extends StatelessWidget {
     final Widget svg = SvgPicture.asset("assets/images/Component 15.svg",
         semanticsLabel: 'Bu e-posta zaten kullanılıyor logosu'
     );
-    return Container(
-        child:Column(
-            children:[
-              svg,
-              const Text('Bu E-posta Zaten Kullanılıyor',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 18,
-                      color: Colors.black38
-                  )
+    return Column(
+        children:[
+          svg,
+          const Text('Bu E-posta Zaten Kullanılıyor',
+              style: TextStyle(
+                  fontFamily:'PTSans' ,
+                  fontSize: 18,
+                  color: Colors.black38
               )
-            ]
-        )
+          )
+        ]
     );
   }
 }
 
-void EmailAlredyUseWidgetFunction(BuildContext context) {
+void emailAlredyUseWidgetFunction(BuildContext context) {
   final alertDialog = AlertDialog(
     title: const EmailAlredyUseWidget(),
     shape: RoundedRectangleBorder(

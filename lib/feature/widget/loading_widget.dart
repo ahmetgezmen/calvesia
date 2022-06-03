@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void LoadingWidgetButton(BuildContext context) {
-  final alertDialog = AlertDialog(
-    title: LoadingWidget(),
+void loadingWidgetButton(BuildContext context) {
+  const alertDialog =  AlertDialog(
+    title:  LoadingWidget(),
   );
 
   showDialog(
@@ -21,8 +21,6 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: CircularProgressIndicator()),
-    );
+    return const Center(child: CircularProgressIndicator());
   }
 }
