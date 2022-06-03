@@ -4,6 +4,7 @@ import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
+import 'package:calvesia/feature/widget/SometingWrong.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -118,7 +119,7 @@ class _BasePageState extends State<BasePage> {
                   ? BottomNavigationBarWidget(
                   onItemTapped: _onItemTapped,
                   selectedIndex: _selectedIndex)
-                  : result == "profile" ?const ProfilePageAppBarr() : PostShowPageAppBarr();
+                  : result == "profile" ?const ProfilePageAppBarr() : const PostShowPageAppBarr();
             },
           )),
     );
@@ -206,7 +207,7 @@ class _DraggableFloatingActionButtonState
             parentSize.width - size.width, parentSize.height - size.height);
       });
     } catch (e) {
-      print('catch: $e');
+      SometingWrongWidgetFunction(context);
     }
   }
 
@@ -245,8 +246,6 @@ class _DraggableFloatingActionButtonState
           });
         },
         onPointerUp: (PointerUpEvent pointerUpEvent) {
-          print('onPointerUp');
-
           if (_isDragging) {
             setState(() {
               _isDragging = false;

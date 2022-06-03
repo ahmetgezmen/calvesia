@@ -14,7 +14,7 @@ import '../see_all_page/upcoming_see_all_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   Future<void> _refeshIndicator() {
-    return Future.delayed(Duration(seconds: 0));
+    return Future.delayed(const Duration(seconds: 0));
   }
 
   @override
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       color: BaseColorPalet.main,
       onRefresh: _refeshIndicator,
       child: ListView(
-        children: [
+        children: const [
           BodyComponent(),
           BottomComponent(),
         ],
@@ -51,7 +51,7 @@ class BottomComponent extends StatelessWidget {
                   return const UpcomingSeeAllPage();
                 },));
               },
-              child: Text("Tümünü gör")),
+              child: const Text("Tümünü gör")),
             ],
           ),
         ),
@@ -97,7 +97,7 @@ class BodyComponent extends StatelessWidget {
                 Text("Populer Etkinlikler",
                     style: Theme.of(context).textTheme.headline6),
                 TextButton(onPressed: () async {
-                  await Navigator.of(context).push(MaterialPageRoute(builder: (context) => PopularSeeAllPage(),));
+                  await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PopularSeeAllPage(),));
                 },
                 child: const Text("Tümünü gör")),
               ],
