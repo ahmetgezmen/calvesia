@@ -40,7 +40,8 @@ class _HeaderComponentState extends State<HeaderComponent> {
                             onTap: () async {
                               value.setShowNavigationButtonFunkProfile();
                               await Scaffold.of(context)
-                                  .showBottomSheet((context) => const ProfilePage())
+                                  .showBottomSheet(
+                                      (context) => const ProfilePage())
                                   .closed;
                               value.setShowNavigationButtonFunkBase();
                             },
@@ -65,14 +66,17 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Consumer<UserVievModel>(
-  builder: (context, userProvider, child) {
-  return Text(
-                            FirebaseAuth.instance.currentUser!.isAnonymous
-                                ? "Anonymous"
-                                : userProvider.user.fname!.isEmpty?userProvider.user.username.toString() : userProvider.user.fname.toString(),
-                            style: Theme.of(context).textTheme.headlineSmall);
-  },
-),
+                          builder: (context, userProvider, child) {
+                            return Text(
+                                FirebaseAuth.instance.currentUser!.isAnonymous
+                                    ? "Anonymous"
+                                    : userProvider.user.fname == null
+                                        ? userProvider.user.username.toString()
+                                        : userProvider.user.fname.toString(),
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall);
+                          },
+                        ),
                       )
                     ],
                   ),
