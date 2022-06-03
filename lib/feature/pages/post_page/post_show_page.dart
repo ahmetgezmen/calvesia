@@ -557,7 +557,17 @@ class PhotoWidget extends StatelessWidget {
           future: ImageServices.getPostImageServices(post.postKey, index),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return Image(width: 85, image: MemoryImage(snapshot.data));
+              return InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(title: Image(width: 85, image: MemoryImage(snapshot.data)),);
+                    },
+                  );
+                },
+                child: Image(width: 85, image: MemoryImage(snapshot.data)),
+              );
             } else if (snapshot.hasError) {
               return Container(
                 width: 85,
