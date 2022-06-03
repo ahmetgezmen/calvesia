@@ -783,9 +783,11 @@ class _PostSharePageState extends State<PostSharePage> {
                                       onSaved: (val) {
                                         if (val!.isNotEmpty) {
                                           List<String> _sponsor =
-                                              val.trim().split(",");
+                                              val.split(",");
                                           for (var element in _sponsor) {
                                             if(element == ""){
+                                              _sponsor.remove(element);
+                                            }else if(element == " "){
                                               _sponsor.remove(element);
                                             }
                                           }
@@ -840,7 +842,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                         onSaved: (val) {
                                           if (val!.isNotEmpty) {
                                             List<String> _coordinators =
-                                                val.trim().split(",");
+                                                val.split(",");
                                             for (var element in _coordinators) {
                                               if(element==""){
                                                 _coordinators.remove(element);
