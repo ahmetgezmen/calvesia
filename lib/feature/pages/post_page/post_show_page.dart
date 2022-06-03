@@ -315,7 +315,7 @@ class InfoComponent extends StatelessWidget {
                                       ),
                                       Text(post.sponsors!.sponsors![index]
                                           .toString()
-                                          .trimLeft()),
+                                          .trim()),
                                     ],
                                   ),
                                 ),
@@ -367,7 +367,7 @@ class InfoComponent extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(post.coordinators!
-                                            .coordinators![index]),
+                                            .coordinators![index].trim()),
                                       ],
                                     ),
                                     ElevatedButton(
