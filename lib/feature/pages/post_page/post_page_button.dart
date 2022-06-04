@@ -2,6 +2,7 @@ import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/pages/post_page/post_share_page.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/provider/post_provider.dart';
+import 'package:calvesia/feature/widget/something_wrong.dart';
 import 'package:flutter/material.dart';
 
 import '../services/image_services.dart';
@@ -25,7 +26,9 @@ openPostPage(context, PostIsSharingAndShowingProvider provider) async {
     for(int i =1 ; i<7 ; i++){
       try{
         ImageServices.deletePostImageService(_postKey,i);
-      } catch(e){}
+      } catch(e){
+        somethingWrongWidgetFunction(context);
+      }
     }
     PostServices.isFailedStartAddPostServices(_postKey);
   }

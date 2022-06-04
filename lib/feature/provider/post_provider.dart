@@ -52,13 +52,16 @@ class PostShareProvider extends ChangeNotifier {
   int? _ticketNumber;
   final int _viewNumber = 0;
   int _price = 0;
+  final int _reversedDate =  int.parse("-"+Timestamp.now().toDate().toString().split(' ')[0].split("-").join());
   final int _followersNumber=0;
+  final int _reversedFollowersNumber=0;
   Sponsors? _sponsors;
   Coordinators? _coordinators;
 
   Future<bool> addPost(context, key, PostIsSharingAndShowingProvider provider, postKey ) async {
     PostModel post = PostModel(
       postKey: postKey,
+      reversedDate: _reversedDate,
       eventImageListModel: EventImageListModel(eventImageList: []),
       isAktive: _isAktive,
       isNeedCV: _isNeedCV,
@@ -77,6 +80,7 @@ class PostShareProvider extends ChangeNotifier {
       eventPlaceLocationTitle: _eventPlaceLocationTitle,
       location: _location,
       followersNumber: _followersNumber,
+      reversedFollowersNumber: _reversedFollowersNumber,
       postOwner: _postOwner,
       streamTime: StreamTime(
         date: Timestamp.now().toDate().toString().split(' ')[0],
