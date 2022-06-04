@@ -23,6 +23,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -62,7 +64,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   SvgPicture.asset(
                     "assets/images/forgot_password.svg",
                     width: double.maxFinite,
-                    height: 150,
+                    height: screenHeight / 5.2,
                     fit: BoxFit.fitHeight,
                   ),
                   Container(
@@ -88,7 +90,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Container(
-                        height: 50,
+                        height: screenHeight / 15.62,
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: ElevatedButton(
                           style: ButtonStyle(

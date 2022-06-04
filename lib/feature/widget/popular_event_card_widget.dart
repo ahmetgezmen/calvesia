@@ -28,6 +28,8 @@ class _PopularEventCardState extends State<PopularEventCard> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     final post = widget.post;
     return Stack(
       children: [
@@ -52,7 +54,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                 elevation: 10,
                 child: Center(
                   child: SizedBox(
-                    width: 250,
+                    width: screenWidth / 1.57,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -166,8 +168,8 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     SizedBox(
-                                      height: 20,
-                                      width: 70,
+                                      height: screenHeight / 39.05,
+                                      width: screenWidth / 5.61,
                                       child:
                                           Text(post.price.toString() + " TL"),
                                     ),
@@ -189,7 +191,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
-            width: 250,
+            width: screenWidth / 1.57,
             child: Consumer<UserVievModel>(
               builder: (context, provider, child) {
                 return Align(
@@ -212,19 +214,19 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ? Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child: const SizedBox(
-                              height: 35,
-                              width: 35,
-                              child: Icon(Icons.favorite),
+                            child:  SizedBox(
+                              height: screenHeight / 22.31,
+                              width: screenWidth / 11.22,
+                              child: const Icon(Icons.favorite),
                             ),
                           )
                         : Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child: const SizedBox(
-                              height: 35,
-                              width: 35,
-                              child: Icon(Icons.favorite_border),
+                            child:  SizedBox(
+                              height: screenHeight / 22.31,
+                              width: screenWidth / 11.22,
+                              child: const Icon(Icons.favorite_border),
                             ),
                           ),
                   ),

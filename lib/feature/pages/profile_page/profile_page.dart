@@ -145,6 +145,8 @@ class ProfileTopComponent extends StatefulWidget {
 class _ProfileTopComponentState extends State<ProfileTopComponent> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
@@ -165,9 +167,9 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                       backgroundImage: MemoryImage(snapshot.data),
                     );
                   } else if (snapshot.hasError) {
-                    return const Icon(
+                    return  Icon(
                       Icons.error_outline,
-                      size: 150,
+                      size: screenHeight / 5.2,
                     );
                   } else {
                     return const CircularProgressIndicator(

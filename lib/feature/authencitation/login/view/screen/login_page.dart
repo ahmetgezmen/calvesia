@@ -27,6 +27,8 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -54,7 +56,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                       )),
                   SvgPicture.asset("assets/images/LoginImage.svg",
                     width: double.maxFinite,
-                    height: 150,
+                    height: screenHeight / 5.2,
                     fit: BoxFit.fitHeight,
                   ),
                   Container(
@@ -98,7 +100,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                     ],
                   ),
                   Container(
-                      height: 50,
+                      height: screenHeight / 15.62,
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
                         style: ButtonStyle(

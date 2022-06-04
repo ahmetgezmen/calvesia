@@ -21,10 +21,12 @@ class HeaderComponent extends StatefulWidget {
 class _HeaderComponentState extends State<HeaderComponent> {
   @override
   Widget build(BuildContext context) {
+
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       children: [
         Container(
-            height: 120.0, color: Theme.of(context).primaryColor, child: null),
+            height: screenHeight / 6.5, color: Theme.of(context).primaryColor, child: null),
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 25),
           child: Column(
@@ -83,7 +85,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.notifications_none),
-                    color: Colors.white,
+                    color: Color(0xff364f6c),
                   )
                 ],
               ),
@@ -106,9 +108,9 @@ class _HeaderComponentState extends State<HeaderComponent> {
                           ),
                           hintText: "Etkinlik Ara",
                           border: OutlineInputBorder(),
-                          suffixIcon: Icon(
-                            Icons.filter_alt,
-                          ),
+                          //suffixIcon: Icon(
+                            //Icons.filter_alt,
+                          //),
                         ),
                       );
                     },

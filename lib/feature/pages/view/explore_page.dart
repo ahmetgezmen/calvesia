@@ -17,12 +17,14 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
           child: SizedBox(
-            height: 50,
+            height: screenHeight / 15.62,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: 4,
@@ -42,8 +44,8 @@ class _ExplorePageState extends State<ExplorePage> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  width: 30,
+                return  SizedBox(
+                  width: screenWidth / 13.09,
                 );
               },
             ),
@@ -198,10 +200,12 @@ class _CategoryButtonState extends State<CategoryButton> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Consumer<ExploreProvider>(
       builder: (context, provider, child) {
         return SizedBox(
-          width: 120,
+          width: screenWidth / 3.27,
           child: Visibility(
             visible: widget.visibility,
             child: ElevatedButton(

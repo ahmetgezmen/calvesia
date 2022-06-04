@@ -23,6 +23,8 @@ class _ApprovePageState extends State<ApprovePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -51,7 +53,7 @@ class _ApprovePageState extends State<ApprovePage> {
                   SvgPicture.asset(
                     "assets/images/ApprovePage.svg",
                     width: double.maxFinite,
-                    height: 150,
+                    height: screenHeight / 5.2,
                     fit: BoxFit.fitHeight,
                   ),
                   Container(
@@ -65,7 +67,7 @@ class _ApprovePageState extends State<ApprovePage> {
                     ),
                   ),
                   Container(
-                      height: 50,
+                      height: screenHeight / 15.62,
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                       child: ElevatedButton(
                         style: ButtonStyle(
