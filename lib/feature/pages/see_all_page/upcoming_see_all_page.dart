@@ -24,7 +24,7 @@ class UpcomingSeeAllPage extends StatelessWidget {
         child: FirebaseDatabaseQueryBuilder(
               query: FirebaseDatabase.instance
                   .ref('posts')
-                  .orderByChild("date"),
+                  .orderByChild("reversedDate"),
               builder: (context, snapshot, _) {
                 if (snapshot.isFetching) {
                   return const CircularProgressIndicator();

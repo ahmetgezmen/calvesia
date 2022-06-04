@@ -40,6 +40,7 @@ class PostModel {
     String? category,
     bool? isPrivate,
     String? date,
+    int? reversedDate,
     String? endDate,
     String? time,
     String? endTime,
@@ -84,6 +85,7 @@ class PostModel {
     _ticketNumber = ticketNumber;
     _viewNumber = viewNumber;
     _price = price;
+    _reversedDate = reversedDate;
     _postOwner = postOwner;
     _followersNumber = followersNumber;
     _reversedFollowersNumber = reversedFollowersNumber;
@@ -116,6 +118,7 @@ class PostModel {
     _ticketNumber = json['ticketNumber'];
     _viewNumber = json['viewNumber'];
     _price = json['price'];
+    _reversedDate = json['reversedDate'];
     _postOwner = json['postOwner'];
     _followersNumber = json['followersNumber'];
     _reversedFollowersNumber = json['reversedFollowersNumber'];
@@ -154,6 +157,7 @@ class PostModel {
   int? _ticketNumber;
   int? _viewNumber;
   int? _price;
+  int? _reversedDate;
   String? _postOwner;
   int? _followersNumber;
   int? _reversedFollowersNumber;
@@ -184,6 +188,7 @@ class PostModel {
     int? ticketNumber,
     int? viewNumber,
     int? price,
+    int? reversedDate,
     String? postOwner,
     int? followersNumber,
     int? reversedFollowersNumber,
@@ -216,6 +221,7 @@ class PostModel {
         ticketNumber: ticketNumber ?? _ticketNumber,
         viewNumber: viewNumber ?? _viewNumber,
         price: price ?? _price,
+        reversedDate: reversedDate?? _reversedDate,
         postOwner: postOwner ?? _postOwner,
         followersNumber: followersNumber ?? _followersNumber,
         reversedFollowersNumber: reversedFollowersNumber ?? _reversedFollowersNumber,
@@ -246,6 +252,7 @@ class PostModel {
   int? get ticketNumber => _ticketNumber;
   int? get viewNumber => _viewNumber;
   int? get price => _price;
+  int? get reversedDate => _reversedDate;
   String? get postOwner => _postOwner;
   int? get followersNumber => _followersNumber;
   int? get reversedFollowersNumber => _reversedFollowersNumber;
@@ -278,6 +285,7 @@ class PostModel {
     map['ticketNumber'] = _ticketNumber;
     map['viewNumber'] = _viewNumber;
     map['price'] = _price;
+    map['reversedDate'] = _reversedDate;
     map['postOwner'] = _postOwner;
     map['followersNumber'] = _followersNumber;
     map['reversedFollowersNumber'] = _reversedFollowersNumber;
