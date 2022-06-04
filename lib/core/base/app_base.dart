@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => ExploreProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: baseThemeData(),
         home: FirebaseAuth.instance.currentUser != null
