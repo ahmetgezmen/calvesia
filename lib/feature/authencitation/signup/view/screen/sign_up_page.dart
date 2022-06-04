@@ -40,6 +40,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -99,7 +100,7 @@ class _SingUpPAgeScreenState extends State<SingUpPAgeScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Container(
-                        height: 50,
+                        height: screenHeight / 15.62,
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: ElevatedButton(
                           style: ButtonStyle(

@@ -93,6 +93,7 @@ class CommentComponent extends StatelessWidget {
       borderRadius: BorderRadius.circular(50));
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Padding(
@@ -144,6 +145,8 @@ class InfoComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: SingleChildScrollView(
@@ -158,8 +161,8 @@ class InfoComponent extends StatelessWidget {
               child: Row(
                 children: [
                   const Icon(Icons.person_outline),
-                  const SizedBox(
-                    width: 30,
+                   SizedBox(
+                    width: screenWidth / 13.1,
                   ),
                   Expanded(
                       child: SingleChildScrollView(
@@ -184,8 +187,8 @@ class InfoComponent extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.calendar_today_outlined),
-                    const SizedBox(
-                      width: 30,
+                     SizedBox(
+                      width: screenWidth / 13.1,
                     ),
                     Text(post.date.toString() + ', ' + post.time.toString()),
                   ],
@@ -203,8 +206,8 @@ class InfoComponent extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.calendar_today_outlined),
-                    const SizedBox(
-                      width: 30,
+                     SizedBox(
+                      width: screenWidth / 13.1,
                     ),
                     Text(post.endDate.toString() +
                         ', ' +
@@ -222,8 +225,8 @@ class InfoComponent extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.location_on_outlined),
-                    const SizedBox(
-                      width: 30,
+                     SizedBox(
+                      width: screenWidth / 13.1,
                     ),
                     Expanded(
                       child: SingleChildScrollView(
@@ -247,8 +250,8 @@ class InfoComponent extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.link),
-                    const SizedBox(
-                      width: 30,
+                     SizedBox(
+                      width: screenWidth / 13.1,
                     ),
                     Expanded(
                         child: SingleChildScrollView(
@@ -269,14 +272,14 @@ class InfoComponent extends StatelessWidget {
                   "Açıklama",
                   style: Theme.of(context).textTheme.titleLarge,
                 )),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: screenHeight / 78.1,
             ),
             Align(
                 alignment: Alignment.centerLeft,
                 child: Text(post.description.toString(), maxLines: 10)),
-            const SizedBox(
-              height: 20,
+             SizedBox(
+              height: screenHeight / 39.05,
             ),
             Align(
                 alignment: Alignment.centerLeft,
@@ -287,7 +290,7 @@ class InfoComponent extends StatelessWidget {
             post.sponsors != null
                 ? post.sponsors!.sponsors != null
                     ? SizedBox(
-                        height: 100,
+              height: screenHeight / 7.81,
                         child: ListView.builder(
                           itemCount: post.sponsors!.sponsors!.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -310,8 +313,8 @@ class InfoComponent extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(50)),
                                       ),
-                                      const SizedBox(
-                                        width: 10,
+                                       SizedBox(
+                                        width: screenWidth / 13.1,
                                       ),
                                       Text(post.sponsors!.sponsors![index]
                                           .toString()
@@ -345,7 +348,7 @@ class InfoComponent extends StatelessWidget {
                           color: Colors.grey[100],
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        height: 200,
+                        height: screenHeight / 3.9,
                         child: ListView.builder(
                           itemCount: post.coordinators!.coordinators!.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -363,8 +366,8 @@ class InfoComponent extends StatelessWidget {
                                     Row(
                                       children: [
                                         const Icon(Icons.person_outline),
-                                        const SizedBox(
-                                          width: 10,
+                                         SizedBox(
+                                          width: screenWidth / 13.1,
                                         ),
                                         Text(post.coordinators!
                                             .coordinators![index].trim()),
@@ -409,7 +412,7 @@ class InfoComponent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: SizedBox(
-                height: 100,
+                height: screenHeight / 7.81,
                 child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [
@@ -447,6 +450,8 @@ class TopComponent extends StatefulWidget {
 class _TopComponentState extends State<TopComponent> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Expanded(
@@ -480,10 +485,10 @@ class _TopComponentState extends State<TopComponent> {
                               ? Material(
                                   borderRadius: BorderRadius.circular(20),
                                   elevation: 10,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 35,
-                                    child: Icon(
+                                  child:  SizedBox(
+                                    height: screenHeight / 22.31,
+                                    width: screenWidth / 11.22,
+                                    child: const Icon(
                                       Icons.favorite,
                                     ),
                                   ),
@@ -491,10 +496,10 @@ class _TopComponentState extends State<TopComponent> {
                               : Material(
                                   borderRadius: BorderRadius.circular(20),
                                   elevation: 10,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 35,
-                                    child: Icon(
+                                  child:  SizedBox(
+                                    height: screenHeight / 22.31,
+                                    width: screenWidth / 11.22,
+                                    child: const Icon(
                                       Icons.favorite_border,
                                     ),
                                   ),

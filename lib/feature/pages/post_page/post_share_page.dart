@@ -65,6 +65,7 @@ class _PostSharePageState extends State<PostSharePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Etkinlik Oluştur'),

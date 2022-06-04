@@ -16,6 +16,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+
   final controller = PageController();
   bool isLastPage = false;
 
@@ -27,6 +28,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Widget buildPage({
+
     required String urlImage,
     required String title,
     required String subtitle,
@@ -70,6 +72,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: PageView(
         controller: controller,
@@ -102,7 +106,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 110),
+                 SizedBox(height: screenHeight / 7.1),
                 const Text(
                   "Yunivent",
                   style: TextStyle(
@@ -111,7 +115,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 24),
+                 SizedBox(height: screenHeight / 32.54),
                 Container(
                   padding: const EdgeInsets.symmetric(),
                   child: const Text(
@@ -119,7 +123,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     style: TextStyle(color: Color(0xfff6f9ff)),
                   ),
                 ),
-                const SizedBox(height: 110),
+                 SizedBox(height: screenHeight / 7.1),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.55,
                   height: MediaQuery.of(context).size.width * 0.14,
@@ -197,7 +201,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             )
           : Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              height: 80,
+              height: screenHeight / 9.76,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

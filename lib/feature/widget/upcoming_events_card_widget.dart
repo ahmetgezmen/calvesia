@@ -30,6 +30,8 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     final PostModel post = widget.post;
     return Padding(
       padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
@@ -41,8 +43,8 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
         child: Row(
           children: <Widget>[
             SizedBox(
-              height: 100,
-              width: 100,
+              height: screenHeight / 7.81,
+              width: screenWidth / 3.92,
               child: post.postKey == null
                   ? Container(
                       decoration: const BoxDecoration(
@@ -150,8 +152,8 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                   Padding(
                     padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
                     child: SizedBox(
-                        height: 20,
-                        width: 70,
+                        height: screenHeight / 39.05,
+                        width: screenWidth / 5.61,
                         child: Text(post.price.toString() + " TL")),
                   )
                 ],
