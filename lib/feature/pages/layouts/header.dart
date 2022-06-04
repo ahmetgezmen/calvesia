@@ -83,7 +83,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.notifications_none),
-                    color: Colors.white,
+                    color: Color(0xff364f6c),
                   )
                 ],
               ),
@@ -106,9 +106,9 @@ class _HeaderComponentState extends State<HeaderComponent> {
                           ),
                           hintText: "Etkinlik Ara",
                           border: OutlineInputBorder(),
-                          suffixIcon: Icon(
-                            Icons.filter_alt,
-                          ),
+                          //suffixIcon: Icon(
+                            //Icons.filter_alt,
+                          //),
                         ),
                       );
                     },

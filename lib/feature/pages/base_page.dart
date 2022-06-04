@@ -144,12 +144,12 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.black,), label: ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_outlined), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
+            icon: Icon(Icons.dashboard_outlined, color: Colors.black,), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite_border, color: Colors.black,), label: ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined), label: ""),
+            icon: Icon(Icons.calendar_today_outlined, color: Colors.black,), label: ""),
       ],
       currentIndex: widget.selectedIndex,
       onTap: widget.onItemTapped,
