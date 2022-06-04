@@ -53,6 +53,7 @@ class PostShareProvider extends ChangeNotifier {
   final int _viewNumber = 0;
   int _price = 0;
   final int _followersNumber=0;
+  final int _reversedFollowersNumber=0;
   Sponsors? _sponsors;
   Coordinators? _coordinators;
 
@@ -77,6 +78,7 @@ class PostShareProvider extends ChangeNotifier {
       eventPlaceLocationTitle: _eventPlaceLocationTitle,
       location: _location,
       followersNumber: _followersNumber,
+      reversedFollowersNumber: _reversedFollowersNumber,
       postOwner: _postOwner,
       streamTime: StreamTime(
         date: Timestamp.now().toDate().toString().split(' ')[0],

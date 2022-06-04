@@ -15,7 +15,7 @@ class PopularSeeAllPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Yaklaşan Etkinlikler"),
+        title: const Text("Popüler Etkinlikler"),
         backgroundColor: BaseColorPalet.main,
       ),
       body: Padding(
@@ -24,7 +24,7 @@ class PopularSeeAllPage extends StatelessWidget {
           pageSize: 10,
           query: FirebaseDatabase.instance
               .ref('posts')
-              .orderByChild("followersNumber"),
+              .orderByChild("reversedFollowersNumber"),
           builder: (context, snapshot, _) {
             if (snapshot.isFetching) {
               return const CircularProgressIndicator();

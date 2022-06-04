@@ -56,6 +56,7 @@ class PostModel {
     int? price,
     String? postOwner,
     int? followersNumber,
+    int? reversedFollowersNumber,
     Sponsors? sponsors,
     EventImageListModel? eventImageListModel,
     Coordinators? coordinators,
@@ -85,6 +86,7 @@ class PostModel {
     _price = price;
     _postOwner = postOwner;
     _followersNumber = followersNumber;
+    _reversedFollowersNumber = reversedFollowersNumber;
     _sponsors = sponsors;
     _eventImageListModel = eventImageListModel;
     _coordinators = coordinators;
@@ -116,6 +118,7 @@ class PostModel {
     _price = json['price'];
     _postOwner = json['postOwner'];
     _followersNumber = json['followersNumber'];
+    _reversedFollowersNumber = json['reversedFollowersNumber'];
     _sponsors =
         json['sponsors'] != null ? Sponsors.fromJson(json['sponsors']) : null;
     _eventImageListModel = json['eventImageListModel'] != null
@@ -153,6 +156,7 @@ class PostModel {
   int? _price;
   String? _postOwner;
   int? _followersNumber;
+  int? _reversedFollowersNumber;
   Sponsors? _sponsors;
   EventImageListModel? _eventImageListModel;
   Coordinators? _coordinators;
@@ -182,6 +186,7 @@ class PostModel {
     int? price,
     String? postOwner,
     int? followersNumber,
+    int? reversedFollowersNumber,
     Sponsors? sponsors,
     EventImageListModel? eventImageListModel,
     Coordinators? coordinators,
@@ -213,6 +218,7 @@ class PostModel {
         price: price ?? _price,
         postOwner: postOwner ?? _postOwner,
         followersNumber: followersNumber ?? _followersNumber,
+        reversedFollowersNumber: reversedFollowersNumber ?? _reversedFollowersNumber,
         sponsors: sponsors ?? _sponsors,
         eventImageListModel: eventImageListModel ?? _eventImageListModel,
         coordinators: coordinators ?? _coordinators,
@@ -242,6 +248,7 @@ class PostModel {
   int? get price => _price;
   String? get postOwner => _postOwner;
   int? get followersNumber => _followersNumber;
+  int? get reversedFollowersNumber => _reversedFollowersNumber;
   Sponsors? get sponsors => _sponsors;
   EventImageListModel? get eventImageListModel => _eventImageListModel;
   Coordinators? get coordinators => _coordinators;
@@ -273,6 +280,7 @@ class PostModel {
     map['price'] = _price;
     map['postOwner'] = _postOwner;
     map['followersNumber'] = _followersNumber;
+    map['reversedFollowersNumber'] = _reversedFollowersNumber;
     if (_sponsors != null) {
       map['sponsors'] = _sponsors?.toJson();
     }
@@ -299,11 +307,17 @@ class PostModel {
     if (_followersNumber != null) {
       _followersNumber = _followersNumber! - 1;
     }
+    if (_reversedFollowersNumber != null) {
+      _reversedFollowersNumber = _reversedFollowersNumber! + 1;
+    }
   }
 
   void decreaseFavNumber() {
     if (_followersNumber != null) {
       _followersNumber = _followersNumber! + 1;
+    }
+    if (_reversedFollowersNumber != null) {
+      _reversedFollowersNumber = _reversedFollowersNumber! - 1;
     }
   }
 }
