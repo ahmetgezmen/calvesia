@@ -66,63 +66,68 @@ class _BasePageState extends State<BasePage> {
     searchController.dispose();
     super.dispose();
   }
+
   @override
   void initState() {
     super.initState();
     Provider.of<UserVievModel>(context, listen: false).userFetch();
-    Provider.of<BaseProvider>(context, listen: false).setShowNavigationButtonFunkBase();
+    Provider.of<BaseProvider>(context, listen: false)
+        .setShowNavigationButtonFunkBase();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-          body: Consumer<PostIsSharingAndShowingProvider>(
-            builder: (context, provider, child) {
-              return Column(
-                children: [
-                  HeaderComponent(searchController: searchController),
-                  Expanded(
-                    key: _parentKey,
-                    child: Stack(
-                      children: [
-                        _widgetOptions.elementAt(_selectedIndex),
-                        if(FirebaseAuth.instance.currentUser!.isAnonymous == false)DraggableFloatingActionButton(
-                          child: InkWell(
-                            onTap: () {
-                              openPostPage(context, provider);
-                            },
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: const ShapeDecoration(
-                                shape: CircleBorder(),
-                                color: BaseColorPalet.main,
-                              ),
-                              child: const Icon(
-                                Icons.add, color: Colors.white,),
+      child: Scaffold(body: Consumer<PostIsSharingAndShowingProvider>(
+        builder: (context, provider, child) {
+          return Column(
+            children: [
+              HeaderComponent(searchController: searchController),
+              Expanded(
+                key: _parentKey,
+                child: Stack(
+                  children: [
+                    _widgetOptions.elementAt(_selectedIndex),
+                    if (FirebaseAuth.instance.currentUser!.isAnonymous == false)
+                      DraggableFloatingActionButton(
+                        child: InkWell(
+                          onTap: () {
+                            openPostPage(context, provider);
+                          },
+                          child: Container(
+                            width: 60,
+                            height: 60,
+                            decoration: const ShapeDecoration(
+                              shape: CircleBorder(),
+                              color: BaseColorPalet.main,
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
                             ),
                           ),
-                          initialOffset: const Offset(0, 30),
-                          parentKey: _parentKey,
-                          onPressed: () {},
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-          bottomNavigationBar: Consumer<BaseProvider>(
-            builder: (context, value, child) {
-              final String result = value.getShowNavigationButton;
-              return result=="base"
-                  ? BottomNavigationBarWidget(
-                  onItemTapped: _onItemTapped,
-                  selectedIndex: _selectedIndex)
-                  : result == "profile" ?const ProfilePageAppBarr() : const PostShowPageAppBarr();
-            },
-          )),
+                        initialOffset: const Offset(0, 30),
+                        parentKey: _parentKey,
+                        onPressed: () {},
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      ), bottomNavigationBar: Consumer<BaseProvider>(
+        builder: (context, value, child) {
+          final String result = value.getShowNavigationButton;
+          return result == "base"
+              ? BottomNavigationBarWidget(
+                  onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
+              : result == "profile"
+                  ? const ProfilePageAppBarr()
+                  : const PostShowPageAppBarr();
+        },
+      )),
     );
   }
 }
@@ -144,13 +149,29 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      selectedItemColor: BaseColorPalet.main,
+      unselectedItemColor: BaseColorPalet.inAktiveButtonColor,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.black,), label: ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_outlined, color: Colors.black,), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite_border, color: Colors.black,), label: ""),
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined, color: Colors.black,), label: ""),
+            icon: Icon(
+              Icons.dashboard_outlined,
+            ),
+            label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_border,
+            ),
+            label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_today_outlined,
+            ),
+            label: ""),
       ],
       currentIndex: widget.selectedIndex,
       onTap: widget.onItemTapped,
@@ -194,9 +215,9 @@ class _DraggableFloatingActionButtonState
 
   void _setBoundary(_) {
     final RenderBox parentRenderBox =
-    widget.parentKey.currentContext?.findRenderObject() as RenderBox;
+        widget.parentKey.currentContext?.findRenderObject() as RenderBox;
     final RenderBox renderBox =
-    _key.currentContext?.findRenderObject() as RenderBox;
+        _key.currentContext?.findRenderObject() as RenderBox;
 
     try {
       final Size parentSize = parentRenderBox.size;
