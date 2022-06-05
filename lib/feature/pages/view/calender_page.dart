@@ -30,14 +30,15 @@ class _BuyPageState extends State<BuyPage> {
     return Column(
       children: [
         CalendarDatePicker(
-            initialDate: DateTime.now(),
-            firstDate: DateTime(DateTime.now().year - 1),
-            lastDate: DateTime(DateTime.now().year + 1),
-            onDateChanged: (day) {
-              setState((){
-                setQueryForDay(day.toString());
-              });
-            }),
+          initialDate: DateTime.now(),
+          firstDate: DateTime(DateTime.now().year - 1),
+          lastDate: DateTime(DateTime.now().year + 1),
+          onDateChanged: (day) {
+            setState(() {
+              setQueryForDay(day.toString());
+            });
+          },
+        ),
         FirebaseDatabaseQueryBuilder(
           query: query,
           builder: (BuildContext context, FirebaseQueryBuilderSnapshot snapshot,
@@ -50,7 +51,8 @@ class _BuyPageState extends State<BuyPage> {
               return Text('Something went wrong! ${snapshot.error}');
             }
             if (snapshot.docs.isEmpty) {
-              return const Center(child: Text('Bu tarihte gerçekleşen etkinlik yok'));
+              return const Center(
+                  child: Text('Bu tarihte gerçekleşen etkinlik yok'));
             }
             int len = snapshot.docs.length;
             for (int index = 0; index <= len; index++) {

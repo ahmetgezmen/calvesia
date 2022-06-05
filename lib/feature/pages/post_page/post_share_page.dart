@@ -67,7 +67,6 @@ class _PostSharePageState extends State<PostSharePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           title: const Text('Etkinlik Oluştur'),
@@ -223,7 +222,31 @@ class _PostSharePageState extends State<PostSharePage> {
                                             context: context,
                                             initialDate: DateTime.now(),
                                             firstDate: DateTime(1900),
-                                            lastDate: DateTime(2100));
+                                            lastDate: DateTime(2100),
+                                            builder: (context, child) => Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        const ColorScheme.light(
+                                                      primary:
+                                                          Color(0xffffbd66),
+                                                      onPrimary:
+                                                          Color(0xff364f6c),
+                                                      onSurface:
+                                                          Color(0xff364f6c),
+                                                    ),
+                                                    dialogBackgroundColor:
+                                                        Colors.white,
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                              primary: Color(
+                                                                  0xff364f6c)),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                ));
 
                                         dateCtlStart.text = date!
                                             .toIso8601String()
@@ -331,7 +354,29 @@ class _PostSharePageState extends State<PostSharePage> {
                                           context: context,
                                           initialDate: DateTime.now(),
                                           firstDate: DateTime(1900),
-                                          lastDate: DateTime(2100));
+                                          lastDate: DateTime(2100),
+                                          builder: (context, child) => Theme(
+                                                data:
+                                                    Theme.of(context).copyWith(
+                                                  colorScheme:
+                                                      const ColorScheme.light(
+                                                    primary: Color(0xffffbd66),
+                                                    onPrimary:
+                                                        Color(0xff364f6c),
+                                                    onSurface:
+                                                        Color(0xff364f6c),
+                                                  ),
+                                                  dialogBackgroundColor:
+                                                      Colors.white,
+                                                  textButtonTheme:
+                                                      TextButtonThemeData(
+                                                    style: TextButton.styleFrom(
+                                                        primary:
+                                                            Color(0xff364f6c)),
+                                                  ),
+                                                ),
+                                                child: child!,
+                                              ));
                                       dateCtlEnd.text =
                                           date!.toIso8601String().split("T")[0];
                                     },
@@ -502,7 +547,10 @@ class _PostSharePageState extends State<PostSharePage> {
                               ),
                             ),
                           ),
-                          EventPageComponent(postKey: widget.postKey, title: "Etkinlik Fotoğrafları", indexs: const [1,2,3]),
+                          EventPageComponent(
+                              postKey: widget.postKey,
+                              title: "Etkinlik Fotoğrafları",
+                              indexs: const [1, 2, 3]),
                           Padding(
                             padding: const EdgeInsets.only(top: 16.0),
                             child: Container(
@@ -754,7 +802,10 @@ class _PostSharePageState extends State<PostSharePage> {
                               ],
                             ),
                           ),
-                          EventPageComponent(postKey: widget.postKey,title: "Afiş Fotoğrafları", indexs: const [4,5,6]),
+                          EventPageComponent(
+                              postKey: widget.postKey,
+                              title: "Afiş Fotoğrafları",
+                              indexs: const [4, 5, 6]),
                           Padding(
                             padding: const EdgeInsets.only(top: 16.0),
                             child: Row(
@@ -781,16 +832,17 @@ class _PostSharePageState extends State<PostSharePage> {
                                         focusedErrorBorder: singleOutlineBorder,
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                vertical: 50.0, horizontal: 20.0),
+                                                vertical: 50.0,
+                                                horizontal: 20.0),
                                       ),
                                       onSaved: (val) {
                                         if (val!.isNotEmpty) {
                                           List<String> _sponsor =
                                               val.split(",");
                                           for (var element in _sponsor) {
-                                            if(element == ""){
+                                            if (element == "") {
                                               _sponsor.remove(element);
-                                            }else if(element == " "){
+                                            } else if (element == " ") {
                                               _sponsor.remove(element);
                                             }
                                           }
@@ -847,7 +899,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                             List<String> _coordinators =
                                                 val.split(",");
                                             for (var element in _coordinators) {
-                                              if(element==""){
+                                              if (element == "") {
                                                 _coordinators.remove(element);
                                               }
                                             }
@@ -874,8 +926,12 @@ class _PostSharePageState extends State<PostSharePage> {
                               Expanded(
                                 child: ElevatedButton(
                                     style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(BaseColorPalet.viewButtonColor),
-                                      foregroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              BaseColorPalet.viewButtonColor),
+                                      foregroundColor:
+                                          MaterialStateProperty.all(
+                                              BaseColorPalet.buttonColor),
                                     ),
                                     onPressed: () {
                                       final form = _formKey.currentState;
@@ -894,9 +950,11 @@ class _PostSharePageState extends State<PostSharePage> {
                             children: [
                               Expanded(
                                 child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(BaseColorPalet.buttonColor),
-                                  ),
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              BaseColorPalet.buttonColor),
+                                    ),
                                     onPressed: () async {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
@@ -918,10 +976,12 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 context,
                                                 widget.postKey,
                                                 widget.postIsSharingProvider,
-                                            widget.postKey);
+                                                widget.postKey);
                                         Navigator.of(context).pop(_result);
                                       }else {
-                                        showDialog(context: context, builder: (BuildContext context){
+                                        showDialog(
+                                          context: context, 
+                                          builder: (BuildContext context){
 
                                             final Widget svg = SvgPicture.asset("assets/images/Component 19.svg",
                                                 semanticsLabel: 'Uyarı Logosu'
@@ -938,9 +998,8 @@ class _PostSharePageState extends State<PostSharePage> {
                                                       )
                                                   )],)
                                           );
+                                        });
 
-                                        }
-                                        );
                                       }
                                     },
                                     child: const Text('Kaydet')),

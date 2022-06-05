@@ -118,7 +118,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: const EdgeInsets.only(top: 8.5, right: 20.0, left: 20.0, bottom: 20.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
