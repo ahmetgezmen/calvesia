@@ -1,10 +1,12 @@
 import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Utils/Style/color_palette.dart';
 import 'event_photo_component.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 enum SingingCharacter { privetEvent, publicEvent, online, platform, free, paid }
 
@@ -920,10 +922,25 @@ class _PostSharePageState extends State<PostSharePage> {
                                         Navigator.of(context).pop(_result);
                                       }else {
                                         showDialog(context: context, builder: (BuildContext context){
-                                          return const AlertDialog(
-                                            title: Text("Lütfen bilgileri eksiksiz giriniz"),
+
+                                            final Widget svg = SvgPicture.asset("assets/images/Component 19.svg",
+                                                semanticsLabel: 'Uyarı Logosu'
+                                            );
+                                          return AlertDialog(
+
+                                                title: Column(children: [
+                                                  svg,
+                                                  const Text('Lütfen eksik bilgileri doldurunuz',
+                                                      style: TextStyle(
+                                                          fontFamily:'PTSans' ,
+                                                          fontSize: 18,
+                                                          color: Colors.black38
+                                                      )
+                                                  )],)
                                           );
-                                        });
+
+                                        }
+                                        );
                                       }
                                     },
                                     child: const Text('Kaydet')),
