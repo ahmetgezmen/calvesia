@@ -153,7 +153,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                             color: BaseColorPalet.linkLabel,
                                           ),
                                           Text(
-                                            post.location.toString(),
+                                            post.location != null ? post.location.toString(): post.platformLink.toString(),
                                             style: const TextStyle(
                                               color: BaseColorPalet.linkLabel,
                                             ),

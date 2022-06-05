@@ -135,7 +135,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                         ),
                         Expanded(
                           child: Text(
-                            post.location.toString(),
+                            post.location != null ? post.location.toString(): post.platformLink.toString(),
                             maxLines: 1,
                             style: const TextStyle(
                                 color: BaseColorPalet.linkLabel),
