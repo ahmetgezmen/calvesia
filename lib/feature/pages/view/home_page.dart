@@ -51,7 +51,7 @@ class BottomComponent extends StatelessWidget {
                   return const UpcomingSeeAllPage();
                 },));
               },
-              child: const Text("Tümünü gör")),
+              child: const Text("Tümünü gör", style: TextStyle(color: Color(0xff169cad)),)),
             ],
           ),
         ),
@@ -99,7 +99,7 @@ class BodyComponent extends StatelessWidget {
                 TextButton(onPressed: () async {
                   await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PopularSeeAllPage(),));
                 },
-                child: const Text("Tümünü gör")),
+                child: const Text("Tümünü gör", style: TextStyle(color: Color(0xff169cad)),)),
               ],
             ),
           ),

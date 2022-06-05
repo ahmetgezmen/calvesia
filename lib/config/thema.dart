@@ -15,7 +15,7 @@ baseThemeData() {
     selectedRowColor: const Color(0xfff5f5f5),
     unselectedWidgetColor: const Color(0xff364f6c),
     disabledColor: const Color(0xffb7b7b7),
-    toggleableActiveColor: const Color(0xff169cac),
+    toggleableActiveColor: const Color(0xff169cad),
     secondaryHeaderColor: const Color(0xfffff4e5),
     backgroundColor: const Color(0xffffd399),
     dialogBackgroundColor: const Color(0xffffffff),
