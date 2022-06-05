@@ -106,15 +106,9 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: <Widget>[
-                        Expanded(
-                          child: Text(
-                            post.viewNumber.toString() + " k",
-                            style: const TextStyle(color: Colors.grey),
-                          ),
-                        ),
                         const Icon(
                           Icons.favorite,
                           color: Colors.grey,
