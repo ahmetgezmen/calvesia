@@ -148,7 +148,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: Column(
         children: [
           InkWell(
@@ -179,12 +179,12 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                 }),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+            padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
             child: Text("Hoşgeldin",
                 style: Theme.of(context).textTheme.titleLarge),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
+            padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
                 FirebaseAuth.instance.currentUser!.isAnonymous
                     ? "Anonymous"
@@ -195,7 +195,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
             indicatorColor: BaseColorPalet.main,
             tabs: [
               Tab(child: Text("Takvim")),
-              Tab(child: Text("Biletlerim")),
+              Tab(child: Text("Biletler")),
               Tab(child: Text("Bilgilerim")),
               Tab(child: Text("Politika")),
             ],
