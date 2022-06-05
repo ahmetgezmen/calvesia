@@ -18,6 +18,37 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isSplasing = true;
+  splashScreen() {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: Image.asset("assets/images/splash_screen.png").image,
+                fit: BoxFit.cover)),
+      ),
+    );
+  }
+
+  home() {
+    return FirebaseAuth.instance.currentUser != null
+        ? const BasePageMiddleWave()
+        : const OnboardingPage();
+  }
+
+  waiting() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState((){
+     isSplasing = false;
+    });
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    waiting();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -25,7 +56,8 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => BaseProvider()),
         ChangeNotifierProvider(create: (_) => PostShareProvider()),
         ChangeNotifierProvider(create: (_) => HeaderProvider()),
-        ChangeNotifierProvider(create: (_) => PostIsSharingAndShowingProvider()),
+        ChangeNotifierProvider(
+            create: (_) => PostIsSharingAndShowingProvider()),
         ChangeNotifierProvider(create: (_) => UserVievModel()),
         ChangeNotifierProvider(create: (_) => ExploreProvider()),
       ],
@@ -33,9 +65,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: baseThemeData(),
-        home: FirebaseAuth.instance.currentUser != null
-            ? const BasePageMiddleWave()
-            : const OnboardingPage(),
+        home: isSplasing ? splashScreen() : home(),
       ),
     );
   }
