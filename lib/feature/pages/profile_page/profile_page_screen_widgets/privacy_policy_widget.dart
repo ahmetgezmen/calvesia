@@ -8,7 +8,8 @@ class ProvacPolicyWidget extends StatelessWidget {
     return Container(
 
 
-      child: ListView(
+     child: Expanded (
+       child: ListView(
 
 
           children: const [
@@ -38,7 +39,7 @@ class ProvacPolicyWidget extends StatelessWidget {
             ),
             Text('Üniversite öğrencilerinin kültürel, sanatsal ve sosyal yaşamını destekleyen, kariyer yaşamına yönelik katkı sağlayabilecek etkinlikleri, kolay erişilebilir, kaliteli ve güvenli bir şekilde tanıtmak bunun yanı sıra uygun fiyatlı bilet satışı hizmeti sunmak.',
                 style: TextStyle(
-                    fontFamily:'PTSans' ,
+                    fontFamily:'PTSans',
                     fontSize: 12,
                     color: Colors.black38
                 ),
@@ -83,7 +84,7 @@ Müşteri bilgileri, ancak resmi makamlarca usulü dairesinde bu bilgilerin tale
                 textAlign: TextAlign.justify
             ),
           ]
-      ),
+      ),)
     );
   }
 }
