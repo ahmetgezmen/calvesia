@@ -34,6 +34,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
       child: Card(
+        shadowColor: colorsMatch(post),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
@@ -204,4 +205,18 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
       ),
     );
   }
+}
+
+MaterialColor? colorsMatch(PostModel post) {
+  switch (post.category.toString()) {
+    case "party":
+      return BaseColorPalet.partyColor;
+    case "career":
+      return BaseColorPalet.careerColor;
+    case "health":
+      return BaseColorPalet.healthColor;
+    case "education":
+      return BaseColorPalet.educationColor;
+  }
+  return null;
 }
