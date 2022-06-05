@@ -6,9 +6,7 @@ class ProvacPolicyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-
-
-      child: Padding(
+        child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
 
@@ -58,6 +56,7 @@ class ProvacPolicyWidget extends StatelessWidget {
                 Younivent, müşterilerine daha iyi hizmet verebilmek amacıyla bazı kişisel bilgilerinizi (isim, yaş, ilgi alanlarınız, e-posta vb…) sizlerden talep etmektedir. Younivent veri tabanında toplanan bu bilgiler, dönemsel kampanya çalışmaları, müşteri profillerine yönelik özel promosyon faaliyetlerinin kurgulanması ve istenmeyen e-postaların iletilmemesine yönelik müşteri “sınıflandırma” çalışmalarında sadece Younivent tarafından kullanılmaktadır. Gizlilik Politikası herhangi başka bir kaynak veya yöntem kullanılmadan sadece Younivent sitesi üzerinden elde edilen bilgiler için geçerlidir.
 
 
+
 Younivent, üyelik formlarından topladığı bilgileri, söz konusu üyenin haberi ya da aksi bir talimatı olmaksızın, üçüncü şahıslarla kesinlikle paylaşmamakta, faaliyet dışı hiçbir nedenle ticari amaçla kullanmamakta ve de satmamaktadır.
 
 
@@ -76,17 +75,17 @@ Kredi kartı ile alışveriş yaptığınızda kredi kartı numarası, son kulla
 
 Müşteri bilgileri, ancak resmi makamlarca usulü dairesinde bu bilgilerin talep edilmesi halinde ve yürürlükteki emredici mevzuat hükümleri gereğince resmi makamlara açıklama yapmak zorunda olduğu durumlarda resmi makamlara açıklanabilecektir.
 
-                ''',
-                  style: TextStyle(
-                      fontFamily:'PTSans' ,
-                      fontSize: 12,
-                      color: Colors.black38
-                  ),
-                  textAlign: TextAlign.justify
-              ),
-            ]
-        ),
-      ),
+
+              ''',
+                style: TextStyle(
+                    fontFamily:'PTSans' ,
+                    fontSize: 12,
+                    color: Colors.black38
+                ),
+                textAlign: TextAlign.justify
+            ),
+          ]
+      ),)
     );
   }
 }
