@@ -173,7 +173,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       child:
                                           Text(post.price.toString() + " TL"),
                                     ),
-                                    Text(post.time.toString()),
+                                    Text(post.time.toString().substring(0,post.time.toString().length-3)),
                                   ],
                                 ),
                               ],
