@@ -169,7 +169,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                   } else if (snapshot.hasError) {
                     return  Icon(
                       Icons.error_outline,
-                      size: screenHeight / 5.2,
+                      size: screenHeight / 5.25,
                     );
                   } else {
                     return const CircularProgressIndicator(
