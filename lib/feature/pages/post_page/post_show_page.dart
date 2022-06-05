@@ -25,7 +25,10 @@ class PostShowPageAppBarr extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(BaseColorPalet.buttonColor)),
               onPressed: () {},
-              child: const Text("Bilet AL"),
+              child: const Text("Bilet AL", style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Poppins",
+              ),),
             )
           ],
         ),
@@ -350,7 +353,7 @@ class InfoComponent extends StatelessWidget {
             Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Kordinatorler",
+                  "Koordinatorler",
                   style: Theme.of(context).textTheme.titleLarge,
                 )),
             post.coordinators != null
@@ -410,11 +413,11 @@ class InfoComponent extends StatelessWidget {
                       )
                     : const Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text("Kordinator Bulunamadi"),
+                        child: Text("Koordinator Bulunamadi"),
                       )
                 : const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Kordinator Bulunamadi"),
+                    child: Text("Koordinator Bulunamadi"),
                   ),
             Align(
                 alignment: Alignment.centerLeft,
@@ -425,7 +428,7 @@ class InfoComponent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: SizedBox(
-                height: screenHeight / 7.81,
+                height: screenHeight / 7.5,
                 child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [

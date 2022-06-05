@@ -32,5 +32,6 @@ baseThemeData() {
       opacity: 1,
       size: 24,
     ),
+    fontFamily: "Poppins"
   );
 }
