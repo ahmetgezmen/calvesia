@@ -1,3 +1,4 @@
+import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/Authencitation/login/view/screen/login_page.dart';
 import 'package:calvesia/feature/Authencitation/signup/view/screen/sign_up_page.dart';
 import 'package:calvesia/feature/pages/base_page.dart';
@@ -211,7 +212,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextButton(
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
+                          ),
                           child: const Text(
                             "Atla",
                             style: TextStyle(
@@ -225,7 +229,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         Center(
                           child: PageIndicator(controller: controller),
                         ),
-                        TextButton(
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
+                          ),
                           child: const Text(
                             "İleri",
                             style: TextStyle(
