@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:calvesia/feature/pages/models/post_model.dart';
 
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import '../../../Utils/Style/color_palette.dart';
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../services/image_services.dart';
 import '../services/post_services.dart';
+import 'page_indicator.dart';
 
 class PostShowPageAppBarr extends StatelessWidget {
   const PostShowPageAppBarr({Key? key}) : super(key: key);
@@ -25,10 +28,13 @@ class PostShowPageAppBarr extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(BaseColorPalet.buttonColor)),
               onPressed: () {},
-              child: const Text("Bilet AL", style: TextStyle(
-                color: Colors.white,
-                fontFamily: "Poppins",
-              ),),
+              child: const Text(
+                "Bilet AL",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "Poppins",
+                ),
+              ),
             )
           ],
         ),
@@ -541,9 +547,43 @@ class _TopComponentState extends State<TopComponent> {
   }
 }
 
-class PictureComponent extends StatelessWidget {
+class PictureComponent extends StatefulWidget {
   final PostModel post;
   const PictureComponent({Key? key, required this.post}) : super(key: key);
+
+  @override
+  State<PictureComponent> createState() => _PictureComponentState();
+}
+
+class _PictureComponentState extends State<PictureComponent> {
+  final controller = PageController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
+  }
+
+  Future<List<Uint8List>> getting() async {
+    List<Uint8List> imageList = [];
+    try {
+      final image1 =
+          await ImageServices.getPostImageServices(widget.post.postKey, 1);
+      imageList.add(image1);
+    } catch (e) {}
+    try {
+      final image2 =
+          await ImageServices.getPostImageServices(widget.post.postKey, 2);
+      imageList.add(image2);
+    } catch (e) {}
+    try {
+      final image3 =
+          await ImageServices.getPostImageServices(widget.post.postKey, 3);
+      imageList.add(image3);
+    } catch (e) {}
+    return imageList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -553,21 +593,47 @@ class PictureComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         shadowColor: BaseColorPalet.main,
         child: Expanded(
-          child: FutureBuilder(
-            future: ImageServices.getPostImageServices(post.postKey, 1),
+          child: FutureBuilder<List<Uint8List>>(
+            future: getting(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return Container(
-                  foregroundDecoration: BoxDecoration(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(25.0),
-                      bottom: Radius.circular(25.0),
+                List dataList = snapshot.data;
+                if(dataList.isEmpty){
+                  return Container(
+                    decoration: const BoxDecoration(
+                      color: BaseColorPalet.upcomingCardContainer,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(25.0),
+                        bottom: Radius.circular(25.0),
+                      ),
                     ),
-                    image: DecorationImage(
-                      image: MemoryImage(snapshot.data),
-                      fit: BoxFit.cover,
+                  );
+                }
+                return Stack(
+                  children: [
+                    PageView(
+                      controller: controller,
+                      children: [
+                        for (int i = 0; i <= dataList.length; i++)
+                          Container(
+                            foregroundDecoration: BoxDecoration(
+                              borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(25.0),
+                                bottom: Radius.circular(25.0),
+                              ),
+                              image: DecorationImage(
+                                image: MemoryImage(snapshot.data[i]),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: PageIndicator(controller: controller, count: dataList.length,),
+                    ),
+                  ],
                 );
               } else if (snapshot.hasError) {
                 return Container(
