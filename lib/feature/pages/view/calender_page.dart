@@ -55,12 +55,15 @@ class _BuyPageState extends State<BuyPage> {
                   child: Text('Bu tarihte gerçekleşen etkinlik yok'));
             }
             int len = snapshot.docs.length;
-            for (int index = 0; index <= len; index++) {
-              return UpcomingEventsCardWidget(
-                post: PostModel.fromJson(snapshot.docs[index].value),
-              );
-            }
-            return const Divider();
+            return Expanded(
+              child: ListView.builder(
+                itemCount: len,itemBuilder: (context, index) {
+                  return UpcomingEventsCardWidget(
+                    post: PostModel.fromJson(snapshot.docs[index].value),
+                  );
+              },
+              ),
+            );
           },
         )
       ],

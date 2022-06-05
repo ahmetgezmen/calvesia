@@ -5,56 +5,56 @@ class ProvacPolicyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
+        child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
 
 
-     child: Expanded (
-       child: ListView(
+            children: const [
+              Text('Younivent Nedir?',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold ,
+                      fontSize: 18,
+                      color: Colors.black54
+                  ),
+                  textAlign: TextAlign.center
+              ),
+              Text('Younivent, Üniversite bünyelerindeki kulüpler veya organizatörler tarafından düzenlenen farklı kategorilerdeki etkinlikleri, dijital medya platformlarını kullanarak üniversite öğrencilerine ulaştıran yeni nesil online etkinlik keşfetme sitesidir.',
+                  style: TextStyle(
+                      fontFamily:'PTSans' ,
+                      fontSize: 12,
+                      color: Colors.black38
+                  ),
+                  textAlign: TextAlign.justify
+              ),
+              Text('Misyonumuz',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black54
+                  ),
+                  textAlign: TextAlign.center
+              ),
+              Text('Üniversite öğrencilerinin kültürel, sanatsal ve sosyal yaşamını destekleyen, kariyer yaşamına yönelik katkı sağlayabilecek etkinlikleri, kolay erişilebilir, kaliteli ve güvenli bir şekilde tanıtmak bunun yanı sıra uygun fiyatlı bilet satışı hizmeti sunmak.',
+                  style: TextStyle(
+                      fontFamily:'PTSans' ,
+                      fontSize: 12,
+                      color: Colors.black38
+                  ),
+                  textAlign: TextAlign.justify
+              ),
+              Text('Gizlilik',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black54
+                  ),
+                  textAlign: TextAlign.center
+              ),
+              Text('''
+                Younivent, müşterilerine daha iyi hizmet verebilmek amacıyla bazı kişisel bilgilerinizi (isim, yaş, ilgi alanlarınız, e-posta vb…) sizlerden talep etmektedir. Younivent veri tabanında toplanan bu bilgiler, dönemsel kampanya çalışmaları, müşteri profillerine yönelik özel promosyon faaliyetlerinin kurgulanması ve istenmeyen e-postaların iletilmemesine yönelik müşteri “sınıflandırma” çalışmalarında sadece Younivent tarafından kullanılmaktadır. Gizlilik Politikası herhangi başka bir kaynak veya yöntem kullanılmadan sadece Younivent sitesi üzerinden elde edilen bilgiler için geçerlidir.
 
-
-          children: const [
-            Text('Younivent Nedir?',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold ,
-                    fontSize: 18,
-                    color: Colors.black54
-                ),
-                textAlign: TextAlign.center
-            ),
-            Text('Younivent, Üniversite bünyelerindeki kulüpler veya organizatörler tarafından düzenlenen farklı kategorilerdeki etkinlikleri, dijital medya platformlarını kullanarak üniversite öğrencilerine ulaştıran yeni nesil online etkinlik keşfetme sitesidir.',
-                style: TextStyle(
-                    fontFamily:'PTSans' ,
-                    fontSize: 12,
-                    color: Colors.black38
-                ),
-                textAlign: TextAlign.justify
-            ),
-            Text('Misyonumuz',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black54
-                ),
-                textAlign: TextAlign.center
-            ),
-            Text('Üniversite öğrencilerinin kültürel, sanatsal ve sosyal yaşamını destekleyen, kariyer yaşamına yönelik katkı sağlayabilecek etkinlikleri, kolay erişilebilir, kaliteli ve güvenli bir şekilde tanıtmak bunun yanı sıra uygun fiyatlı bilet satışı hizmeti sunmak.',
-                style: TextStyle(
-                    fontFamily:'PTSans',
-                    fontSize: 12,
-                    color: Colors.black38
-                ),
-                textAlign: TextAlign.justify
-            ),
-            Text('Gizlilik',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black54
-                ),
-                textAlign: TextAlign.center
-            ),
-            Text('''
-              Younivent, müşterilerine daha iyi hizmet verebilmek amacıyla bazı kişisel bilgilerinizi (isim, yaş, ilgi alanlarınız, e-posta vb…) sizlerden talep etmektedir. Younivent veri tabanında toplanan bu bilgiler, dönemsel kampanya çalışmaları, müşteri profillerine yönelik özel promosyon faaliyetlerinin kurgulanması ve istenmeyen e-postaların iletilmemesine yönelik müşteri “sınıflandırma” çalışmalarında sadece Younivent tarafından kullanılmaktadır. Gizlilik Politikası herhangi başka bir kaynak veya yöntem kullanılmadan sadece Younivent sitesi üzerinden elde edilen bilgiler için geçerlidir.
 
 
 Younivent, üyelik formlarından topladığı bilgileri, söz konusu üyenin haberi ya da aksi bir talimatı olmaksızın, üçüncü şahıslarla kesinlikle paylaşmamakta, faaliyet dışı hiçbir nedenle ticari amaçla kullanmamakta ve de satmamaktadır.
@@ -74,6 +74,7 @@ Kredi kartı ile alışveriş yaptığınızda kredi kartı numarası, son kulla
 Ödeme sayfasında istenen kredi kartı bilgileriniz, siteden alışveriş yapan siz değerli müşterilerimizin güvenliğini en üst seviyede tutmak amacıyla hiçbir şekilde Younivent veya ona hizmet veren şirketlerin sunucularında tutulmamaktadır. Bu şekilde ödemeye yönelik tüm işlemlerin Younivent ara yüzü üzerinden banka ve bilgisayarınız arasında gerçekleşmesi sağlanmaktadır.
 
 Müşteri bilgileri, ancak resmi makamlarca usulü dairesinde bu bilgilerin talep edilmesi halinde ve yürürlükteki emredici mevzuat hükümleri gereğince resmi makamlara açıklama yapmak zorunda olduğu durumlarda resmi makamlara açıklanabilecektir.
+
 
               ''',
                 style: TextStyle(

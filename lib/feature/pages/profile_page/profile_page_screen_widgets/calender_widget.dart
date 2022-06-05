@@ -16,19 +16,20 @@ class _CalenderWidgetState extends State<CalenderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CalendarDatePicker(
-            initialDate: DateTime.now(),
-            firstDate: DateTime(DateTime.now().year - 1),
-            lastDate: DateTime(DateTime.now().year + 1),
-            onDateChanged: (day) {
-              setState((){
-                setQueryForDay(day.toString());
-              });
-            }),
-      ],
-    );
+    return Center(child: Text("coming soon"),);
+    // Column(
+    //   children: [
+    //     CalendarDatePicker(
+    //         initialDate: DateTime.now(),
+    //         firstDate: DateTime(DateTime.now().year - 1),
+    //         lastDate: DateTime(DateTime.now().year + 1),
+    //         onDateChanged: (day) {
+    //           setState((){
+    //             setQueryForDay(day.toString());
+    //           });
+    //         }),
+    //   ],
+    // );
   }
 }
 
