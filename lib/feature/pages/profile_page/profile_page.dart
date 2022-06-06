@@ -180,7 +180,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
-            child: Text("Hoşgeldin",
+            child: Text("Hoşgeldin ",
                 style: Theme.of(context).textTheme.titleLarge),
           ),
           Padding(
