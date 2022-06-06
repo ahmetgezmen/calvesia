@@ -1,6 +1,7 @@
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/widget/upcoming_events_card_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SilverDelegateComponentFavourite();
+    return FirebaseAuth.instance.currentUser!.isAnonymous ? const Center(child: Text("Kullanabilmek icin lutfen giris yapin"),):const SilverDelegateComponentFavourite();
   }
 }
 

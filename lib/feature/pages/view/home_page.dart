@@ -58,7 +58,7 @@ class BottomComponent extends StatelessWidget {
         FirebaseDatabaseQueryBuilder(
             query: FirebaseDatabase.instance
                 .ref('posts')
-                .orderByChild("date"),
+                .orderByChild("reversedDate"),
             builder: (context, snapshot, _) {
               if (snapshot.isFetching) {
                 return const CircularProgressIndicator();
@@ -106,7 +106,7 @@ class BodyComponent extends StatelessWidget {
           FirebaseDatabaseQueryBuilder(
               query: FirebaseDatabase.instance
                   .ref('posts')
-                  .orderByChild("followersNumber"),
+                  .orderByChild("reversedFollowersNumber"),
               builder: (context, snapshot, _) {
                 if (snapshot.isFetching) {
                   return const CircularProgressIndicator();

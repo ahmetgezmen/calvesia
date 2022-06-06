@@ -1,6 +1,7 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
         child: Row(
           children: <Widget>[
             SizedBox(
-              height: screenHeight / 7.81,
+              height: screenHeight / 7.31,
               width: screenWidth / 3.92,
               child: post.postKey == null
                   ? Container(
@@ -108,21 +109,27 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.only(left: 5.0),
                     child: Row(
-                      children: <Widget>[
-                        const Icon(
-                          Icons.favorite,
-                          color: Colors.grey,
-                          size: 16,
+                      children: [
+                        Text(
+                          post.date.toString(),
+                          style: const TextStyle(
+                              color: Colors.grey),
                         ),
                         Text(
-                          post.followersNumber.toString(),
-                          style: const TextStyle(color: Colors.grey),
-                        )
+                          "   " +
+                              post.time.toString().substring(
+                                  0,
+                                  post.time.toString().length -
+                                      3),
+                          style: const TextStyle(
+                              color: Colors.grey),
+                        ),
                       ],
                     ),
                   ),
+
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 5.0, top: 5.0, bottom: 5.0),
@@ -144,19 +151,47 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                    child: SizedBox(
-                        height: screenHeight / 39.05,
-                        width: screenWidth / 5.61,
-                        child: Text(post.price.toString() + " TL")),
-                  )
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                              child: SizedBox(
+                                  height: screenHeight / 39.05,
+                                  width: screenWidth / 5.61,
+                                  child: Text(post.price.toString() + " TL")),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                              child: Row(
+                                children: <Widget>[
+                                  const Icon(
+                                    Icons.favorite,
+                                    color: Colors.grey,
+                                    size: 16,
+                                  ),
+                                  Text(
+                                    post.followersNumber.toString(),
+                                    style: const TextStyle(color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
                 ],
               ),
             ),
             Column(
               children: [
-                Consumer<UserVievModel>(
+                FirebaseAuth.instance.currentUser!.isAnonymous ? const SizedBox():Consumer<UserVievModel>(
                   builder: (context, provider, child) {
                     return IconButton(
                       onPressed: () async {

@@ -4,6 +4,7 @@ import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -118,7 +119,11 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 8.5, right: 20.0, left: 20.0, bottom: 20.0),
+                            padding: const EdgeInsets.only(
+                                top: 8.5,
+                                right: 20.0,
+                                left: 20.0,
+                                bottom: 20.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -131,6 +136,15 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       children: [
                                         Text(
                                           post.date.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        ),
+                                        Text(
+                                          "   " +
+                                              post.time.toString().substring(
+                                                  0,
+                                                  post.time.toString().length -
+                                                      3),
                                           style: const TextStyle(
                                               color: Colors.grey),
                                         ),
@@ -153,7 +167,9 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                             color: BaseColorPalet.linkLabel,
                                           ),
                                           Text(
-                                            post.location != null ? post.location.toString(): post.platformLink.toString(),
+                                            post.location != null
+                                                ? post.location.toString()
+                                                : post.platformLink.toString(),
                                             style: const TextStyle(
                                               color: BaseColorPalet.linkLabel,
                                             ),
@@ -173,7 +189,24 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       child:
                                           Text(post.price.toString() + " TL"),
                                     ),
-                                    Text(post.time.toString().substring(0,post.time.toString().length-3)),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      child: Row(
+                                        children: <Widget>[
+                                          const Icon(
+                                            Icons.favorite,
+                                            color: Colors.grey,
+                                            size: 16,
+                                          ),
+                                          Text(
+                                            post.followersNumber.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -188,7 +221,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
             );
           },
         ),
-        Padding(
+        FirebaseAuth.instance.currentUser!.isAnonymous ? const SizedBox():Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
             width: screenWidth / 1.57,
@@ -214,7 +247,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ? Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child:  SizedBox(
+                            child: SizedBox(
                               height: screenHeight / 22.31,
                               width: screenWidth / 11.22,
                               child: const Icon(Icons.favorite),
@@ -223,7 +256,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         : Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child:  SizedBox(
+                            child: SizedBox(
                               height: screenHeight / 22.31,
                               width: screenWidth / 11.22,
                               child: const Icon(Icons.favorite_border),
