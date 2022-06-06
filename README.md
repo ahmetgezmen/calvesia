@@ -198,7 +198,7 @@ Aşamalı ekran görünümleri
 - **Sprint Review** :
   Alınan kararlar: 
 
-  - Ekinlik sayfası düzenlendi, Takvim widgetları eklendi, çeşitli bug fixler yapıldı, bazı UI düzenlemeleri yapıldı, uygulama test edildi ve gerekli düzenlemeler yapılarak uygulama MVP hale getiridi.
+  - Ekinlik sayfası düzenlendi, Takvim widgetları eklendi, çeşitli bug fixler yapıldı, bazı UI düzenlemeleri yapıldı, uygulama test edildi ve gerekli düzenlemeler yapılarak uygulama MVP hale getirildi.
 
   - Sprint Review katılımcıları: Ahmet Gezmen, Berkay Erbayat, Uğurcan Çatak, Merve Gühan
 
