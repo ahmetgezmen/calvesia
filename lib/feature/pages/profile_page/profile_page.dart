@@ -3,6 +3,7 @@ import 'package:calvesia/feature/Authencitation/services/user_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
@@ -52,43 +53,70 @@ class ProfilePageAppBarr extends StatelessWidget {
             ),
             Consumer<UserVievModel>(
               builder: (context, provider, child) {
-                return ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(BaseColorPalet.buttonColor),
-                  ),
-                  onPressed: () async {
-                    final form = provider.myInfoSaveFormKey.currentState;
-                    if (form!.validate()) {
-                      form.save();
-                      await Future.delayed(const Duration(seconds: 2));
-                      UserServices.updateMyInfoServices(provider.user);
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext dialogContext) {
-                          return AlertDialog(
-                            title: Row(
-                              children: const <Widget>[
-                                Text("Güncelleme başarılı")
-                              ],
-                            ),
-                            content: const Text('Bilgileriniz Güncellendi'),
-                            actions: <Widget>[
-                              TextButton(
-                                child: const Text('Kapat'),
-                                onPressed: () {
-                                  Navigator.of(dialogContext)
-                                      .pop(); // Dismiss alert dialog
-                                },
-                              ),
-                            ],
-                          );
+                return FirebaseAuth.instance.currentUser!.isAnonymous
+                    ? ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              BaseColorPalet.buttonColor),
+                        ),
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Column(
+                                    children: [
+                                    SvgPicture.asset("assets/images/Component 19.svg",),
+                                     const Text(
+                                          "Kullanabilmek icin lütfen giriş yapın",
+                                          style: TextStyle(
+                                              fontFamily: 'PTSans',
+                                              fontSize: 18,
+                                              )),
+                                    ],
+                                  ),
+                                );
+                              });
                         },
+                        child: const Text("Save Profile"))
+                    : ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              BaseColorPalet.buttonColor),
+                        ),
+                        onPressed: () async {
+                          final form = provider.myInfoSaveFormKey.currentState;
+                          if (form!.validate()) {
+                            form.save();
+                            await Future.delayed(const Duration(seconds: 2));
+                            UserServices.updateMyInfoServices(provider.user);
+                            showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dialogContext) {
+                                return AlertDialog(
+                                  title: Row(
+                                    children: const <Widget>[
+                                      Text("Güncelleme başarılı")
+                                    ],
+                                  ),
+                                  content:
+                                      const Text('Bilgileriniz Güncellendi'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text('Kapat'),
+                                      onPressed: () {
+                                        Navigator.of(dialogContext)
+                                            .pop(); // Dismiss alert dialog
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                        child: const Text("Save Profile"),
                       );
-                    }
-                  },
-                  child: const Text("Save Profile"),
-                );
               },
             )
           ],
@@ -114,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: PreferredSize(
-            preferredSize:const Size.fromHeight(307.0),
+            preferredSize: const Size.fromHeight(307.0),
             child: AppBar(
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
@@ -154,8 +182,8 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
           InkWell(
             onTap: () async {
               final result = await changeProfileImageWidgetButton(context);
-              if(result==true){
-                setState((){});
+              if (result == true) {
+                setState(() {});
               }
             },
             child: FutureBuilder(
@@ -167,7 +195,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
                       backgroundImage: MemoryImage(snapshot.data),
                     );
                   } else if (snapshot.hasError) {
-                    return  Icon(
+                    return Icon(
                       Icons.error_outline,
                       size: screenHeight / 5.25,
                     );
