@@ -138,9 +138,12 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                           style: const TextStyle(
                                               color: Colors.grey),
                                         ),
-                                        Text("   "+
-                                          post.time.toString().substring(0,
-                                              post.time.toString().length - 3),
+                                        Text(
+                                          "   " +
+                                              post.time.toString().substring(
+                                                  0,
+                                                  post.time.toString().length -
+                                                      3),
                                           style: const TextStyle(
                                               color: Colors.grey),
                                         ),
@@ -185,7 +188,24 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       child:
                                           Text(post.price.toString() + " TL"),
                                     ),
-                                    // todo fav
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      child: Row(
+                                        children: <Widget>[
+                                          const Icon(
+                                            Icons.favorite,
+                                            color: Colors.grey,
+                                            size: 16,
+                                          ),
+                                          Text(
+                                            post.followersNumber.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
