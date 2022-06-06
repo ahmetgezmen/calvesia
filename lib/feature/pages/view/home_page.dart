@@ -2,10 +2,12 @@
 
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
 
+import '../../../config/locale_key.dart';
 import '../../widget/popular_event_card_widget.dart';
 import '../../widget/upcoming_events_card_widget.dart';
 import '../see_all_page/popular_see_all_page.dart';
@@ -58,7 +60,7 @@ class BottomComponent extends StatelessWidget {
         FirebaseDatabaseQueryBuilder(
             query: FirebaseDatabase.instance
                 .ref('posts')
-                .orderByChild("date"),
+                .orderByChild("reversedDate"),
             builder: (context, snapshot, _) {
               if (snapshot.isFetching) {
                 return const CircularProgressIndicator();
@@ -94,7 +96,7 @@ class BodyComponent extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Populer Etkinlikler",
+                Text(LocaleKeys.popularEvent.tr(),
                     style: Theme.of(context).textTheme.headline6),
                 TextButton(onPressed: () async {
                   await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PopularSeeAllPage(),));
@@ -106,7 +108,7 @@ class BodyComponent extends StatelessWidget {
           FirebaseDatabaseQueryBuilder(
               query: FirebaseDatabase.instance
                   .ref('posts')
-                  .orderByChild("followersNumber"),
+                  .orderByChild("reversedFollowersNumber"),
               builder: (context, snapshot, _) {
                 if (snapshot.isFetching) {
                   return const CircularProgressIndicator();

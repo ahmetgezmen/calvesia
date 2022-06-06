@@ -2,10 +2,12 @@ import 'dart:typed_data';
 
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../constant/app_constant.dart';
 import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../profile_page/profile_page.dart';
 
@@ -76,15 +78,23 @@ class _HeaderComponentState extends State<HeaderComponent> {
                                         ? userProvider.user.username.toString()
                                         : userProvider.user.fname.toString(),
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall);
+                                    Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white));
                           },
                         ),
                       )
                     ],
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.notifications_none),
+                    onPressed: () {
+                      setState((){
+                        if(context.locale==AppConstant.TR_LOCALE){
+                          context.setLocale(AppConstant.EN_LOCALE);
+                        }else if(context.locale==AppConstant.EN_LOCALE){
+                          context.setLocale(AppConstant.TR_LOCALE);
+                        }
+                      });
+                    },
+                    icon: const Icon(Icons.language),
                     color: Color(0xff364f6c),
                   )
                 ],

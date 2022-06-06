@@ -102,48 +102,49 @@ class CommentComponent extends StatelessWidget {
       borderRadius: BorderRadius.circular(50));
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: singleContainerDecoration,
-                  child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Yorum yaz",
-                        border: singleOutlineBorder,
-                        disabledBorder: singleOutlineBorder,
-                        errorBorder: singleOutlineBorder,
-                        focusedBorder: singleOutlineBorder,
-                        enabledBorder: singleOutlineBorder,
-                        focusedErrorBorder: singleOutlineBorder,
-                        suffixIcon: const Icon(
-                          Icons.text_fields,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Ad soyad bilgisi giriniz';
-                        }
-                        return null;
-                      },
-                      onSaved: (val) {
-                        // Todo
-                      }),
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.arrow_forward_ios),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
+    return const Text("Coming Soon");
+    // Column(
+    //   children: [
+    //     Padding(
+    //       padding: const EdgeInsets.symmetric(vertical: 16.0),
+    //       child: Row(
+    //         children: [
+    //           Expanded(
+    //             child: Container(
+    //               decoration: singleContainerDecoration,
+    //               child: TextFormField(
+    //                   decoration: InputDecoration(
+    //                     labelText: "Yorum yaz",
+    //                     border: singleOutlineBorder,
+    //                     disabledBorder: singleOutlineBorder,
+    //                     errorBorder: singleOutlineBorder,
+    //                     focusedBorder: singleOutlineBorder,
+    //                     enabledBorder: singleOutlineBorder,
+    //                     focusedErrorBorder: singleOutlineBorder,
+    //                     suffixIcon: const Icon(
+    //                       Icons.text_fields,
+    //                     ),
+    //                   ),
+    //                   validator: (value) {
+    //                     if (value!.isEmpty) {
+    //                       return 'Ad soyad bilgisi giriniz';
+    //                     }
+    //                     return null;
+    //                   },
+    //                   onSaved: (val) {
+    //                     // Todo
+    //                   }),
+    //             ),
+    //           ),
+    //           IconButton(
+    //             onPressed: () {},
+    //             icon: const Icon(Icons.arrow_forward_ios),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 }
 
@@ -614,7 +615,7 @@ class _PictureComponentState extends State<PictureComponent> {
                     PageView(
                       controller: controller,
                       children: [
-                        for (int i = 0; i <= dataList.length; i++)
+                        for (int i = 0; i < dataList.length; i++)
                           Container(
                             foregroundDecoration: BoxDecoration(
                               borderRadius: const BorderRadius.vertical(

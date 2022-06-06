@@ -852,23 +852,9 @@ class _PostSharePageState extends State<PostSharePage> {
                                     ),
                                   ),
                                 ),
-                                const Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(20.0),
-                                    child: Placeholder(
-                                      fallbackHeight: 30,
-                                      fallbackWidth: 10,
-                                    ),
-                                  ),
+                                SizedBox(
+                                  width: 10,
                                 ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
                                 Expanded(
                                   child: Container(
                                     decoration: singleContainerDecoration,
@@ -909,15 +895,6 @@ class _PostSharePageState extends State<PostSharePage> {
                                         }),
                                   ),
                                 ),
-                                const Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(20.0),
-                                    child: Placeholder(
-                                      fallbackHeight: 30,
-                                      fallbackWidth: 10,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -936,10 +913,48 @@ class _PostSharePageState extends State<PostSharePage> {
                                     onPressed: () {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
-                                        form.save();
-                                        // _post.save();
-                                        // todo post_model.dart ile birleştirme yapılacak
-                                        // todo önizleme ekranı oluşturulacak
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              final Widget svg = SvgPicture.asset(
+                                                  "assets/images/Component 18.svg",
+                                                  semanticsLabel:
+                                                      'Uyarı Logosu');
+                                              return AlertDialog(
+                                                  title: Column(
+                                                children: [
+                                                  svg,
+                                                  const Text(
+                                                      'Yakinda sizlerle olacak',
+                                                      style: TextStyle(
+                                                        fontFamily: 'PTSans',
+                                                        fontSize: 18,
+                                                      ))
+                                                ],
+                                              ));
+                                            });
+                                      } else {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              final Widget svg = SvgPicture.asset(
+                                                  "assets/images/Component 19.svg",
+                                                  semanticsLabel:
+                                                      'Uyarı Logosu');
+                                              return AlertDialog(
+                                                  title: Column(
+                                                children: [
+                                                  svg,
+                                                  const Text(
+                                                      'Lütfen eksik bilgileri doldurunuz',
+                                                      style: TextStyle(
+                                                          fontFamily: 'PTSans',
+                                                          fontSize: 18,
+                                                          color:
+                                                              Colors.black38))
+                                                ],
+                                              ));
+                                            });
                                       }
                                     },
                                     child: const Text('Önizle')),
@@ -978,28 +993,28 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 widget.postIsSharingProvider,
                                                 widget.postKey);
                                         Navigator.of(context).pop(_result);
-                                      }else {
+                                      } else {
                                         showDialog(
-                                          context: context, 
-                                          builder: (BuildContext context){
-
-                                            final Widget svg = SvgPicture.asset("assets/images/Component 19.svg",
-                                                semanticsLabel: 'Uyarı Logosu'
-                                            );
-                                          return AlertDialog(
-
-                                                title: Column(children: [
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              final Widget svg = SvgPicture.asset(
+                                                  "assets/images/Component 19.svg",
+                                                  semanticsLabel:
+                                                      'Uyarı Logosu');
+                                              return AlertDialog(
+                                                  title: Column(
+                                                children: [
                                                   svg,
-                                                  const Text('Lütfen eksik bilgileri doldurunuz',
+                                                  const Text(
+                                                      'Lütfen eksik bilgileri doldurunuz',
                                                       style: TextStyle(
-                                                          fontFamily:'PTSans' ,
+                                                          fontFamily: 'PTSans',
                                                           fontSize: 18,
-                                                          color: Colors.black38
-                                                      )
-                                                  )],)
-                                          );
-                                        });
-
+                                                          color:
+                                                              Colors.black38))
+                                                ],
+                                              ));
+                                            });
                                       }
                                     },
                                     child: const Text('Kaydet')),
