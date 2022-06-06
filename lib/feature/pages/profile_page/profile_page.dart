@@ -66,13 +66,15 @@ class ProfilePageAppBarr extends StatelessWidget {
                                 return AlertDialog(
                                   title: Column(
                                     children: [
-                                    SvgPicture.asset("assets/images/Component 19.svg",),
-                                     const Text(
+                                      SvgPicture.asset(
+                                        "assets/images/Component 19.svg",
+                                      ),
+                                      const Text(
                                           "Kullanabilmek icin lütfen giriş yapın",
                                           style: TextStyle(
-                                              fontFamily: 'PTSans',
-                                              fontSize: 18,
-                                              )),
+                                            fontFamily: 'PTSans',
+                                            fontSize: 18,
+                                          )),
                                     ],
                                   ),
                                 );
@@ -213,11 +215,17 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: Text(
-                FirebaseAuth.instance.currentUser!.isAnonymous
-                    ? "Anonymous"
-                    : "Ahmet GEZMEN",
-                style: Theme.of(context).textTheme.headlineMedium),
+            child: Consumer<UserVievModel>(
+              builder: (context, userProvider, child) {
+                return Text(
+                    FirebaseAuth.instance.currentUser!.isAnonymous
+                        ? "Anonymous"
+                        : userProvider.user.fname == null
+                            ? userProvider.user.username.toString()
+                            : userProvider.user.fname.toString(),
+                    style: Theme.of(context).textTheme.headlineMedium);
+              },
+            ),
           ),
           const TabBar(
             indicatorColor: BaseColorPalet.main,
