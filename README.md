@@ -193,7 +193,8 @@ Aşamalı ekran görünümleri
   ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_2_.jpeg)
   ![Screenshot 6](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_3_.jpeg)
   ![Screenshot 7](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_11_.jpeg)
-  ![Screenshot ](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_4_.jpeg)
+  ![Screenshot 8](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_4_.jpeg)
+  ![Screenshot 9](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/16.jpeg)
   
 
 
