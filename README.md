@@ -156,5 +156,58 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 # Sprint 3
 
+- **Sprint Notları**: User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde son sprint'e tamamlanması gereken  100 puan kaldığına karar verilmiştir
+
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/d405a33520a348d794a1f30f033442bf754314d1)
+
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
+
+## Sprint Board Güncellemesi ve Burndown Güncellemesi
+
+- **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
+Aşamalı ekran görünümleri
+![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/BurnDown3-1.jpeg) 
+![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/BurnDown3-2.jpeg) 
+ 
+- **Sprint board güncellemesi**: Sprint board ekran görüntüleri: 
+![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-1.jpeg) 
+![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-2.jpeg) 
+
+- **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image.png) 
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(1).png)
+![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(2).png)
+
+- **Ürün Durumu**: Ekran görüntüleri:
+
+
+
+
+  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image.jpeg)
+  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_7_.jpeg)
+  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_1_.jpeg) 
+  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_10_.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_2_.jpeg)
+  ![Screenshot 6](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_3_.jpeg)
+  ![Screenshot 7](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_11_.jpeg)
+  ![Screenshot ](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_4_.jpeg)
+  
+
+
+- **Sprint Review**: 
+Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
+Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+
+
+- **Sprint Retrospective:**
+  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında backlog sadeleştirilmeli kararı alınmıştır.
+  - Daily Scrum için iki günde bir kez 15 dakikalık görüşme yapılmalı kararı alınmıştır.
+
+-**Diğer Notlar**:
+- Yok
+
 ---
 
