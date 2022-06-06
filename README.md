@@ -15,7 +15,7 @@
 - Uğurcan Çatak: Team Member/Developer
 
 ## Uygulamanın Geliştirildiği Platform
-- Uygulama Android Studio Uygulamasında Flutter yazılım geliştirme kitiyle Dart dilinde yazılmıştır.
+- Uygulama Android Studio Uygulamasında Flutter yazılım geliştirme kitiyle Dart dilinde geliştirilmiştir.
 
 # Ürün İle İlgili Bilgiler
 
