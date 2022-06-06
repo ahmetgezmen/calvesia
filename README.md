@@ -198,10 +198,12 @@ Aşamalı ekran görünümleri
   
 
 
-- **Sprint Review**: 
+- **Sprint Review** 
 Alınan kararlar: 
--Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
--Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+
+  - Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
+
+  - Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
