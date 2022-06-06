@@ -186,11 +186,15 @@ Aşamalı ekran görünümleri
 
 
 
-  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image.png)
-  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(1).png)
-  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(2).png) 
-  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(3).png)
-  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/9c505ee04977cf4c5535c36ce323b649d06087ba/Em%C3%BClat%C3%B6r/image%20(4).png)
+  ![Screenshot 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image.jpeg)
+  ![Screenshot 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_7_.jpeg)
+  ![Screenshot 3](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_1_.jpeg) 
+  ![Screenshot 4](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_10_.jpeg)
+  ![Screenshot 5](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_2_.jpeg)
+  ![Screenshot 6](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_3_.jpeg)
+  ![Screenshot 7](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_11_.jpeg)
+  ![Screenshot ](https://github.com/merveguhan/Sprint-deneme/blob/merve/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/image_4_.jpeg)
+  
 
 
 - **Sprint Review**: 
