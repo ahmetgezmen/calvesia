@@ -44,6 +44,23 @@ class ProvacPolicyWidget extends StatelessWidget {
                   ),
                   textAlign: TextAlign.justify
               ),
+
+              Text('Vizyonumuz',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black54
+                  ),
+                  textAlign: TextAlign.center
+              ),
+              Text('Üniversite öğrencilerinin, üniversitedeki dersler dışında da kendilerini geliştirmelerine katkı sunmak ve ayrıca üniversite öğrencileri için etkinlik dendiğinde akla ilk gelen ve en başarılı dijital platform olmak.',
+                  style: TextStyle(
+                      fontFamily:'PTSans' ,
+                      fontSize: 12,
+                      color: Colors.black38
+                  ),
+                  textAlign: TextAlign.justify
+              ),
               Text('Gizlilik',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
