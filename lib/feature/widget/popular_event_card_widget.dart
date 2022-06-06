@@ -4,6 +4,7 @@ import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -220,7 +221,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
             );
           },
         ),
-        Padding(
+        FirebaseAuth.instance.currentUser!.isAnonymous ? const SizedBox():Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
             width: screenWidth / 1.57,

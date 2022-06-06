@@ -1,6 +1,7 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -190,7 +191,7 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
             ),
             Column(
               children: [
-                Consumer<UserVievModel>(
+                FirebaseAuth.instance.currentUser!.isAnonymous ? const SizedBox():Consumer<UserVievModel>(
                   builder: (context, provider, child) {
                     return IconButton(
                       onPressed: () async {
