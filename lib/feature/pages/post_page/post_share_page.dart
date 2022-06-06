@@ -852,23 +852,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     ),
                                   ),
                                 ),
-                                const Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(20.0),
-                                    child: Placeholder(
-                                      fallbackHeight: 30,
-                                      fallbackWidth: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
+                                SizedBox(width: 10,),
                                 Expanded(
                                   child: Container(
                                     decoration: singleContainerDecoration,
@@ -881,23 +865,23 @@ class _PostSharePageState extends State<PostSharePage> {
                                         decoration: InputDecoration(
                                           labelText: 'Koordinatörler',
                                           helperText:
-                                              "   Boşluk bırakmadan\n   virgül ile ayırın",
+                                          "   Boşluk bırakmadan\n   virgül ile ayırın",
                                           border: singleOutlineBorder,
                                           disabledBorder: singleOutlineBorder,
                                           errorBorder: singleOutlineBorder,
                                           focusedBorder: singleOutlineBorder,
                                           enabledBorder: singleOutlineBorder,
                                           focusedErrorBorder:
-                                              singleOutlineBorder,
+                                          singleOutlineBorder,
                                           contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 50.0,
-                                                  horizontal: 20.0),
+                                          const EdgeInsets.symmetric(
+                                              vertical: 50.0,
+                                              horizontal: 20.0),
                                         ),
                                         onSaved: (val) {
                                           if (val!.isNotEmpty) {
                                             List<String> _coordinators =
-                                                val.split(",");
+                                            val.split(",");
                                             for (var element in _coordinators) {
                                               if (element == "") {
                                                 _coordinators.remove(element);
@@ -907,15 +891,6 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 .setCoordinators(_coordinators);
                                           }
                                         }),
-                                  ),
-                                ),
-                                const Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(20.0),
-                                    child: Placeholder(
-                                      fallbackHeight: 30,
-                                      fallbackWidth: 10,
-                                    ),
                                   ),
                                 ),
                               ],
