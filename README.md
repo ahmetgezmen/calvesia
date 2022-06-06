@@ -90,7 +90,7 @@ Aşamalı ekran görünümleri
 
 - **Sprint Review**: 
 Alınan kararlar: Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
-Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+Sprint Review katılımcıları: Ahmet Gezmen, Berkay Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
@@ -143,7 +143,7 @@ Aşamalı ekran görünümleri
 
 - **Sprint Review**: 
 Alınan kararlar: Backend'in user ve post paylaşım bölümü tamamlandı ancak rulesları yazılmadı. Database store bölümü ile uygulamanın bağlantısı sağlandı. Profilde bilgilerim sayfası ve post paylaşım sayfası UI'ları yapıldı daha sonrasında flutter koduna döküldü. Post paylaşım sayfasının backend'i yazıldı ve image paketi kullanılarak post image servisleri yazıldı ve backendi tamamlandı ancak UI kısmının tamamlanması sprint 3'e aktarıldı. Profil page'de my infoview UI'ı tamamlandı, backend'in bir kısmı siprint 3'e aktarıldı.
-Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+Sprint Review katılımcıları: Ahmet Gezmen, Berkay Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
@@ -177,9 +177,6 @@ Aşamalı ekran görünümleri
 ![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-1.jpeg) 
 ![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-2.jpeg) 
 
-- **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image.png) 
-![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(1).png)
-![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(2).png)
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
@@ -201,9 +198,9 @@ Aşamalı ekran görünümleri
 - **Sprint Review** :
   Alınan kararlar: 
 
-  - Veri Tabanlarının oluşturulması kullanıcı bilgileri ve pos bilgileri için gerekli görülmüştür. Kullanıcı bilgileri ve pos bilgilerinin tutulması için servis, view model ve model yapılmıştır. Ancak son hali tamamlanamamıştır. Birkaç hata gözlemlenmiştir onlar Sprint 2'ye aktarılmıştır. Ortaya çıkan ürün uygulamanın backend'inin büyük bölümünü oluşturmuştur ve ana temanın tamplead'i atılmıştır. Ekstra koyulması gereken özellikler belirlenmiştir.
+  - Ekinlik sayfası düzenlendi, Takvim widgetları eklendi, çeşitli bug fixler yapıldı, bazı UI düzenlemeleri yapıldı, uygulama test edildi ve gerekli düzenlemeler yapılarak uygulama MVP hale getirildi.
 
-  - Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, Merve Gühan
+  - Sprint Review katılımcıları: Ahmet Gezmen, Berkay Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
