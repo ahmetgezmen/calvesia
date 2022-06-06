@@ -614,7 +614,7 @@ class _PictureComponentState extends State<PictureComponent> {
                     PageView(
                       controller: controller,
                       children: [
-                        for (int i = 0; i <= dataList.length; i++)
+                        for (int i = 0; i < dataList.length; i++)
                           Container(
                             foregroundDecoration: BoxDecoration(
                               borderRadius: const BorderRadius.vertical(
