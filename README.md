@@ -162,7 +162,7 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde son sprint'e tammalanması gereken  100 puan kaldığına karar verilmiştir
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/ba94d18bfb71a6e778480aac42da0b182e86490b)
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](https://github.com/merveguhan/Sprint-deneme/commit/d405a33520a348d794a1f30f033442bf754314d1)
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
 
@@ -170,14 +170,12 @@ Sprint Review katılımcıları: Ahmet Gezmen, Berkat Erbayat, Uğurcan Çatak, 
 
 - **Burndown Tablosu**: Ayrıca Miro Board'da: [Miro Board](https://miro.com/app/board/uXjVO3wLSpU=/) 
 Aşamalı ekran görünümleri
-![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown1.png) 
-![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown2.png) 
-![Burndown 3](https://github.com/merveguhan/Sprint-deneme/blob/abf4672ee0955c7709c183cac6e06e987c4609eb/Burndown3.png)
+![Burndown 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/BurnDown3-1.jpeg) 
+![Burndown 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/BurnDown3-2.jpeg) 
  
 - **Sprint board güncellemesi**: Sprint board ekran görüntüleri: 
-![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/e844489a96abffef5d850eda239f4833869e46ba/Sprint1%20Document1.png) 
-![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/84a448e6de68336a2b5f7b506f3c384c41348367/Sprint1%20Document2.png) 
-![Backlog 3](https://github.com/merveguhan/Sprint-deneme/blob/84a448e6de68336a2b5f7b506f3c384c41348367/Sprint1%20Document3.png)
+![Backlog 1](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-1.jpeg) 
+![Backlog 2](https://github.com/merveguhan/Sprint-deneme/blob/merve/SprintBoard3-2.jpeg) 
 
 - **Pair programming evidence**: ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image.png) 
 ![Alt text](https://github.com/merveguhan/Sprint-deneme/blob/c33ecfb96ce18ea54a03361686fb051c9c09a3b6/Data%20Base/image%20(1).png)
