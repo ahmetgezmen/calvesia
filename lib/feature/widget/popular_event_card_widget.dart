@@ -118,7 +118,11 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 8.5, right: 20.0, left: 20.0, bottom: 20.0),
+                            padding: const EdgeInsets.only(
+                                top: 8.5,
+                                right: 20.0,
+                                left: 20.0,
+                                bottom: 20.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -131,6 +135,12 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       children: [
                                         Text(
                                           post.date.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        ),
+                                        Text("   "+
+                                          post.time.toString().substring(0,
+                                              post.time.toString().length - 3),
                                           style: const TextStyle(
                                               color: Colors.grey),
                                         ),
@@ -153,7 +163,9 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                             color: BaseColorPalet.linkLabel,
                                           ),
                                           Text(
-                                            post.location != null ? post.location.toString(): post.platformLink.toString(),
+                                            post.location != null
+                                                ? post.location.toString()
+                                                : post.platformLink.toString(),
                                             style: const TextStyle(
                                               color: BaseColorPalet.linkLabel,
                                             ),
@@ -173,7 +185,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                                       child:
                                           Text(post.price.toString() + " TL"),
                                     ),
-                                    Text(post.time.toString().substring(0,post.time.toString().length-3)),
+                                    // todo fav
                                   ],
                                 ),
                               ],
@@ -214,7 +226,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         ? Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child:  SizedBox(
+                            child: SizedBox(
                               height: screenHeight / 22.31,
                               width: screenWidth / 11.22,
                               child: const Icon(Icons.favorite),
@@ -223,7 +235,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         : Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,
-                            child:  SizedBox(
+                            child: SizedBox(
                               height: screenHeight / 22.31,
                               width: screenWidth / 11.22,
                               child: const Icon(Icons.favorite_border),
