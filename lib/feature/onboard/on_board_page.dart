@@ -50,7 +50,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.symmetric(),
               child: Text(
@@ -58,12 +58,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Color(0xfff6f9ff),
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
           ],
         ),
       );
@@ -85,17 +85,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   urlImage: "assets/images/ob_page_1.png",
                   title: "Etrafındaki Etkinlikleri Keşfet!",
                   subtitle:
-                      "Üniversitelere özel etkinliklerden anında haberdar olabilir, \n İstersen sen de etkinlik oluşturabilirsin."),
+                      "Üniversitelere özel etkinliklerden \n anında haberdar olabilir, \n İstersen sen de etkinlik oluşturabilirsin."),
               buildPage(
                   urlImage: "assets/images/ob_page_2.png",
-                  title: "Etrafındaki Etkinlikleri Keşfet!",
+                  title: "Tüm Etkinlikler Tek Sayfada!",
                   subtitle:
-                      "Üniversitelere özel etkinliklerden anında haberdar olabilir, \n İstersen sen de etkinlik oluşturabilirsin."),
+                      "Uygulama takviminden hangi gün \n hangi etkinliğin olduğunu gör  \n Etkinliklerini kendine özel takvimde düzenle"),
               buildPage(
                   urlImage: "assets/images/ob_page_3.png",
-                  title: "Etrafındaki Etkinlikleri Keşfet!",
+                  title: "Kampüs Bir Tıkla Yanında!",
                   subtitle:
-                      "Üniversitelere özel etkinliklerden anında haberdar olabilir, \n İstersen sen de etkinlik oluşturabilirsin."),
+                      "Sadece üniversite öğrencilerinin \n düzenlediği etkinliklerle kampüs heyecanı \n hep seninle olacak"),
               Container(
                 constraints: const BoxConstraints.expand(),
                 decoration: BoxDecoration(
@@ -108,10 +108,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   children: [
                     SizedBox(height: screenHeight / 7.1),
                     const Text(
-                      "Yunivent",
+                      "Younivent'e",
                       style: TextStyle(
                         color: Color(0xfff6f9ff),
-                        fontSize: 32,
+                        fontSize: 38,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -119,8 +119,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     Container(
                       padding: const EdgeInsets.symmetric(),
                       child: const Text(
-                        "Hoşgeldiniz",
-                        style: TextStyle(color: Color(0xfff6f9ff)),
+                        "Hoşgeldin",
+                        style: TextStyle(color: Color(0xfff6f9ff), fontSize: 24),
                       ),
                     ),
                     SizedBox(height: screenHeight / 7.1),
