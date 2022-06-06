@@ -76,7 +76,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                                         ? userProvider.user.username.toString()
                                         : userProvider.user.fname.toString(),
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall);
+                                    Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white));
                           },
                         ),
                       )
