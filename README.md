@@ -14,6 +14,9 @@
 - Ahmet Gezmen: Team Member/Developer
 - Uğurcan Çatak: Team Member/Developer
 
+## Uygulamanın Geliştirildiği Platform
+- Uygulama Android Studio Uygulamasında Flutter yazılım geliştirme kitiyle Dart dilinde yazılmıştır.
+
 # Ürün İle İlgili Bilgiler
 
 ## Ürün İsmi
@@ -198,14 +201,14 @@ Aşamalı ekran görünümleri
 - **Sprint Review** :
   Alınan kararlar: 
 
-  - Ekinlik sayfası düzenlendi, Takvim widgetları eklendi, çeşitli bug fixler yapıldı, bazı UI düzenlemeleri yapıldı, uygulama test edildi ve gerekli düzenlemeler yapılarak uygulama MVP hale getirildi.
+  - Ekinlik sayfası düzenlenmiş, Takvim widgetları eklenmiş, çeşitli bug fixler yapılmış, bazı UI düzenlemeleri yapıldmış, uygulama test edilmiştir. Gerekli düzenlemeler yapılarak uygulama MVP hale getirilmiş, uygulamanın son halini aldığına karar verilmiştir.
 
   - Sprint Review katılımcıları: Ahmet Gezmen, Berkay Erbayat, Uğurcan Çatak, Merve Gühan
 
 
 - **Sprint Retrospective:**
+  - Çıktı olan ürün beklentiyi karşıladığı için uygulamanın çalışır durumda olduğu düşünülmektedir.
   - Uygulamanın geliştirmeye açık olduğu düşünülmüş ve Bootcamp sürecinden sonra da geliştirmeye devam etme kararı alınmıştır.
-  - .
 
 -**Diğer Notlar**:
 - Yok
