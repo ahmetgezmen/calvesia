@@ -127,23 +127,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.55,
                       height: MediaQuery.of(context).size.width * 0.14,
-                      child: Expanded(
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(0),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0Xffffb85a)),
-                              foregroundColor: MaterialStateProperty.all(
-                                  const Color(0xfff6f9ff))),
-                          child: const Text("GİRİŞ YAP"),
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) {
-                                return const LoginPageScreen();
-                              },
-                            ));
-                          },
-                        ),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color(0Xffffb85a)),
+                            foregroundColor: MaterialStateProperty.all(
+                                const Color(0xfff6f9ff))),
+                        child: const Text("GİRİŞ YAP"),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) {
+                              return const LoginPageScreen();
+                            },
+                          ));
+                        },
                       ),
                     ),
                     Padding(
@@ -151,25 +149,23 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.55,
                         height: MediaQuery.of(context).size.width * 0.14,
-                        child: Expanded(
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                elevation: MaterialStateProperty.all(0),
-                                backgroundColor: MaterialStateProperty.all(
-                                    const Color(0xffc04757)),
-                                foregroundColor: MaterialStateProperty.all(
-                                    const Color(0xfff6f9ff))),
-                            child: const Text(
-                              "KAYIT OL",
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return const SingUpPAgeScreen();
-                                },
-                              ));
-                            },
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(0),
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color(0xffc04757)),
+                              foregroundColor: MaterialStateProperty.all(
+                                  const Color(0xfff6f9ff))),
+                          child: const Text(
+                            "KAYIT OL",
                           ),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) {
+                                return const SingUpPAgeScreen();
+                              },
+                            ));
+                          },
                         ),
                       ),
                     ),
@@ -200,56 +196,55 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ],
           ),
-          Expanded(
-              child: Align(
-                child: isLastPage
-                    ? Container(
-                  height: 0,
-                )
-                    : Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  height: screenHeight / 9.76,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
-                        ),
-                        child: const Text(
-                          "Atla",
-                          style: TextStyle(
-                            color: Color(0xfff6f9ff),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () => controller.jumpToPage(3),
+          Align(
+            child: isLastPage
+                ? Container(
+              height: 0,
+            )
+                : Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              height: screenHeight / 9.76,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
+                    ),
+                    child: const Text(
+                      "Atla",
+                      style: TextStyle(
+                        color: Color(0xfff6f9ff),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Center(
-                        child: PageIndicator(controller: controller),
-                      ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
-                        ),
-                        child: const Text(
-                          "İleri",
-                          style: TextStyle(
-                            color: Color(0xfff6f9ff),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () => controller.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeInOut),
-                      ),
-                    ],
+                    ),
+                    onPressed: () => controller.jumpToPage(3),
                   ),
-                ),
-                alignment: Alignment.bottomCenter,
-              ))
+                  Center(
+                    child: PageIndicator(controller: controller),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:MaterialStateProperty.all( BaseColorPalet.onBoardButtonColor),
+                    ),
+                    child: const Text(
+                      "İleri",
+                      style: TextStyle(
+                        color: Color(0xfff6f9ff),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () => controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut),
+                  ),
+                ],
+              ),
+            ),
+            alignment: Alignment.bottomCenter,
+          )
         ],
       ),
     );

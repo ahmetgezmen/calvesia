@@ -70,9 +70,11 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<UserVievModel>(context, listen: false).userFetch();
-    Provider.of<BaseProvider>(context, listen: false)
-        .setShowNavigationButtonFunkBase();
+    Future.delayed(Duration.zero, () {
+      Provider.of<UserVievModel>(context, listen: false).userFetch();
+      Provider.of<BaseProvider>(context, listen: false)
+          .setShowNavigationButtonFunkBase();
+    });
   }
 
   @override
@@ -210,7 +212,7 @@ class _DraggableFloatingActionButtonState
     super.initState();
     _offset = widget.initialOffset;
 
-    WidgetsBinding.instance?.addPostFrameCallback(_setBoundary);
+    WidgetsBinding.instance.addPostFrameCallback(_setBoundary);
   }
 
   void _setBoundary(_) {

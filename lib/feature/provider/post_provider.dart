@@ -52,7 +52,7 @@ class PostShareProvider extends ChangeNotifier {
   int? _ticketNumber;
   final int _viewNumber = 0;
   int _price = 0;
-  final int _reversedDate =  int.parse("-"+Timestamp.now().toDate().toString().split(' ')[0].split("-").join());
+  final int _reversedDate =  int.parse(Timestamp.now().toDate().toString().split(' ')[0].split("-").join());
   final int _followersNumber=0;
   final int _reversedFollowersNumber=0;
   Sponsors? _sponsors;

@@ -48,18 +48,17 @@ class _SilverDelegateComponentFavouriteState
           return RefreshIndicator(
               color: BaseColorPalet.main,
               onRefresh: _refreshIndicator,
-              child: Expanded(
-                  child: provider.user.favList!.isEmpty ? const Center(child: Text("liste bos")) :
-                      ListView.builder(
-                        itemCount:  provider.user.favList!.length,
-                        itemBuilder: (BuildContext context, int index){
-                            return BuilderWidget(
-                              provider: provider,
-                              index: index,
-                            );
-                          },
-                      )
-              ));
+              child: provider.user.favList!.isEmpty ? const Center(child: Text("liste bos")) :
+                  ListView.builder(
+                    itemCount:  provider.user.favList!.length,
+                    itemBuilder: (BuildContext context, int index){
+                        return BuilderWidget(
+                          provider: provider,
+                          index: index,
+                        );
+                      },
+                  ),
+          );
         },
       ),
     );

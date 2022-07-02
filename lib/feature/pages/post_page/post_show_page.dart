@@ -483,54 +483,52 @@ class _TopComponentState extends State<TopComponent> {
               PictureComponent(post: widget.post),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8.0),
-                child: Expanded(
-                  child: Consumer<UserVievModel>(
-                    builder: (context, provider, child) {
-                      return Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                          onPressed: () async {
-                            setState(() {
-                              if (provider.user.favList!
-                                  .contains(widget.post.postKey)) {
-                                provider.userFavListRemove(widget.post.postKey);
-                                widget.post.increaseFavNumber();
-                              } else {
-                                provider.userFavListAdd(widget.post.postKey);
-                                widget.post.decreaseFavNumber();
-                              }
-                              PostServices.updatePostService(
-                                  widget.post, widget.post.postKey!);
-                              provider.updateMyInfo();
-                            });
-                          },
-                          icon: provider.isInFavList(widget.post.postKey)
-                              ? Material(
-                                  borderRadius: BorderRadius.circular(20),
-                                  elevation: 10,
-                                  child: SizedBox(
-                                    height: screenHeight / 22.31,
-                                    width: screenWidth / 11.22,
-                                    child: const Icon(
-                                      Icons.favorite,
-                                    ),
-                                  ),
-                                )
-                              : Material(
-                                  borderRadius: BorderRadius.circular(20),
-                                  elevation: 10,
-                                  child: SizedBox(
-                                    height: screenHeight / 22.31,
-                                    width: screenWidth / 11.22,
-                                    child: const Icon(
-                                      Icons.favorite_border,
-                                    ),
+                child: Consumer<UserVievModel>(
+                  builder: (context, provider, child) {
+                    return Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        onPressed: () async {
+                          setState(() {
+                            if (provider.user.favList!
+                                .contains(widget.post.postKey)) {
+                              provider.userFavListRemove(widget.post.postKey);
+                              widget.post.increaseFavNumber();
+                            } else {
+                              provider.userFavListAdd(widget.post.postKey);
+                              widget.post.decreaseFavNumber();
+                            }
+                            PostServices.updatePostService(
+                                widget.post, widget.post.postKey!);
+                            provider.updateMyInfo();
+                          });
+                        },
+                        icon: provider.isInFavList(widget.post.postKey)
+                            ? Material(
+                                borderRadius: BorderRadius.circular(20),
+                                elevation: 10,
+                                child: SizedBox(
+                                  height: screenHeight / 22.31,
+                                  width: screenWidth / 11.22,
+                                  child: const Icon(
+                                    Icons.favorite,
                                   ),
                                 ),
-                        ),
-                      );
-                    },
-                  ),
+                              )
+                            : Material(
+                                borderRadius: BorderRadius.circular(20),
+                                elevation: 10,
+                                child: SizedBox(
+                                  height: screenHeight / 22.31,
+                                  width: screenWidth / 11.22,
+                                  child: const Icon(
+                                    Icons.favorite_border,
+                                  ),
+                                ),
+                              ),
+                      ),
+                    );
+                  },
                 ),
               )
             ],
@@ -588,70 +586,66 @@ class _PictureComponentState extends State<PictureComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Material(
-        elevation: 8,
-        borderRadius: BorderRadius.circular(25),
-        shadowColor: BaseColorPalet.main,
-        child: Expanded(
-          child: FutureBuilder<List<Uint8List>>(
-            future: getting(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.hasData) {
-                List dataList = snapshot.data;
-                if(dataList.isEmpty){
-                  return Container(
-                    decoration: const BoxDecoration(
-                      color: BaseColorPalet.upcomingCardContainer,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(25.0),
-                        bottom: Radius.circular(25.0),
-                      ),
-                    ),
-                  );
-                }
-                return Stack(
-                  children: [
-                    PageView(
-                      controller: controller,
-                      children: [
-                        for (int i = 0; i < dataList.length; i++)
-                          Container(
-                            foregroundDecoration: BoxDecoration(
-                              borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(25.0),
-                                bottom: Radius.circular(25.0),
-                              ),
-                              image: DecorationImage(
-                                image: MemoryImage(snapshot.data[i]),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: PageIndicator(controller: controller, count: dataList.length,),
-                    ),
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    color: BaseColorPalet.upcomingCardContainer,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(25.0),
-                      bottom: Radius.circular(25.0),
-                    ),
+    return Material(
+      elevation: 8,
+      borderRadius: BorderRadius.circular(25),
+      shadowColor: BaseColorPalet.main,
+      child: FutureBuilder<List<Uint8List>>(
+        future: getting(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            List dataList = snapshot.data;
+            if(dataList.isEmpty){
+              return Container(
+                decoration: const BoxDecoration(
+                  color: BaseColorPalet.upcomingCardContainer,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(25.0),
+                    bottom: Radius.circular(25.0),
                   ),
-                );
-              } else {
-                return const CircularProgressIndicator();
-              }
-            },
-          ),
-        ),
+                ),
+              );
+            }
+            return Stack(
+              children: [
+                PageView(
+                  controller: controller,
+                  children: [
+                    for (int i = 0; i < dataList.length; i++)
+                      Container(
+                        foregroundDecoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(25.0),
+                            bottom: Radius.circular(25.0),
+                          ),
+                          image: DecorationImage(
+                            image: MemoryImage(snapshot.data[i]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: PageIndicator(controller: controller, count: dataList.length,),
+                ),
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Container(
+              decoration: const BoxDecoration(
+                color: BaseColorPalet.upcomingCardContainer,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25.0),
+                  bottom: Radius.circular(25.0),
+                ),
+              ),
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
       ),
     );
   }
