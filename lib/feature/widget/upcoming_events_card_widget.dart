@@ -5,7 +5,6 @@ import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart';
 
 import '../Authencitation/viewmodel/user_view_model.dart';
 import '../pages/post_page/post_show_page.dart';

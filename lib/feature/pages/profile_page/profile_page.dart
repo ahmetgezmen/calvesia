@@ -6,9 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart';
 
-import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../../onboard/on_board_page.dart';
 import 'profile_page_screen_widgets/change_profile_widget.dart';
 import 'profile_page_screen_widgets/my_info_widget.dart';

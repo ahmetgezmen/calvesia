@@ -8,7 +8,6 @@ import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart';
 
 import '../../Utils/Style/color_palette.dart';
 

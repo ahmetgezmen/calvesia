@@ -9,9 +9,7 @@ import 'package:calvesia/feature/widget/something_wrong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart';
 
-import '../Authencitation/viewmodel/user_view_model.dart';
 import '../provider/base_provider.dart';
 import 'layouts/header.dart';
 import 'view/calender_page.dart';
@@ -88,9 +86,7 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
                         DraggableFloatingActionButton(
                           child: InkWell(
                             onTap: () {
-                              //todo
-                              // ref.read(PostIsSharingAndShowingProvider);
-                              // openPostPage(context, provider);
+                              openPostPage(context, ref.read(PostIsSharingAndShowingProvider));
                             },
                             child: Container(
                               width: 60,

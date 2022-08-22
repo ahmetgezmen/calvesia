@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../services/image_services.dart';
 
-openPostPage(context, PostIsSharingAndShowingProvider provider) async {
+openPostPage(context, provider) async {
   final _postKey = PostServices.startAddPostServices();
   await PostServices.updatePostService(PostModel(postKey: _postKey), _postKey);
   provider.setPostKey(_postKey);

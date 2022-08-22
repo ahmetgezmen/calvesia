@@ -16,7 +16,7 @@ String uid = FirebaseAuth.instance.currentUser!.uid;
 
 class PostServices {
   static Future<bool> addPostServices(
-      context, PostModel post, key, PostIsSharingAndShowingProvider provider) async {
+      context, PostModel post, key, provider) async {
     try {
       loadingWidgetButton(context);
 
