@@ -1,8 +1,8 @@
 import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 import '../../../Utils/Style/color_palette.dart';
 import 'event_photo_component.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 enum SingingCharacter { privetEvent, publicEvent, online, platform, free, paid }
 
 class PostSharePage extends StatefulWidget {
-  final PostIsSharingAndShowingProvider postIsSharingProvider;
+  final  postIsSharingProvider;
   final String postKey;
   const PostSharePage(
       {Key? key, required this.postKey, required this.postIsSharingProvider})
@@ -74,8 +74,8 @@ class _PostSharePageState extends State<PostSharePage> {
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
-        body: Consumer<PostShareProvider>(
-          builder: (context, provider, child) {
+        body: HookConsumer(
+          builder: (context, ref, child) {
             return Builder(
                 builder: (context) => Form(
                     key: _formKey,
@@ -104,7 +104,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     return null;
                                   },
                                   onSaved: (val) {
-                                    provider.setTitle(val.toString());
+                                    ref.read(PostShareProvider).setTitle(val.toString());
                                   }),
                             ),
                           ),
@@ -149,7 +149,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     category = "education";
                                     break;
                                 }
-                                provider.setCategory(category);
+                                ref.read(PostShareProvider).setCategory(category);
                               },
                             ),
                           ),
@@ -192,7 +192,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     decoration: singleContainerDecoration,
                                     child: TextFormField(
                                       onSaved: (newValue) {
-                                        provider.setDate(newValue);
+                                        ref.read(PostShareProvider).setDate(newValue);
                                       },
                                       validator: (val) {
                                         if (val!.isEmpty) {
@@ -261,7 +261,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     decoration: singleContainerDecoration,
                                     child: TextFormField(
                                       onSaved: (newValue) {
-                                        provider.setTime(newValue);
+                                        ref.read(PostShareProvider).setTime(newValue);
                                       },
                                       validator: (val) {
                                         if (val!.isEmpty) {
@@ -324,7 +324,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                   decoration: singleContainerDecoration,
                                   child: TextFormField(
                                     onSaved: (newValue) {
-                                      provider.setendDate(newValue);
+                                      ref.read(PostShareProvider).setendDate(newValue);
                                     },
                                     validator: (val) {
                                       if (val!.isEmpty) {
@@ -389,7 +389,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                   decoration: singleContainerDecoration,
                                   child: TextFormField(
                                     onSaved: (newValue) {
-                                      provider.setendTime(newValue);
+                                      ref.read(PostShareProvider).setendTime(newValue);
                                     },
                                     validator: (val) {
                                       if (val!.isEmpty) {
@@ -502,9 +502,9 @@ class _PostSharePageState extends State<PostSharePage> {
                                   onSaved: (val) {
                                     _isOnlineController ==
                                             SingingCharacter.online
-                                        ? provider
+                                        ? ref.read(PostShareProvider)
                                             .setPlatformLink(val.toString())
-                                        : provider.setEventPlaceLocationTitle(
+                                        : ref.read(PostShareProvider).setEventPlaceLocationTitle(
                                             val.toString());
                                   }),
                             ),
@@ -541,7 +541,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     onSaved: (val) {
                                       if (_isOnlineController !=
                                           SingingCharacter.online) {
-                                        provider.setLocation(val.toString());
+                                        ref.read(PostShareProvider).setLocation(val.toString());
                                       }
                                     }),
                               ),
@@ -578,7 +578,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                     return null;
                                   },
                                   onSaved: (val) {
-                                    provider.setDescription(val.toString());
+                                    ref.read(PostShareProvider).setDescription(val.toString());
                                   }),
                             ),
                           ),
@@ -599,7 +599,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                   ),
                                   onSaved: (val) {
                                     if (val!.isNotEmpty) {
-                                      provider
+                                      ref.read(PostShareProvider)
                                           .setEventWebSiteUrl(val.toString());
                                     }
                                   }),
@@ -613,7 +613,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                   decoration: singleContainerDecoration,
                                   child: DropdownButtonFormField<String>(
                                     onSaved: (newValue) {
-                                      provider.setIsCertificated(
+                                      ref.read(PostShareProvider).setIsCertificated(
                                           newValue == 'VAR' ? true : false);
                                     },
                                     value: "YOK",
@@ -673,7 +673,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                         focusedErrorBorder: singleOutlineBorder,
                                       ),
                                       onSaved: (val) {
-                                        provider
+                                        ref.read(PostShareProvider)
                                             .setTicketNumber(int.parse(val!));
                                       }),
                                 ),
@@ -737,7 +737,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                       }).toList(),
                                       onChanged: (_) {},
                                       onSaved: (val) {
-                                        provider.setIsNeedCV(
+                                        ref.read(PostShareProvider).setIsNeedCV(
                                             val == "Gerekmiyor" ? false : true);
                                       },
                                     ),
@@ -770,7 +770,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 price = 150;
                                                 break;
                                             }
-                                            provider.setPrice(price);
+                                            ref.read(PostShareProvider).setPrice(price);
                                           },
                                           decoration: InputDecoration(
                                             labelText: "Bilet Ucreti",
@@ -846,7 +846,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                               _sponsor.remove(element);
                                             }
                                           }
-                                          provider.setSponsors(_sponsor);
+                                          ref.read(PostShareProvider).setSponsors(_sponsor);
                                         }
                                       },
                                     ),
@@ -889,7 +889,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                                 _coordinators.remove(element);
                                               }
                                             }
-                                            provider
+                                            ref.read(PostShareProvider)
                                                 .setCoordinators(_coordinators);
                                           }
                                         }),
@@ -974,12 +974,12 @@ class _PostSharePageState extends State<PostSharePage> {
                                       final form = _formKey.currentState;
                                       if (form!.validate()) {
                                         form.save();
-                                        provider.setIsPrivate(
+                                        ref.read(PostShareProvider).setIsPrivate(
                                             _privateController ==
                                                     SingingCharacter.publicEvent
                                                 ? false
                                                 : true);
-                                        provider.setIsOnline(
+                                        ref.read(PostShareProvider).setIsOnline(
                                             _isOnlineController ==
                                                     SingingCharacter.online
                                                 ? true
@@ -987,7 +987,7 @@ class _PostSharePageState extends State<PostSharePage> {
                                         await Future.delayed(
                                             const Duration(seconds: 1));
                                         final bool _result =
-                                            await provider.addPost(
+                                            await ref.read(PostShareProvider).addPost(
                                                 context,
                                                 widget.postKey,
                                                 widget.postIsSharingProvider,

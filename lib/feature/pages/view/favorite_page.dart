@@ -1,9 +1,10 @@
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/widget/upcoming_events_card_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../Utils/Style/color_palette.dart';
 
@@ -43,17 +44,18 @@ class _SilverDelegateComponentFavouriteState
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Consumer<UserVievModel>(
-        builder: (context, provider, child) {
+      child:HookConsumer(
+        builder: (context, ref, child) {
+          final providerWatch = ref.watch(UserProvider);
           return RefreshIndicator(
               color: BaseColorPalet.main,
               onRefresh: _refreshIndicator,
-              child: provider.user.favList!.isEmpty ? const Center(child: Text("liste bos")) :
+              child: providerWatch.user.favList!.isEmpty ? const Center(child: Text("liste bos")) :
                   ListView.builder(
-                    itemCount:  provider.user.favList!.length,
+                    itemCount:  providerWatch.user.favList!.length,
                     itemBuilder: (BuildContext context, int index){
                         return BuilderWidget(
-                          provider: provider,
+                          provider: providerWatch,
                           index: index,
                         );
                       },

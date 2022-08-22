@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../Utils/Style/color_palette.dart';
 import '../../Authencitation/viewmodel/user_view_model.dart';
@@ -289,7 +290,7 @@ class InfoComponent extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: 150,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
@@ -483,12 +484,13 @@ class _TopComponentState extends State<TopComponent> {
               PictureComponent(post: widget.post),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8.0),
-                child: Consumer<UserVievModel>(
-                  builder: (context, provider, child) {
+                child: HookConsumer(
+                  builder: (context, ref, child) {
                     return Align(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         onPressed: () async {
+                          final provider = ref.read(UserProvider);
                           setState(() {
                             if (provider.user.favList!
                                 .contains(widget.post.postKey)) {
@@ -503,7 +505,7 @@ class _TopComponentState extends State<TopComponent> {
                             provider.updateMyInfo();
                           });
                         },
-                        icon: provider.isInFavList(widget.post.postKey)
+                        icon: ref.watch(UserProvider).isInFavList(widget.post.postKey)
                             ? Material(
                                 borderRadius: BorderRadius.circular(20),
                                 elevation: 10,

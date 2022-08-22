@@ -1,9 +1,10 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../Authencitation/viewmodel/user_view_model.dart';
 import '../pages/post_page/post_show_page.dart';
@@ -114,22 +115,17 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                       children: [
                         Text(
                           post.date.toString(),
-                          style: const TextStyle(
-                              color: Colors.grey),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                         Text(
                           "   " +
                               post.time.toString().substring(
-                                  0,
-                                  post.time.toString().length -
-                                      3),
-                          style: const TextStyle(
-                              color: Colors.grey),
+                                  0, post.time.toString().length - 3),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
                   ),
-
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 5.0, top: 5.0, bottom: 5.0),
@@ -142,7 +138,9 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                         ),
                         Expanded(
                           child: Text(
-                            post.location != null ? post.location.toString(): post.platformLink.toString(),
+                            post.location != null
+                                ? post.location.toString()
+                                : post.platformLink.toString(),
                             maxLines: 1,
                             style: const TextStyle(
                                 color: BaseColorPalet.linkLabel),
@@ -158,14 +156,16 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                         child: Row(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                              padding:
+                                  const EdgeInsets.only(left: 5.0, bottom: 5.0),
                               child: SizedBox(
                                   height: screenHeight / 39.05,
                                   width: screenWidth / 5.61,
                                   child: Text(post.price.toString() + " TL")),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                              padding:
+                                  const EdgeInsets.only(left: 5.0, bottom: 5.0),
                               child: Row(
                                 children: <Widget>[
                                   const Icon(
@@ -185,45 +185,52 @@ class _UpcomingEventsCardWidgetState extends State<UpcomingEventsCardWidget> {
                       ),
                     ],
                   ),
-
                 ],
               ),
             ),
             Column(
               children: [
-                FirebaseAuth.instance.currentUser!.isAnonymous ? const SizedBox():Consumer<UserVievModel>(
-                  builder: (context, provider, child) {
+                FirebaseAuth.instance.currentUser!.isAnonymous
+                    ? const SizedBox()
+                    : HookConsumer(
+                        builder: (context, ref, child) {
+                          return IconButton(
+                            onPressed: () async {
+                              final provider = ref.read(UserProvider); 
+                              setState(() {
+                                if (provider.isInFavList(post.postKey)) {
+                                  provider.userFavListRemove(post.postKey);
+                                  post.increaseFavNumber();
+                                } else {
+                                  provider.userFavListAdd(post.postKey);
+                                  post.decreaseFavNumber();
+                                }
+                                PostServices.updatePostService(
+                                    post, post.postKey!);
+                                provider.updateMyInfo();
+                              });
+                            },
+                            icon: ref.watch(UserProvider).isInFavList(post.postKey)
+                                ? const Icon(Icons.favorite)
+                                : const Icon(Icons.favorite_border),
+                          );
+                        },
+                      ),
+                HookConsumer(
+                  builder: (context, ref, child) {
                     return IconButton(
                       onPressed: () async {
-                        setState(() {
-                          if (provider.isInFavList(post.postKey)) {
-                            provider.userFavListRemove(post.postKey);
-                            post.increaseFavNumber();
-                          } else {
-                            provider.userFavListAdd(post.postKey);
-                            post.decreaseFavNumber();
-                          }
-                          PostServices.updatePostService(post, post.postKey!);
-                          provider.updateMyInfo();
-                        });
-                      },
-                      icon: provider.isInFavList(post.postKey)
-                          ? const Icon(Icons.favorite)
-                          : const Icon(Icons.favorite_border),
-                    );
-                  },
-                ),
-                Consumer<BaseProvider>(
-                  builder: (context, provider, child) {
-                    return IconButton(
-                      onPressed: () async {
-                        provider.setShowNavigationButtonFunkPostShow();
+                        ref
+                            .read(BaseProvider)
+                            .setShowNavigationButtonFunkPostShow();
                         await Scaffold.of(context)
                             .showBottomSheet((context) => PostShowPage(
                                   post: widget.post,
                                 ))
                             .closed;
-                        provider.setShowNavigationButtonFunkBase();
+                        ref
+                            .read(BaseProvider)
+                            .setShowNavigationButtonFunkBase();
                       },
                       icon: const Icon(Icons.arrow_forward),
                     );

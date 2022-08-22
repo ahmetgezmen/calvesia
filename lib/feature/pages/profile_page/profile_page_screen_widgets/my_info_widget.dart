@@ -1,7 +1,8 @@
 import 'package:calvesia/feature/Authencitation/models/user_model.dart';
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../Utils/Style/color_palette.dart';
 
@@ -50,11 +51,12 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserVievModel>(
-      builder: (context, provider, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final providerWatch = ref.watch(UserProvider);
         return Builder(
             builder: (context) => Form(
-                    key: provider.myInfoSaveFormKey,
+                    key: providerWatch.myInfoSaveFormKey,
                     child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: SingleChildScrollView(
@@ -86,7 +88,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                         child: Container(
                           decoration: singleContainerDecoration,
                           child: TextFormField(
-                              initialValue: provider.user.username ?? "",
+                              initialValue: providerWatch.user.username ?? "",
                               decoration: InputDecoration(
                                 labelText: "Kullanıcı Adı",
                                 border: singleOutlineBorder,
@@ -103,7 +105,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                provider.setUserName(val);
+                                ref.read(UserProvider).setUserName(val);
                               }),
                         ),
                       ),
@@ -112,7 +114,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                         child: Container(
                           decoration: singleContainerDecoration,
                           child: TextFormField(
-                              initialValue: provider.user.fname ?? "",
+                              initialValue: providerWatch.user.fname ?? "",
                               decoration: InputDecoration(
                                 labelText: "Ad Soyad",
                                 border: singleOutlineBorder,
@@ -132,7 +134,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                provider.setFname(val);
+                                ref.read(UserProvider).setFname(val);
                               }),
                         ),
                       ),
@@ -144,9 +146,9 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
                                 onSaved: (val) {
-                                  provider.setGender(val);
+                                  ref.read(UserProvider).setGender(val);
                                 },
-                                value: provider.user.gender ?? "Diger",
+                                value: providerWatch.user.gender ?? "Diger",
                                 decoration: InputDecoration(
                                   labelText: "Cinsiyet",
                                   border: singleOutlineBorder,
@@ -174,7 +176,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                             child: Container(
                               decoration: singleContainerDecoration,
                               child: DropdownButtonFormField<String>(
-                                  value: provider.user.schools!.classNumber==null ? "1":provider.user.schools!.classNumber.toString(),
+                                  value: providerWatch.user.schools!.classNumber==null ? "1":providerWatch.user.schools!.classNumber.toString(),
                                   onSaved: (newValue) {
                                     late final int sinif;
                                     switch (newValue) {
@@ -197,7 +199,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                         sinif = 6;
                                         break;
                                     }
-                                    provider.setSchoolClassNumber(sinif);
+                                    ref.read(UserProvider).setSchoolClassNumber(sinif);
                                   },
                                   decoration: InputDecoration(
                                     labelText: "Sınıf",
@@ -226,7 +228,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                         child: Container(
                           decoration: singleContainerDecoration,
                           child: TextFormField(
-                              initialValue: provider.user.schools!.name ?? "",
+                              initialValue: providerWatch.user.schools!.name ?? "",
                               decoration: InputDecoration(
                                 labelText: "Okul adı giriniz",
                                 border: singleOutlineBorder,
@@ -246,14 +248,14 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                provider.setSchoolName(val);
+                                ref.read(UserProvider).setSchoolName(val);
                               }),
                         ),
                       ),
                       Container(
                         decoration: singleContainerDecoration,
                         child: TextFormField(
-                            initialValue: provider.user.phone ?? "",
+                            initialValue: providerWatch.user.phone ?? "",
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: "Telefon numarası",
@@ -274,7 +276,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               return null;
                             },
                             onSaved: (val) {
-                              provider.setPhone(val);
+                              ref.read(UserProvider).setPhone(val);
                             }),
                       ),
                       Padding(
@@ -282,7 +284,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                         child: Container(
                           decoration: singleContainerDecoration,
                           child: TextFormField(
-                              initialValue: provider.user.password ?? "",
+                              initialValue: providerWatch.user.password ?? "",
                               obscureText: true,
                               decoration: InputDecoration(
                                 labelText: "Parola Giriniz",
@@ -303,14 +305,14 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                                 return null;
                               },
                               onSaved: (val) {
-                                provider.setPassword(val);
+                                ref.read(UserProvider).setPassword(val);
                               }),
                         ),
                       ),
                       Container(
                         decoration: singleContainerDecoration,
                         child: TextFormField(
-                          initialValue: provider.user.email,
+                          initialValue: providerWatch.user.email,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: "Email adresi",
@@ -331,7 +333,7 @@ class _MyInfoWidgetsState extends State<MyInfoWidgets> {
                               return null;
                             },
                             onSaved: (val) {
-                              provider.user.setEmail(val);
+                              ref.read(UserProvider).user.setEmail(val);
                             }),
                       )
                     ]),

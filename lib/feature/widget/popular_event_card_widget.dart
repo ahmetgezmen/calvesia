@@ -1,4 +1,5 @@
 import 'package:calvesia/feature/Authencitation/viewmodel/user_view_model.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/models/post_model.dart';
 import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/services/image_services.dart';
@@ -6,7 +7,7 @@ import 'package:calvesia/feature/pages/services/post_services.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../Utils/Style/color_palette.dart';
 
@@ -34,17 +35,17 @@ class _PopularEventCardState extends State<PopularEventCard> {
     final post = widget.post;
     return Stack(
       children: [
-        Consumer<BaseProvider>(
-          builder: (context, provider, child) {
+        HookConsumer(
+          builder: (context, ref, child) {
             return InkWell(
               onTap: () async {
-                provider.setShowNavigationButtonFunkPostShow();
+                ref.read(BaseProvider).setShowNavigationButtonFunkPostShow();
                 await Scaffold.of(context)
                     .showBottomSheet((context) => PostShowPage(
                           post: widget.post,
                         ))
                     .closed;
-                provider.setShowNavigationButtonFunkBase();
+                ref.read(BaseProvider).setShowNavigationButtonFunkBase();
               },
               child: Card(
                 borderOnForeground: true,
@@ -225,12 +226,13 @@ class _PopularEventCardState extends State<PopularEventCard> {
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
             width: screenWidth / 1.57,
-            child: Consumer<UserVievModel>(
-              builder: (context, provider, child) {
+            child: HookConsumer(
+              builder: (context, ref, child) {
                 return Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
                     onPressed: () async {
+                      final provider = ref.read(UserProvider);
                       setState(() {
                         if (provider.user.favList!.contains(post.postKey)) {
                           provider.userFavListRemove(post.postKey);
@@ -243,7 +245,7 @@ class _PopularEventCardState extends State<PopularEventCard> {
                         provider.updateMyInfo();
                       });
                     },
-                    icon: provider.isInFavList(post.postKey)
+                    icon: ref.watch(UserProvider).isInFavList(post.postKey)
                         ? Material(
                             borderRadius: BorderRadius.circular(20),
                             elevation: 10,

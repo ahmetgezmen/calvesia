@@ -1,4 +1,5 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/post_page/post_page_button.dart';
 import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
@@ -7,9 +8,8 @@ import 'package:calvesia/feature/provider/post_provider.dart';
 import 'package:calvesia/feature/widget/something_wrong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../Authencitation/viewmodel/user_view_model.dart';
 import '../provider/base_provider.dart';
 import 'layouts/header.dart';
 import 'view/calender_page.dart';
@@ -22,26 +22,20 @@ class BasePageMiddleWave extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HeaderProvider>(
-      builder: (context, provider, child) {
-        return BasePage(
-          provider: provider,
-        );
-      },
-    );
+    return const BasePAGE();
   }
 }
 
-class BasePage extends StatefulWidget {
-  final HeaderProvider provider;
-
-  const BasePage({Key? key, required this.provider}) : super(key: key);
+class BasePAGE extends ConsumerStatefulWidget {
+  const BasePAGE({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<BasePage> createState() => _BasePageState();
+  ConsumerState createState() => _BasePAGEState();
 }
 
-class _BasePageState extends State<BasePage> {
+class _BasePAGEState extends ConsumerState<BasePAGE> {
   final GlobalKey _parentKey = GlobalKey();
   int _selectedIndex = 0;
   final searchController = TextEditingController();
@@ -58,7 +52,7 @@ class _BasePageState extends State<BasePage> {
       _selectedIndex = index;
     });
     searchController.text = "";
-    widget.provider.clearHeaderText();
+    ref.read(HeaderProvider).clearHeaderText();
   }
 
   @override
@@ -70,66 +64,59 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      Provider.of<UserVievModel>(context, listen: false).userFetch();
-      Provider.of<BaseProvider>(context, listen: false)
-          .setShowNavigationButtonFunkBase();
-    });
+    ref.read(BaseProvider).setShowNavigationButtonFunkBase();
+    ref.read(UserProvider).userFetch();
   }
 
   @override
   Widget build(BuildContext context) {
+    final baseProvider = ref.watch(BaseProvider);
     return SafeArea(
-      child: Scaffold(body: Consumer<PostIsSharingAndShowingProvider>(
-        builder: (context, provider, child) {
-          return Column(
-            children: [
-              HeaderComponent(searchController: searchController),
-              Expanded(
-                key: _parentKey,
-                child: Stack(
-                  children: [
-                    _widgetOptions.elementAt(_selectedIndex),
-                    if (FirebaseAuth.instance.currentUser!.isAnonymous == false)
-                      DraggableFloatingActionButton(
-                        child: InkWell(
-                          onTap: () {
-                            openPostPage(context, provider);
-                          },
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: const ShapeDecoration(
-                              shape: CircleBorder(),
-                              color: BaseColorPalet.main,
-                            ),
-                            child: const Icon(
-                              Icons.add,
-                              color: Colors.white,
+      child: Scaffold(
+        body:  Column(
+              children: [
+                HeaderComponent(searchController: searchController),
+                Expanded(
+                  key: _parentKey,
+                  child: Stack(
+                    children: [
+                      _widgetOptions.elementAt(_selectedIndex),
+                      if (FirebaseAuth.instance.currentUser!.isAnonymous ==
+                          false)
+                        DraggableFloatingActionButton(
+                          child: InkWell(
+                            onTap: () {
+                              openPostPage(context, ref.read(PostIsSharingAndShowingProvider));
+                            },
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: const ShapeDecoration(
+                                shape: CircleBorder(),
+                                color: BaseColorPalet.main,
+                              ),
+                              child: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
+                          initialOffset: const Offset(0, 30),
+                          parentKey: _parentKey,
+                          onPressed: () {},
                         ),
-                        initialOffset: const Offset(0, 30),
-                        parentKey: _parentKey,
-                        onPressed: () {},
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
-      ), bottomNavigationBar: Consumer<BaseProvider>(
-        builder: (context, value, child) {
-          final String result = value.getShowNavigationButton;
-          return result == "base"
-              ? BottomNavigationBarWidget(
-                  onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
-              : result == "profile"
-                  ? const ProfilePageAppBarr()
-                  : const PostShowPageAppBarr();
-        },
-      )),
+              ],
+            ),
+        bottomNavigationBar: baseProvider.getShowNavigationButton == "base"
+            ? BottomNavigationBarWidget(
+                onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
+            : baseProvider.getShowNavigationButton == "profile"
+                ? const ProfilePageAppBarr()
+                : const PostShowPageAppBarr(),
+      ),
     );
   }
 }

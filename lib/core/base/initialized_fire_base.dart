@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'app_base.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,6 @@ Future<void> geIinitializedMain() async {
   FirebaseDatabase.instance.databaseURL =
       "https://calvesia-default-rtdb.europe-west1.firebasedatabase.app";
   runApp(
-    const MyApp(),
+    const ProviderScope(child: MyApp()),
   );
 }
