@@ -1,4 +1,5 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/pages/post_page/post_page_button.dart';
 import 'package:calvesia/feature/pages/post_page/post_show_page.dart';
 import 'package:calvesia/feature/pages/profile_page/profile_page.dart';
@@ -53,8 +54,7 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
       _selectedIndex = index;
     });
     searchController.text = "";
-    // TODO
-    // widget.provider.clearHeaderText();
+    ref.read(HeaderProvider).clearHeaderText();
   }
 
   @override
@@ -66,11 +66,8 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      // TODO
-      // Provider.of<UserVievModel>(context, listen: false).userFetch();
-    });
     ref.read(BaseProvider).setShowNavigationButtonFunkBase();
+    ref.read(UserProvider).userFetch();
   }
 
   @override
