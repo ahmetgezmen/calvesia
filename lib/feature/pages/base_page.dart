@@ -37,7 +37,6 @@ class BasePAGE extends ConsumerStatefulWidget {
 
 class _BasePAGEState extends ConsumerState<BasePAGE> {
   final GlobalKey _parentKey = GlobalKey();
-  int _selectedIndex = 0;
   final searchController = TextEditingController();
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -49,7 +48,7 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      ref.read(HeaderProvider).setSelectedIndex(index);
     });
     searchController.text = "";
     ref.read(HeaderProvider).clearHeaderText();
@@ -83,7 +82,7 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
                   key: _parentKey,
                   child: Stack(
                     children: [
-                      _widgetOptions.elementAt(_selectedIndex),
+                      _widgetOptions.elementAt(ref.watch(HeaderProvider).getSelectedIndex),
                       if (FirebaseAuth.instance.currentUser!.isAnonymous ==
                           false)
                         DraggableFloatingActionButton(
@@ -115,7 +114,7 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
             ),
         bottomNavigationBar: baseProvider.getShowNavigationButton == "base"
             ? BottomNavigationBarWidget(
-                onItemTapped: _onItemTapped, selectedIndex: _selectedIndex)
+                onItemTapped: _onItemTapped, selectedIndex: ref.watch(HeaderProvider).getSelectedIndex)
             : baseProvider.getShowNavigationButton == "profile"
                 ? const ProfilePageAppBarr()
                 : const PostShowPageAppBarr(),

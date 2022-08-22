@@ -92,6 +92,9 @@ class _HeaderComponentState extends ConsumerState<HeaderComponent> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0)),
                   child: TextFormField(
+                    onTap: () {
+                      ref.read(HeaderProvider).setSelectedIndex(1);
+                    },
                         onChanged: (value) {
                           ref.read(HeaderProvider).updateHeaderText(value.toString());
                         },
