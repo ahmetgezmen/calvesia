@@ -64,8 +64,11 @@ class _BasePAGEState extends ConsumerState<BasePAGE> {
   @override
   void initState() {
     super.initState();
-    ref.read(BaseProvider).setShowNavigationButtonFunkBase();
-    ref.read(UserProvider).userFetch();
+    Future.delayed(Duration.zero,(){
+      ref.read(BaseProvider).setShowNavigationButtonFunkBase();
+      ref.read(UserProvider).userFetch();
+    });
+
   }
 
   @override
