@@ -2,7 +2,7 @@ import 'package:calvesia/feature/provider/explore_page_provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/database.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../provider/header_provider.dart';
 import '../../widget/popular_event_card_widget.dart';
 import '../models/post_model.dart';
@@ -31,8 +31,9 @@ class _ExplorePageState extends State<ExplorePage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Consumer<ExploreProvider>(
-                    builder: (context, provider, child) {
+                  child: HookConsumer(
+                    builder: (context, ref, child) {
+                      final provider = ref.watch(ExplorePageProvider);
                       return CategoryButton(
                         visibility: provider.getCategory()[index]["visibility"],
                         title: provider.getCategory()[index]["name"],
@@ -98,8 +99,8 @@ class GridViewScrolling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ExploreProvider>(
-      builder: (context, provider, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -107,10 +108,8 @@ class GridViewScrolling extends StatelessWidget {
               onRefresh: () {
                 return Future.delayed(const Duration(seconds: 1));
               },
-              child: Consumer<HeaderProvider>(
-                builder: (context, headerProvider, child) {
-                  return FirebaseDatabaseQueryBuilder(
-                    query: gridViewController(provider.getFetchSwitch()),
+              child:  FirebaseDatabaseQueryBuilder(
+                    query: gridViewController(ref.watch(ExplorePageProvider).getFetchSwitch()),
                     builder: (context, snapshot, _) {
                       if (snapshot.isFetching) {
                         return const CircularProgressIndicator();
@@ -124,7 +123,7 @@ class GridViewScrolling extends StatelessWidget {
                       }
                       List<DataSnapshot> reversed = snapshot.docs.toList();
                       snapshot.docs.toList().forEach((element) {
-                          if(PostModel.fromJson(element.value).title!.contains(headerProvider.getHeaderText)==false){
+                          if(PostModel.fromJson(element.value).title!.contains(ref.watch(HeaderProvider).getHeaderText)==false){
                             reversed.remove(element);
                           }
                       });
@@ -153,9 +152,7 @@ class GridViewScrolling extends StatelessWidget {
                         ),
                       );
                     },
-                  );
-                },
-              ),
+                  ),
             ),
           ),
         );
@@ -202,8 +199,9 @@ class _CategoryButtonState extends State<CategoryButton> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Consumer<ExploreProvider>(
-      builder: (context, provider, child) {
+    return HookConsumer(
+      builder: (context, ref, child) {
+        final provider = ref.watch(ExplorePageProvider);
         return SizedBox(
           width: screenWidth / 3.27,
           child: Visibility(

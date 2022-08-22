@@ -53,13 +53,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => BaseProvider()),
         ChangeNotifierProvider(create: (_) => PostShareProvider()),
-        ChangeNotifierProvider(create: (_) => HeaderProvider()),
         ChangeNotifierProvider(
             create: (_) => PostIsSharingAndShowingProvider()),
-        ChangeNotifierProvider(create: (_) => UserVievModel()),
-        ChangeNotifierProvider(create: (_) => ExploreProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

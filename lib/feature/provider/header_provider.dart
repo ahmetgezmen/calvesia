@@ -1,18 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:calvesia/feature/pages/viewmodel/header_viewmodel.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HeaderProvider extends ChangeNotifier{
-  String _headerText = "";
-
-  void updateHeaderText(String value) {
-    _headerText = value;
-    notifyListeners();
-  }
-  void clearHeaderText(){
-    _headerText="";
-    notifyListeners();
-  }
-
-  get getHeaderText => _headerText;
-
-}
-
+final HeaderProvider = ChangeNotifierProvider<HeaderViewmodel>((ref) {
+  return HeaderViewmodel();
+});

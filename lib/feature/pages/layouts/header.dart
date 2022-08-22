@@ -1,27 +1,29 @@
 import 'dart:typed_data';
 
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:calvesia/feature/provider/header_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../Authencitation/viewmodel/user_view_model.dart';
 import '../profile_page/profile_page.dart';
 
-class HeaderComponent extends StatefulWidget {
+
+
+class HeaderComponent extends ConsumerStatefulWidget {
   final TextEditingController searchController;
   const HeaderComponent({Key? key, required this.searchController})
       : super(key: key);
 
   @override
-  State<HeaderComponent> createState() => _HeaderComponentState();
+  ConsumerState<HeaderComponent> createState() => _HeaderComponentState();
 }
 
-class _HeaderComponentState extends State<HeaderComponent> {
+class _HeaderComponentState extends ConsumerState<HeaderComponent> {
   @override
   Widget build(BuildContext context) {
-
+  final userProvider = ref.watch(UserProvider);
     final double screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       children: [
@@ -36,20 +38,18 @@ class _HeaderComponentState extends State<HeaderComponent> {
                 children: <Widget>[
                   Row(
                     children: [
-                      Consumer<BaseProvider>(
-                        builder: (context, value, child) {
-                          return InkWell(
+
+                          InkWell(
                             onTap: () async {
-                              value.setShowNavigationButtonFunkProfile();
+                              ref.read(BaseProvider).setShowNavigationButtonFunkProfile();
                               await Scaffold.of(context)
                                   .showBottomSheet(
                                       (context) => const ProfilePage())
                                   .closed;
-                              value.setShowNavigationButtonFunkBase();
+                              ref.read(BaseProvider).setShowNavigationButtonFunkBase();
                             },
                             child: FutureBuilder<Uint8List?>(
-                                future: Provider.of<UserVievModel>(context)
-                                    .getMyProfilePhoto,
+                                future: userProvider.getMyProfilePhoto,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CircleAvatar(
@@ -62,23 +62,19 @@ class _HeaderComponentState extends State<HeaderComponent> {
                                     );
                                   }
                                 }),
-                          );
-                        },
-                      ),
+                          ),
+
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
-                        child: Consumer<UserVievModel>(
-                          builder: (context, userProvider, child) {
-                            return Text(
+                        child:  Text(
                                 FirebaseAuth.instance.currentUser!.isAnonymous
                                     ? "Anonymous"
                                     : userProvider.user.fname == null
                                         ? userProvider.user.username.toString()
                                         : userProvider.user.fname.toString(),
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white));
-                          },
-                        ),
+                                    Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white)),
+
                       )
                     ],
                   ),
@@ -95,11 +91,9 @@ class _HeaderComponentState extends State<HeaderComponent> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0)),
-                  child: Consumer<HeaderProvider>(
-                    builder: (context, provider, child) {
-                      return TextFormField(
+                  child: TextFormField(
                         onChanged: (value) {
-                          provider.updateHeaderText(value.toString());
+                          ref.read(HeaderProvider).updateHeaderText(value.toString());
                         },
                         controller: widget.searchController,
                         decoration: const InputDecoration(
@@ -112,9 +106,7 @@ class _HeaderComponentState extends State<HeaderComponent> {
                             //Icons.filter_alt,
                           //),
                         ),
-                      );
-                    },
-                  ),
+                      ),
                 ),
               ),
             ],

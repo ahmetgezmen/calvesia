@@ -1,23 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:calvesia/feature/pages/viewmodel/base_viewmodel.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BaseProvider extends ChangeNotifier{
-
-  String _typeShowNavigationButton = "base";
-
-  void setShowNavigationButtonFunkProfile() {
-    _typeShowNavigationButton = "profile";
-    notifyListeners();
-  }
-  void setShowNavigationButtonFunkBase() {
-    _typeShowNavigationButton = "base";
-    notifyListeners();
-  }
-  void setShowNavigationButtonFunkPostShow() {
-    _typeShowNavigationButton = "postShow";
-    notifyListeners();
-  }
-
-  get getShowNavigationButton => _typeShowNavigationButton;
-
-}
-
+final BaseProvider = ChangeNotifierProvider<BaseViewModel>((ref) {
+  return BaseViewModel();
+});

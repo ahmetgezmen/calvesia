@@ -1,9 +1,11 @@
 import 'package:calvesia/Utils/Style/color_palette.dart';
 import 'package:calvesia/feature/Authencitation/services/user_services.dart';
+import 'package:calvesia/feature/authencitation/providers/user_providers.dart';
 import 'package:calvesia/feature/provider/base_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 
 import '../../Authencitation/viewmodel/user_view_model.dart';
@@ -25,12 +27,12 @@ class ProfilePageAppBarr extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Consumer<BaseProvider>(
-              builder: (context, provider, child) {
+            HookConsumer(
+              builder: (context, ref, child) {
                 return InkWell(
                     onTap: () async {
                       await FirebaseAuth.instance.signOut();
-                      provider.setShowNavigationButtonFunkBase();
+                      ref.read(BaseProvider).setShowNavigationButtonFunkBase();
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const OnboardingPage(),
                       ));
@@ -51,8 +53,8 @@ class ProfilePageAppBarr extends StatelessWidget {
                     ));
               },
             ),
-            Consumer<UserVievModel>(
-              builder: (context, provider, child) {
+            HookConsumer(
+              builder: (context, ref, child) {
                 return FirebaseAuth.instance.currentUser!.isAnonymous
                     ? ElevatedButton(
                         style: ButtonStyle(
@@ -87,6 +89,7 @@ class ProfilePageAppBarr extends StatelessWidget {
                               BaseColorPalet.buttonColor),
                         ),
                         onPressed: () async {
+                          final provider = ref.read(UserProvider);
                           final form = provider.myInfoSaveFormKey.currentState;
                           if (form!.validate()) {
                             form.save();
@@ -165,18 +168,19 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-class ProfileTopComponent extends StatefulWidget {
+class ProfileTopComponent extends ConsumerStatefulWidget {
   const ProfileTopComponent({Key? key}) : super(key: key);
 
   @override
-  State<ProfileTopComponent> createState() => _ProfileTopComponentState();
+  ConsumerState<ProfileTopComponent> createState() => _ProfileTopComponentState();
 }
 
-class _ProfileTopComponentState extends State<ProfileTopComponent> {
+class _ProfileTopComponentState extends ConsumerState<ProfileTopComponent> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
+    final provider = ref.watch(UserProvider);
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: Column(
@@ -189,7 +193,7 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
               }
             },
             child: FutureBuilder(
-                future: Provider.of<UserVievModel>(context).getMyProfilePhoto,
+                future: provider.getMyProfilePhoto,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return CircleAvatar(
@@ -215,17 +219,13 @@ class _ProfileTopComponentState extends State<ProfileTopComponent> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: Consumer<UserVievModel>(
-              builder: (context, userProvider, child) {
-                return Text(
+            child:  Text(
                     FirebaseAuth.instance.currentUser!.isAnonymous
                         ? "Anonymous"
-                        : userProvider.user.fname == null
-                            ? userProvider.user.username.toString()
-                            : userProvider.user.fname.toString(),
-                    style: Theme.of(context).textTheme.headlineMedium);
-              },
-            ),
+                        : provider.user.fname == null
+                            ? provider.user.username.toString()
+                            : provider.user.fname.toString(),
+                    style: Theme.of(context).textTheme.headlineMedium),
           ),
           const TabBar(
             indicatorColor: BaseColorPalet.main,
