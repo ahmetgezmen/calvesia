@@ -79,23 +79,7 @@ class _PhotoCardState extends State<PhotoCard> {
                   if (snapshot.hasData) {
                     return Image(image: MemoryImage(snapshot.data));
                   } else if (snapshot.hasError) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2.0,
-                          color: BaseColorPalet.postPageFillColor,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          CircleAvatar(
-                            child: Icon(Icons.photo_camera_outlined),
-                          ),
-                          Text("Fotoğraf Ekle"),
-                        ],
-                      ),
-                    );
+                    return const NullContainerWidget();
                   } else {
                     return const CircularProgressIndicator();
                   }
@@ -145,6 +129,31 @@ class ChangeProfileImageWidget extends StatelessWidget {
                 Navigator.of(dialogContext).pop();
               },
               icon: const Icon(Icons.photo_library)),
+        ],
+      ),
+    );
+  }
+}
+
+class NullContainerWidget extends StatelessWidget {
+  const NullContainerWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2.0,
+          color: BaseColorPalet.postPageFillColor,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: const [
+          CircleAvatar(
+            child: Icon(Icons.photo_camera_outlined),
+          ),
+          Text("Fotoğraf Ekle"),
         ],
       ),
     );

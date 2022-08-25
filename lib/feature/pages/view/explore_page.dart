@@ -123,6 +123,9 @@ class GridViewScrolling extends StatelessWidget {
                       }
                       List<DataSnapshot> reversed = snapshot.docs.toList();
                       snapshot.docs.toList().forEach((element) {
+                          if(PostModel.fromJson(element.value).title==null){
+                            reversed.remove(element);
+                          }
                           if(PostModel.fromJson(element.value).title!.contains(ref.watch(HeaderProvider).getHeaderText)==false){
                             reversed.remove(element);
                           }
