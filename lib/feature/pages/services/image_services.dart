@@ -71,17 +71,35 @@ class ImageServices {
   }
 
   static getPostImageServices(key, index) async {
-    Uint8List? uint8List = await FirebaseStorage.instance
-        .ref("post/ppics/$key")
-        .child('$index$key.jpg')
-        .getData();
-    return uint8List;
+    try{
+      Uint8List? uint8List = await FirebaseStorage.instance
+          .ref("post/ppics/$key")
+          .child('$index$key.jpg')
+          .getData();
+      return uint8List;
+    } catch (e){
+      return null ;
+    }
+  }
+  static getPostImageServicesforCardComponent(key, index) async {
+    try{
+      Uint8List? uint8List = await FirebaseStorage.instance
+          .ref("post/ppics/$key")
+          .child('$index$key.jpg')
+          .getData();
+      return uint8List;
+    } catch (e){
+      return false;
+    }
   }
 
   static deletePostImageService(key, index) async {
-    await FirebaseStorage.instance
-        .ref("post/ppics/$key")
-        .child('$index$key.jpg')
-        .delete();
+    try{
+      await FirebaseStorage.instance
+          .ref("post/ppics/$key")
+          .child('$index$key.jpg')
+          .delete();
+    }catch (e){
+    }
   }
 }

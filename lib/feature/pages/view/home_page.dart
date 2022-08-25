@@ -72,6 +72,7 @@ class BottomComponent extends StatelessWidget {
               }
               return Column(children: [
                 for(int index = 0 ; index<snapshot.docs.length;index++)
+              PostModel.fromJson(snapshot.docs.toList()[index].value).title == null ? const SizedBox():
                   UpcomingEventsCardWidget(post: PostModel.fromJson(snapshot.docs.toList()[index].value))
               ]);
             })
