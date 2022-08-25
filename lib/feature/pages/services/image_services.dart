@@ -78,7 +78,18 @@ class ImageServices {
           .getData();
       return uint8List;
     } catch (e){
-      return null;
+      return null ;
+    }
+  }
+  static getPostImageServicesforCardComponent(key, index) async {
+    try{
+      Uint8List? uint8List = await FirebaseStorage.instance
+          .ref("post/ppics/$key")
+          .child('$index$key.jpg')
+          .getData();
+      return uint8List;
+    } catch (e){
+      return false;
     }
   }
 

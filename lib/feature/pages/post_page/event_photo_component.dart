@@ -67,20 +67,24 @@ class _PhotoCardState extends State<PhotoCard> {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () async {
-              final result =  await changePostImageWidgetButton(context, widget.postKey, widget.index);
-              if(result==true){
-                setState((){});
+              final result = await changePostImageWidgetButton(
+                  context, widget.postKey, widget.index);
+              if (result == true) {
+                setState(() {});
               }
             },
             child: FutureBuilder(
-                future: ImageServices.getPostImageServices(
+                future: ImageServices.getPostImageServicesforCardComponent(
                     widget.postKey, widget.index),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
+                    if (snapshot.data == false) {
+                      return const NullContainerWidget();
+                    }
                     return Image(image: MemoryImage(snapshot.data));
                   } else if (snapshot.hasError) {
                     return const NullContainerWidget();
-                  } else {
+                  }  else {
                     return const CircularProgressIndicator();
                   }
                 }),
@@ -90,12 +94,15 @@ class _PhotoCardState extends State<PhotoCard> {
 }
 
 changePostImageWidgetButton(BuildContext context, postKey, index) async {
-
   await showDialog(
     context: context,
     builder: (BuildContext dialogContext) {
       return AlertDialog(
-        title: ChangeProfileImageWidget(postKey: postKey, index: index,dialogContext: dialogContext, ),
+        title: ChangeProfileImageWidget(
+          postKey: postKey,
+          index: index,
+          dialogContext: dialogContext,
+        ),
       );
     },
   );
@@ -107,7 +114,12 @@ class ChangeProfileImageWidget extends StatelessWidget {
   final dialogContext;
   final String postKey;
   final int index;
-  const ChangeProfileImageWidget({Key? key, required this.postKey, required this.index, this.dialogContext}) : super(key: key);
+  const ChangeProfileImageWidget(
+      {Key? key,
+      required this.postKey,
+      required this.index,
+      this.dialogContext})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
